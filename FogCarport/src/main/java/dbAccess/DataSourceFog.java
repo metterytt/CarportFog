@@ -10,7 +10,7 @@ public class DataSourceFog {
         dataSource.setServerName("159.89.99.43");
         dataSource.setPort(3306);
         dataSource.setUser("foguser");
-        dataSource.setPassword("FOG99hus");
+        dataSource.setPassword("FOG99carport");
         dataSource.setDatabaseName("carport");
     }
 
