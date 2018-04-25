@@ -14,7 +14,7 @@ public class BOM {
     private int posts;
     
     
-    // overload konstruktøren med forskelligt antal variable afhængig af carporttype
+    // overload konstruktøren med forskelligt antal variable afhængig af carporttype, eller lav flere BOM-klasser
 
     public BOM(int posts) {
         this.posts = posts;
