@@ -5,6 +5,7 @@
  */
 package presentationLayer;
 
+import functionLayer.CarportException;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,10 +21,21 @@ public class FrontController extends HttpServlet {
         try {
             Command moveForward = Command.from(request);
             String page = moveForward.execute(request, response);
-            request.getRequestDispatcher("/WEB-INF/" + page + ".jsp").forward(request, response);
-        } catch (Exception e) {
-            request.setAttribute("error", e.getMessage());
-            request.getRequestDispatcher("index.jsp").forward(request, response);
+            if(page.equals("index")){
+            request.getRequestDispatcher( "index.jsp" ).forward( request, response );
+            }else{
+            request.getRequestDispatcher( "/WEB-INF/" + page + ".jsp" ).forward( request, response );
+            }
+        } catch ( CarportException ex ) {
+            if(ex.getPage().equals("index")){
+            request.setAttribute( "error", ex.getMessage() );
+            request.getRequestDispatcher( "index.jsp" ).forward( request, response );
+        
+        }else{
+                request.setAttribute( "error", ex.getMessage() );
+                request.getRequestDispatcher( "/WEB-INF/" + ex.getPage() + ".jsp" ).forward( request, response );
+                
+                }
         }
     }
 

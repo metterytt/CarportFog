@@ -17,8 +17,8 @@ public class UnknownCommand extends Command {
 
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws CarportException {
-        String msg = "Unknown command.";
-        throw new CarportException(msg);
+   String msg = "Unknown command. Contact IT";
+        throw new CarportException( msg , "index");
     }
 
 }
