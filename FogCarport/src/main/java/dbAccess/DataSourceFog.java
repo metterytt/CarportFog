@@ -20,4 +20,3 @@ public class DataSourceFog {
 
 }
 
-lars per er stor
