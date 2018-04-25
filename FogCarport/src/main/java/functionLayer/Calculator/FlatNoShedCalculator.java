@@ -1,7 +1,20 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+understernbrædder = sub fascia boards // beam
+oversternbrædder = fascia boards // beam
+spær = rafter
+stolper = posts
+vandbræt
+rem
+søm
+tagplader
+plastmo bundskruer
+hulbånd
+universalbeslag 190 mm
+skruer til montering af stern og vandbræt
+beslagskruer
+bræddebolt
+firkantskiver
+
  */
 package functionLayer.Calculator;
 
