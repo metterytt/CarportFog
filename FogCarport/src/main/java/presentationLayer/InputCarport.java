@@ -8,6 +8,7 @@ package presentationLayer;
 import Calculators.CarportCalculator;
 import Calculators.FlatNoShedCalculator;
 import functionLayer.BOM;
+import functionLayer.CarportException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -19,7 +20,7 @@ import javax.servlet.http.HttpSession;
 public class InputCarport extends Command {
 
     @Override
-    String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+    String execute(HttpServletRequest request, HttpServletResponse response) throws CarportException {
         HttpSession session = request.getSession();
         int length;
         int width;

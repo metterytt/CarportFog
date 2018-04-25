@@ -21,7 +21,6 @@ public class FlatNoShedCalculator implements CarportCalculator {
         this.width = width;
     }
     
-    
     @Override
     public BOM calculateBOM() {
         BOM bom = null;
