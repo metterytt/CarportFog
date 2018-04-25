@@ -3,15 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Calculators;
+package functionLayer.Calculator;
 
+import functionLayer.Calculator.CarportCalculator;
 import functionLayer.BOM;
 
 /**
  *
  * @author mette
  */
-public class PitchedNoShedCalculator implements CarportCalculator{
+public class FlatWithShedCalculator implements CarportCalculator {
 
     @Override
     public BOM calculateBOM() {
