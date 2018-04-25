@@ -22,8 +22,7 @@ public class InputCarport extends Command {
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws CarportException {
         HttpSession session = request.getSession();
-        int length;
-        int width;
+        int length, width;
 
         length = Integer.parseInt(request.getParameter("length"));
         width = Integer.parseInt(request.getParameter("width"));
