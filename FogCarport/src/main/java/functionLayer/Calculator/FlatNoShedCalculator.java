@@ -5,7 +5,6 @@
  */
 package functionLayer.Calculator;
 
-import functionLayer.Calculator.CarportCalculator;
 import functionLayer.BOM;
 
 /**
@@ -26,6 +25,7 @@ public class FlatNoShedCalculator implements CarportCalculator {
     public BOM calculateBOM() {
         BOM bom = null;
         int posts = calcPosts(length);
+        int subFasciaBoards = calcSubFasciaBoards(length, width);
         bom = new BOM(posts);
         return bom;
     }
@@ -39,6 +39,9 @@ public class FlatNoShedCalculator implements CarportCalculator {
         }
     }
     
-//    private int 
+    private int calcSubFasciaBoards(int length, int width){
+        return 1; //dummy!
+        
+    }
 
 }
