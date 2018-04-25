@@ -20,4 +20,3 @@ public class DataSourceFog {
 
 }
 
-yo yo det er yzma her

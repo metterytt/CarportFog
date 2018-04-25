@@ -16,8 +16,7 @@
         <h1>Velkommen til Carport beregner!</h1>
         
         <p>Her kan du indtaste de ønskede mål på din carport.</p>
-        <p>Go ahead!</p>
-        <p>Please!</p>
+        
         <form name="login" action="FrontController" method="post">
             <input type="hidden" name="command" value="inputcarport">
             <br>Længde: <input type="text" name="length" placeholder="længde...">
