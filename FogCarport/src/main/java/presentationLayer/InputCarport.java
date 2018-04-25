@@ -5,8 +5,8 @@
  */
 package presentationLayer;
 
-import Calculators.CarportCalculator;
-import Calculators.FlatNoShedCalculator;
+import functionLayer.Calculator.CarportCalculator;
+import functionLayer.Calculator.FlatNoShedCalculator;
 import functionLayer.BOM;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
