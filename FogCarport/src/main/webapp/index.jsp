@@ -26,9 +26,9 @@
         <div class="form-group">
         <form name="login" action="FrontController" method="post">
             <input type="hidden" name="command" value="inputcarport">
-            <br> <label for="length">Længde:</label>
+            <br> <label for="length">Længde i CM:</label>
            <input type="text" class="form-control" name="length" min="1" max="5000" placeholder="længde...">
-            <br> <label for="width">Bredde:</label>
+            <br> <label for="width">Bredde i CM:</label>
             <input type="text" class="form-control" name="width" min="1" max="5000" placeholder="bredde...">
             <br><br><input type="submit" class="btn btn-primary" value="Beregn carport">
         </form>
