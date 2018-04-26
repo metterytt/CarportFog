@@ -26,7 +26,8 @@ public class InputCarport extends Command {
 
         length = Integer.parseInt(request.getParameter("length"));
         width = Integer.parseInt(request.getParameter("width"));
-
+        
+        
         CarportCalculator calculator = new FlatNoShedCalculator(length, width);
         BOM bom = calculator.calculateBOM();
         session.setAttribute("bom", bom);

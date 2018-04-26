@@ -43,6 +43,10 @@ public class BOM {
         this.fasciaScrews = fasciaScrews;
         this.bracketScrews = bracketScrews;
     }
+    
+    public BOM() {
+        
+    }
 
     public int getPosts() {
         return posts;
