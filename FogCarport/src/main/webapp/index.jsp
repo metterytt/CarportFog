@@ -42,7 +42,7 @@
                             <br>
                             <input type="button" class="btn btn-primary" onclick="myFunction()" value="Vis/Gem skur!"/>
                         
-                        <div id="myDIV">
+                        <div id="myDIV" style="display:none;">
                                
                             <br> <label for="shedlength">Skur længde i CM:</label>
                             <input type="text" class="form-control" name="shedlength" min="1" max="5000" placeholder="skurlængde...">
