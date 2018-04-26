@@ -45,9 +45,9 @@
                         <div id="myDIV" style="display:none;">
                                
                             <br> <label for="shedlength">Skur længde i CM:</label>
-                            <input type="text" class="form-control" name="shedlength" min="1" max="5000" placeholder="skurlængde...">
+                            <input type="text" class="form-control" name="shedlength" min="1" max="5000" value="0">
                             <br> <label for="shedwidth">Skur bredde i CM:</label>
-                            <input type="text" class="form-control" name="shedwidth" min="1" max="5000" placeholder="skurbredde...">
+                            <input type="text" class="form-control" name="shedwidth" min="1" max="5000" value="0">
                             </div>
                         
 

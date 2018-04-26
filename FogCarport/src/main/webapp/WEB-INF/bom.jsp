@@ -116,9 +116,11 @@
 
                     <br>
 
+                    <% if (request.getSession().getAttribute("shedbom") != null) {
+                    %>
                     <% BOM shedBom = (BOM) session.getAttribute("shedbom");
                     %>
-
+                    <h2>Herunder er styklisten for skuret:</h2>
                     <table class="table table-striped">
                         <thead>
                             <tr>
@@ -145,6 +147,7 @@
                             </tr>
                         </tbody>
                     </table>
+                    <%}%>
                 </div>
             </div>
         </div>
