@@ -78,7 +78,7 @@ public class FlatNoShedCalculator implements CarportCalculator {
         return ((length / 60) + 2) * width;
     }
 
-    private int calcWaterBoards(int length, int width) {
+    private int calcWaterBoards(int length, int width) { 
         return 2 * length + width;
     }
 
