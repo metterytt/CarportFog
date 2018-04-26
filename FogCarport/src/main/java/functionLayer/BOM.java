@@ -21,13 +21,15 @@ public class BOM {
     private int roof;
     private int roofScrews;
     private int metalTape;
-    private int screws;
-    private int smallScrews;// screws for brackets and metalTape = 20x 2x number of rafters
+    private int uniBrackets;
+    private int fasciaScrews;
+    private int bracketScrews;// screws for brackets and metalTape = 20x 2x number of rafters
     // bolts = number of posts DETTE MÅ VI CHECKE - det giver ikke mening med antallet i eksempelstyklisten
     // squarepieces = 2x number of posts
 
     // overload konstruktøren med forskelligt antal variable afhængig af carporttype, eller lav flere BOM-klasser
-    public BOM(int posts, int subFasciaBoards, int fasciaBoards, int plates, int rafters, int waterBoards, int roof, int roofScrews, int metalTape, int screws, int uniBrackets) {
+    public BOM(int posts, int subFasciaBoards, int fasciaBoards, int plates, int rafters,
+            int waterBoards, int roof, int roofScrews, int metalTape, int uniBrackets, int fasciaScrews, int bracketScrews) {
         this.posts = posts;
         this.subFasciaBoards = subFasciaBoards;
         this.fasciaBoards = fasciaBoards;
@@ -37,9 +39,9 @@ public class BOM {
         this.roof = roof;
         this.roofScrews = roofScrews;
         this.metalTape = metalTape;
-        this.screws = screws;
-        smallScrews = 40 * rafters;
-        
+        this.uniBrackets = uniBrackets;
+        this.fasciaScrews = fasciaScrews;
+        this.bracketScrews = bracketScrews;
     }
 
     public int getPosts() {
@@ -78,12 +80,16 @@ public class BOM {
         return metalTape;
     }
 
-    public int getScrews() {
-        return screws;
+    public int getUniBrackets() {
+        return uniBrackets;
+    }
+    
+    public int getFasciaScrews() {
+        return fasciaScrews;
     }
 
-    public int getSmallScrews() {
-        return smallScrews;
+    public int getBracketScrews() {
+        return bracketScrews;
     }
 
     

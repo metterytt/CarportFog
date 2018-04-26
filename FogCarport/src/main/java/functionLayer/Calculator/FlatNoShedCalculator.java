@@ -46,10 +46,11 @@ public class FlatNoShedCalculator implements CarportCalculator {
         int roof = calcRoof(length, width);
         int roofScrews = calcRoofScrews(length, width);
         int metalTape = calcMetalTape(length, width);
-        int screws = calcScrews(length, width);
         int uniBrackets = calcUniBrackets(length);
+        int fasciaScrews = calcFasciaScrews(length, width);
+        int bracketScrews = calcBracketScrews(length, width);
 
-        bom = new BOM(posts, subFasciaBoards, fasciaBoards, plates, rafters, waterBoards, roof, roofScrews, metalTape, screws, uniBrackets);
+        bom = new BOM(posts, subFasciaBoards, fasciaBoards, plates, rafters, waterBoards, roof, roofScrews, metalTape, uniBrackets, fasciaScrews, bracketScrews);
         return bom;
     }
 
@@ -78,7 +79,7 @@ public class FlatNoShedCalculator implements CarportCalculator {
         return ((length / 60) + 2) * width;
     }
 
-    private int calcWaterBoards(int length, int width) { 
+    private int calcWaterBoards(int length, int width) {
         return 2 * length + width;
     }
 
@@ -98,13 +99,17 @@ public class FlatNoShedCalculator implements CarportCalculator {
         return 2 * (int) (Math.sqrt(length * length + width * width)) + 1;
     }
 
-    private int calcScrews(int length, int width) { // 2 stk. pr. 60 cm omkreds PLUS 4 stk. pr 60 cm (omkreds minus bredde)
+    private int calcUniBrackets(int length) {
+        return (length / 60) + 2;
+    }
+
+    private int calcFasciaScrews(int length, int width) { // 2 stk. pr. 60 cm omkreds PLUS 4 stk. pr 60 cm (omkreds minus bredde)
         //(pga manglende overstern og vandbræt bagtil) ... 50 for buffer
         return 2 * ((2 * length + 2 * width) / 60) + (4 * (2 * length + width) / 60) + 50;
     }
 
-    private int calcUniBrackets(int length) {
-        return (length / 60) + 2;
+    private int calcBracketScrews(int length, int width) { // 20 pr. universalbeslag ... 50 for buffer
+        return (((length / 60) + 2) * 2) * 20 + 50;
     }
 
 }

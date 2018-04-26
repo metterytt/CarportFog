@@ -84,17 +84,22 @@
                             <tr>
                                 <th><p>Universalbeslag højre</th>
                                 <td><p>Stk.</td>
-                                <td><p><%out.print(bom.getRafters()); %></td>
+                                <td><p><%out.print(bom.getUniBrackets()); %></td>
                             </tr>
                             <tr>
                                 <th><p>Universalbeslag venstre</th>
                                 <td><p>Stk.</td>
-                                <td><p><%out.print(bom.getRafters()); %></td>
+                                <td><p><%out.print(bom.getUniBrackets()); %></td>
+                            </tr>
+                            <tr>
+                                <th><p>Skruer til stern/vandbræt</th>
+                                <td><p>Stk.</td>
+                                <td><p><%out.print(bom.getFasciaScrews()); %></td>
                             </tr>
                             <tr>
                                 <th><p>Små skruer t.beslag/hulbånd</th>
                                 <td><p>Stk.</td>
-                                <td><p><%out.print(bom.getSmallScrews()); %></td>
+                                <td><p><%out.print(bom.getBracketScrews()); %></td>
                             </tr>
                             <tr>
                                 <th><p>Bolte</th>
