@@ -27,6 +27,10 @@ public class BOM {
     // bolts = number of posts DETTE MÅ VI CHECKE - det giver ikke mening med antallet i eksempelstyklisten
     // squarepieces = 2x number of posts
 
+    private int lath;
+    private int reglar;
+    private int cladding;
+    
     // overload konstruktøren med forskelligt antal variable afhængig af carporttype, eller lav flere BOM-klasser
     public BOM(int posts, int subFasciaBoards, int fasciaBoards, int plates, int rafters,
             int waterBoards, int roof, int roofScrews, int metalTape, int uniBrackets, int fasciaScrews, int bracketScrews) {
@@ -44,8 +48,10 @@ public class BOM {
         this.bracketScrews = bracketScrews;
     }
     
-    public BOM() {
-        
+    public BOM(int lath, int reglar, int cladding) {
+        this.lath = lath;
+        this.reglar = reglar;
+        this.cladding = cladding;
     }
 
     public int getPosts() {
@@ -94,6 +100,32 @@ public class BOM {
 
     public int getBracketScrews() {
         return bracketScrews;
+    }
+
+    
+    //Her starter skuret
+    public int getLath() {
+        return lath;
+    }
+
+    public void setLath(int lath) {
+        this.lath = lath;
+    }
+
+    public int getReglar() {
+        return reglar;
+    }
+
+    public void setReglar(int reglar) {
+        this.reglar = reglar;
+    }
+
+    public int getCladding() {
+        return cladding;
+    }
+
+    public void setCladding(int cladding) {
+        this.cladding = cladding;
     }
 
     

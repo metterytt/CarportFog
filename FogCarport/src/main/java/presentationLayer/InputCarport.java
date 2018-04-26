@@ -8,6 +8,7 @@ package presentationLayer;
 import functionLayer.Calculator.CarportCalculator;
 import functionLayer.Calculator.FlatNoShedCalculator;
 import functionLayer.BOM;
+import functionLayer.Calculator.ShedCalculator;
 import functionLayer.CarportException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -22,17 +23,28 @@ public class InputCarport extends Command {
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws CarportException {
         HttpSession session = request.getSession();
-        int length, width;
+        int length;
+        int width;
+        int shedLength;
+        int shedWidth;
 
         length = Integer.parseInt(request.getParameter("length"));
         width = Integer.parseInt(request.getParameter("width"));
-        
-        
-        CarportCalculator calculator = new FlatNoShedCalculator(length, width);
-        BOM bom = calculator.calculateBOM();
-        session.setAttribute("bom", bom);
+        shedLength = Integer.parseInt(request.getParameter("shedlength"));
+        shedWidth = Integer.parseInt(request.getParameter("shedwidth"));
+
+        CarportCalculator carportCalculator = new FlatNoShedCalculator(length, width);
+        BOM carportBom = carportCalculator.calculateBOM();
+        session.setAttribute("carportbom", carportBom);
+
+        if (shedWidth != 0 && shedLength != 0) {
+
+            CarportCalculator shedCalculator = new ShedCalculator(shedLength, shedWidth);
+            BOM shedBom = shedCalculator.calculateBOM();
+            session.setAttribute("shedbom", shedBom);
+            
+        }
         return "bom";
 //        return "stykliste";
     }
-
 }

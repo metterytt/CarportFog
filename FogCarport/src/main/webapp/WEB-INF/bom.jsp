@@ -23,7 +23,7 @@
                     <h1>Styklisteberegning</h1>
                     <br>
                     <br>
-                    <% BOM bom = (BOM) session.getAttribute("bom");
+                    <% BOM carportBom = (BOM) session.getAttribute("carportbom");
                     %>
 
                     <%-- <table border="1"> --%>
@@ -39,77 +39,109 @@
                             <tr>
                                 <th><p>Stolper</th>
                                 <td><p>Stk.</td>
-                                <td><p><%out.print(bom.getPosts()); %></td>
+                                <td><p><%out.print(carportBom.getPosts()); %></td>
                             </tr>
                             <tr>
                                 <th><p>Understernbrædder</th>
                                 <td><p>Centimeter</td>
-                                <td><p><%out.print(bom.getSubFasciaBoards()); %></td>
+                                <td><p><%out.print(carportBom.getSubFasciaBoards()); %></td>
                             </tr>
                             <tr>
                                 <th><p>Sternbrædder</th>
                                 <td><p>Centimeter</td>
-                                <td><p><%out.print(bom.getFasciaBoards()); %></td>
+                                <td><p><%out.print(carportBom.getFasciaBoards()); %></td>
                             </tr>
                             <tr>
                                 <th><p>Remme</th>
                                 <td><p>Centimeter</td>
-                                <td><p><%out.print(bom.getPlates()); %></td>
+                                <td><p><%out.print(carportBom.getPlates()); %></td>
                             </tr>
                             <tr>
                                 <th><p>Spær</th>
                                 <td><p>Centimeter</td>
-                                <td><p><%out.print(bom.getRafters()); %></td>
+                                <td><p><%out.print(carportBom.getRafters()); %></td>
                             </tr>
                             <tr>
                                 <th><p>Vandbrædder</th>
                                 <td><p>Centimeter</td>
-                                <td><p><%out.print(bom.getWaterBoards()); %></td>
+                                <td><p><%out.print(carportBom.getWaterBoards()); %></td>
                             </tr>
                             <tr>
                                 <th><p>Tagplader</th>
                                 <td><p>Centimeter</td>
-                                <td><p><%out.print(bom.getRoof()); %></td>
+                                <td><p><%out.print(carportBom.getRoof()); %></td>
                             </tr>
                             <tr>
                                 <th><p>Skruer til tag</th>
                                 <td><p>Stk.</td>
-                                <td><p><%out.print(bom.getRoofScrews()); %></td>
+                                <td><p><%out.print(carportBom.getRoofScrews()); %></td>
                             </tr>
                             <tr>
                                 <th><p>Hulbånd</th>
                                 <td><p>Centimeter</td>
-                                <td><p><%out.print(bom.getMetalTape()); %></td>
+                                <td><p><%out.print(carportBom.getMetalTape()); %></td>
                             </tr>
                             <tr>
                                 <th><p>Universalbeslag højre</th>
                                 <td><p>Stk.</td>
-                                <td><p><%out.print(bom.getUniBrackets()); %></td>
+                                <td><p><%out.print(carportBom.getUniBrackets()); %></td>
                             </tr>
                             <tr>
                                 <th><p>Universalbeslag venstre</th>
                                 <td><p>Stk.</td>
-                                <td><p><%out.print(bom.getUniBrackets()); %></td>
+                                <td><p><%out.print(carportBom.getUniBrackets()); %></td>
                             </tr>
                             <tr>
                                 <th><p>Skruer til stern/vandbræt</th>
                                 <td><p>Stk.</td>
-                                <td><p><%out.print(bom.getFasciaScrews()); %></td>
+                                <td><p><%out.print(carportBom.getFasciaScrews()); %></td>
                             </tr>
                             <tr>
                                 <th><p>Små skruer t.beslag/hulbånd</th>
                                 <td><p>Stk.</td>
-                                <td><p><%out.print(bom.getBracketScrews()); %></td>
+                                <td><p><%out.print(carportBom.getBracketScrews()); %></td>
                             </tr>
                             <tr>
                                 <th><p>Bolte</th>
                                 <td><p>Stk.</td>
-                                <td><p><%out.print(bom.getPosts()); %></td>
+                                <td><p><%out.print(carportBom.getPosts()); %></td>
                             </tr>
                             <tr>
                                 <th><p>Firkantskiver</th>
                                 <td><p>Stk.</td>
-                                <td><p><%out.print(bom.getPosts() * 2);%></td>
+                                <td><p><%out.print(carportBom.getPosts() * 2);%></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <br>
+
+                    <% BOM shedBom = (BOM) session.getAttribute("shedbom");
+                    %>
+
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th><p>Varetype</th>
+                                <th><p>Enhed</th>
+                                <th><p>Antal</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th><p>Lægte til dør</th>
+                                <td><p>Centimeter</td>
+                                <td><p><%out.print(shedBom.getLath());%></td>
+                            </tr>
+                            <tr>
+                                <th><p>Reglar til løsholter</th>
+                                <td><p>Centimeter</td>
+                                <td><p><%out.print(shedBom.getReglar());%></td>
+                            </tr>
+                            <tr>
+                                <th><p>Beklædningsbrædder</th>
+                                <td><p>Centimeter</td>
+                                <td><p><%out.print(shedBom.getCladding());%></td>
                             </tr>
                         </tbody>
                     </table>
