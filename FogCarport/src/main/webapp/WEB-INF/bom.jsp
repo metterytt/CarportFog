@@ -150,8 +150,8 @@
                     <%}%>
                 </div>
                 <div class="col-md-6">
-                    <h1>Visualization</h1>
-                    <br>
+                    <br><h1>Visualization</h1>
+                    <br><br>
                     
                     <svg height="220" width="500">
                     <line x1="0" y1="0" x2="200" y2="0" stroke="black"/>
