@@ -26,10 +26,21 @@
                             <input type="text" class="form-control" name="length" min="1" max="5000" placeholder="længde...">
                             <br> <label for="width">Bredde i CM:</label>
                             <input type="text" class="form-control" name="width" min="1" max="5000" placeholder="bredde...">
+                            
+                            <br>
+                            Hvis du ønsker skur, indtast herunder:
+                            <br> <label for="shedlength">Skur længde i CM:</label>
+                            <input type="text" class="form-control" name="shedlength" min="1" max="5000" placeholder="skurlængde...">
+                            <br> <label for="shedwidth">Skur bredde i CM:</label>
+                            <input type="text" class="form-control" name="shedwidth" min="1" max="5000" placeholder="skurbredde...">
+                            
                             <br><br><input type="submit" class="btn btn-primary" value="Beregn carport">
                         </form>
                     </div>
-
+                    
+                    
+                    
+                    
                     <% String error = (String) request.getAttribute("error"); // Jesper har kommentar til dette
                         if (error != null) {%>
                     <p> Error! </p>

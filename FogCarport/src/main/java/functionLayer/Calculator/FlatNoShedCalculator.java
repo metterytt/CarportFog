@@ -36,7 +36,6 @@ public class FlatNoShedCalculator implements CarportCalculator {
 
     @Override
     public BOM calculateBOM() {
-        BOM bom = null;
         int posts = calcPosts(length);
         int subFasciaBoards = calcSubFasciaBoards(length, width);
         int fasciaBoards = calcFasciaBoards(length, width);
@@ -48,9 +47,8 @@ public class FlatNoShedCalculator implements CarportCalculator {
         int metalTape = calcMetalTape(length, width);
         int uniBrackets = calcUniBrackets(length);
         int fasciaScrews = calcFasciaScrews(length, width);
-        int bracketScrews = calcBracketScrews(length, width);
-
-        bom = new BOM(posts, subFasciaBoards, fasciaBoards, plates, rafters, waterBoards, roof, roofScrews, metalTape, uniBrackets, fasciaScrews, bracketScrews);
+        int bracketScrews = calcBracketScrews(length);
+        BOM bom = new BOM(posts, subFasciaBoards, fasciaBoards, plates, rafters, waterBoards, roof, roofScrews, metalTape, uniBrackets, fasciaScrews, bracketScrews);
         return bom;
     }
 
@@ -108,7 +106,7 @@ public class FlatNoShedCalculator implements CarportCalculator {
         return 2 * ((2 * length + 2 * width) / 60) + (4 * (2 * length + width) / 60) + 50;
     }
 
-    private int calcBracketScrews(int length, int width) { // 20 pr. universalbeslag ... 50 for buffer
+    private int calcBracketScrews(int length) { // 20 pr. universalbeslag ... 50 for buffer
         return (((length / 60) + 2) * 2) * 20 + 50;
     }
 
