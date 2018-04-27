@@ -6,16 +6,13 @@
 package functionLayer.Calculator;
 
 import functionLayer.BOM;
-import functionLayer.BOMexp;
 
 /**
  *
  * @author mette
  */
 public interface CarportCalculator {
-    
-    public BOM calculateBOM();
 
-    public BOMexp getBom();
-    
+    public BOM getBom();
+
 }

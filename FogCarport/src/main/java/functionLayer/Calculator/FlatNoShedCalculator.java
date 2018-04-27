@@ -20,7 +20,6 @@ package functionLayer.Calculator;
 
 import dbAccess.Mapper;
 import functionLayer.BOM;
-import functionLayer.BOMexp;
 import functionLayer.CarportException;
 import functionLayer.entity.Product;
 
@@ -32,7 +31,7 @@ public class FlatNoShedCalculator implements CarportCalculator {
     
     private int length;
     private int width;
-    private BOMexp bom = new BOMexp();
+    private BOM bom = new BOM();
     
     public FlatNoShedCalculator(int length, int width) throws CarportException {
         this.length = length;
@@ -40,8 +39,8 @@ public class FlatNoShedCalculator implements CarportCalculator {
         bom = calculateBOMexp();
     }
     
-    private BOMexp calculateBOMexp() throws CarportException {
-        bom = new BOMexp();
+    private BOM calculateBOMexp() throws CarportException {
+        bom = new BOM();
         
         Product subFasciaBoards = Mapper.getProduct(1);
         subFasciaBoards.setQuantity(calcSubFasciaBoards(length, width));
@@ -74,6 +73,7 @@ public class FlatNoShedCalculator implements CarportCalculator {
         bom.addToBOM(waterBoards);
 
         // mangler tagplader
+        
         Product roofScrews = Mapper.getProduct(8);
         roofScrews.setQuantity(calcRoofScrews(length, width));
         roofScrews.setUseInContext("Skruer til tagplader");
@@ -117,25 +117,6 @@ public class FlatNoShedCalculator implements CarportCalculator {
         return bom;
     }
     
-    @Override
-    public BOM calculateBOM() {
-        
-        int posts = calcPosts(length);
-        int subFasciaBoards = calcSubFasciaBoards(length, width);
-        int fasciaBoards = calcFasciaBoards(length, width);
-        int plates = calcPlate(length);
-        int rafters = calcRafters(length, width);
-        int waterBoards = calcWaterBoards(length, width); // check denne oversættelse
-        int roof = calcRoof(length, width);
-        int roofScrews = calcRoofScrews(length, width);
-        int metalTape = calcMetalTape(length, width);
-        int uniBrackets = calcUniBrackets(length);
-        int fasciaScrews = calcFasciaScrews(length, width);
-        int bracketScrews = calcBracketScrews(length);
-        BOM bom = new BOM(posts, subFasciaBoards, fasciaBoards, plates, rafters, waterBoards, roof, roofScrews, metalTape, uniBrackets, fasciaScrews, bracketScrews);
-        return bom;
-    }
-
     // ud fra 4 stolper hvis længde mindre end 481, ellers 6
     private int calcPosts(int length) {
         if (length <= 480) {
@@ -194,7 +175,7 @@ public class FlatNoShedCalculator implements CarportCalculator {
         return (((length / 60) + 2) * 2) * 20 + 50;
     }
     
-    public BOMexp getBom() {
+    public BOM getBom() {
         return bom;
     }
     

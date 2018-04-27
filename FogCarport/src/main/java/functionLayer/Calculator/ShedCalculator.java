@@ -4,7 +4,6 @@ package functionLayer.Calculator;
 
 import dbAccess.Mapper;
 import functionLayer.BOM;
-import functionLayer.BOMexp;
 import functionLayer.CarportException;
 import functionLayer.entity.Product;
 
@@ -16,7 +15,7 @@ public class ShedCalculator implements CarportCalculator {
 
     private int shedLength;
     private int shedWidth;
-    private BOMexp bom = new BOMexp();
+    private BOM bom = new BOM();
 
     public ShedCalculator(int shedLength, int shedWidth) throws CarportException {
         this.shedLength = shedLength;
@@ -24,8 +23,8 @@ public class ShedCalculator implements CarportCalculator {
         bom = calculateBOMexp();
     }
 
-    private BOMexp calculateBOMexp() throws CarportException {
-        bom = new BOMexp();
+    private BOM calculateBOMexp() throws CarportException {
+        bom = new BOM();
 
         Product lath = Mapper.getProduct(16);
         lath.setQuantity(420);
@@ -45,16 +44,6 @@ public class ShedCalculator implements CarportCalculator {
         return bom;
     }
 
-    @Override
-    public BOM calculateBOM() {
-        int lath = 420;
-        int reglar = calcReglar(shedLength, shedWidth);
-        int cladding = calcCladding(shedLength, shedWidth);
-
-        BOM bom = new BOM(lath, reglar, cladding);
-        return bom;
-    }
-
     private int calcReglar(int shedLength, int shedWidth) {
         return 4 * shedLength + 4 * shedWidth;
     }
@@ -64,7 +53,7 @@ public class ShedCalculator implements CarportCalculator {
     }
 
     @Override
-    public BOMexp getBom() {
+    public BOM getBom() {
         return bom;
     }
 

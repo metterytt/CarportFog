@@ -5,126 +5,23 @@
  */
 package functionLayer;
 
+import functionLayer.entity.Product;
+import java.util.ArrayList;
+
 /**
  *
  * @author mette
  */
 public class BOM {
 
-    // skal have mange variable....
-    private int posts;
-    private int subFasciaBoards;
-    private int fasciaBoards;
-    private int plates;
-    private int rafters;
-    private int waterBoards;
-    private int roof;
-    private int roofScrews;
-    private int metalTape;
-    private int uniBrackets;
-    private int fasciaScrews;
-    private int bracketScrews;// screws for brackets and metalTape = 20x 2x number of rafters
-    // bolts = number of posts DETTE MÅ VI CHECKE - det giver ikke mening med antallet i eksempelstyklisten
-    // squarepieces = 2x number of posts
+    private ArrayList<Product> listOfProducts = new ArrayList<>();
 
-    private int lath;
-    private int reglar;
-    private int cladding;
-
-    // overload konstruktøren med forskelligt antal variable afhængig af carporttype, eller lav flere BOM-klasser
-    public BOM(int posts, int subFasciaBoards, int fasciaBoards, int plates, int rafters,
-            int waterBoards, int roof, int roofScrews, int metalTape, int uniBrackets, int fasciaScrews, int bracketScrews) {
-        this.posts = posts;
-        this.subFasciaBoards = subFasciaBoards;
-        this.fasciaBoards = fasciaBoards;
-        this.plates = plates;
-        this.rafters = rafters;
-        this.waterBoards = waterBoards;
-        this.roof = roof;
-        this.roofScrews = roofScrews;
-        this.metalTape = metalTape;
-        this.uniBrackets = uniBrackets;
-        this.fasciaScrews = fasciaScrews;
-        this.bracketScrews = bracketScrews;
+    public void addToBOM(Product product) {
+        listOfProducts.add(product);
     }
 
-    public BOM(int lath, int reglar, int cladding) {
-        this.lath = lath;
-        this.reglar = reglar;
-        this.cladding = cladding;
-    }
-
-    public int getPosts() {
-        return posts;
-    }
-
-    public int getSubFasciaBoards() {
-        return subFasciaBoards;
-    }
-
-    public int getFasciaBoards() {
-        return fasciaBoards;
-    }
-
-    public int getPlates() {
-        return plates;
-    }
-
-    public int getRafters() {
-        return rafters;
-    }
-
-    public int getWaterBoards() {
-        return waterBoards;
-    }
-
-    public int getRoof() {
-        return roof;
-    }
-
-    public int getRoofScrews() {
-        return roofScrews;
-    }
-
-    public int getMetalTape() {
-        return metalTape;
-    }
-
-    public int getUniBrackets() {
-        return uniBrackets;
-    }
-
-    public int getFasciaScrews() {
-        return fasciaScrews;
-    }
-
-    public int getBracketScrews() {
-        return bracketScrews;
-    }
-
-    //Her starter skuret
-    public int getLath() {
-        return lath;
-    }
-
-    public void setLath(int lath) {
-        this.lath = lath;
-    }
-
-    public int getReglar() {
-        return reglar;
-    }
-
-    public void setReglar(int reglar) {
-        this.reglar = reglar;
-    }
-
-    public int getCladding() {
-        return cladding;
-    }
-
-    public void setCladding(int cladding) {
-        this.cladding = cladding;
+    public ArrayList<Product> getListOfProducts() {
+        return listOfProducts;
     }
 
 }
