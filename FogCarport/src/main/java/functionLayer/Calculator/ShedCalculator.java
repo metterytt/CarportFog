@@ -20,14 +20,14 @@ public class ShedCalculator implements CarportCalculator {
     public ShedCalculator(int shedLength, int shedWidth) throws CarportException {
         this.shedLength = shedLength;
         this.shedWidth = shedWidth;
-        bom = calculateBOMexp();
+        bom = calculateBOM();
     }
 
-    private BOM calculateBOMexp() throws CarportException {
+    private BOM calculateBOM() throws CarportException {
         bom = new BOM();
 
         Product lath = Mapper.getProduct(16);
-        lath.setQuantity(420);
+        lath.setQuantity(420); // altid samme mængde, til Z på dør
         lath.setUseInContext("Til Z på bagside af dør");
         bom.addToBOM(lath);
 
@@ -48,7 +48,7 @@ public class ShedCalculator implements CarportCalculator {
         return 4 * shedLength + 4 * shedWidth;
     }
 
-    private int calcCladding(int shedLength, int shedWidth) {
+    private int calcCladding(int shedLength, int shedWidth) { // pga overlap fylder hvert bræt 7,5 cm
         return ((((shedLength * 100) / 750) + ((shedWidth * 100) / 750)) * 210) * 2; //210 er standard højden.
     }
 

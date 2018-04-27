@@ -47,7 +47,7 @@ public class Product {
         return uom;
     }
 
-    public double getPrice() { // formatering af kroner/øre
+    public double getPrice() { // TODO ordentlig formatering af kroner/øre
         return price / 100;
     }
 

@@ -27,19 +27,19 @@ import functionLayer.entity.Product;
  *
  * @author mette
  */
-public class FlatNoShedCalculator implements CarportCalculator {
+public class FlatRoofCalculator implements CarportCalculator {
     
     private int length;
     private int width;
     private BOM bom = new BOM();
     
-    public FlatNoShedCalculator(int length, int width) throws CarportException {
+    public FlatRoofCalculator(int length, int width) throws CarportException {
         this.length = length;
         this.width = width;
-        bom = calculateBOMexp();
+        bom = calculateBOM();
     }
     
-    private BOM calculateBOMexp() throws CarportException {
+    private BOM calculateBOM() throws CarportException {
         bom = new BOM();
         
         Product subFasciaBoards = Mapper.getProduct(1);
@@ -175,6 +175,7 @@ public class FlatNoShedCalculator implements CarportCalculator {
         return (((length / 60) + 2) * 2) * 20 + 50;
     }
     
+    @Override
     public BOM getBom() {
         return bom;
     }
