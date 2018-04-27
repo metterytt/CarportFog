@@ -7,7 +7,7 @@ package presentationLayer;
 
 import functionLayer.Calculator.CarportCalculator;
 import functionLayer.Calculator.FlatNoShedCalculator;
-import functionLayer.BOM;
+import functionLayer.BOMexp;
 import functionLayer.Calculator.ShedCalculator;
 import functionLayer.CarportException;
 import javax.servlet.http.HttpServletRequest;
@@ -34,17 +34,19 @@ public class InputCarport extends Command {
         shedWidth = Integer.parseInt(request.getParameter("shedwidth"));
 
         CarportCalculator carportCalculator = new FlatNoShedCalculator(length, width);
-        BOM carportBom = carportCalculator.calculateBOM();
+//        BOM carportBom = carportCalculator.calculateBOM();
+
+        BOMexp carportBom = carportCalculator.getBom();
+
         session.setAttribute("carportbom", carportBom);
 
         if (shedWidth != 0 && shedLength != 0) {
 
             CarportCalculator shedCalculator = new ShedCalculator(shedLength, shedWidth);
-            BOM shedBom = shedCalculator.calculateBOM();
+            BOMexp shedBom = shedCalculator.getBom();
             session.setAttribute("shedbom", shedBom);
-            
+
         }
         return "bom";
-//        return "stykliste";
     }
 }

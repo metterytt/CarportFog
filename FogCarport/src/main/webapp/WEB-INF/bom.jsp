@@ -4,6 +4,9 @@
     Author     : mette
 --%>
 
+<%@page import="java.util.ArrayList"%>
+<%@page import="functionLayer.entity.Product"%>
+<%@page import="functionLayer.BOMexp"%>
 <%@page import="functionLayer.BOM"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -23,10 +26,77 @@
                     <h1>Styklisteberegning</h1>
                     <br>
                     <br>
-                    <% BOM carportBom = (BOM) session.getAttribute("carportbom");
+                    <%--     <% BOM carportBom = (BOM) session.getAttribute("carportbom");
+%>    --%>
+
+                    <% BOMexp carportBomexp = (BOMexp) session.getAttribute("carportbom");
                     %>
 
-                    <%-- <table border="1"> --%>
+                    <div class="col-md-6">
+
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Produktnavn</th>
+                                    <th>Brug</th>
+                                    <th>Enhed</th>
+                                    <th>Antal</th>
+                                    <th>Pris pr. enhed</th>
+                                </tr>
+                            </thead> 
+                            <tbody>
+                                <%
+                                    ArrayList<Product> bom = carportBomexp.getListOfProducts();
+                                    for (Product p : bom) {
+                                %>
+                                <tr>
+                                    <th> <% out.print(p.getName()); %> </th>
+                                    <th> <% out.print(p.getUseInContext()); %> </th>
+                                    <th> <% out.print(p.getUom()); %> </th>
+                                    <th> <% out.print(p.getQuantity()); %> </th>
+                                    <th> <% out.print(p.getPrice()); %>  </th>
+                                        <%}%>
+                                </tr> 
+                            </tbody>
+                        </table>    
+                    </div>
+
+                    <% if (request.getSession().getAttribute("shedbom") != null) {
+                            BOMexp shedBomexp = (BOMexp) session.getAttribute("shedbom");
+                    %>
+                    <h2>Herunder er styklisten for skuret:</h2>
+                    <div class="col-md-6">
+
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Produktnavn</th>
+                                    <th>Brug</th>
+                                    <th>Enhed</th>
+                                    <th>Antal</th>
+                                    <th>Pris pr. enhed</th>
+                                </tr>
+                            </thead> 
+                            <tbody>
+                                <%
+                                    ArrayList<Product> shedBom = shedBomexp.getListOfProducts();
+                                    for (Product p : shedBom) {
+                                %>
+                                <tr>
+                                    <th> <% out.print(p.getName()); %> </th>
+                                    <th> <% out.print(p.getUseInContext()); %> </th>
+                                    <th> <% out.print(p.getUom()); %> </th>
+                                    <th> <% out.print(p.getQuantity()); %> </th>
+                                    <th> <% out.print(p.getPrice()); %>  </th>
+                                        <%}%>
+                                </tr> 
+                            </tbody>
+                        </table>    
+                        <%}%>
+                    </div>
+
+
+                    <%-- <table border="1"> 
                     <table class="table table-striped">
                         <thead>
                             <tr>
@@ -115,39 +185,44 @@
                     </table>
 
                     <br>
-
-                    <% if (request.getSession().getAttribute("shedbom") != null) {
-                    %>
-                    <% BOM shedBom = (BOM) session.getAttribute("shedbom");
-                    %>
-                    <h2>Herunder er styklisten for skuret:</h2>
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th><p>Varetype</th>
-                                <th><p>Enhed</th>
-                                <th><p>Antal</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th><p>Lægte til dør</th>
-                                <td><p>Centimeter</td>
-                                <td><p><%out.print(shedBom.getLath());%></td>
-                            </tr>
-                            <tr>
-                                <th><p>Reglar til løsholter</th>
-                                <td><p>Centimeter</td>
-                                <td><p><%out.print(shedBom.getReglar());%></td>
-                            </tr>
-                            <tr>
-                                <th><p>Beklædningsbrædder</th>
-                                <td><p>Centimeter</td>
-                                <td><p><%out.print(shedBom.getCladding());%></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <%}%>
+                    
+                    
+                    
+                    --%>
+                    <%--
+                                        <% if (request.getSession().getAttribute("shedbom") != null) {
+                                        %>
+                                        <% BOM shedBom = (BOM) session.getAttribute("shedbom");
+                                        %>
+                                        <h2>Herunder er styklisten for skuret:</h2>
+                                        <table class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th><p>Varetype</th>
+                                                    <th><p>Enhed</th>
+                                                    <th><p>Antal</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <th><p>Lægte til dør</th>
+                                                    <td><p>Centimeter</td>
+                                                    <td><p><%out.print(shedBom.getLath());%></td>
+                                                </tr>
+                                                <tr>
+                                                    <th><p>Reglar til løsholter</th>
+                                                    <td><p>Centimeter</td>
+                                                    <td><p><%out.print(shedBom.getReglar());%></td>
+                                                </tr>
+                                                <tr>
+                                                    <th><p>Beklædningsbrædder</th>
+                                                    <td><p>Centimeter</td>
+                                                    <td><p><%out.print(shedBom.getCladding());%></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <%}%>
+                    --%>
                 </div>
             </div>
         </div>

@@ -7,6 +7,7 @@ package functionLayer.Calculator;
 
 import functionLayer.Calculator.CarportCalculator;
 import functionLayer.BOM;
+import functionLayer.BOMexp;
 
 /**
  *
@@ -16,6 +17,11 @@ public class PitchedWithShedCalculator implements CarportCalculator{
 
     @Override
     public BOM calculateBOM() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public BOMexp getBom() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
