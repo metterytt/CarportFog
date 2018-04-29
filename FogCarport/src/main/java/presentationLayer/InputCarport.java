@@ -32,6 +32,9 @@ public class InputCarport extends Command {
         width = Integer.parseInt(request.getParameter("width"));
         shedLength = Integer.parseInt(request.getParameter("shedlength"));
         shedWidth = Integer.parseInt(request.getParameter("shedwidth"));
+        
+        request.setAttribute("length", length);
+        request.setAttribute("width", width);
 
         CarportCalculator carportCalculator = new FlatRoofCalculator(length, width);
 
