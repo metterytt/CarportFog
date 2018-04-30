@@ -18,15 +18,11 @@ firkantskiver
  */
 package functionLayer.Calculator;
 
-import dbAccess.Mapper;
 import functionLayer.BOM;
 import functionLayer.CarportException;
+import functionLayer.StorageFacade;
 import functionLayer.entity.LineItem;
 
-/**
- *
- * @author mette
- */
 public class FlatRoofCalculator implements CarportCalculator {
 
     private int length;
@@ -42,74 +38,74 @@ public class FlatRoofCalculator implements CarportCalculator {
     private BOM calculateBOM() throws CarportException {
         bom = new BOM();
         
-        LineItem subFasciaBoards = Mapper.getProduct(1);
+        LineItem subFasciaBoards = StorageFacade.getProduct(1);
         subFasciaBoards.setQuantity(calcSubFasciaBoards(length, width));
         subFasciaBoards.setUseInContext("Understernbrædder");
         bom.addToBOM(subFasciaBoards);
         
-        LineItem fasciaBoards = Mapper.getProduct(2);
+        LineItem fasciaBoards = StorageFacade.getProduct(2);
         fasciaBoards.setQuantity(calcFasciaBoards(length, width));
         fasciaBoards.setUseInContext("Oversternbrædder");
         bom.addToBOM(fasciaBoards);
         
-        LineItem plates = Mapper.getProduct(4); // samme træ til remme og spær
+        LineItem plates = StorageFacade.getProduct(4); // samme træ til remme og spær
         plates.setQuantity(calcPlate(length));
         plates.setUseInContext("Remme");
         bom.addToBOM(plates);
         
-        LineItem rafters = Mapper.getProduct(4); // samme træ til remme og spær
+        LineItem rafters = StorageFacade.getProduct(4); // samme træ til remme og spær
         rafters.setQuantity(calcRafters(length, width));
         rafters.setUseInContext("Spær, monteres på rem");
         bom.addToBOM(rafters);
         
-        LineItem posts = Mapper.getProduct(5);
+        LineItem posts = StorageFacade.getProduct(5);
         posts.setQuantity(calcPosts(length));
         posts.setUseInContext("Nedgraves 90cm i jord");
         bom.addToBOM(posts);
         
-        LineItem waterBoards = Mapper.getProduct(6);
+        LineItem waterBoards = StorageFacade.getProduct(6);
         waterBoards.setQuantity(calcWaterBoards(length, width));
         waterBoards.setUseInContext("Vandbræt, monteres på stern");
         bom.addToBOM(waterBoards);
 
         // mangler tagplader
         
-        LineItem roofScrews = Mapper.getProduct(8);
+        LineItem roofScrews = StorageFacade.getProduct(8);
         roofScrews.setQuantity(calcRoofScrews(length, width));
         roofScrews.setUseInContext("Skruer til tagplader");
         bom.addToBOM(roofScrews);
         
-        LineItem metalTape = Mapper.getProduct(9);
+        LineItem metalTape = StorageFacade.getProduct(9);
         metalTape.setQuantity(calcMetalTape(length, width));
         metalTape.setUseInContext("Til vindkryds på spær");
         bom.addToBOM(metalTape);
         
-        LineItem uniBracketsRight = Mapper.getProduct(10);
+        LineItem uniBracketsRight = StorageFacade.getProduct(10);
         uniBracketsRight.setQuantity(calcUniBrackets(length));
         uniBracketsRight.setUseInContext("Til montering af spær på rem");
         bom.addToBOM(uniBracketsRight);
         
-        LineItem uniBracketsLeft = Mapper.getProduct(11);
+        LineItem uniBracketsLeft = StorageFacade.getProduct(11);
         uniBracketsLeft.setQuantity(calcUniBrackets(length));
         uniBracketsLeft.setUseInContext("Til montering af spær på rem");
         bom.addToBOM(uniBracketsLeft);
         
-        LineItem fasciaScrews = Mapper.getProduct(12);
+        LineItem fasciaScrews = StorageFacade.getProduct(12);
         fasciaScrews.setQuantity(calcFasciaScrews(length, width));
         fasciaScrews.setUseInContext("Til montering af stern og vandbræt");
         bom.addToBOM(fasciaScrews);
         
-        LineItem bracketScrews = Mapper.getProduct(13);
+        LineItem bracketScrews = StorageFacade.getProduct(13);
         bracketScrews.setQuantity(calcBracketScrews(length));
         bracketScrews.setUseInContext("Til montering af universalbeslag og hulbånd");
         bom.addToBOM(bracketScrews);
         
-        LineItem bolts = Mapper.getProduct(14);
+        LineItem bolts = StorageFacade.getProduct(14);
         bolts.setQuantity(posts.getQuantity() * 3); // check dette regnestykke
         bolts.setUseInContext("Til montering af rem på stolper");
         bom.addToBOM(bolts);
         
-        LineItem squareBrackets = Mapper.getProduct(15);
+        LineItem squareBrackets = StorageFacade.getProduct(15);
         squareBrackets.setQuantity(posts.getQuantity() * 3); // check dette regnestykke
         squareBrackets.setUseInContext("Til montering af rem på stolper");
         bom.addToBOM(squareBrackets);
