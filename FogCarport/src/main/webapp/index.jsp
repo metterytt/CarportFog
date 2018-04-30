@@ -38,6 +38,9 @@
                             <input type="text" class="form-control" name="length" min="1" max="5000" placeholder="længde...">
                             <br> <label for="width">Bredde i CM:</label>
                             <input type="text" class="form-control" name="width" min="1" max="5000" placeholder="bredde...">
+                            
+                            <br> <label for="angle">Hvis tagrejsning ønskes, indtast vinkel på tag:</label>
+                            <input type="text" class="form-control" name="angle" min="10" max="40" placeholder="tagvinkel..." value="0">
 
                             <br>
                             <input type="button" class="btn btn-primary" onclick="myFunction()" value="Vis/Gem skur!"/>
