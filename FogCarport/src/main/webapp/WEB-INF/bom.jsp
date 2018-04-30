@@ -203,7 +203,7 @@
 
                     <%-- vil gerne have "højde" til at stå i midten over taget --%> 
                     <text x="<%=length * 0.05%>" y="<%=height / 2%>" fill="black" text-anchor="middle" writing-mode="tb">Højde: <%=height%> </text>
-                    <text x="<%=length * 0.3%>" y="<%=height-175%>" fill="black" text-anchor="middle">Længde: <%=length%> </text>
+                    <text x="<%=length / 2%>" y="<%=height-175%>" fill="black" text-anchor="middle">Længde: <%=length%> </text>
                     
                     </svg>
                 </div>
