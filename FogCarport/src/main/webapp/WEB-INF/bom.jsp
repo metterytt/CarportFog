@@ -92,31 +92,37 @@
                 </div>
                 <div class="col-md-6">
                     <br><h1>Visualization</h1>
-                    <br><br>
-
-                    <svg height="220" width="500">
-                    <line x1="0" y1="0" x2="200" y2="0" stroke="black"/>
-                    <line x1="0" y1="5" x2="200" y2="5" stroke="black"/>
+                    <br>
+                    
+                    <% int length = (int)request.getAttribute("length"); 
+                       int width = (int)request.getAttribute("width");
+                    %>
+                    
+                    <svg height="<%= length %>" width="<%= width %>">
+                    <line x1="0" y1="0" x2="<%= width %>" y2="0" stroke="black"/>
+                    <line x1="0" y1="5" x2="<%= width %>" y2="5" stroke="black"/>
 
                     <text x="210" y="100" fill="black"></text>
-                    <line x1="200" y1="0" x2="200" y2="200" stroke="black"/>
-                    <line x1="195" y1="0" x2="195" y2="200" stroke="black"/>
+                    <line x1="<%= width %>" y1="0" x2="<%= width %>" y2="<%= length %>" stroke="black"/>
+                    <line x1="<%= width - 5 %>" y1="0" x2="<%= width - 5 %>" y2="<%= length %>" stroke="black"/>
 
                     <text x="60" y="220" fill="black"></text>
-                    <line x1="200" y1="200" x2="0" y2="200" stroke="black"/>
-                    <line x1="200" y1="195" x2="0" y2="195" stroke="black"/>
+                    <line x1="<%= width %>" y1="<%= length %>" x2="0" y2="<%= length %>" stroke="black"/>
+                    <line x1="<%= width %>" y1="<%= length - 5 %>" x2="0" y2="<%= length - 5 %>" stroke="black"/>
 
-                    <line x1="0" y1="200" x2="0" y2="0" stroke="black"/>
-                    <line x1="5" y1="200" x2="5" y2="0" stroke="black"/>
-
-                    <line x1="200" y1="190" x2="0" y2="190" stroke-width="4" stroke="black"/>
-                    <line x1="200" y1="162" x2="0" y2="162" stroke-width="4" stroke="black"/>
-                    <line x1="200" y1="137" x2="0" y2="137" stroke-width="4" stroke="black"/>
-                    <line x1="200" y1="112" x2="0" y2="112" stroke-width="4" stroke="black"/>
-                    <line x1="200" y1="87" x2="0" y2="87" stroke-width="4" stroke="black"/>
-                    <line x1="200" y1="62" x2="0" y2="62" stroke-width="4" stroke="black"/>
-                    <line x1="200" y1="37" x2="0" y2="37" stroke-width="4" stroke="black"/>
-                    <line x1="200" y1="10" x2="0" y2="10" stroke-width="4" stroke="black"/>
+                    <line x1="0" y1="<%= length %>" x2="0" y2="0" stroke="black"/>
+                    <line x1="5" y1="<%= length %>" x2="5" y2="0" stroke="black"/>
+                    
+                    <line x1="0" y1="<%= length - 10 %>" x2="<%= width %>" y2="<%= length - 10 %>" stroke-width="4" stroke="black"/>
+                    <% 
+                        int startingLength = length - 10;
+                        int antalSpær = startingLength/60;
+                    
+                    for (int idx = 0; idx <= antalSpær; idx++) {
+                            %> <line x1="0" y1="<%= startingLength %>" x2="<%= width %>" y2="<%= startingLength %>" stroke-width="4" stroke="black"/> <%
+                                startingLength -= 60;
+                        }
+                    %>
                     </svg>
                 </div>
             </div>
