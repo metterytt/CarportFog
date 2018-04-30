@@ -8,6 +8,7 @@ package presentationLayer;
 import functionLayer.Calculator.CarportCalculator;
 import functionLayer.Calculator.FlatRoofCalculator;
 import functionLayer.BOM;
+import functionLayer.Calculator.PitchedRoofCalculator;
 import functionLayer.Calculator.ShedCalculator;
 import functionLayer.CarportException;
 import javax.servlet.http.HttpServletRequest;
@@ -23,21 +24,22 @@ public class InputCarport extends Command {
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws CarportException {
         HttpSession session = request.getSession();
-        int length;
-        int width;
-        int shedLength;
-        int shedWidth;
 
-        length = Integer.parseInt(request.getParameter("length"));
-        width = Integer.parseInt(request.getParameter("width"));
-        shedLength = Integer.parseInt(request.getParameter("shedlength"));
-        shedWidth = Integer.parseInt(request.getParameter("shedwidth"));
-        
+        int length = Integer.parseInt(request.getParameter("length"));
+        int width = Integer.parseInt(request.getParameter("width"));
+        int shedLength = Integer.parseInt(request.getParameter("shedlength"));
+        int shedWidth = Integer.parseInt(request.getParameter("shedwidth"));
+        int angle = Integer.parseInt(request.getParameter("angle"));
+
         request.setAttribute("length", length);
         request.setAttribute("width", width);
-
-        CarportCalculator carportCalculator = new FlatRoofCalculator(length, width);
-
+        
+        CarportCalculator carportCalculator;
+        if (angle == 0) {
+            carportCalculator = new FlatRoofCalculator(length, width);
+        } else {
+            carportCalculator = new PitchedRoofCalculator(length, width, angle);
+        }
         BOM carportBom = carportCalculator.getBom();
         session.setAttribute("carportbom", carportBom);
 
