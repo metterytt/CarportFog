@@ -22,6 +22,15 @@
                     x.style.display = "none";
                 }
             }
+            
+            function myFunctionRoof() {
+                var x = document.getElementById("myDIVRoof");
+                if (x.style.display === "none") {
+                    x.style.display = "block";
+                } else {
+                    x.style.display = "none";
+                }
+            }
         </script>
 
     </head>
@@ -39,21 +48,32 @@
                             <br> <label for="width">Bredde i CM:</label>
                             <input type="text" class="form-control" name="width" min="1" max="5000" placeholder="bredde...">
                             
+                            <%--
                             <br> <label for="angle">Hvis tagrejsning ønskes, indtast vinkel på tag:</label>
                             <input type="text" class="form-control" name="angle" min="10" max="40" placeholder="tagvinkel..." value="0">
-
-                            <br>
+--%>
+                            
+                            <input type="button" class="btn btn-primary" onclick="myFunctionRoof()" value="Vis/Gem SkråTag"/>
+                            <div id="myDIVRoof" style="display:none;">
+                               
+                                <label for="angle">Hvis tagrejsning ønskes, indtast vinkel på tag:</label>
+                            <input type="text" class="form-control" name="angle" min="10" max="40" placeholder="tagvinkel..." value="0">
+                             <br>
+                            </div>
+                            
+                            
                             <input type="button" class="btn btn-primary" onclick="myFunction()" value="Vis/Gem skur!"/>
-
+                            
                             <div id="myDIV" style="display:none;">
-
                                 <br> <label for="shedlength">Skur længde i CM:</label>
                                 <input type="text" class="form-control" name="shedlength" min="1" max="5000" value="0">
                                 <br> <label for="shedwidth">Skur bredde i CM:</label>
                                 <input type="text" class="form-control" name="shedwidth" min="1" max="5000" value="0">
                             </div>
+                            
                             <input type="submit" class="btn btn-primary" value="Beregn carport">
                         </form>
+                        
                     </div>
 
                     <% String error = (String) request.getAttribute("error"); // Jesper har kommentar til dette
