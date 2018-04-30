@@ -92,11 +92,17 @@
                     <br>
 
                     <% int length = (int) request.getAttribute("length");
-                        int width = (int) request.getAttribute("width");%>
+                        int width = (int) request.getAttribute("width");
+                        int height = 210;%>
 
 
-                    <svg height="<%= length + 50%>" width="<%= width + 50%>">
-                    
+
+                    <%-- carport set oppefra --%>
+
+                    <%-- <svg height="<%= length + 50%>" width="<%= width + 50%>" viewbox="0 0 700 1000"> --%>
+
+                    <svg height="20cm" width="20cm" viewbox="0 -25 10cm 10cm">
+
                     <%-- spær --%>
                     <%
                         int startingLength = length - 10;
@@ -139,10 +145,10 @@
                     <%}%>
 
                     <text x="<%=width / 2%>" y="<%=length + 20%>" fill="black" text-anchor="middle" >Bredde: <%=width%> </text>
-                    <text x="<%=width +20%>" y="<%=length/2%>" fill="black" text-anchor="middle" writing-mode="tb">Længde: <%=length%> </text>
-                    
+                    <text x="<%=width + 20%>" y="<%=length / 2%>" fill="black" text-anchor="middle" writing-mode="tb">Længde: <%=length%> </text>
+
                     <line x1="0" y1="0" x2="<%= width%>" y2="0" stroke="black"/>
-                    
+
                     <line x1="<%= width%>" y1="0" x2="<%= width%>" y2="<%= length%>" stroke="black"/>
                     <line x1="<%= width - 5%>" y1="0" x2="<%= width - 5%>" y2="<%= length%>" stroke="black"/>
 
@@ -160,6 +166,45 @@
                     <line x1="<%= width - width * 0.9%>" y1="50" x2="<%= width * 0.9%>" y2="<%= length - 70%>" stroke="black" stroke-dasharray="5 5"/>
                     <line x1="<%= width - width * 0.9%>" y1="<%= length - 70%>" x2="<%= width * 0.9%>" y2="50" stroke="black" stroke-dasharray="5 5"/>
 
+                    </svg>
+
+
+                    <%-- carport set fra siden --%>
+                    <svg height="20cm" width="20cm" viewbox="-25 0 20cm 20cm">
+
+                    <line x1="20" y1="0" x2="<%= length%>" y2="0" stroke="black" stroke-width="5"/>
+                    <line x1="20" y1="5" x2="<%= length%>" y2="5" stroke="darkgrey" stroke-width="5"/>
+
+                    <%-- stolper --%>
+                    <%
+                        if (posts < 5) {
+                    %> 
+
+                    <line x1="<%= length - length * 0.8%>" y1="0" x2="<%= length - length * 0.8%>" y2="<%= height%>" stroke="black" stroke-width="2"/>
+                    <line x1="<%= length - length * 0.8 + 10%>" y1="0" x2="<%= length - length * 0.8 + 10%>" y2="<%= height%>" stroke="black" stroke-width="2"/>
+                    <line x1="<%= length * 0.8%>" y1="0" x2="<%= length * 0.8%>" y2="<%= height%>" stroke="black" stroke-width="2"/>
+                    <line x1="<%= length * 0.8 + 10%>" y1="0" x2="<%= length * 0.8 + 10%>" y2="<%= height%>" stroke="black" stroke-width="2"/>
+                    <% }
+                        if (posts > 4) {
+                    %>
+                    <line x1="<%= length - length * 0.9%>" y1="0" x2="<%= length - length * 0.9%>" y2="<%= height%>" stroke="black" stroke-width="2"/>
+                    <line x1="<%= length - length * 0.9 + 10%>" y1="0" x2="<%= length - length * 0.9 + 10%>" y2="<%= height%>" stroke="black" stroke-width="2"/>
+                    <line x1="<%= length * 0.9%>" y1="0" x2="<%= length * 0.9%>" y2="<%= height%>" stroke="black" stroke-width="2"/>
+                    <line x1="<%= length * 0.9 + 10%>" y1="0" x2="<%= length * 0.9 + 10%>" y2="<%= height%>" stroke="black" stroke-width="2"/>
+                    <line x1="<%= length / 2 + 5%>" y1="0" x2="<%= length / 2 + 5%>" y2="<%= height%>" stroke="black" stroke-width="2"/>
+                    <line x1="<%= length / 2 - 5%>" y1="0" x2="<%= length / 2 - 5%>" y2="<%= height%>" stroke="black" stroke-width="2"/>
+
+
+                    <% }%>
+                    <line x1="0" y1="<%= height%>" x2="<%= length * 1.30%>" y2="<%= height%>" stroke="black" stroke-width="2" stroke-dasharray="5 5"/>
+
+                    <polygon points="570,5 520,160 620,160" fill="green" stroke="black" stroke-width="1" />
+                    <rect x="560" y="160" width="20" height="50" fill="saddlebrown" stroke="black"/>
+
+                    <%-- vil gerne have "højde" til at stå i midten over taget --%> 
+                    <text x="<%=length * 0.05%>" y="<%=height / 2%>" fill="black" text-anchor="middle" writing-mode="tb">Højde: <%=height%> </text>
+                    <text x="<%=length * 0.3%>" y="<%=height-175%>" fill="black" text-anchor="middle">Længde: <%=length%> </text>
+                    
                     </svg>
                 </div>
             </div>
