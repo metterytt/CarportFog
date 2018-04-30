@@ -68,32 +68,6 @@ public class FlatRoofCalculator implements CarportCalculator {
         bom.addToBOM(posts);
         
         LineItem waterBoards = Mapper.getProduct(6);
-
-//        subFasciaBoards.setQuantity(calcSubFasciaBoards(length, width));
-//        subFasciaBoards.setUseInContext("Understernbrædder");
-//        bom.addToBOM(subFasciaBoards);
-//
-//        Product fasciaBoards = LogicFacade.getProduct(2);
-//        fasciaBoards.setQuantity(calcFasciaBoards(length, width));
-//        fasciaBoards.setUseInContext("Oversternbrædder");
-//        bom.addToBOM(fasciaBoards);
-//
-//        Product plates = LogicFacade.getProduct(4); // samme træ til remme og spær
-//        plates.setQuantity(calcPlate(length));
-//        plates.setUseInContext("Remme");
-//        bom.addToBOM(plates);
-//
-//        Product rafters = LogicFacade.getProduct(4); // samme træ til remme og spær
-//        rafters.setQuantity(calcRafters(length, width));
-//        rafters.setUseInContext("Spær, monteres på rem");
-//        bom.addToBOM(rafters);
-//
-//        Product posts = LogicFacade.getProduct(5);
-//        posts.setQuantity(calcPosts(length));
-//        posts.setUseInContext("Nedgraves 90cm i jord");
-//        bom.addToBOM(posts);
-
-//        Product waterBoards = LogicFacade.getProduct(6);
         waterBoards.setQuantity(calcWaterBoards(length, width));
         waterBoards.setUseInContext("Vandbræt, monteres på stern");
         bom.addToBOM(waterBoards);
@@ -136,44 +110,6 @@ public class FlatRoofCalculator implements CarportCalculator {
         bom.addToBOM(bolts);
         
         LineItem squareBrackets = Mapper.getProduct(15);
-//=======
-//        Product roofScrews = LogicFacade.getProduct(8);
-//        roofScrews.setQuantity(calcRoofScrews(length, width));
-//        roofScrews.setUseInContext("Skruer til tagplader");
-//        bom.addToBOM(roofScrews);
-//
-//        Product metalTape = LogicFacade.getProduct(9);
-//        metalTape.setQuantity(calcMetalTape(length, width));
-//        metalTape.setUseInContext("Til vindkryds på spær");
-//        bom.addToBOM(metalTape);
-//
-//        Product uniBracketsRight = LogicFacade.getProduct(10);
-//        uniBracketsRight.setQuantity(calcUniBrackets(length));
-//        uniBracketsRight.setUseInContext("Til montering af spær på rem");
-//        bom.addToBOM(uniBracketsRight);
-//
-//        Product uniBracketsLeft = LogicFacade.getProduct(11);
-//        uniBracketsLeft.setQuantity(calcUniBrackets(length));
-//        uniBracketsLeft.setUseInContext("Til montering af spær på rem");
-//        bom.addToBOM(uniBracketsLeft);
-//
-//        Product fasciaScrews = LogicFacade.getProduct(12);
-//        fasciaScrews.setQuantity(calcFasciaScrews(length, width));
-//        fasciaScrews.setUseInContext("Til montering af stern og vandbræt");
-//        bom.addToBOM(fasciaScrews);
-//
-//        Product bracketScrews = LogicFacade.getProduct(13);
-//        bracketScrews.setQuantity(calcBracketScrews(length));
-//        bracketScrews.setUseInContext("Til montering af universalbeslag og hulbånd");
-//        bom.addToBOM(bracketScrews);
-//
-//        Product bolts = LogicFacade.getProduct(14);
-//        bolts.setQuantity(posts.getQuantity() * 3); // check dette regnestykke
-//        bolts.setUseInContext("Til montering af rem på stolper");
-//        bom.addToBOM(bolts);
-//
-//        Product squareBrackets = LogicFacade.getProduct(15);
-//>>>>>>> 2cd361cc0dc776ad789acdc55f835c6f3574e466
         squareBrackets.setQuantity(posts.getQuantity() * 3); // check dette regnestykke
         squareBrackets.setUseInContext("Til montering af rem på stolper");
         bom.addToBOM(squareBrackets);

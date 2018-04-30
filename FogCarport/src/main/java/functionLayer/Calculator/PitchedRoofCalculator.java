@@ -34,7 +34,6 @@ public class PitchedRoofCalculator implements CarportCalculator {
         LineItem fasciaPitch = Mapper.getProduct(18);
         fasciaPitch.setQuantity(calcFasciaPitch(width, angle));
         
-        
         return bom;
     }
 

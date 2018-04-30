@@ -29,100 +29,137 @@
                     <% BOM carportBOM = (BOM) session.getAttribute("carportbom");
                     %>
 
-                    <div class="col-md-6">
-                        <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th>Produktnavn</th>
-                                    <th>Brug</th>
-                                    <th>Enhed</th>
-                                    <th>Antal</th>
-                                    <th>Pris pr. enhed</th>
-                                </tr>
-                            </thead> 
-                            <tbody>
-                                <%
-                                    ArrayList<LineItem> bom = carportBOM.getListOfProducts();
-                                    for (LineItem p : bom) {
-                                %>
-                                <tr>
-                                    <th> <% out.print(p.getName()); %> </th>
-                                    <th> <% out.print(p.getUseInContext()); %> </th>
-                                    <th> <% out.print(p.getUom()); %> </th>
-                                    <th> <% out.print(p.getQuantity()); %> </th>
-                                    <th> <% out.print(p.getPrice()); %>  </th>
-                                        <%}%>
-                                </tr> 
-                            </tbody>
-                        </table>    
-                    </div>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Produktnavn</th>
+                                <th>Brug</th>
+                                <th>Enhed</th>
+                                <th>Antal</th>
+                                <th>Pris pr. enhed</th>
+                            </tr>
+                        </thead> 
+                        <tbody>
+                            <%
+                                ArrayList<LineItem> bom = carportBOM.getListOfProducts();
+                                for (LineItem p : bom) {
+                            %>
+                            <tr>
+                                <th> <% out.print(p.getName()); %> </th>
+                                <th> <% out.print(p.getUseInContext()); %> </th>
+                                <th> <% out.print(p.getUom()); %> </th>
+                                <th> <% out.print(p.getQuantity()); %> </th>
+                                <th> <% out.print(p.getPrice()); %>  </th>
+                                    <%}%>
+                            </tr> 
+                        </tbody>
+                    </table>    
                     <% if (request.getSession().getAttribute("shedbom") != null) {
                             BOM shedBOM = (BOM) session.getAttribute("shedbom");
                     %>
                     <h2>Herunder er styklisten for skuret:</h2>
-                    <div class="col-md-6">
 
-                        <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th>Produktnavn</th>
-                                    <th>Brug</th>
-                                    <th>Enhed</th>
-                                    <th>Antal</th>
-                                    <th>Pris pr. enhed</th>
-                                </tr>
-                            </thead> 
-                            <tbody>
-                                <%
-                                    ArrayList<LineItem> shedBom = shedBOM.getListOfProducts();
-                                    for (LineItem p : shedBom) {
-                                %>
-                                <tr>
-                                    <th> <% out.print(p.getName()); %> </th>
-                                    <th> <% out.print(p.getUseInContext()); %> </th>
-                                    <th> <% out.print(p.getUom()); %> </th>
-                                    <th> <% out.print(p.getQuantity()); %> </th>
-                                    <th> <% out.print(p.getPrice()); %>  </th>
-                                        <%}%>
-                                </tr> 
-                            </tbody>
-                        </table>    
-                        <%}%>
-                    </div>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Produktnavn</th>
+                                <th>Brug</th>
+                                <th>Enhed</th>
+                                <th>Antal</th>
+                                <th>Pris pr. enhed</th>
+                            </tr>
+                        </thead> 
+                        <tbody>
+                            <%
+                                ArrayList<LineItem> shedBom = shedBOM.getListOfProducts();
+                                for (LineItem p : shedBom) {
+                            %>
+                            <tr>
+                                <th> <% out.print(p.getName()); %> </th>
+                                <th> <% out.print(p.getUseInContext()); %> </th>
+                                <th> <% out.print(p.getUom()); %> </th>
+                                <th> <% out.print(p.getQuantity()); %> </th>
+                                <th> <% out.print(p.getPrice()); %>  </th>
+                                    <%}%>
+                            </tr> 
+                        </tbody>
+                    </table>    
+                    <%}%>
+
                 </div>
                 <div class="col-md-6">
                     <br><h1>Visualization</h1>
                     <br>
-                    
-                    <% int length = (int)request.getAttribute("length"); 
-                       int width = (int)request.getAttribute("width");
-                    %>
-                    
-                    <svg height="<%= length %>" width="<%= width %>">
-                    <line x1="0" y1="0" x2="<%= width %>" y2="0" stroke="black"/>
-                    <line x1="0" y1="5" x2="<%= width %>" y2="5" stroke="black"/>
 
-                    <text x="210" y="100" fill="black"></text>
-                    <line x1="<%= width %>" y1="0" x2="<%= width %>" y2="<%= length %>" stroke="black"/>
-                    <line x1="<%= width - 5 %>" y1="0" x2="<%= width - 5 %>" y2="<%= length %>" stroke="black"/>
+                    <% int length = (int) request.getAttribute("length");
+                        int width = (int) request.getAttribute("width");%>
 
-                    <text x="60" y="220" fill="black"></text>
-                    <line x1="<%= width %>" y1="<%= length %>" x2="0" y2="<%= length %>" stroke="black"/>
-                    <line x1="<%= width %>" y1="<%= length - 5 %>" x2="0" y2="<%= length - 5 %>" stroke="black"/>
 
-                    <line x1="0" y1="<%= length %>" x2="0" y2="0" stroke="black"/>
-                    <line x1="5" y1="<%= length %>" x2="5" y2="0" stroke="black"/>
+                    <svg height="<%= length + 50%>" width="<%= width + 50%>">
                     
-                    <line x1="0" y1="<%= length - 10 %>" x2="<%= width %>" y2="<%= length - 10 %>" stroke-width="4" stroke="black"/>
-                    <% 
+                    <%-- spær --%>
+                    <%
                         int startingLength = length - 10;
-                        int antalSpær = startingLength/60;
-                    
-                    for (int idx = 0; idx <= antalSpær; idx++) {
-                            %> <line x1="0" y1="<%= startingLength %>" x2="<%= width %>" y2="<%= startingLength %>" stroke-width="4" stroke="black"/> <%
-                                startingLength -= 60;
+                        int antalSpær = startingLength / 60;
+
+                        for (int idx = 0; idx <= antalSpær; idx++) {
+                    %> <line x1="0" y1="<%= startingLength%>" x2="<%= width%>" y2="<%= startingLength%>" stroke-width="12" stroke="darkgrey"/> <%
+                            startingLength -= 60;
                         }
                     %>
+
+                    <%-- stolper --%>
+                    <% int posts = 0;
+                        for (LineItem li : bom) {
+                            if (li.getUseInContext().equals("Nedgraves 90cm i jord")) {
+                                posts = li.getQuantity();
+                            }
+                        }
+
+                        if (posts < 5) {
+
+                    %> <rect x="<%= width - width * 0.9 - 8%>" y="<%=length * 0.25%>" height="15" width="15" stroke="black" stroke-width="3" fill="none" />
+                    <rect x="<%= width - width * 0.9 - 8%>" y="<%=length * 0.75%>" height="15" width="15" stroke="black" stroke-width="3" fill="none"/>
+
+                    <rect x="<%= width * 0.9 - 8%>" y="<%=length * 0.25%>" height="15" width="15" stroke="black" stroke-width="3" fill="none"/>
+                    <rect x="<%= width * 0.9 - 8%>" y="<%=length * 0.75%>" height="15" width="15" stroke="black" stroke-width="3" fill="none"/>
+                    <%}
+
+                        if (posts > 4) {
+
+                    %> <rect x="<%= width - width * 0.9 - 8%>" y="<%=length * 0.1%>" height="15" width="15" stroke="black" stroke-width="3" fill="none"/>
+                    <rect x="<%= width - width * 0.9 - 8%>" y="<%=length * 0.9%>" height="15" width="15" stroke="black" stroke-width="3" fill="none"/>
+
+                    <rect x="<%= width * 0.9 - 8%>" y="<%=length * 0.1%>" height="15" width="15" stroke="black" stroke-width="3" fill="none"/>
+                    <rect x="<%= width * 0.9 - 8%>" y="<%=length * 0.9%>" height="15" width="15" stroke="black" stroke-width="3" fill="none"/>
+
+                    <rect x="<%= width * 0.9 - 8%>" y="<%=length / 2%>" height="15" width="15" stroke="black" stroke-width="3" fill="none"/>
+                    <rect x="<%= width - width * 0.9 - 8%>" y="<%=length / 2%>" height="15" width="15" stroke="black" stroke-width="3" fill="none"/>
+
+                    <%}%>
+
+                    <text x="<%=width / 2%>" y="<%=length + 20%>" fill="black" text-anchor="middle" >Bredde: <%=width%> </text>
+                    <text x="<%=width +20%>" y="<%=length/2%>" fill="black" text-anchor="middle" writing-mode="tb">Længde: <%=length%> </text>
+                    
+                    <line x1="0" y1="0" x2="<%= width%>" y2="0" stroke="black"/>
+                    
+                    <line x1="<%= width%>" y1="0" x2="<%= width%>" y2="<%= length%>" stroke="black"/>
+                    <line x1="<%= width - 5%>" y1="0" x2="<%= width - 5%>" y2="<%= length%>" stroke="black"/>
+
+                    <line x1="<%= width%>" y1="<%= length%>" x2="0" y2="<%= length%>" stroke="black"/>
+                    <line x1="<%= width%>" y1="<%= length - 5%>" x2="0" y2="<%= length - 5%>" stroke="black"/>
+
+                    <line x1="1" y1="<%= length%>" x2="1" y2="0" stroke="black"/>
+                    <line x1="5" y1="<%= length%>" x2="5" y2="0" stroke="black"/>
+
+                    <%-- remme --%>
+                    <line x1="<%= width * 0.9%>" y1="0" x2="<%= width * 0.9%>" y2="<%= length%>" stroke="lightgrey" stroke-width="12" stroke-opacity = "0.5"/>
+                    <line x1="<%= width - width * 0.9%>" y1="0" x2="<%= width - width * 0.9%>" y2="<%= length%>" stroke="lightgrey" stroke-width="12" stroke-opacity = "0.5"/>
+
+                    <%-- hulbånd --%>
+                    <line x1="<%= width - width * 0.9%>" y1="50" x2="<%= width * 0.9%>" y2="<%= length - 70%>" stroke="black" stroke-dasharray="5 5"/>
+                    <line x1="<%= width - width * 0.9%>" y1="<%= length - 70%>" x2="<%= width * 0.9%>" y2="50" stroke="black" stroke-dasharray="5 5"/>
+
                     </svg>
                 </div>
             </div>
