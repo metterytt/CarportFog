@@ -1,7 +1,7 @@
 <%-- 
     Document   : bom
     Created on : 24-04-2018, 19:33:17
-    Author     : mette
+    Author     : group: snøvsen
 --%>
 
 <%@page import="java.util.ArrayList"%>
@@ -96,7 +96,7 @@
 
 
                     <svg height="<%= length + 50%>" width="<%= width + 50%>">
-                    
+
                     <%-- spær --%>
                     <%
                         int startingLength = length - 10;
@@ -125,7 +125,7 @@
                     <rect x="<%= width * 0.9 - 8%>" y="<%=length * 0.75%>" height="15" width="15" stroke="black" stroke-width="3" fill="none"/>
                     <%}
 
-                        if (posts > 4) {
+                        else {
 
                     %> <rect x="<%= width - width * 0.9 - 8%>" y="<%=length * 0.1%>" height="15" width="15" stroke="black" stroke-width="3" fill="none"/>
                     <rect x="<%= width - width * 0.9 - 8%>" y="<%=length * 0.9%>" height="15" width="15" stroke="black" stroke-width="3" fill="none"/>
@@ -139,10 +139,10 @@
                     <%}%>
 
                     <text x="<%=width / 2%>" y="<%=length + 20%>" fill="black" text-anchor="middle" >Bredde: <%=width%> </text>
-                    <text x="<%=width +20%>" y="<%=length/2%>" fill="black" text-anchor="middle" writing-mode="tb">Længde: <%=length%> </text>
-                    
+                    <text x="<%=width + 20%>" y="<%=length / 2%>" fill="black" text-anchor="middle" writing-mode="tb">Længde: <%=length%> </text>
+
                     <line x1="0" y1="0" x2="<%= width%>" y2="0" stroke="black"/>
-                    
+
                     <line x1="<%= width%>" y1="0" x2="<%= width%>" y2="<%= length%>" stroke="black"/>
                     <line x1="<%= width - 5%>" y1="0" x2="<%= width - 5%>" y2="<%= length%>" stroke="black"/>
 
@@ -159,8 +159,15 @@
                     <%-- hulbånd --%>
                     <line x1="<%= width - width * 0.9%>" y1="50" x2="<%= width * 0.9%>" y2="<%= length - 70%>" stroke="black" stroke-dasharray="5 5"/>
                     <line x1="<%= width - width * 0.9%>" y1="<%= length - 70%>" x2="<%= width * 0.9%>" y2="50" stroke="black" stroke-dasharray="5 5"/>
-
                     </svg>
+
+                    <svg height="<%= length + 50%>" width="<%= width + 50%>">
+
+                    <line x1="0" y1="<%=length%>" x2="<%= width%>" y2="<%=length%>" stroke="black" stroke-width="5"/>
+                    
+                   
+                    </svg>
+
                 </div>
             </div>
         </div>
