@@ -5,7 +5,7 @@ package functionLayer.Calculator;
 import dbAccess.Mapper;
 import functionLayer.BOM;
 import functionLayer.CarportException;
-import functionLayer.entity.Product;
+import functionLayer.entity.LineItem;
 
 /**
  *
@@ -26,17 +26,17 @@ public class ShedCalculator implements CarportCalculator {
     private BOM calculateBOM() throws CarportException {
         bom = new BOM();
 
-        Product lath = Mapper.getProduct(16);
+        LineItem lath = Mapper.getProduct(16);
         lath.setQuantity(420); // altid samme mængde, til Z på dør
         lath.setUseInContext("Til Z på bagside af dør");
         bom.addToBOM(lath);
 
-        Product reglar = Mapper.getProduct(17);
+        LineItem reglar = Mapper.getProduct(17);
         reglar.setQuantity(calcReglar(shedLength, shedWidth));
         reglar.setUseInContext("Løsholter til skur");
         bom.addToBOM(reglar);
 
-        Product cladding = Mapper.getProduct(6);
+        LineItem cladding = Mapper.getProduct(6);
         cladding.setQuantity(calcCladding(shedLength, shedWidth));
         cladding.setUseInContext("Til beklædning af skur 1 på 2");
         bom.addToBOM(cladding);

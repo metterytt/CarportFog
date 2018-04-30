@@ -9,7 +9,7 @@ package functionLayer.entity;
  *
  * @author mette
  */
-public class Product {
+public class LineItem {
 
     private int productID;
     private String name;
@@ -20,7 +20,7 @@ public class Product {
     private int quantity;
     private String useInContext;
 
-    public Product(int productID, String name, String uom, int price) {
+    public LineItem(int productID, String name, String uom, int price) {
         this.productID = productID;
         this.name = name;
         this.uom = uom;

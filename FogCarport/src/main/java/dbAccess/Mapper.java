@@ -6,7 +6,7 @@
 package dbAccess;
 
 import functionLayer.CarportException;
-import functionLayer.entity.Product;
+import functionLayer.entity.LineItem;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -20,7 +20,7 @@ public class Mapper {
 
     private static DBConnector dbc = new DBConnector();
 
-    public static Product getProduct(int productID) throws CarportException {
+    public static LineItem getProduct(int productID) throws CarportException {
         try {
             dbc.setDataSource(new DataSourceFog().getDataSource());
             dbc.open();
@@ -35,7 +35,7 @@ public class Mapper {
             String name = rs.getString("name");
             String uom = rs.getString("uom");
             int price = rs.getInt("price");
-            Product product = new Product(productID, name, uom, price);
+            LineItem product = new LineItem(productID, name, uom, price);
             return product;
 
         } catch (SQLException e) {

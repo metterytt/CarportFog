@@ -5,7 +5,7 @@
 --%>
 
 <%@page import="java.util.ArrayList"%>
-<%@page import="functionLayer.entity.Product"%>
+<%@page import="functionLayer.entity.LineItem"%>
 <%@page import="functionLayer.BOM"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -42,8 +42,8 @@
                             </thead> 
                             <tbody>
                                 <%
-                                    ArrayList<Product> bom = carportBOM.getListOfProducts();
-                                    for (Product p : bom) {
+                                    ArrayList<LineItem> bom = carportBOM.getListOfProducts();
+                                    for (LineItem p : bom) {
                                 %>
                                 <tr>
                                     <th> <% out.print(p.getName()); %> </th>
@@ -74,8 +74,8 @@
                             </thead> 
                             <tbody>
                                 <%
-                                    ArrayList<Product> shedBom = shedBOM.getListOfProducts();
-                                    for (Product p : shedBom) {
+                                    ArrayList<LineItem> shedBom = shedBOM.getListOfProducts();
+                                    for (LineItem p : shedBom) {
                                 %>
                                 <tr>
                                     <th> <% out.print(p.getName()); %> </th>
