@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package functionLayer.Calculator;
 
 import dbAccess.Mapper;
@@ -10,10 +5,6 @@ import functionLayer.BOM;
 import functionLayer.CarportException;
 import functionLayer.entity.LineItem;
 
-/**
- *
- * @author mette
- */
 public class PitchedRoofCalculator implements CarportCalculator {
 
     private int length;
@@ -51,6 +42,11 @@ public class PitchedRoofCalculator implements CarportCalculator {
         plates.setUseInContext("Remme i sider");
         bom.addToBOM(plates);
 
+        LineItem posts = Mapper.getProduct(5);
+        posts.setQuantity(calcPosts(length));
+        posts.setUseInContext("Nedgraves 90cm i jord");
+        bom.addToBOM(posts);
+
         LineItem waterBoards = Mapper.getProduct(6);
         waterBoards.setQuantity(calcWaterBoards(width, angle));
         waterBoards.setUseInContext("Vandbræt på vindskeder");
@@ -70,14 +66,13 @@ public class PitchedRoofCalculator implements CarportCalculator {
         roofLaths.setQuantity(calcRoofLaths(length, width, angle));
         roofLaths.setUseInContext("Til montering på spær");
         bom.addToBOM(roofLaths);
-        
+
         LineItem topLath = Mapper.getProduct(3);
         topLath.setQuantity(length); // altid 1 lægte tilsvarende længden
         topLath.setUseInContext("Toplægte til montering af rygsten");
         bom.addToBOM(topLath);
-        
-        // skal til tagstenene
 
+        // skal til tagstenene
         return bom;
     }
 
@@ -87,7 +82,9 @@ public class PitchedRoofCalculator implements CarportCalculator {
     }
 
     private int calcFasciaPitch(int width, int angle) { // c = b/cos V, og vi skal bruge 4 brædder
-        return 4 * (int) ((width / 2) / Math.cos((double) angle));
+
+        double calcAngle = Math.toRadians(angle);
+        return 4 * (int) ((width / 2) / Math.cos(calcAngle));
     }
 
     private int calcFasciaSides(int length) {
@@ -103,12 +100,14 @@ public class PitchedRoofCalculator implements CarportCalculator {
     }
 
     private int calcWaterBoards(int width, int angle) { // samme som vindskeder (fasciaPitch)
-        return 4 * (int) ((width / 2) / Math.cos((double) angle));
+        double calcAngle = Math.toRadians(angle);
+        return 4 * (int) ((width / 2) / Math.cos(calcAngle));
     }
 
     private int calcGablesCladding(int width, int angle) { // 7,5 pr. bræt pga 2 på 1
-        double gableHeight = (width / 2) * Math.tan(angle);
-        return (int) ((((width / 2) * 100) / 750) * gableHeight * 2);
+        double calcAngle = Math.toRadians(angle);
+        double gableHeight = (width / 2) * Math.tan(calcAngle);
+        return (int) (((((width / 2) * 100) / 750) * gableHeight) * 2);
     }
 
     private int calcMolding(int length) {
@@ -116,7 +115,8 @@ public class PitchedRoofCalculator implements CarportCalculator {
     }
 
     private int calcRoofLaths(int length, int width, int angle) { // c er trekantens hypotenuse
-        int c = (int) ((width / 2) / Math.cos((double) angle));
+        double calcAngle = Math.toRadians(angle);
+        int c = (int) ((width / 2) / Math.cos(calcAngle));
         int rows = c / 35;
         if (c % 35 > 3) {
             rows++;
@@ -124,4 +124,7 @@ public class PitchedRoofCalculator implements CarportCalculator {
         return rows * length;
     }
 
+    private int calcPosts(int length) {
+        return 2 * ((length / 300) + 2);
+    }
 }
