@@ -30,7 +30,7 @@ public class Mapper {
             return product;
 
         } catch (SQLException e) {
-            throw new CarportException("Error fetching product.", "page");
+            throw new CarportException("Error fetching product.", "index");
         }
     }
 
