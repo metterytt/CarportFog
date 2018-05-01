@@ -107,7 +107,7 @@
                     <line x1="0" y1="<%= length - 10%>" x2="<%= width%>" y2="<%= length - 10%>" stroke-width="12" stroke="darkgrey"/>
                     --%>
                     <%
-                        int rafterGap = (int)request.getAttribute("rafterGap");
+                        double rafterGap = (double)request.getAttribute("rafterGap");
                         int rafterQuantity = (int)request.getAttribute("rafterQuantity");
                         int startingLength = (length - 10);
 
