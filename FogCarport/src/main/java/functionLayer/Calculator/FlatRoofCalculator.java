@@ -37,74 +37,73 @@ public class FlatRoofCalculator implements CarportCalculator {
 
     private BOM calculateBOM() throws CarportException {
         bom = new BOM();
-        
+
         LineItem subFasciaBoards = StorageFacade.getProduct(1);
         subFasciaBoards.setQuantity(calcSubFasciaBoards(length, width));
         subFasciaBoards.setUseInContext("Understernbrædder");
         bom.addToBOM(subFasciaBoards);
-        
+
         LineItem fasciaBoards = StorageFacade.getProduct(2);
         fasciaBoards.setQuantity(calcFasciaBoards(length, width));
         fasciaBoards.setUseInContext("Oversternbrædder");
         bom.addToBOM(fasciaBoards);
-        
+
         LineItem plates = StorageFacade.getProduct(4); // samme træ til remme og spær
         plates.setQuantity(calcPlate(length));
         plates.setUseInContext("Remme");
         bom.addToBOM(plates);
-        
+
         LineItem rafters = StorageFacade.getProduct(4); // samme træ til remme og spær
         rafters.setQuantity(calcRafters(length, width));
         rafters.setUseInContext("Spær, monteres på rem");
         bom.addToBOM(rafters);
-        
+
         LineItem posts = StorageFacade.getProduct(5);
         posts.setQuantity(calcPosts(length));
         posts.setUseInContext("Nedgraves 90cm i jord");
         bom.addToBOM(posts);
-        
+
         LineItem waterBoards = StorageFacade.getProduct(6);
         waterBoards.setQuantity(calcWaterBoards(length, width));
         waterBoards.setUseInContext("Vandbræt, monteres på stern");
         bom.addToBOM(waterBoards);
 
         // mangler tagplader
-        
         LineItem roofScrews = StorageFacade.getProduct(8);
         roofScrews.setQuantity(calcRoofScrews(length, width));
         roofScrews.setUseInContext("Skruer til tagplader");
         bom.addToBOM(roofScrews);
-        
+
         LineItem metalTape = StorageFacade.getProduct(9);
         metalTape.setQuantity(calcMetalTape(length, width));
         metalTape.setUseInContext("Til vindkryds på spær");
         bom.addToBOM(metalTape);
-        
+
         LineItem uniBracketsRight = StorageFacade.getProduct(10);
         uniBracketsRight.setQuantity(calcUniBrackets(length));
         uniBracketsRight.setUseInContext("Til montering af spær på rem");
         bom.addToBOM(uniBracketsRight);
-        
+
         LineItem uniBracketsLeft = StorageFacade.getProduct(11);
         uniBracketsLeft.setQuantity(calcUniBrackets(length));
         uniBracketsLeft.setUseInContext("Til montering af spær på rem");
         bom.addToBOM(uniBracketsLeft);
-        
+
         LineItem fasciaScrews = StorageFacade.getProduct(12);
         fasciaScrews.setQuantity(calcFasciaScrews(length, width));
         fasciaScrews.setUseInContext("Til montering af stern og vandbræt");
         bom.addToBOM(fasciaScrews);
-        
+
         LineItem bracketScrews = StorageFacade.getProduct(13);
         bracketScrews.setQuantity(calcBracketScrews(length));
         bracketScrews.setUseInContext("Til montering af universalbeslag og hulbånd");
         bom.addToBOM(bracketScrews);
-        
+
         LineItem bolts = StorageFacade.getProduct(14);
         bolts.setQuantity(posts.getQuantity() * 3); // check dette regnestykke
         bolts.setUseInContext("Til montering af rem på stolper");
         bom.addToBOM(bolts);
-        
+
         LineItem squareBrackets = StorageFacade.getProduct(15);
         squareBrackets.setQuantity(posts.getQuantity() * 3); // check dette regnestykke
         squareBrackets.setUseInContext("Til montering af rem på stolper");
@@ -135,7 +134,13 @@ public class FlatRoofCalculator implements CarportCalculator {
     }
 
     private int calcRafters(int length, int width) { // check om dette regnestykke er rigtigt.
-        return ((length / 60) + 2) * width;
+        int numberOfRafters = (length / 60);
+        if (length % 60 == 0) {
+            numberOfRafters++;
+        } else {
+            numberOfRafters += 2;
+        }
+        return (numberOfRafters) * width;
     }
 
     private int calcWaterBoards(int length, int width) {
