@@ -50,19 +50,15 @@ public class InputCarport extends Command {
             BOM shedBom = shedCalculator.getBom();
             session.setAttribute("shedbom", shedBom);
         }
-        
-        
 
-        int rafterQuantity = 0;
         for (LineItem l : carportBom.getListOfProducts()) {
             if (l.getUseInContext().equals("Spær, monteres på rem")) {
-                rafterQuantity = l.getQuantity() / width;
+                int rafterQuantity = l.getQuantity() / width;
+                double rafterGap = length / rafterQuantity;
+                request.setAttribute("rafterGap", rafterGap);
+                request.setAttribute("rafterQuantity", rafterQuantity);
             }
         }
-
-        double rafterGap = length / rafterQuantity;
-        request.setAttribute("rafterGap", rafterGap);
-        request.setAttribute("rafterQuantity", rafterQuantity);
 
         return "bom";
     }

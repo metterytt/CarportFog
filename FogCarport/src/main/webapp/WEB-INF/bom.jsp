@@ -160,7 +160,7 @@
                     <line x1="<%= width - 5%>" y1="<%= length - 5%>" x2="5" y2="<%= length - 5%>" stroke-width="4" stroke="black"/>
 
                     <%-- venstre stern --%>
-                    <line x1="1" y1="<%= length%>" x2="1" y2="0" stroke-width="4" stroke="black"/>
+                    <line x1="0" y1="<%= length%>" x2="0" y2="0" stroke-width="4" stroke="black"/>
                     <line x1="5" y1="<%= length%>" x2="5" y2="0" stroke-width="4" stroke="black"/>
 
                     <%-- remme --%>
