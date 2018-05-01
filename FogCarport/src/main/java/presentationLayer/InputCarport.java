@@ -50,6 +50,8 @@ public class InputCarport extends Command {
             BOM shedBom = shedCalculator.getBom();
             session.setAttribute("shedbom", shedBom);
         }
+        
+        
 
         int rafterQuantity = 0;
         for (LineItem l : carportBom.getListOfProducts()) {
@@ -58,7 +60,7 @@ public class InputCarport extends Command {
             }
         }
 
-        int rafterGap = (length - 15) / rafterQuantity;
+        double rafterGap = length / rafterQuantity;
         request.setAttribute("rafterGap", rafterGap);
         request.setAttribute("rafterQuantity", rafterQuantity);
 

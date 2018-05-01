@@ -102,20 +102,20 @@
                     <%-- <svg height="<%= length + 50%>" width="<%= width + 50%>" viewbox="0 0 700 1000"> --%>
 
 
-                    <%-- spær --%>
+                    <%-- spær 
                     <line x1="0" y1="10" x2="<%= width%>" y2="10" stroke-width="12" stroke="darkgrey"/>
                     <line x1="0" y1="<%= length - 10%>" x2="<%= width%>" y2="<%= length - 10%>" stroke-width="12" stroke="darkgrey"/>
+                    --%>
                     <%
-                        int rafterGap = (int)request.getAttribute("rafterGap");
+                        double rafterGap = (double)request.getAttribute("rafterGap");
                         int rafterQuantity = (int)request.getAttribute("rafterQuantity");
-                        int startingLength = (length - 10) - rafterGap;
+                        int startingLength = (length - 10);
 
-                        for (int idx = 1; idx <= rafterQuantity; idx++) {
-                            if (startingLength >= 60) {
+                        for (int idx = 0; idx <= rafterQuantity; idx++) {
                     %> <line x1="0" y1="<%= startingLength%>" x2="<%= width%>" y2="<%= startingLength%>" stroke-width="12" stroke="darkgrey"/> <%
                                 startingLength -= rafterGap;
                             }
-                        }
+                        
                     %>
 
                     <%-- stolper --%>
