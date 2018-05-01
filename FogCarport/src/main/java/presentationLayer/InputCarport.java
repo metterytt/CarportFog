@@ -53,7 +53,7 @@ public class InputCarport extends Command {
 
         for (LineItem l : carportBom.getListOfProducts()) {
             if (l.getUseInContext().equals("Spær, monteres på rem")||l.getUseInContext().equals("Skal samles")) {
-                int rafterQuantity = (l.getQuantity() *100)/ width;
+                int rafterQuantity = l.getQuantity();
                 double rafterGap = (length - 15) / rafterQuantity;
             
                 request.setAttribute("rafterGap", rafterGap);

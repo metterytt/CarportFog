@@ -140,7 +140,7 @@ public class FlatRoofCalculator implements CarportCalculator {
         } else {
             numberOfRafters += 2;
         }
-        return (numberOfRafters) * width;
+        return numberOfRafters;
     }
 
     private int calcWaterBoards(int length, int width) {
