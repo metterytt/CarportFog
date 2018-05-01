@@ -1,7 +1,6 @@
 <%-- 
     Document   : bom
     Created on : 24-04-2018, 19:33:17
-    Author     : group: snøvsen
 --%>
 
 <%@page import="java.util.ArrayList"%>
@@ -129,7 +128,8 @@
 
                     <rect x="<%= width * 0.9 - 8%>" y="<%=length * 0.25%>" height="15" width="15" stroke="black" stroke-width="3" fill="none"/>
                     <rect x="<%= width * 0.9 - 8%>" y="<%=length * 0.75%>" height="15" width="15" stroke="black" stroke-width="3" fill="none"/>
-                    <%} else {
+                    <%}
+                    else {
 
                     %> <rect x="<%= width - width * 0.9 - 8%>" y="<%=length * 0.1%>" height="15" width="15" stroke="black" stroke-width="3" fill="none"/>
                     <rect x="<%= width - width * 0.9 - 8%>" y="<%=length * 0.9%>" height="15" width="15" stroke="black" stroke-width="3" fill="none"/>
@@ -171,9 +171,6 @@
 
                     <line x1="0" y1="<%=length%>" x2="<%= width%>" y2="<%=length%>" stroke="black"/> 
 
-
-                    <% if (posts < 5) {%>
-
                     <line x1="<%= width * 0.3%>" y1="<%=length%>" x2="<%= width * 0.3%>" y2="<%=length * 0.86%>" stroke="black" stroke-width="5"/>
                     <line x1="<%= width * 0.6%>" y1="<%=length%>" x2="<%= width * 0.6%>" y2="<%=length * 0.85%>" stroke="black"stroke-width="5"/>
 
@@ -190,29 +187,8 @@
                     <line x1="<%= width * 0.75%>" y1="<%=length%>" x2="<%= width * 0.75%>" y2="<%=length * 0.84%>" stroke="black"/>
                     <text x="<%= width * 0.82%>" y="<%=length * 0.9%>" fill="black" font-size="10" text-anchor="middle" > 225cm  </text>
 
-
-                    <%} else {%>
-
-
-                    <line x1="<%= width * 0.3%>" y1="<%=length%>" x2="<%= width * 0.3%>" y2="<%=length * 0.86%>" stroke="black" stroke-width="5"/>
+                    <% if (posts > 4) {%>
                     <line x1="<%= width * 0.45%>" y1="<%=length%>" x2="<%= width * 0.45%>" y2="<%=length * 0.85%>" stroke="black"stroke-width="5"/>
-                    <line x1="<%= width * 0.6%>" y1="<%=length%>" x2="<%= width * 0.6%>" y2="<%=length * 0.85%>" stroke="black"stroke-width="5"/>
-
-                    <line x1="<%= width * 0.25%>" y1="<%=length * 0.86%>" x2="<%= width * 0.66%>" y2="<%=length * 0.85%>" stroke="black" stroke-width="5"/>
-
-                    <%-- meassure for back of carport --%>
-                    <line x1="<%= width * 0.24%>" y1="<%=length%>" x2="<%= width * 0.24%>" y2="<%=length * 0.86%>" stroke="black"/>
-                    <text x="<%= width * 0.17%>" y="<%=length * 0.90%>" fill="black" font-size="10" text-anchor="middle" > 200cm  </text>
-
-                    <%-- meassure for front of carport --%>
-                    <line x1="<%= width * 0.72%>" y1="<%=length%>" x2="<%= width * 0.72%>" y2="<%=length * 0.87%>" stroke="black"/>
-                    <text x="<%= width * 0.67%>" y="<%=length * 0.9%>" fill="black" font-size="10" text-anchor="middle" > 210cm  </text>
-
-                    <line x1="<%= width * 0.75%>" y1="<%=length%>" x2="<%= width * 0.75%>" y2="<%=length * 0.84%>" stroke="black"/>
-                    <text x="<%= width * 0.82%>" y="<%=length * 0.9%>" fill="black" font-size="10" text-anchor="middle" > 225cm  </text>
-
-
-
                     <%}%>
 
                     </svg>
