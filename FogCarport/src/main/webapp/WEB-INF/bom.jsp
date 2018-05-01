@@ -193,7 +193,7 @@
 
                     <%} else {%>
 
-                    
+
                     <line x1="<%= width * 0.3%>" y1="<%=length%>" x2="<%= width * 0.3%>" y2="<%=length * 0.86%>" stroke="black" stroke-width="5"/>
                     <line x1="<%= width * 0.45%>" y1="<%=length%>" x2="<%= width * 0.45%>" y2="<%=length * 0.85%>" stroke="black"stroke-width="5"/>
                     <line x1="<%= width * 0.6%>" y1="<%=length%>" x2="<%= width * 0.6%>" y2="<%=length * 0.85%>" stroke="black"stroke-width="5"/>
@@ -216,46 +216,47 @@
                     <%}%>
 
                     </svg>
-                    
+
                     <%-- Ende af jespers tegning :D --%>
-                    
-                    
+
+
                     <%-- carport set fra siden Niller --%>
                     <svg height="20cm" width="20cm" viewbox="-25 0 20cm 20cm">
 
-                    <line x1="20" y1="0" x2="<%= length%>" y2="0" stroke="black" stroke-width="5"/>
-                    <line x1="20" y1="5" x2="<%= length%>" y2="5" stroke="darkgrey" stroke-width="5"/>
+                    <line x1="20" y1="5" x2="<%= length%>" y2="10" stroke="black" stroke-width="5"/>
+                    <line x1="20" y1="10" x2="<%= length%>" y2="15" stroke="darkgrey" stroke-width="5"/>
+
 
                     <%-- stolper --%>
                     <%
                         if (posts < 5) {
                     %> 
 
-                    <line x1="<%= length - length * 0.8%>" y1="0" x2="<%= length - length * 0.8%>" y2="<%= height%>" stroke="black" stroke-width="2"/>
-                    <line x1="<%= length - length * 0.8 + 10%>" y1="0" x2="<%= length - length * 0.8 + 10%>" y2="<%= height%>" stroke="black" stroke-width="2"/>
-                    <line x1="<%= length * 0.8%>" y1="0" x2="<%= length * 0.8%>" y2="<%= height%>" stroke="black" stroke-width="2"/>
-                    <line x1="<%= length * 0.8 + 10%>" y1="0" x2="<%= length * 0.8 + 10%>" y2="<%= height%>" stroke="black" stroke-width="2"/>
+                    <line x1="<%= length - length * 0.8%>" y1="5" x2="<%= length - length * 0.8%>" y2="<%= height + 10%>" stroke="black" stroke-width="2"/>
+                    <line x1="<%= length - length * 0.8 + 10%>" y1="5" x2="<%= length - length * 0.8 + 10%>" y2="<%= height + 10%>" stroke="black" stroke-width="2"/>
+                    <line x1="<%= length * 0.8%>" y1="10" x2="<%= length * 0.8%>" y2="<%= height + 10%>" stroke="black" stroke-width="2"/>
+                    <line x1="<%= length * 0.8 + 10%>" y1="10" x2="<%= length * 0.8 + 10%>" y2="<%= height + 10%>" stroke="black" stroke-width="2"/>
                     <% }
                         if (posts > 4) {
                     %>
-                    <line x1="<%= length - length * 0.9%>" y1="0" x2="<%= length - length * 0.9%>" y2="<%= height%>" stroke="black" stroke-width="2"/>
-                    <line x1="<%= length - length * 0.9 + 10%>" y1="0" x2="<%= length - length * 0.9 + 10%>" y2="<%= height%>" stroke="black" stroke-width="2"/>
-                    <line x1="<%= length * 0.9%>" y1="0" x2="<%= length * 0.9%>" y2="<%= height%>" stroke="black" stroke-width="2"/>
-                    <line x1="<%= length * 0.9 + 10%>" y1="0" x2="<%= length * 0.9 + 10%>" y2="<%= height%>" stroke="black" stroke-width="2"/>
-                    <line x1="<%= length / 2 + 5%>" y1="0" x2="<%= length / 2 + 5%>" y2="<%= height%>" stroke="black" stroke-width="2"/>
-                    <line x1="<%= length / 2 - 5%>" y1="0" x2="<%= length / 2 - 5%>" y2="<%= height%>" stroke="black" stroke-width="2"/>
+                    <line x1="<%= length - length * 0.9%>" y1="5" x2="<%= length - length * 0.9%>" y2="<%= height + 10%>" stroke="black" stroke-width="2"/>
+                    <line x1="<%= length - length * 0.9 + 10%>" y1="5" x2="<%= length - length * 0.9 + 10%>" y2="<%= height + 10%>" stroke="black" stroke-width="2"/>
+                    <line x1="<%= length * 0.9%>" y1="10" x2="<%= length * 0.9%>" y2="<%= height + 10%>" stroke="black" stroke-width="2"/>
+                    <line x1="<%= length * 0.9 + 10%>" y1="10" x2="<%= length * 0.9 + 10%>" y2="<%= height + 10%>" stroke="black" stroke-width="2"/>
+                    <line x1="<%= length / 2 + 5%>" y1="5" x2="<%= length / 2 + 5%>" y2="<%= height + 10%>" stroke="black" stroke-width="2"/>
+                    <line x1="<%= length / 2 - 5%>" y1="5" x2="<%= length / 2 - 5%>" y2="<%= height + 10%>" stroke="black" stroke-width="2"/>
 
 
                     <% }%>
-                    <line x1="0" y1="<%= height%>" x2="<%= length * 1.30%>" y2="<%= height%>" stroke="black" stroke-width="2" stroke-dasharray="5 5"/>
+                    <line x1="0" y1="<%= height + 10%>" x2="<%= length * 1.30%>" y2="<%= height + 10%>" stroke="black" stroke-width="2" stroke-dasharray="5 5"/>
 
-                    <polygon points="570,5 520,160 620,160" fill="green" stroke="black" stroke-width="1" />
-                    <rect x="560" y="160" width="20" height="50" fill="saddlebrown" stroke="black"/>
+                    <polygon points="570,15 520,170 620,170" fill="green" stroke="black" stroke-width="1" />
+                    <rect x="560" y="170" width="20" height="50" fill="saddlebrown" stroke="black"/>
 
                     <%-- vil gerne have "højde" til at stå i midten over taget --%> 
                     <text x="<%=length * 0.05%>" y="<%=height / 2%>" fill="black" text-anchor="middle" writing-mode="tb">Højde: <%=height%> </text>
-                    <text x="<%=length / 2%>" y="<%=height-175%>" fill="black" text-anchor="middle">Længde: <%=length%> </text>
-                    
+                    <text x="<%=length / 2%>" y="<%=height - 175%>" fill="black" text-anchor="middle">Længde: <%=length%> </text>
+
                     </svg>
                     --%>
 
