@@ -231,7 +231,8 @@ public class PitchedRoofCalculator implements CarportCalculator {
     }
 
     private int calcBracketScrews(int length) { // 20 pr. universalbeslag + 20 pr. toplægteholder ... 50 for buffer
-        return ((((length / 60) + 1) * 2)) * 20 + (length / 60 + 1) * 20 + 50;
+        int numberOfScrews = ((((length / 60) + 1) * 2)) * 20 + (length / 60 + 1) * 20 + 50;
+        return numberOfScrews / 250 + 1;
     }
 
     private int calcRoofLathScrews(int length, int width, int angle) {

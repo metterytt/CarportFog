@@ -1,10 +1,27 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-/**
- * Author:  pernillelorup
- * Created: 25-Apr-2018
- */
+INSERT INTO `carport`.`products` (`name`, `uom`, `price`) VALUES ('Bræt 25x200 trykimp.', 'm', '5495');
+INSERT INTO `carport`.`products` (`name`, `uom`, `price`) VALUES ('Bræt 25x125 trykimp.', 'm', '3195');
+INSERT INTO `carport`.`products` (`name`, `uom`, `price`) VALUES ('Lægte 38x73 ubeh.', 'm', '1395');
+INSERT INTO `carport`.`products` (`name`, `uom`, `price`) VALUES ('Spærtræ 45x195 ubeh.', 'm', '4395');
+INSERT INTO `carport`.`products` (`name`, description, `uom`, `price`) VALUES ('Stolpe 97x97 trykimp.', '300cm', 'stk.', '32700');
+INSERT INTO `carport`.`products` (`name`, `uom`, `price`) VALUES ('Bræt 19x100 trykimp.', 'm', '795');
+INSERT INTO `carport`.`products` (`name`, description, `uom`, `price`) VALUES ('Tagplader Plastmo blåtonet', '109x600', 'stk.', '33000');
+INSERT INTO `carport`.`products` (`name`, `uom`, `price`) VALUES ('Plastmo bundskruer, 200 stk.', 'pakke', '49500');
+INSERT INTO `carport`.`products` (`name`, `uom`, `price`) VALUES ('Hulbånd, 1x20mm, 10 m', 'pakke', '20900');
+INSERT INTO `carport`.`products` (`name`, `uom`, `price`) VALUES ('Universalbeslag 190mm højre', 'stk.', '4400');
+INSERT INTO `carport`.`products` (`name`, `uom`, `price`) VALUES ('Universalbeslag 190mm venstre', 'stk.', '4400');
+INSERT INTO `carport`.`products` (`name`, `uom`, `price`) VALUES ('Skruer, 4,5x60mm, 200 stk.', 'pakke', '4900');
+INSERT INTO `carport`.`products` (`name`, `uom`, `price`) VALUES ('Beslagskruer, 4,0x50mm, 250 stk.', 'pakke', '26900');
+INSERT INTO `carport`.`products` (`name`, `uom`, `price`) VALUES ('Bræddebolte 10x120mm', 'stk.', '500');
+INSERT INTO `carport`.`products` (`name`, `uom`, `price`) VALUES ('Firkantskiver 40x40x11mm', 'stk.', '400');
+INSERT INTO `carport`.`products` (`name`, `uom`, `price`) VALUES ('Lægte 38x73 ubeh.', 'm', '1495');
+INSERT INTO `carport`.`products` (`name`, `uom`, `price`) VALUES ('Reglar 45x95mm, ubeh.', 'm', '1895');
+INSERT INTO `carport`.`products` (`name`, `uom`, `price`) VALUES ('Bræt 25x150 trykimp.', 'm', '3395');
+INSERT INTO `carport`.`products` (`name`, `uom`, `price`) VALUES ('Byg-selv-spær', 'stk.', '39995');
+INSERT INTO `carport`.`products` (`name`, `uom`, `price`) VALUES ('Bræt 25x50mm, trykimp.', 'm', '995');
+INSERT INTO `carport`.`products` (`name`, `uom`, `price`) VALUES ('Tagsten B&C dobbelt-S sort', 'stk.', '795');
+INSERT INTO `carport`.`products` (`name`, `uom`, `price`) VALUES ('Rygsten B&C sort', 'stk.', '4995');
+INSERT INTO `carport`.`products` (`name`, `uom`, `price`) VALUES ('Toplægteholder B&C', 'stk.', '2495');
+INSERT INTO `carport`.`products` (`name`, `uom`, `price`) VALUES ('Rygstenbeslag B&C', 'stk.', '995');
+INSERT INTO `carport`.`products` (`name`, `uom`, `price`) VALUES ('Bindere B&C, 250 stk.', 'pakke', '49995');
+INSERT INTO `carport`.`products` (`name`, `uom`, `price`) VALUES ('Skruer, 5,0x100mm, 100 stk.', 'pakke', '18900');
 
