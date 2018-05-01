@@ -107,14 +107,14 @@
                     <line x1="0" y1="<%= length - 10%>" x2="<%= width%>" y2="<%= length - 10%>" stroke-width="12" stroke="darkgrey"/>
                     --%>
                     <%
-                        int rafterGap = (int) request.getAttribute("rafterGap");
-                        int rafterQuantity = (int) request.getAttribute("rafterQuantity");
+                        double rafterGap = (double)request.getAttribute("rafterGap");
+                        int rafterQuantity = (int)request.getAttribute("rafterQuantity");
                         int startingLength = (length - 10);
 
-                        for (int idx = 1; idx <= rafterQuantity; idx++) {
+                        for (int idx = 0; idx <= rafterQuantity; idx++) {
                     %> <line x1="0" y1="<%= startingLength%>" x2="<%= width%>" y2="<%= startingLength%>" stroke-width="12" stroke="darkgrey"/> <%
-                            startingLength -= rafterGap;
-                        }
+                                startingLength -= rafterGap;
+                            }
                     %>
 
                     <%-- stolper --%>

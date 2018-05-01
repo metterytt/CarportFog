@@ -27,12 +27,10 @@ public class FrontController extends HttpServlet {
                 request.getRequestDispatcher("/WEB-INF/" + page + ".jsp").forward(request, response);
             }
         } catch (CarportException ex) {
+            request.setAttribute("error", ex.getMessage());
             if (ex.getPage().equals("index")) {
-                request.setAttribute("error", ex.getMessage());
                 request.getRequestDispatcher("index.jsp").forward(request, response);
-
             } else {
-                request.setAttribute("error", ex.getMessage());
                 request.getRequestDispatcher("/WEB-INF/" + ex.getPage() + ".jsp").forward(request, response);
 
             }
