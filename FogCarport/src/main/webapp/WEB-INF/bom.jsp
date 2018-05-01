@@ -129,8 +129,7 @@
 
                     <rect x="<%= width * 0.9 - 8%>" y="<%=length * 0.25%>" height="15" width="15" stroke="black" stroke-width="3" fill="none"/>
                     <rect x="<%= width * 0.9 - 8%>" y="<%=length * 0.75%>" height="15" width="15" stroke="black" stroke-width="3" fill="none"/>
-                    <%}
-                    else {
+                    <%} else {
 
                     %> <rect x="<%= width - width * 0.9 - 8%>" y="<%=length * 0.1%>" height="15" width="15" stroke="black" stroke-width="3" fill="none"/>
                     <rect x="<%= width - width * 0.9 - 8%>" y="<%=length * 0.9%>" height="15" width="15" stroke="black" stroke-width="3" fill="none"/>
@@ -220,7 +219,7 @@
                         if (length >= 350) {
                     %>
                     <rect x="20" y="12" width="<%=length - 20%>" height="10" fill="snow" stroke="black" stroke-width="1" 
-                          transform="translate(0) rotate(1 30 40)"/>
+                          transform="translate(0) rotate(1.05 0 15)"/>
 
                     <% }
                         }
@@ -254,8 +253,8 @@
                     <text x="<%=length + 15%>" y="<%=height / 2 - 25%>" fill="black" text-anchor="middle" writing-mode="tb">Hældning på 9 cm. </text>
 
                     <%-- tag og stern --%>
-                    <line x1="20" y1="5" x2="<%= length%>" y2="13" stroke="black" stroke-width="5"/>
-                    <line x1="20" y1="10" x2="<%= length%>" y2="18" stroke="darkgrey" stroke-width="5"/>
+                    <line x1="20" y1="10.5" x2="<%= length%>" y2="18" stroke="darkgrey" stroke-width="3"/>
+                    <line x1="20" y1="5" x2="<%= length%>" y2="13" stroke="black" stroke-width="8"/>
 
                     <%-- streg for hældning --%>
                     <line x1="20" y1="0" x2="<%= length%>" y2="0" stroke="black" stroke-width="2" stroke-dasharray="5 5"/>
