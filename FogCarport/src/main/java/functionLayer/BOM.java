@@ -15,4 +15,12 @@ public class BOM {
         return listOfProducts;
     }
 
+    public int totalPrice() { 
+        int totalPrice = 0;
+        for (LineItem lineItem : listOfProducts) {
+            totalPrice += lineItem.getPrice() * lineItem.getQuantity();
+        }
+        return totalPrice;
+    }
+
 }

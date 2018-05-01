@@ -150,7 +150,13 @@ public class PitchedRoofCalculator implements CarportCalculator {
     }
 
     private int calcRafterSet(int length) {
-        return length / 60 + 1;
+        int numberOfRafters = (length / 60);
+        if (length % 60 == 0) {
+            numberOfRafters++;
+        } else {
+            numberOfRafters += 2;
+        }
+        return numberOfRafters;
     }
 
     private int calcPlates(int length) {

@@ -204,7 +204,8 @@
 
 
                     <%-- carport set fra siden Niller --%>
-                    <svg height="20cm" width="20cm" viewbox="-25 0 20cm 20cm">
+                    <%-- <svg height="20cm" width="20cm" viewbox="-25 0 20cm 20cm"> --%>
+                    <svg height="1000" width="1000" viewbox="0 0 1000 1000">
 
                     <%-- stolper --%>
                     <%
