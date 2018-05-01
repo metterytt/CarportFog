@@ -116,10 +116,21 @@ public class PitchedRoofCalculator implements CarportCalculator {
         bracketScrews.setQuantity(calcBracketScrews(length));
         bracketScrews.setUseInContext("Til montering af universalbeslag og toplægte");
         bom.addToBOM(bracketScrews);
-        
+
         LineItem roofLathScrews = StorageFacade.getProduct(26);
-        roofLathScrews.setQuantity(calcRoofLathScrews(length));
-        
+        roofLathScrews.setQuantity(calcRoofLathScrews(length, width, angle));
+        roofLathScrews.setUseInContext("Til taglægter");
+        bom.addToBOM(roofLathScrews);
+
+        LineItem bolts = StorageFacade.getProduct(14);
+        bolts.setQuantity(calcBolts(length));
+        bolts.setUseInContext("Til montering af rem på stolper");
+        bom.addToBOM(bolts);
+
+        LineItem squareBrackets = StorageFacade.getProduct(15);
+        squareBrackets.setQuantity(calcSquareBrackets(length));
+        squareBrackets.setUseInContext("Til montering af rem på stolper");
+        bom.addToBOM(squareBrackets);
 
         return bom;
     }
@@ -223,9 +234,23 @@ public class PitchedRoofCalculator implements CarportCalculator {
         return ((((length / 60) + 1) * 2)) * 20 + (length / 60 + 1) * 20 + 50;
     }
 
-    private int calcRoofLathScrews(int length) {
-        
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    private int calcRoofLathScrews(int length, int width, int angle) {
+        double calcAngle = Math.toRadians(angle);
+        int c = (int) ((width / 2) / Math.cos(calcAngle));
+        int rows = c / 35;
+        if (c % 35 > 3) {
+            rows++;
+        }
+        int metersOfLaths = rows * length;
+        return ((metersOfLaths / 60) * 2) / 100 + 1;
+    }
+
+    private int calcBolts(int length) {
+        return 2 * (2 * ((length / 300) + 2));
+    }
+
+    private int calcSquareBrackets(int length) {
+        return 2 * (2 * ((length / 300) + 2));
     }
 
 }
