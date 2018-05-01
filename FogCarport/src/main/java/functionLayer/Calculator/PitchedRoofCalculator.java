@@ -189,7 +189,7 @@ public class PitchedRoofCalculator implements CarportCalculator {
     }
 
     private int calcPosts(int length) {
-        return 2 * ((length / 300) + 2);
+        return 2 * ((length / 300) + 1);
     }
 
     private int calcRoofTiles(int length, int width, int angle) { // 9 sten/m2. +10 er for buffer
