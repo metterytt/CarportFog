@@ -1,7 +1,6 @@
 <%-- 
     Document   : index
     Created on : 23-04-2018, 19:49:32
-    Author     : mette
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
