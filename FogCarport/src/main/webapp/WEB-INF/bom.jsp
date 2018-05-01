@@ -107,7 +107,7 @@
                     <line x1="0" y1="<%= length - 10%>" x2="<%= width%>" y2="<%= length - 10%>" stroke-width="12" stroke="darkgrey"/>
                     --%>
                     <%
-                        double rafterGap = (double)request.getAttribute("rafterGap");
+                        int rafterGap = (int)request.getAttribute("rafterGap");
                         int rafterQuantity = (int)request.getAttribute("rafterQuantity");
                         int startingLength = (length - 10);
 
@@ -149,19 +149,19 @@
                     <text x="<%=width + 20%>" y="<%=length / 2%>" fill="black" text-anchor="middle" writing-mode="tb">Længde: <%=length%> </text>
 
                     <%-- top stern --%>
-                    <line x1="0" y1="0" x2="<%= width%>" y2="0" stroke="black"/>
+                    <line x1="0" y1="0" x2="<%= width%>" y2="0" stroke-width="4" stroke="black"/>
 
                     <%-- højre stern --%>
-                    <line x1="<%= width%>" y1="0" x2="<%= width%>" y2="<%= length%>" stroke="black"/>
-                    <line x1="<%= width - 5%>" y1="0" x2="<%= width - 5%>" y2="<%= length%>" stroke="black"/>
+                    <line x1="<%= width%>" y1="0" x2="<%= width%>" y2="<%= length%>" stroke-width="4" stroke="black"/>
+                    <line x1="<%= width - 5%>" y1="0" x2="<%= width - 5%>" y2="<%= length%>" stroke-width="4" stroke="black"/>
 
                     <%-- bundstern --%>
-                    <line x1="<%= width%>" y1="<%= length%>" x2="0" y2="<%= length%>" stroke="black"/>
-                    <line x1="<%= width - 5%>" y1="<%= length - 5%>" x2="5" y2="<%= length - 5%>" stroke="black"/>
+                    <line x1="<%= width%>" y1="<%= length%>" x2="0" y2="<%= length%>" stroke-width="4" stroke="black"/>
+                    <line x1="<%= width - 5%>" y1="<%= length - 5%>" x2="5" y2="<%= length - 5%>" stroke-width="4" stroke="black"/>
 
                     <%-- venstre stern --%>
-                    <line x1="1" y1="<%= length%>" x2="1" y2="0" stroke="black"/>
-                    <line x1="5" y1="<%= length%>" x2="5" y2="0" stroke="black"/>
+                    <line x1="1" y1="<%= length%>" x2="1" y2="0" stroke-width="4" stroke="black"/>
+                    <line x1="5" y1="<%= length%>" x2="5" y2="0" stroke-width="4" stroke="black"/>
 
                     <%-- remme --%>
                     <line x1="<%= width * 0.9%>" y1="0" x2="<%= width * 0.9%>" y2="<%= length%>" stroke="lightgrey" stroke-width="12" stroke-opacity = "0.5"/>
