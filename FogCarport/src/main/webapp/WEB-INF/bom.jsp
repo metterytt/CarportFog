@@ -95,12 +95,12 @@
                         int height = 210;%>
 
 
-                    <svg height="<%= length + 50%>" width="<%= width + 50%>">
-
                     <%-- carport set oppefra --%>
-
-                    <%-- <svg height="<%= length + 50%>" width="<%= width + 50%>" viewbox="0 0 700 1000"> --%>
-
+                    <svg height="<%= length + 50%>" width="<%= width + 50%>">
+                    
+                    <%-- remme --%>
+                    <line x1="<%= width * 0.9%>" y1="0" x2="<%= width * 0.9%>" y2="<%= length%>" stroke="lightgrey" stroke-width="12" stroke-opacity = "0.5"/>
+                    <line x1="<%= width - width * 0.9%>" y1="0" x2="<%= width - width * 0.9%>" y2="<%= length%>" stroke="lightgrey" stroke-width="12" stroke-opacity = "0.5"/>
 
                     <%-- spær --%>
                     <%
@@ -108,7 +108,7 @@
                         int rafterQuantity = (int) request.getAttribute("rafterQuantity");
                         int startingLength = (length - 10);
 
-                        for (int idx = 0; idx <= rafterQuantity; idx++) {
+                        for (int idx =  0; idx <= rafterQuantity; idx++) {
                     %> <line x1="5" y1="<%= startingLength%>" x2="<%= width - 5%>" y2="<%= startingLength%>" stroke-width="12" stroke="darkgrey"/> <%
                             startingLength -= rafterGap;
                         }
@@ -160,10 +160,6 @@
                     <%-- venstre stern --%>
                     <line x1="0" y1="<%= length%>" x2="0" y2="0" stroke-width="4" stroke="black"/>
                     <line x1="5" y1="<%= length%>" x2="5" y2="0" stroke-width="4" stroke="black"/>
-
-                    <%-- remme --%>
-                    <line x1="<%= width * 0.9%>" y1="0" x2="<%= width * 0.9%>" y2="<%= length%>" stroke="lightgrey" stroke-width="12" stroke-opacity = "0.5"/>
-                    <line x1="<%= width - width * 0.9%>" y1="0" x2="<%= width - width * 0.9%>" y2="<%= length%>" stroke="lightgrey" stroke-width="12" stroke-opacity = "0.5"/>
 
                     <%-- hulbånd --%>
                     <line x1="<%= width - width * 0.9%>" y1="50" x2="<%= width * 0.9%>" y2="<%= length - 70%>" stroke="black" stroke-dasharray="5 5"/>
