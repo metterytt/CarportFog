@@ -161,8 +161,8 @@
                     <line x1="5" y1="<%= length%>" x2="5" y2="0" stroke-width="4" stroke="black"/>
 
                     <%-- hulbånd --%>
-                    <line x1="<%= width - width * 0.9%>" y1="50" x2="<%= width * 0.9%>" y2="<%= length - 70%>" stroke="black" stroke-dasharray="5 5"/>
-                    <line x1="<%= width - width * 0.9%>" y1="<%= length - 70%>" x2="<%= width * 0.9%>" y2="50" stroke="black" stroke-dasharray="5 5"/>
+                    <line x1="<%= width - width * 0.9%>" y1="<%= rafterGap + 10%>" x2="<%= width * 0.9%>" y2="<%= (length - 10) - rafterGap%>" stroke="black" stroke-dasharray="5 5"/>
+                    <line x1="<%= width - width * 0.9%>" y1="<%= (length - 10) - rafterGap%>" x2="<%= width * 0.9%>" y2="<%= rafterGap + 10%>" stroke="black" stroke-dasharray="5 5"/>
                     </svg>
 
                     <%-- Jespers tegning --%>
