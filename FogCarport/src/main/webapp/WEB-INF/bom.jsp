@@ -99,8 +99,8 @@
                     <svg height="<%= length + 50%>" width="<%= width + 50%>">
                     
                     <%-- remme --%>
-                    <line x1="<%= width * 0.9%>" y1="0" x2="<%= width * 0.9%>" y2="<%= length%>" stroke="lightgrey" stroke-width="12" stroke-opacity = "0.5"/>
-                    <line x1="<%= width - width * 0.9%>" y1="0" x2="<%= width - width * 0.9%>" y2="<%= length%>" stroke="lightgrey" stroke-width="12" stroke-opacity = "0.5"/>
+                    <line x1="<%= width * 0.9%>" y1="0" x2="<%= width * 0.9%>" y2="<%= length%>" stroke="darkgrey" stroke-width="12"/>
+                    <line x1="<%= width - width * 0.9%>" y1="0" x2="<%= width - width * 0.9%>" y2="<%= length%>" stroke="darkgrey" stroke-width="12"/>
 
                     <%-- spær --%>
                     <%
