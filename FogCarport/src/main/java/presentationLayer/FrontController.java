@@ -23,17 +23,14 @@ public class FrontController extends HttpServlet {
             String page = moveForward.execute(request, response);
             if (page.equals("index")) {
                 request.getRequestDispatcher("index.jsp").forward(request, response);
-            }
-            else {
+            } else {
                 request.getRequestDispatcher("/WEB-INF/" + page + ".jsp").forward(request, response);
             }
-        }
-        catch (CarportException ex) {
+        } catch (CarportException ex) {
             request.setAttribute("error", ex.getMessage());
             if (ex.getPage().equals("index")) {
                 request.getRequestDispatcher("index.jsp").forward(request, response);
-            }
-            else {
+            } else {
                 request.getRequestDispatcher("/WEB-INF/" + ex.getPage() + ".jsp").forward(request, response);
 
             }
