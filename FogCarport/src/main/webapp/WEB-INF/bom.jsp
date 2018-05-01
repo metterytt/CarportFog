@@ -95,7 +95,7 @@
                         int height = 210;%>
 
 
-                    <svg height="<%= length + 50%>" width="<%= width + 50%>">
+                    <svg height="<%= length + 50%>" width="<%= width + 50%>" viewbox="">
 
                     <%-- carport set oppefra --%>
 
@@ -103,6 +103,7 @@
 
 
                     <%-- spær --%>
+                    <line x1="0" y1="10" x2="<%= width%>" y2="10" stroke-width="12" stroke="darkgrey"/>
                     <%
                         int startingLength = length - 10;
                         int antalSpær = startingLength / 60;
