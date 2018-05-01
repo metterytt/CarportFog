@@ -11,6 +11,7 @@ import functionLayer.BOM;
 import functionLayer.Calculator.PitchedRoofCalculator;
 import functionLayer.Calculator.ShedCalculator;
 import functionLayer.CarportException;
+import functionLayer.entity.LineItem;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -33,11 +34,12 @@ public class InputCarport extends Command {
 
         request.setAttribute("length", length);
         request.setAttribute("width", width);
-        
+
         CarportCalculator carportCalculator;
         if (angle == 0) {
             carportCalculator = new FlatRoofCalculator(length, width);
-        } else {
+        }
+        else {
             carportCalculator = new PitchedRoofCalculator(length, width, angle);
         }
         BOM carportBom = carportCalculator.getBom();
@@ -48,6 +50,18 @@ public class InputCarport extends Command {
             BOM shedBom = shedCalculator.getBom();
             session.setAttribute("shedbom", shedBom);
         }
+
+        int rafterQuantity = 0;
+        for (LineItem l : carportBom.getListOfProducts()) {
+            if (l.getUseInContext().equals("Spær, monteres på rem")) {
+                rafterQuantity = l.getQuantity() / width;
+            }
+        }
+
+        int rafterGap = (length - 15) / rafterQuantity;
+        request.setAttribute("rafterGap", rafterGap);
+        request.setAttribute("rafterQuantity", rafterQuantity);
+
         return "bom";
     }
 }
