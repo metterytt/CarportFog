@@ -95,7 +95,7 @@
                         int height = 210;%>
 
 
-                    <svg height="<%= length + 50%>" width="<%= width + 50%>">
+                    <svg height="<%= length + 50%>" width="<%= width + 50%>" viewbox="">
 
                     <%-- carport set oppefra --%>
 
@@ -103,13 +103,18 @@
 
 
                     <%-- spær --%>
+                    <line x1="0" y1="10" x2="<%= width%>" y2="10" stroke-width="12" stroke="darkgrey"/>
+                    <line x1="0" y1="<%= length - 10%>" x2="<%= width%>" y2="<%= length - 10%>" stroke-width="12" stroke="darkgrey"/>
                     <%
-                        int startingLength = length - 10;
-                        int antalSpær = startingLength / 60;
+                        int rafterGap = (int)request.getAttribute("rafterGap");
+                        int rafterQuantity = (int)request.getAttribute("rafterQuantity");
+                        int startingLength = (length - 10) - rafterGap;
 
-                        for (int idx = 0; idx <= antalSpær; idx++) {
+                        for (int idx = 1; idx <= rafterQuantity; idx++) {
+                            if (startingLength >= 60) {
                     %> <line x1="0" y1="<%= startingLength%>" x2="<%= width%>" y2="<%= startingLength%>" stroke-width="12" stroke="darkgrey"/> <%
-                            startingLength -= 60;
+                                startingLength -= rafterGap;
+                            }
                         }
                     %>
 
@@ -128,7 +133,8 @@
 
                     <rect x="<%= width * 0.9 - 8%>" y="<%=length * 0.25%>" height="15" width="15" stroke="black" stroke-width="3" fill="none"/>
                     <rect x="<%= width * 0.9 - 8%>" y="<%=length * 0.75%>" height="15" width="15" stroke="black" stroke-width="3" fill="none"/>
-                    <%} else {
+                    <%}
+                    else {
 
                     %> <rect x="<%= width - width * 0.9 - 8%>" y="<%=length * 0.1%>" height="15" width="15" stroke="black" stroke-width="3" fill="none"/>
                     <rect x="<%= width - width * 0.9 - 8%>" y="<%=length * 0.9%>" height="15" width="15" stroke="black" stroke-width="3" fill="none"/>
