@@ -111,10 +111,8 @@
                         int startingLength = (length - 10) - rafterGap;
 
                         for (int idx = 1; idx <= rafterQuantity; idx++) {
-                            if (startingLength >= 60) {
                     %> <line x1="0" y1="<%= startingLength%>" x2="<%= width%>" y2="<%= startingLength%>" stroke-width="12" stroke="darkgrey"/> <%
                                 startingLength -= rafterGap;
-                            }
                         }
                     %>
 
