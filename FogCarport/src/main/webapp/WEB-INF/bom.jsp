@@ -96,7 +96,8 @@
 
 
                     <%-- carport set oppefra --%>
-                    <svg height="<%= length + 50%>" width="<%= width + 50%>">
+                    <%-- <svg height="<%= length + 50%>" width="<%= width + 50%>"> --%>
+                    <svg height="500" width="500" viewbox="0 0 <%= width + 50%> <%= length + 50 %>">
                     
                     <%-- remme --%>
                     <line x1="<%= width * 0.9%>" y1="0" x2="<%= width * 0.9%>" y2="<%= length%>" stroke="black" stroke-width="12" stroke-opacity = "0.5"/>
