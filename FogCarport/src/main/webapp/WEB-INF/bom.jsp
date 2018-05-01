@@ -107,6 +107,7 @@
                     <line x1="0" y1="<%= length - 10%>" x2="<%= width%>" y2="<%= length - 10%>" stroke-width="12" stroke="darkgrey"/>
                     --%>
                     <%
+<<<<<<< HEAD
                         double rafterGap = (double)request.getAttribute("rafterGap");
                         int rafterQuantity = (int)request.getAttribute("rafterQuantity");
                         int startingLength = (length - 10);
@@ -116,6 +117,16 @@
                                 startingLength -= rafterGap;
                             }
                         
+=======
+                        int rafterGap = (int) request.getAttribute("rafterGap");
+                        int rafterQuantity = (int) request.getAttribute("rafterQuantity");
+                        int startingLength = (length - 10);
+
+                        for (int idx = 1; idx <= rafterQuantity; idx++) {
+                    %> <line x1="0" y1="<%= startingLength%>" x2="<%= width%>" y2="<%= startingLength%>" stroke-width="12" stroke="darkgrey"/> <%
+                            startingLength -= rafterGap;
+                        }
+>>>>>>> cb113c3f7f32edd0148f79ec64fa0bc120d247fb
                     %>
 
                     <%-- stolper --%>
@@ -133,8 +144,7 @@
 
                     <rect x="<%= width * 0.9 - 8%>" y="<%=length * 0.25%>" height="15" width="15" stroke="black" stroke-width="3" fill="none"/>
                     <rect x="<%= width * 0.9 - 8%>" y="<%=length * 0.75%>" height="15" width="15" stroke="black" stroke-width="3" fill="none"/>
-                    <%}
-                    else {
+                    <%} else {
 
                     %> <rect x="<%= width - width * 0.9 - 8%>" y="<%=length * 0.1%>" height="15" width="15" stroke="black" stroke-width="3" fill="none"/>
                     <rect x="<%= width - width * 0.9 - 8%>" y="<%=length * 0.9%>" height="15" width="15" stroke="black" stroke-width="3" fill="none"/>
@@ -206,7 +216,8 @@
 
 
                     <%-- carport set fra siden Niller --%>
-                    <svg height="20cm" width="20cm" viewbox="-25 0 20cm 20cm">
+                    <%-- <svg height="20cm" width="20cm" viewbox="-25 0 20cm 20cm"> --%>
+                    <svg height="1000" width="1000" viewbox="0 0 1000 1000">
 
                     <%-- stolper --%>
                     <%
