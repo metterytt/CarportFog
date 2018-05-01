@@ -1,7 +1,6 @@
 <%-- 
     Document   : bom
     Created on : 24-04-2018, 19:33:17
-    Author     : group: snøvsen
 --%>
 
 <%@page import="java.util.ArrayList"%>

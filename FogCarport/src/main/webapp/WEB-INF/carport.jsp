@@ -1,7 +1,6 @@
 <%-- 
     Document   : carport
     Created on : 24-04-2018, 19:23:23
-    Author     : mette
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
