@@ -208,13 +208,6 @@
                     <%-- carport set fra siden Niller --%>
                     <svg height="20cm" width="20cm" viewbox="-25 0 20cm 20cm">
 
-                    <line x1="20" y1="5" x2="<%= length%>" y2="13" stroke="black" stroke-width="5"/>
-                    <line x1="20" y1="10" x2="<%= length%>" y2="18" stroke="darkgrey" stroke-width="5"/>
-
-                    <%-- streg for hældning --%>
-                    <line x1="20" y1="0" x2="<%= length%>" y2="0" stroke="black" stroke-width="2" stroke-dasharray="5 5"/>
-                    <line x1="<%= length%>" y1="0" x2="<%= length%>" y2="<%= 15%>" stroke="black" stroke-width="2" stroke-dasharray="5 5"/>
-
                     <%-- stolper --%>
                     <%
                         if (posts < 5) {
@@ -224,8 +217,20 @@
                     <line x1="<%= length - length * 0.8 + 10%>" y1="5" x2="<%= length - length * 0.8 + 10%>" y2="<%= height + 10%>" stroke="black" stroke-width="2"/>
                     <line x1="<%= length * 0.8%>" y1="10" x2="<%= length * 0.8%>" y2="<%= height + 10%>" stroke="black" stroke-width="2"/>
                     <line x1="<%= length * 0.8 + 10%>" y1="10" x2="<%= length * 0.8 + 10%>" y2="<%= height + 10%>" stroke="black" stroke-width="2"/>
-                    <text x="<%=length / 2%>" y="<%=height - 175%>" fill="black" text-anchor="middle">Længde: <%=length%> </text>
+                    <text x="<%=length / 2%>" y="<%=height - 160%>" fill="black" text-anchor="middle">Længde: <%=length%> </text>
+
+                    <%-- rem til 4 stolper--%>
+                    <% if (length < 349) {%>
+                    <rect x="20" y="12" width="<%=length - 20%>" height="10" fill="snow" stroke="black" stroke-width="1" 
+                          transform="translate(0) rotate(2 30 40)"/>
                     <% }
+                        if (length >= 350) {
+                    %>
+                    <rect x="20" y="12" width="<%=length - 20%>" height="10" fill="snow" stroke="black" stroke-width="1" 
+                          transform="translate(0) rotate(1 30 40)"/>
+
+                    <% }
+                        }
                         if (posts > 4) {
                     %>
                     <line x1="<%= length - length * 0.9%>" y1="5" x2="<%= length - length * 0.9%>" y2="<%= height + 10%>" stroke="black" stroke-width="2"/>
@@ -234,16 +239,35 @@
                     <line x1="<%= length * 0.9 + 10%>" y1="10" x2="<%= length * 0.9 + 10%>" y2="<%= height + 10%>" stroke="black" stroke-width="2"/>
                     <line x1="<%= length / 2 + 5%>" y1="10" x2="<%= length / 2 + 5%>" y2="<%= height + 10%>" stroke="black" stroke-width="2"/>
                     <line x1="<%= length / 2 - 5%>" y1="10" x2="<%= length / 2 - 5%>" y2="<%= height + 10%>" stroke="black" stroke-width="2"/>
-                    <text x="<%=length * 0.3%>" y="<%=height - 175%>" fill="black" text-anchor="middle">Længde: <%=length%> </text>
-                    <% }%>
+                    <text x="<%=length * 0.3%>" y="<%=height - 160%>" fill="black" text-anchor="middle">Længde: <%=length%> </text>
+
+                    <%-- rem til 6 stolper--%>
+                    <% if (length < 599) {%>
+                    <rect x="20" y="12" width="<%=length - 20%>" height="10" fill="snow" stroke="black" stroke-width="1" 
+                          transform="translate(0) rotate(1 100 50)"/>
+                    <% }
+                        if (length >= 600) {%>
+                    <rect x="20" y="12" width="<%=length - 20%>" height="10" fill="snow" stroke="black" stroke-width="1" 
+                          transform="translate(0) rotate(0.5 250 50)"/>
+                    <% }
+                        }%>
                     <line x1="0" y1="<%= height + 10%>" x2="<%= length * 1.30%>" y2="<%= height + 10%>" stroke="black" stroke-width="2" stroke-dasharray="5 5"/>
 
-                    <polygon points="570,15 520,170 620,170" fill="green" stroke="black" stroke-width="1" />
-                    <rect x="560" y="170" width="20" height="50" fill="saddlebrown" stroke="black"/>
+                    <polygon points="<%= length + 70%>,15 <%= length + 20%>,170 <%= length + 120%>,170" fill="green" stroke="black" stroke-width="1" />
+                    <rect x="<%= length + 60%>" y="170" width="20" height="50" fill="saddlebrown" stroke="black"/>
 
                     <%-- vil gerne have "højde" til at stå i midten over taget --%> 
                     <text x="<%=length * 0.05%>" y="<%=height / 2%>" fill="black" text-anchor="middle" writing-mode="tb">Højde: <%=height%> </text>
                     <text x="<%=length + 15%>" y="<%=height / 2 - 25%>" fill="black" text-anchor="middle" writing-mode="tb">Hældning på 9 cm. </text>
+
+                    <%-- tag og stern --%>
+                    <line x1="20" y1="5" x2="<%= length%>" y2="13" stroke="black" stroke-width="5"/>
+                    <line x1="20" y1="10" x2="<%= length%>" y2="18" stroke="darkgrey" stroke-width="5"/>
+
+                    <%-- streg for hældning --%>
+                    <line x1="20" y1="0" x2="<%= length%>" y2="0" stroke="black" stroke-width="2" stroke-dasharray="5 5"/>
+                    <line x1="<%= length%>" y1="0" x2="<%= length%>" y2="<%= 15%>" stroke="black" stroke-width="2" stroke-dasharray="5 5"/>
+
                     </svg>
                 </div>
             </div>
