@@ -21,7 +21,7 @@
                     x.style.display = "none";
                 }
             }
-            
+            <%--
             function myFunctionRoof() {
                 var x = document.getElementById("myDIVRoof");
                 if (x.style.display === "none") {
@@ -29,7 +29,7 @@
                 } else {
                     x.style.display = "none";
                 }
-            }
+            }--%>
         </script>
 
     </head>
@@ -47,17 +47,13 @@
                             <br> <label for="width">Bredde i CM:</label>
                             <input type="text" class="form-control" name="width" min="1" max="5000" placeholder="bredde...">
                             
-                            <%--
+                            
                             <br> <label for="angle">Hvis tagrejsning ønskes, indtast vinkel på tag:</label>
                             <input type="text" class="form-control" name="angle" min="10" max="40" placeholder="tagvinkel..." value="0">
---%>
                             
-                            <input type="button" class="btn btn-primary" onclick="myFunctionRoof()" value="Vis/Gem SkråTag"/>
+                           <%-- <input type="button" class="btn btn-primary" onclick="myFunctionRoof()" value="Vis/Gem SkråTag"/>
                             <div id="myDIVRoof" style="display:none;">
-                               
-                                <label for="angle">Hvis tagrejsning ønskes, indtast vinkel på tag:</label>
-                            <input type="text" class="form-control" name="angle" min="10" max="40" placeholder="tagvinkel..." value="0">
-                             <br>
+                               --%>
                             </div>
                             
                             
