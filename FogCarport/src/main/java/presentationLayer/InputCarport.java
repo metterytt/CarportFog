@@ -56,7 +56,7 @@ public class InputCarport extends Command {
             if (l.getUseInContext().equals("Spær, monteres på rem")||l.getUseInContext().equals("Skal samles")) {
                 int rafterQuantity = l.getQuantity() - 1;
                 double rafterGap = (length - 15) / rafterQuantity;
-            
+
                 request.setAttribute("rafterGap", rafterGap);
                 request.setAttribute("rafterQuantity", ++rafterQuantity);
             }
