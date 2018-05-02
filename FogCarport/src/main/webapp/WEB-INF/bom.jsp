@@ -115,7 +115,7 @@
                         int rafterQuantity = (int) request.getAttribute("rafterQuantity");
                         int startingLength = (length - 10);
 
-                        for (int idx = 0; idx <= rafterQuantity; idx++) {
+                        for (int idx = 0; idx < rafterQuantity; idx++) {
                     %> <line x1="5" y1="<%= startingLength%>" x2="<%= width - 5%>" y2="<%= startingLength%>" stroke-width="12" stroke="darkgrey"/> <%
                             startingLength -= rafterGap;
                         }
