@@ -249,7 +249,7 @@
 
                         <line x1="<%= width * 0.25%>" y1="<%=length * 0.86%>" x2="<%= width * 0.66%>" y2="<%=length * 0.85%>" stroke="black" stroke-width="5"/>
 
-                        <%-- meassure for back of carport --%>
+                        <%-- meassuree for back of carport --%>
                         <line x1="<%= width * 0.24%>" y1="<%=length%>" x2="<%= width * 0.24%>" y2="<%=length * 0.86%>" stroke="black"/>
                         <text x="<%= width * 0.17%>" y="<%=length * 0.90%>" fill="black" font-size="10" text-anchor="middle" > 200cm  </text>
 
