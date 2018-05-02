@@ -47,6 +47,12 @@
                             <br> <label for="width">Bredde i CM:</label>
                             <input type="text" class="form-control" name="width" min="1" max="5000" placeholder="bredde...">
                             
+                            <label for="length">Length:</label><br>
+                            <select class="custom-select" name="length">
+                            <option>   </option>
+                                
+                            </select>
+                            
                             
                             <br> <label for="angle">Hvis tagrejsning ønskes, indtast vinkel på tag:</label>
                             <input type="text" class="form-control" name="angle" min="10" max="40" placeholder="tagvinkel..." value="0">
