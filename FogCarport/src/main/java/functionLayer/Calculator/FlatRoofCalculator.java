@@ -136,9 +136,9 @@ public class FlatRoofCalculator implements CarportCalculator {
     private int calcRafters(int length, int width) { // check om dette regnestykke er rigtigt.
         int numberOfRafters = (length / 60);
         if (length % 60 == 0) {
-            numberOfRafters++;
+            numberOfRafters+=2;
         } else {
-            numberOfRafters += 2;
+            numberOfRafters += 3;
         }
         return numberOfRafters;
     }
