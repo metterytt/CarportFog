@@ -97,8 +97,8 @@
 
                     <%-- carport set oppefra --%>
                     <%-- <svg height="<%= length + 50%>" width="<%= width + 50%>"> --%>
-                    <svg height="500" width="500" viewbox="0 0 <%= width + 50%> <%= length + 50 %>">
-                    
+                    <svg height="500" width="500" viewbox="0 0 <%= width + 150%> <%= length + 60%>">
+
                     <%-- remme --%>
                     <line x1="<%= width * 0.9%>" y1="0" x2="<%= width * 0.9%>" y2="<%= length%>" stroke="black" stroke-width="12" stroke-opacity = "0.5"/>
                     <line x1="<%= width - width * 0.9%>" y1="0" x2="<%= width - width * 0.9%>" y2="<%= length%>" stroke="black" stroke-width="12" stroke-opacity = "0.5"/>
@@ -109,7 +109,7 @@
                         int rafterQuantity = (int) request.getAttribute("rafterQuantity");
                         int startingLength = (length - 10);
 
-                        for (int idx =  0; idx <= rafterQuantity; idx++) {
+                        for (int idx = 0; idx <= rafterQuantity; idx++) {
                     %> <line x1="5" y1="<%= startingLength%>" x2="<%= width - 5%>" y2="<%= startingLength%>" stroke-width="12" stroke="darkgrey"/> <%
                             startingLength -= rafterGap;
                         }
@@ -166,40 +166,12 @@
                     <line x1="<%= width - width * 0.9%>" y1="<%= (length - 10) - rafterGap%>" x2="<%= width * 0.9%>" y2="<%= rafterGap + 10%>" stroke="black" stroke-dasharray="5 5"/>
                     </svg>
 
-                    <%-- Jespers tegning --%>
 
-                    <svg height="<%= length + 50%>" width="<%= width + 50%>">
-
-                    <line x1="0" y1="<%=length%>" x2="<%= width%>" y2="<%=length%>" stroke="black"/> 
-
-                    <line x1="<%= width * 0.3%>" y1="<%=length%>" x2="<%= width * 0.3%>" y2="<%=length * 0.86%>" stroke="black" stroke-width="5"/>
-                    <line x1="<%= width * 0.6%>" y1="<%=length%>" x2="<%= width * 0.6%>" y2="<%=length * 0.85%>" stroke="black"stroke-width="5"/>
-
-                    <line x1="<%= width * 0.25%>" y1="<%=length * 0.86%>" x2="<%= width * 0.66%>" y2="<%=length * 0.85%>" stroke="black" stroke-width="5"/>
-
-                    <%-- meassure for back of carport --%>
-                    <line x1="<%= width * 0.24%>" y1="<%=length%>" x2="<%= width * 0.24%>" y2="<%=length * 0.86%>" stroke="black"/>
-                    <text x="<%= width * 0.17%>" y="<%=length * 0.90%>" fill="black" font-size="10" text-anchor="middle" > 200cm  </text>
-
-                    <%-- meassure for front of carport --%>
-                    <line x1="<%= width * 0.72%>" y1="<%=length%>" x2="<%= width * 0.72%>" y2="<%=length * 0.87%>" stroke="black"/>
-                    <text x="<%= width * 0.67%>" y="<%=length * 0.9%>" fill="black" font-size="10" text-anchor="middle" > 210cm  </text>
-
-                    <line x1="<%= width * 0.75%>" y1="<%=length%>" x2="<%= width * 0.75%>" y2="<%=length * 0.84%>" stroke="black"/>
-                    <text x="<%= width * 0.82%>" y="<%=length * 0.9%>" fill="black" font-size="10" text-anchor="middle" > 225cm  </text>
-
-                    <% if (posts > 4) {%>
-                    <line x1="<%= width * 0.45%>" y1="<%=length%>" x2="<%= width * 0.45%>" y2="<%=length * 0.85%>" stroke="black"stroke-width="5"/>
-                    <%}%>
-
-                    </svg>
-
-                    <%-- Ende af jespers tegning :D --%>
 
 
                     <%-- carport set fra siden Niller --%>
                     <%-- <svg height="20cm" width="20cm" viewbox="-25 0 20cm 20cm"> --%>
-                    <svg height="1000" width="1000" viewbox="0 0 1000 1000">
+                    <svg height="1000" width="1000" viewbox="0 0 1000 1000"> 
 
                     <%-- stolper --%>
                     <%
@@ -262,6 +234,39 @@
                     <line x1="<%= length%>" y1="0" x2="<%= length%>" y2="<%= 15%>" stroke="black" stroke-width="2" stroke-dasharray="5 5"/>
 
                     </svg>
+
+
+                    <%-- Jespers tegning --%>
+
+                    <svg height="<%= length + 50%>" width="<%= width + 50%>"> 
+                    <%--<svg height="600" width="600" viewbox="50 500 <%= width + 50%> <%= length - 100%>">--%>
+
+                    <line x1="0" y1="<%=length%>" x2="<%= width%>" y2="<%=length%>" stroke="black"/> 
+
+                    <line x1="<%= width * 0.3%>" y1="<%=length%>" x2="<%= width * 0.3%>" y2="<%=length * 0.86%>" stroke="black" stroke-width="5"/>
+                    <line x1="<%= width * 0.6%>" y1="<%=length%>" x2="<%= width * 0.6%>" y2="<%=length * 0.85%>" stroke="black"stroke-width="5"/>
+
+                    <line x1="<%= width * 0.25%>" y1="<%=length * 0.86%>" x2="<%= width * 0.66%>" y2="<%=length * 0.85%>" stroke="black" stroke-width="5"/>
+
+                    <%-- meassure for back of carport --%>
+                    <line x1="<%= width * 0.24%>" y1="<%=length%>" x2="<%= width * 0.24%>" y2="<%=length * 0.86%>" stroke="black"/>
+                    <text x="<%= width * 0.17%>" y="<%=length * 0.90%>" fill="black" font-size="10" text-anchor="middle" > 200cm  </text>
+
+                    <%-- meassure for front of carport --%>
+                    <line x1="<%= width * 0.72%>" y1="<%=length%>" x2="<%= width * 0.72%>" y2="<%=length * 0.87%>" stroke="black"/>
+                    <text x="<%= width * 0.67%>" y="<%=length * 0.9%>" fill="black" font-size="10" text-anchor="middle" > 210cm  </text>
+
+                    <line x1="<%= width * 0.75%>" y1="<%=length%>" x2="<%= width * 0.75%>" y2="<%=length * 0.84%>" stroke="black"/>
+                    <text x="<%= width * 0.82%>" y="<%=length * 0.9%>" fill="black" font-size="10" text-anchor="middle" > 225cm  </text>
+
+                    <% if (posts > 4) {%>
+                    <line x1="<%= width * 0.45%>" y1="<%=length%>" x2="<%= width * 0.45%>" y2="<%=length * 0.85%>" stroke="black"stroke-width="5"/>
+                    <%}%>
+
+                    </svg>
+
+                    <%--Ende af jespers tegning :D --%>
+
                 </div>
             </div>
         </div>
