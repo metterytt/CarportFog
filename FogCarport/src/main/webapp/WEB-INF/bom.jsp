@@ -93,7 +93,6 @@
                     <br><h1>Visualization</h1>
                     <br>
 
-                    <div class="row">
 
                         <% int length = (int) request.getAttribute("length");
                             int width = (int) request.getAttribute("width");
@@ -171,7 +170,7 @@
 
                         <%-- carport set fra siden stor tegning/Nillers tegning --%>
 
-                        <svg width="700" height="600" viewbox="0 0 950 800" preserveAspectRatio="xMidyMid meet"> 
+                        <svg width="700" height="600" viewbox="0 0 <%= width * 2%> <%= length %>"> 
 
                         <%-- stolper --%>
                         <%
@@ -241,7 +240,7 @@
                         <%-- Jespers tegning --%> 
 
                         <%-- <svg height="<%= length + 50%>" width="<%= width + 50%>"> --%>
-                        <svg height="600" width="750" viewbox="0 320 1000 1000">
+                        <svg height="600" width="750" viewbox="0 0 <%= width%> <%= length%>">
 
                         <line x1="0" y1="<%=length%>" x2="<%= width%>" y2="<%=length%>" stroke="black"/> 
 
@@ -268,5 +267,6 @@
                         </svg>
                     </div>
                 </div>
-                </body>
-                </html>
+            </div>
+    </body>
+</html>
