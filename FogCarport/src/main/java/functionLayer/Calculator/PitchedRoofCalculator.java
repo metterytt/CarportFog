@@ -236,8 +236,8 @@ public class PitchedRoofCalculator implements CarportCalculator {
         }
     }
 
-    private int calcBracketScrews(int length) { // 20 pr. universalbeslag + 20 pr. toplægteholder ... 50 for buffer
-        int numberOfScrews = ((((length / 60) + 1) * 2)) * 20 + (length / 60 + 1) * 20 + 50;
+    private int calcBracketScrews(int length) { // 9 pr. universalbeslag + 20 pr. toplægteholder ... 50 for buffer
+        int numberOfScrews = ((((length / 60) + 1) * 2)) * 9 + (length / 60 + 1) * 20 + 50;
         return numberOfScrews / 250 + 1;
     }
 
@@ -252,8 +252,8 @@ public class PitchedRoofCalculator implements CarportCalculator {
         return ((metersOfLaths / 60) * 2) / 100 + 1;
     }
 
-    private int calcBolts(int length) {
-        return 2 * (2 * ((length / 300) + 2));
+    private int calcBolts(int length) { // 2 stk. pr. stolpe
+        return 2 * (2 * ((length / 300) + 1));
     }
 
     private int calcSquareBrackets(int length) {

@@ -172,8 +172,8 @@ public class FlatRoofCalculator implements CarportCalculator {
         return 2 * ((2 * length + 2 * width) / 60) + (4 * (2 * length + width) / 60) + 50;
     }
 
-    private int calcBracketScrews(int length) { // 20 pr. universalbeslag ... 50 for buffer
-        return (((length / 60) + 2) * 2) * 20 + 50;
+    private int calcBracketScrews(int length) { // 9 pr. universalbeslag ... 50 for buffer
+        return (((length / 60) + 2) * 2) * 9 + 50;
     }
 
     @Override
