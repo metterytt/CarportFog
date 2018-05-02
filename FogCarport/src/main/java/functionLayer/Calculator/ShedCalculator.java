@@ -52,12 +52,12 @@ public class ShedCalculator implements CarportCalculator {
         bom.addToBOM(smallShedScrews);
 
         LineItem doorKnob = StorageFacade.getProduct(29);
-        doorKnob.setQuantity(1);
+        doorKnob.setQuantity(1); // altid 1
         doorKnob.setUseInContext("Til lås på dør i skur");
         bom.addToBOM(doorKnob);
 
         LineItem tHinge = StorageFacade.getProduct(30);
-        tHinge.setQuantity(2);
+        tHinge.setQuantity(2); // altid 2
         tHinge.setUseInContext("Til skurdør");
         bom.addToBOM(tHinge);
 

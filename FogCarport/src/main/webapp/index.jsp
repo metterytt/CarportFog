@@ -61,7 +61,7 @@
                              <div id="myDIVRoof" style="display:none;">
                              </div>
                             --%>
-
+                            <br>
 
                             <input type="button" class="btn btn-primary" onclick="myFunction()" value="Vis/Gem skur!"/>
 
