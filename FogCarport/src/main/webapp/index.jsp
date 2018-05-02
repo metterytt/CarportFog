@@ -48,9 +48,17 @@
                             <input type="text" class="form-control" name="width" min="1" max="5000" placeholder="bredde...">
 
 
-                            <br> <label for="angle">Hvis tagrejsning ønskes, indtast vinkel på tag:</label>
-                            <input type="text" class="form-control" name="angle" min="10" max="40" placeholder="tagvinkel..." value="0">
+                            <%--   <br> <label for="angle">Hvis tagrejsning ønskes, indtast vinkel på tag:</label>
+                               <input type="text" class="form-control" name="angle" min="10" max="40" placeholder="tagvinkel..." value="0">--%>
 
+                            <br> <label for="angle">Hvis tagrejsning ønskes, indtast vinkel på tag:</label>
+                            <select class="custom-select" name="angle" min="10" max="40" placeholder="tagvinkel..." value="0">
+                                <option value="0">Ingen tagrejsning</option>
+                                <option value="10">10°</option>
+                                <option value="20">20°</option>
+                                <option value="30">30°</option>
+                                <option value="40">40°</option>
+                            </select>
                             <%-- <input type="button" class="btn btn-primary" onclick="myFunctionRoof()" value="Vis/Gem SkråTag"/>
                              <div id="myDIVRoof" style="display:none;">
                              </div>
