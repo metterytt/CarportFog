@@ -54,11 +54,11 @@ public class InputCarport extends Command {
         //calc rafterGap, rafterQuantity for JSP page
         for (LineItem l : carportBom.getListOfProducts()) {
             if (l.getUseInContext().equals("Spær, monteres på rem")||l.getUseInContext().equals("Skal samles")) {
-                int rafterQuantity = l.getQuantity();
+                int rafterQuantity = l.getQuantity() - 1;
                 double rafterGap = (length - 15) / rafterQuantity;
             
                 request.setAttribute("rafterGap", rafterGap);
-                request.setAttribute("rafterQuantity", rafterQuantity);
+                request.setAttribute("rafterQuantity", ++rafterQuantity);
             }
         }
 

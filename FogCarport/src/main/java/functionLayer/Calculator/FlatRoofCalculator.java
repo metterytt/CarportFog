@@ -138,7 +138,7 @@ public class FlatRoofCalculator implements CarportCalculator {
         if (length % 60 == 0) {
             numberOfRafters++;
         } else {
-            numberOfRafters += 2;
+            numberOfRafters +=2;
         }
         return numberOfRafters;
     }
