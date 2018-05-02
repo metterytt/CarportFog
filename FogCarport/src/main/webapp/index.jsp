@@ -21,15 +21,7 @@
                     x.style.display = "none";
                 }
             }
-            <%--
-            function myFunctionRoof() {
-                var x = document.getElementById("myDIVRoof");
-                if (x.style.display === "none") {
-                    x.style.display = "block";
-                } else {
-                    x.style.display = "none";
-                }
-            }--%>
+          
         </script>
 
     </head>
