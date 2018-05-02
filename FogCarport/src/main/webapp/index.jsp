@@ -42,39 +42,50 @@
                     <div class="form-group">
                         <form name="login" action="FrontController" method="post">
                             <input type="hidden" name="command" value="inputcarport">
-                            <br> <label for="length">Længde i CM:</label>
-                            <input type="text" class="form-control" name="length" min="1" max="5000" placeholder="længde...">
-                            <br> <label for="width">Bredde i CM:</label>
-                            <input type="text" class="form-control" name="width" min="1" max="5000" placeholder="bredde...">
-                            
-                            <label for="length">Length:</label><br>
+                           
+                            <label for="length">Længde i CM :</label><br>
                             <select class="custom-select" name="length">
-                            <option>   </option>
-                                
+                                <% 
+                                    int length = 270;
+                                    for (int idx = 1; idx <= 18; idx++) {
+                                     %> <option> <%=length %> </option> 
+                                    <% length += 30;}%>
                             </select>
                             
+                            <label for="length">Bredde i CM:</label><br>
+                            <select class="custom-select" name="width">
+                                <% 
+                                    int width = 270;
+                                    for (int idx = 1; idx <= 17; idx++) {
+                                     %> <option> <%=width %> </option> 
+                                    <% width += 30;}%>
+                            </select>
                             
+
                             <br> <label for="angle">Hvis tagrejsning ønskes, indtast vinkel på tag:</label>
-                            <input type="text" class="form-control" name="angle" min="10" max="40" placeholder="tagvinkel..." value="0">
+                            <select class="custom-select" name="angle" min="10" max="40" placeholder="tagvinkel..." value="0">
+                                <option value="0">Ingen tagrejsning</option>
+                                <option value="10">10°</option>
+                                <option value="20">20°</option>
+                                <option value="30">30°</option>
+                                <option value="40">40°</option>
+                            </select>
+
                             
-                           <%-- <input type="button" class="btn btn-primary" onclick="myFunctionRoof()" value="Vis/Gem SkråTag"/>
-                            <div id="myDIVRoof" style="display:none;">
-                               --%>
-                            </div>
-                            
-                            
+
+
                             <input type="button" class="btn btn-primary" onclick="myFunction()" value="Vis/Gem skur!"/>
-                            
+
                             <div id="myDIV" style="display:none;">
                                 <br> <label for="shedlength">Skur længde i CM:</label>
-                                <input type="text" class="form-control" name="shedlength" min="1" max="5000" value="0">
+                                <input type="number" class="form-control" name="shedlength" min="1" max="5000" value="0">
                                 <br> <label for="shedwidth">Skur bredde i CM:</label>
-                                <input type="text" class="form-control" name="shedwidth" min="1" max="5000" value="0">
+                                <input type="number" class="form-control" name="shedwidth" min="1" max="5000" value="0">
                             </div>
-                            
+
                             <input type="submit" class="btn btn-primary" value="Beregn carport">
                         </form>
-                        
+
                     </div>
 
                     <% String error = (String) request.getAttribute("error"); // Jesper har kommentar til dette
