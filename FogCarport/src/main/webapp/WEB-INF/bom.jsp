@@ -171,10 +171,12 @@
                     <line x1="<%= width - width * 0.9%>" y1="<%= rafterGap + 10%>" x2="<%= width * 0.9%>" y2="<%= (length - 10) - rafterGap%>" stroke="black" stroke-dasharray="5 5"/>
                     <line x1="<%= width - width * 0.9%>" y1="<%= (length - 10) - rafterGap%>" x2="<%= width * 0.9%>" y2="<%= rafterGap + 10%>" stroke="black" stroke-dasharray="5 5"/>
                     </svg>
+                    
+                    
                     <%-- carport set fra siden stor tegning --%>
 
                     <%-- <svg height="20cm" width="20cm" viewbox="-25 0 20cm 20cm"> --%>
-                    <svg height="1000" width="1000" viewbox="0 0 1000 1000"> 
+                    <svg width="700" height="700" viewbox="0 0 1000 1000" preserveAspectRatio="xMidyMid meet"> 
 
                     <%-- stolper --%>
                     <%
@@ -241,8 +243,9 @@
 
                     <%-- Jespers tegning --%>
 
-                    <svg height="<%= length + 50%>" width="<%= width + 50%>"> 
-                    <%--<svg height="600" width="600" viewbox="50 500 <%= width + 50%> <%= length - 100%>">--%>
+                    <%-- <svg height="<%= length + 50%>" width="<%= width + 50%>"> --%>
+                    <%-- <svg height="500" width="500" viewbox="20 100 <%= width + 50%> <%= length - 100%>"> --%>
+                    <svg width="1000" height="1000" viewbox="0 600 1000 1000">
 
                     <line x1="0" y1="<%=length%>" x2="<%= width%>" y2="<%=length%>" stroke="black"/> 
 
