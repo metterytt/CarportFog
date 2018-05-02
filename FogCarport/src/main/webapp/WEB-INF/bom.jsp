@@ -169,18 +169,6 @@
                         <line x1="<%= width - width * 0.9%>" y1="<%= (length - 10) - rafterGap%>" x2="<%= width * 0.9%>" y2="<%= rafterGap + 10%>" stroke="black" stroke-dasharray="5 5"/>
                         </svg>
 
-
-
-
-
-
-
-
-
-
-
-
-
                         <%-- carport set fra siden stor tegning/Nillers tegning --%>
 
                         <svg width="700" height="600" viewbox="0 0 950 800" preserveAspectRatio="xMidyMid meet"> 
@@ -249,15 +237,6 @@
                         <line x1="<%= length%>" y1="0" x2="<%= length%>" y2="<%= 15%>" stroke="black" stroke-width="2" stroke-dasharray="5 5"/>
 
                         </svg>
-
-
-
-
-
-
-
-
-
 
                         <%-- Jespers tegning --%> 
 
