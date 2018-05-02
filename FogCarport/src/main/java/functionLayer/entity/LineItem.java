@@ -6,20 +6,25 @@ public class LineItem {
     private String name;
     private String description;
     private String uom;
+    private String uomForDisplay;
     private int price;
     private String extraInfo;
     private int quantity;
     private String useInContext;
+    private int qtyForDisplay;
+    private int length;
 
     public LineItem(int productID, String name, String uom, int price) {
         this.productID = productID;
         this.name = name;
         this.uom = uom;
         this.price = price;
+        uomForDisplay = uom;
     }
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+        qtyForDisplay = quantity;
     }
 
     public int getProductID() {
@@ -54,6 +59,14 @@ public class LineItem {
         this.productID = productID;
     }
 
+    public String getUomForDisplay() {
+        return uomForDisplay;
+    }
+
+    public int getQtyForDisplay() {
+        return qtyForDisplay;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -80,6 +93,22 @@ public class LineItem {
 
     public void setUseInContext(String useInContext) {
         this.useInContext = useInContext;
+    }
+
+    public void setUomForDisplay(String uomForDisplay) {
+        this.uomForDisplay = uomForDisplay;
+    }
+
+    public void setQtyForDisplay(int qtyForDisplay) {
+        this.qtyForDisplay = qtyForDisplay;
+    }
+
+    public int getLength() {
+        return length;
+    }
+
+    public void setLength(int length) {
+        this.length = length;
     }
 
 }

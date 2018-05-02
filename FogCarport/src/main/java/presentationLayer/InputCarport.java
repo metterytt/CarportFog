@@ -50,7 +50,6 @@ public class InputCarport extends Command {
             BOM shedBom = shedCalculator.getBom();
             session.setAttribute("shedbom", shedBom);
         }
-
         
         //calc rafterGap, rafterQuantity for JSP page
         for (LineItem l : carportBom.getListOfProducts()) {
