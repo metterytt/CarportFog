@@ -66,10 +66,26 @@
                             <input type="button" class="btn btn-primary" onclick="myFunction()" value="Vis/Gem skur!"/>
 
                             <div id="myDIV" style="display:none;">
-                                <br> <label for="shedlength">Skur længde i CM:</label>
-                                <input type="text" class="form-control" name="shedlength" min="1" max="5000" value="0">
-                                <br> <label for="shedwidth">Skur bredde i CM:</label>
-                                <input type="text" class="form-control" name="shedwidth" min="1" max="5000" value="0">
+                            <label for="shedlength">Længde i CM :</label><br>
+                            <select class="custom-select" name="shedlength">
+                                <% 
+                                    int shedlength = 210;
+                                    for (int idx = 1; idx <= 18; idx++) {
+                                     %> <option> <%=shedlength %> </option> 
+                                    <% shedlength += 30;}%>
+                            </select>
+                            
+                            <label for="shedwidth">Bredde i CM:</label><br>
+                            <select class="custom-select" name="shedwidth">
+                                <% 
+                                    int shedwidth = 150;
+                                    for (int idx = 1; idx <= 19; idx++) {
+                                     %> <option> <%=shedwidth %> </option> 
+                                    <% shedwidth += 30;}%>
+                            </select>
+                            
+                            
+                            
                             </div>
 
                             <input type="submit" class="btn btn-primary" value="Beregn carport">
