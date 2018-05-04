@@ -92,18 +92,17 @@
 
                 <div class="col-md-6">
                     <br><h1>Visualization</h1>
-                    <br>
-
 
                     <% int length = (int) request.getAttribute("length");
                         int width = (int) request.getAttribute("width");
                         int height = 210;
-                        int shedLength = Integer.parseInt(request.getParameter("shedlength"));
-                        int shedWidth = Integer.parseInt(request.getParameter("shedwidth"));
-                        int shedAngle = Integer.parseInt(request.getParameter("shedangle"));
+                        int shedLength = (int) request.getAttribute("shedlength");
+                        int shedWidth = (int) request.getAttribute(("shedwidth"));
+                        int shedAngle = (int) request.getAttribute(("shedangle"));
                     %>
 
-                    <h1> <%= shedLength %> </h1>
+                    <h1> Its: <%= shedLength %> </h1>
+                    
                     <%-- carport set oppefra --%>
                     <svg height="500" width="500" viewbox="0 0 <%= width + 150%> <%= length + 60%>">
 

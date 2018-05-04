@@ -29,7 +29,6 @@ public class InputCarport extends Command {
         
         int length = Integer.parseInt(request.getParameter("length"));
         int width = Integer.parseInt(request.getParameter("width"));
-        
         int shedLength = Integer.parseInt(request.getParameter("shedlength"));
         int shedWidth = Integer.parseInt(request.getParameter("shedwidth"));
         int shedAngle = Integer.parseInt(request.getParameter("angle"));
@@ -38,13 +37,8 @@ public class InputCarport extends Command {
         StorageFacade.addCustCalc(length, width, shedAngle, shedLength, shedWidth);
         
         
-        request.setAttribute("length", length);
-        request.setAttribute("width", width);
-        request.setAttribute("shedlength", shedLength);
-        request.setAttribute("shedwidth", shedWidth);  
-        request.setAttribute("shedangle", shedAngle);  
-        
         CarportCalculator carportCalculator;
+        
         if (shedAngle == 0) {
             carportCalculator = new FlatRoofCalculator(length, width);
         }
@@ -70,6 +64,12 @@ public class InputCarport extends Command {
                 request.setAttribute("rafterQuantity", ++rafterQuantity);
             }
         }
+        
+        request.setAttribute("length", length);
+        request.setAttribute("width", width);
+        request.setAttribute("shedlength", shedLength);
+        request.setAttribute("shedwidth", shedWidth);  
+        request.setAttribute("shedangle", shedAngle); 
 
         return "bom";
     }
