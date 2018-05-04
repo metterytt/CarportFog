@@ -67,10 +67,11 @@ public class InputCarport extends Command {
             }
         }
         
-        if(shedLength == 0 || shedWidth == 0){
+        if((shedLength == 0 && shedWidth != 0) || (shedLength != 0 && shedWidth == 0)){
             request.setAttribute("error", "Der skal vælges nummer for Højde og Bredde såfremt du ønsker et skur!");
             return "index";
-        }else{
+        }
+            else{
             request.setAttribute("shedlength", shedLength);
             request.setAttribute("shedwidth", shedWidth); 
             request.setAttribute("shedPos", shedPos);

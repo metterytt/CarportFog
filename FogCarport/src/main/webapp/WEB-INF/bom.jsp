@@ -193,7 +193,7 @@
 
                     <rect x="<%= (width - width * 0.9) + shedWidth - 15%>" y="<%= length - length * 0.95%>" height="15" width="15" stroke="red" stroke-width="3" fill="none"/>
 
-                    <%} else {%>
+                    <%} else if(shedLength != 0 && shedWidth != 0){%>
 
                       <%-- Skur HØJRE --%>
                     <line x1= "<%= width * 0.9%>" y1="<%= length - length * 0.95%>" x2="<%= width * 0.9 - shedWidth%>" y2="<%= length - length * 0.95%>" stroke-width="4" stroke="red"/>
