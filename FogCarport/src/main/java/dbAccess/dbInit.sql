@@ -24,4 +24,9 @@ INSERT INTO `carport`.`products` (`name`, `uom`, `price`) VALUES ('Toplægtehold
 INSERT INTO `carport`.`products` (`name`, `uom`, `price`) VALUES ('Rygstenbeslag B&C', 'stk.', '995');
 INSERT INTO `carport`.`products` (`name`, `uom`, `price`) VALUES ('Bindere B&C, 250 stk.', 'pakke', '49995');
 INSERT INTO `carport`.`products` (`name`, `uom`, `price`) VALUES ('Skruer, 5,0x100mm, 100 stk.', 'pakke', '18900');
+INSERT INTO `carport`.`products` (`name`, `uom`, `price`) VALUES ('Skruer, 4,5x70mm, 400 stk.', 'pakke', '19900');
+INSERT INTO `carport`.`products` (`name`, `uom`, `price`) VALUES ('Skruer, 4,5x50mm, 300 stk.', 'pakke', '16900');
+INSERT INTO `carport`.`products` (`name`, `uom`, `price`) VALUES ('Stalddørsgreb 50x75', 'sæt', '21900');
+INSERT INTO `carport`.`products` (`name`, `uom`, `price`) VALUES ('T-hængsel 390mm', 'stk.', '10900');
+INSERT INTO `carport`.`products` (`name`, `uom`, `price`) VALUES ('Vinkelbeslag 35', 'stk.', '595');
 
