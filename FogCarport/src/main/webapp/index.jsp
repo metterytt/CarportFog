@@ -21,7 +21,7 @@
                     x.style.display = "none";
                 }
             }
-          
+
         </script>
 
     </head>
@@ -34,25 +34,27 @@
                     <div class="form-group">
                         <form name="login" action="FrontController" method="post">
                             <input type="hidden" name="command" value="inputcarport">
-                           
+
                             <label for="length">Længde i CM :</label><br>
                             <select class="custom-select" name="length">
-                                <% 
+                                <%
                                     int length = 270;
                                     for (int idx = 1; idx <= 18; idx++) {
-                                     %> <option> <%=length %> </option> 
-                                    <% length += 30;}%>
+                                %> <option> <%=length%> </option> 
+                                <% length += 30;
+                                        }%>
                             </select>
-                            
+
                             <label for="length">Bredde i CM:</label><br>
                             <select class="custom-select" name="width">
-                                <% 
+                                <%
                                     int width = 270;
                                     for (int idx = 1; idx <= 17; idx++) {
-                                     %> <option> <%=width %> </option> 
-                                    <% width += 30;}%>
+                                %> <option> <%=width%> </option> 
+                                <% width += 30;
+                                        }%>
                             </select>
-                        
+
                             <br> <label for="angle">Hvis tagrejsning ønskes, indtast vinkel på tag:</label>
                             <select class="custom-select" name="angle" min="10" max="40" placeholder="tagvinkel..." value="0">
                                 <option value="0">Ingen tagrejsning</option>
@@ -62,30 +64,29 @@
                                 <option value="40">40°</option>
                             </select>
 
-
+                            <br/>
                             <input type="button" class="btn btn-primary" onclick="myFunction()" value="Vis/Gem skur!"/>
 
                             <div id="myDIV" style="display:none;">
-                            <label for="shedlength">Længde i CM :</label><br>
-                            <select class="custom-select" name="shedlength">
-                                <% 
-                                    int shedlength = 210;
-                                    for (int idx = 1; idx <= 18; idx++) {
-                                     %> <option> <%=shedlength %> </option> 
-                                    <% shedlength += 30;}%>
-                            </select>
-                            
-                            <label for="shedwidth">Bredde i CM:</label><br>
-                            <select class="custom-select" name="shedwidth">
-                                <% 
-                                    int shedwidth = 150;
-                                    for (int idx = 1; idx <= 19; idx++) {
-                                     %> <option> <%=shedwidth %> </option> 
-                                    <% shedwidth += 30;}%>
-                            </select>
-                            
-                            
-                            
+                                <label for="shedlength">Længde i CM :</label><br>
+                                <select class="custom-select" name="shedlength">
+                                    <%
+                                        int shedlength = 210;
+                                        for (int idx = 1; idx <= 18; idx++) {
+                                    %> <option> <%=shedlength%> </option> 
+                                    <% shedlength += 30;
+                                        }%>
+                                </select>
+
+                                <label for="shedwidth">Bredde i CM:</label><br>
+                                <select class="custom-select" name="shedwidth">
+                                    <%
+                                        int shedwidth = 150;
+                                        for (int idx = 1; idx <= 19; idx++) {
+                                    %> <option> <%=shedwidth%> </option> 
+                                    <% shedwidth += 30;
+                                        }%>
+                                </select>
                             </div>
 
                             <input type="submit" class="btn btn-primary" value="Beregn carport">

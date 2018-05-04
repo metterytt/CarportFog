@@ -11,6 +11,7 @@ import functionLayer.BOM;
 import functionLayer.Calculator.PitchedRoofCalculator;
 import functionLayer.Calculator.ShedCalculator;
 import functionLayer.CarportException;
+import functionLayer.StorageFacade;
 import functionLayer.entity.LineItem;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -25,13 +26,17 @@ public class InputCarport extends Command {
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws CarportException {
         HttpSession session = request.getSession();
-
+        
         int length = Integer.parseInt(request.getParameter("length"));
         int width = Integer.parseInt(request.getParameter("width"));
+        int angle = Integer.parseInt(request.getParameter("angle"));
         int shedLength = Integer.parseInt(request.getParameter("shedlength"));
         int shedWidth = Integer.parseInt(request.getParameter("shedwidth"));
-        int angle = Integer.parseInt(request.getParameter("angle"));
-
+        
+        
+        StorageFacade.addCustCalc(length, width, angle, shedLength, shedWidth);
+        
+        
         request.setAttribute("length", length);
         request.setAttribute("width", width);
 
