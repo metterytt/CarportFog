@@ -509,9 +509,22 @@
                         double fasciaBoards = ((width / 2) / Math.cos(calcAngle));
                     %>
                     <rect x="<%= width / 2 + 20%>" y="<%= -height * 0.5%>" width="10" height="<%= fasciaBoards + 15%>" fill="snow" stroke="black" stroke-width="1"
-                    transform="translate(0) rotate(68 130 -84)"/>
+                          transform="translate(0) rotate(68 131 -84)"/>
                     <rect x="<%= width / 2 + 20%>" y="<%= -height * 0.5%>" width="10" height="<%= fasciaBoards + 15%>" fill="snow" stroke="black" stroke-width="1"
-                    transform="translate(0) rotate(-68 190 -84)"/>
+                          transform="translate(0) rotate(-68 189 -84)"/>
+
+                    <%-- streg for højde med tag --%>
+                    <line x1="<%= width + 50%>" y1="<%= -20 - gableHeight%>" x2="<%= width + 50%>" y2="<%= height%>" stroke="black" />
+                    <text x="<%=width + 60%>" y="<%=height / 2%>" fill="black" text-anchor="middle" writing-mode="tb">Højde med tag: <%=height + (int) gableHeight%> </text>
+
+                    <%-- streg for højde uden tag --%>
+                    <line x1="<%= width + 80%>" y1="-15" x2="<%= width + 80%>" y2="<%= height%>" stroke="black" />
+                    <text x="<%=width + 90%>" y="<%=height / 2%>" fill="black" text-anchor="middle" writing-mode="tb">Højde uden tag: <%=height + (int) gableHeight%> </text>
+
+
+                    <%-- streg langs jorden --%>
+                    <line x1="0" y1="<%= height%>" x2="<%= width + 150%>" y2="<%= height%>" stroke="black"/>
+
 
 
                     </svg>
