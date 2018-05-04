@@ -186,18 +186,8 @@
                     <rect x="<%= (width / 2) - (shedWidth / 2)%>" y="<%= shedLength - 15%>" height="15" width="15" stroke="black" stroke-width="3" fill="none"/>
                     <rect x="<%= (width / 2) + (shedWidth / 2) -15%>" y="<%= shedLength - 15%>" height="15" width="15" stroke="black" stroke-width="3" fill="none"/>
 
-
                     </svg>
-
-
-
-
-
-
-
-
-
-
+                    
                     <%-- carport set fra siden stor tegning/Nillers tegning --%>
 
                     <svg width="700" height="600" viewbox="0 0 <%= width * 2%> <%= length%>"> 
