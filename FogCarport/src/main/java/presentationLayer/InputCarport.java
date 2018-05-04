@@ -29,21 +29,22 @@ public class InputCarport extends Command {
         
         int length = Integer.parseInt(request.getParameter("length"));
         int width = Integer.parseInt(request.getParameter("width"));
+        int angle = Integer.parseInt(request.getParameter("angle"));
         int shedLength = Integer.parseInt(request.getParameter("shedlength"));
         int shedWidth = Integer.parseInt(request.getParameter("shedwidth"));
-        int shedAngle = Integer.parseInt(request.getParameter("angle"));
         
         
-        StorageFacade.addCustCalc(length, width, shedAngle, shedLength, shedWidth);
+        
+        StorageFacade.addCustCalc(length, width, angle, shedLength, shedWidth);
         
         
         CarportCalculator carportCalculator;
         
-        if (shedAngle == 0) {
+        if (angle == 0) {
             carportCalculator = new FlatRoofCalculator(length, width);
         }
         else {
-            carportCalculator = new PitchedRoofCalculator(length, width, shedAngle);
+            carportCalculator = new PitchedRoofCalculator(length, width, angle);
         }
         BOM carportBom = carportCalculator.getBom();
         session.setAttribute("carportbom", carportBom);
@@ -67,9 +68,10 @@ public class InputCarport extends Command {
         
         request.setAttribute("length", length);
         request.setAttribute("width", width);
+        request.setAttribute("angle", angle); 
         request.setAttribute("shedlength", shedLength);
         request.setAttribute("shedwidth", shedWidth);  
-        request.setAttribute("shedangle", shedAngle); 
+        
 
         return "bom";
     }

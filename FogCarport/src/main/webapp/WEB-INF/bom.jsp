@@ -96,9 +96,10 @@
                     <% int length = (int) request.getAttribute("length");
                         int width = (int) request.getAttribute("width");
                         int height = 210;
+                        int angle = (int) request.getAttribute(("angle"));
                         int shedLength = (int) request.getAttribute("shedlength");
                         int shedWidth = (int) request.getAttribute(("shedwidth"));
-                        int shedAngle = (int) request.getAttribute(("shedangle"));
+                        
                     %>
 
                     <h1> Its: <%= shedLength %> </h1>
