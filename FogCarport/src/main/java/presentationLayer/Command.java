@@ -16,7 +16,8 @@ abstract class Command {
 
     private static void initCommands() {
         commands = new HashMap<>();
-//        commands.put("login", new Login());
+        commands.put("login", new Login());
+        commands.put("navbar", new Navbar());
 //        commands.put("register", new Register());
         commands.put("inputcarport", new InputCarport());
 //        commands.put("showordersuser", new ShowOrdersUser());

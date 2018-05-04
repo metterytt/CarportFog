@@ -1,0 +1,9 @@
+<%-- Second hidden input value determines which jsp file, the navbar will send the user to --%>
+<%@ page pageEncoding="UTF-8" %>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <form class="form-inline my-2 my-lg-0" action="FrontController" method="post">
+        <input type="hidden" name="command" value="navbar">
+        <input type="hidden" name="login" value="login">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Login</button>
+    </form>
+</nav>

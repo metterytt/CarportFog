@@ -26,6 +26,7 @@
 
     </head>
     <body>
+        <%@include file="Include/Navbar.jspf" %>
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-6">
