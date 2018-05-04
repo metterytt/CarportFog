@@ -91,8 +91,8 @@
                             </select>
                             
                             <p> Højre eller venstre siddende skur? </p>
-                            <INPUT TYPE="radio" NAME="shedPos" VALUE="right">Højre
-                           <INPUT TYPE="radio" NAME="shedPos" VALUE="left">Venstre
+                            <input type="radio" name="shedPos" value="right">Højre
+                           <input type="radio" name="shedPos" value="left">Venstre
 
                             </div>
 
@@ -111,11 +111,7 @@
                     
                     <form name="login" action="FrontController" method="post">
                             <input type="hidden" name="command" value="employee">
-
-                            
-
                             <br/>
-
                             <input type="submit" class="btn btn-primary" value="Gå til medarbejderside">
                         </form>
                     

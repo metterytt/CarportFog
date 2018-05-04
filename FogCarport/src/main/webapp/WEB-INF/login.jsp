@@ -19,12 +19,15 @@
                 <div class="col-md-12">
                     <h1 class="display-4">Login</h1>
                     <br>
-                    <form action="Login" method="post">
+                    <form action="FrontController" method="post">
                         <input type="hidden" name="command" value="login">
-                        ${message}
+                        <% String error = (String) request.getAttribute("error");
+                            if (error != null) {%>
+                        <p> <%=error%>
+                            <%}%> </p>
                         <div class="form-group">
                             <label for="username">Username:</label>
-                            <input type="text" class="form-control" id="username" name="username" placeholder="Enter username">
+                            <input type="email" class="form-control" id="username" name="username" placeholder="Enter Username/E-mail">
                         </div>
                         <div class="form-group">
                             <label for="password">Password:</label>

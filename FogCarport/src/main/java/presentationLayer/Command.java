@@ -21,6 +21,8 @@ abstract class Command {
         commands.put("navbar", new Navbar());
         commands.put("inputcarport", new InputCarport());
         commands.put("sendrequest", new SendRequest());
+        commands.put("registeremployee", new RegisterEmployee());
+
     }
 
     static Command from(HttpServletRequest request) {

@@ -32,7 +32,8 @@ public class Mapper {
             LineItem product = new LineItem(productID, name, uom, price);
             return product;
 
-        } catch (SQLException e) {
+        }
+        catch (SQLException e) {
             throw new CarportException("Error fetching product.", "index");
         }
     }
@@ -51,24 +52,33 @@ public class Mapper {
             ps.setInt(4, shedLength);
             ps.setInt(5, shedWidth);
             ps.execute();
-        } catch (SQLException ex) {
+        }
+        catch (SQLException ex) {
             throw new CarportException("Error adding calculation", "index");
         }
     }
-        public static Employee login(String username, String password) throws CarportException {
+
+    public static Employee login(String username, String password) throws CarportException {
         try {
             dbc.setDataSource(new DataSourceFog().getDataSource());
             dbc.open();
             Connection con = dbc.getConnector();
-            String sql = "select * from employee where username=? and password=?";
+            String sql = "select * from employees where username=? and password=?";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, username);
             ps.setString(2, password);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                String role = rs.getString("role");
+                return new Employee(username, password, role);
+            }
+            else {
+                throw new CarportException("No user found.. Invalid input", "login");
+            }
         }
         catch (SQLException ex) {
-            throw new CarportException("something went wrong trying to login", "index");
+            throw new CarportException("something went wrong trying to login", "login");
         }
-            return null;
     }
 
     public static ArrayList<CustomerCalculation> getCustCalcs() throws CarportException {
@@ -90,7 +100,8 @@ public class Mapper {
                 custCalcs.add(custCalc);
             }
 
-        } catch (SQLException ex) {
+        }
+        catch (SQLException ex) {
             throw new CarportException("Error fetching calculations", "employee");
         }
         return custCalcs;
