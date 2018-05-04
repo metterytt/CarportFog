@@ -99,11 +99,11 @@
                         int angle = (int) request.getAttribute(("angle"));
                         int shedLength = (int) request.getAttribute("shedlength");
                         int shedWidth = (int) request.getAttribute(("shedwidth"));
-                        
+
                     %>
 
-                    <h1> Its: <%= shedLength %> </h1>
-                    
+                    <h1> Its: <%= shedLength%> </h1>
+
 
                     <%-- carport set oppefra --%>
                     <svg height="500" width="500" viewbox="0 0 <%= width + 150%> <%= length + 60%>">
@@ -211,6 +211,8 @@
 
                     <%-- carport set fra siden stor tegning/Nillers tegning --%>
 
+                    <% if (angle == 0) {%>
+
                     <svg width="600" height="500" viewbox="-10 -80 <%= width * 2.5%> <%= length%>"> 
 
                     <%-- stolper --%>
@@ -279,6 +281,7 @@
 
                     </svg>
 
+                    <% } %>
 
 
 
@@ -299,8 +302,7 @@
 
 
 
-
-
+                    <% if (angle > 0) {%>
                     <%-- carport med rejsning set fra siden stor tegning/Nillers tegning --%>
 
                     <svg width="600" height="500" viewbox="-10 -80 <%= width * 2.5%> <%= length%>"> 
@@ -458,6 +460,31 @@
 
 
                     </svg>
+
+
+                    <%-- carport set forfra med rejsning --%>
+                    <svg width="600" height="500" viewbox="-10 -80 <%= width * 2.5%> <%= length%>"> 
+
+                    <%-- stolper --%>
+                    <rect x="20" y="<%=height - height%>" width="10" height="<%= height%>" fill="snow" stroke="black" stroke-width="1"/>
+                    <rect x="<%= width + 20%>" y="<%=height - height%>" width="10" height="<%= height%>" fill="snow" stroke="black" stroke-width="1"/>
+
+
+                    <%-- over- og understern --%>
+                    <rect x="15" y="-10" width="<%= width + 20%>" height="10" fill="snow" stroke="black"/>
+                    
+
+                    <%-- gavl --%>
+                    <%
+                        double calcAngle = Math.toRadians(angle);
+                        double gableHeight = (width / 2) * Math.tan(calcAngle);
+                    %>
+                    
+                    
+                    </svg>
+
+                    <% }%>
+
                 </div>
             </div>
         </div>
