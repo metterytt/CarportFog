@@ -1,6 +1,7 @@
 package dbAccess;
 
 import functionLayer.CarportException;
+import functionLayer.entity.Employee;
 import functionLayer.entity.LineItem;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -53,6 +54,21 @@ public class Mapper {
         } catch (SQLException ex) {
             throw new CarportException("Error adding calculation", "index");
         }
+    }
+        public static Employee login(String username, String password) throws CarportException {
+        try {
+            dbc.setDataSource(new DataSourceFog().getDataSource());
+            dbc.open();
+            Connection con = dbc.getConnector();
+            String sql = "select * from employee where username=? and password=?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, username);
+            ps.setString(2, password);
+        }
+        catch (SQLException ex) {
+            throw new CarportException("something went wrong trying to login", "index");
+        }
+            return null;
     }
 
 }
