@@ -68,7 +68,6 @@
                             <input type="button" class="btn btn-primary" onclick="myFunction()" value="Vis/Gem skur!"/>
 
                             <div id="myDIV" style="display:none;">
-<<<<<<< HEAD
                             <label for="shedlength">Længde i CM :</label><br>
                             <select class="custom-select" name="shedlength">
                              <option> 0 </option>
@@ -92,27 +91,7 @@
                             
                             
                             
-=======
-                                <label for="shedlength">Længde i CM :</label><br>
-                                <select class="custom-select" name="shedlength">
-                                    <%
-                                        int shedlength = 210;
-                                        for (int idx = 1; idx <= 18; idx++) {
-                                    %> <option> <%=shedlength%> </option> 
-                                    <% shedlength += 30;
-                                        }%>
-                                </select>
 
-                                <label for="shedwidth">Bredde i CM:</label><br>
-                                <select class="custom-select" name="shedwidth">
-                                    <%
-                                        int shedwidth = 150;
-                                        for (int idx = 1; idx <= 19; idx++) {
-                                    %> <option> <%=shedwidth%> </option> 
-                                    <% shedwidth += 30;
-                                        }%>
-                                </select>
->>>>>>> 1f945bda067d0ca2c878bcc083076b291359fbcf
                             </div>
 
                             <input type="submit" class="btn btn-primary" value="Beregn carport">
