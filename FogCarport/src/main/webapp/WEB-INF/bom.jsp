@@ -97,13 +97,10 @@
                     <% int length = (int) request.getAttribute("length");
                         int width = (int) request.getAttribute("width");
                         int height = 210;
+
+                        int shedLength = Integer.parseInt(request.getParameter("shedlength"));
+                        int shedWidth = Integer.parseInt(request.getParameter("shedwidth"));
                     %>
-
-
-
-
-
-
 
 
                     <%-- carport set oppefra --%>
@@ -173,6 +170,23 @@
                     <%-- hulbånd --%>
                     <line x1="<%= width - width * 0.9%>" y1="<%= rafterGap + 10%>" x2="<%= width * 0.9%>" y2="<%= (length - 10) - rafterGap%>" stroke="black" stroke-dasharray="5 5"/>
                     <line x1="<%= width - width * 0.9%>" y1="<%= (length - 10) - rafterGap%>" x2="<%= width * 0.9%>" y2="<%= rafterGap + 10%>" stroke="black" stroke-dasharray="5 5"/>
+
+                    <%-- Skur --%>
+
+
+                    <line x1= "<%= (width / 2) - (shedWidth / 2)%>" y1="<%= length - length * 0.95%>" x2="<%= (width / 2) + (shedWidth / 2)%>" y2="<%= length - length * 0.95%>" stroke-width="4" stroke="black"/>
+
+                    <line x1= "<%= (width / 2) - (shedWidth / 2)%>" y1="<%= length - length * 0.95%>" x2="<%= (width / 2) - (shedWidth / 2)%>" y2="<%= shedLength%>" stroke-width="4" stroke="black"/>
+                    <line x1= "<%= (width / 2) - (shedWidth / 2)%>" y1="<%= shedLength%>" x2="<%= (width / 2) + (shedWidth / 2)%>" y2="<%= shedLength%>" stroke-width="4" stroke="black"/>
+                    <line x1= "<%= (width / 2) + (shedWidth / 2)%>" y1="<%= length - length * 0.95%>" x2="<%= (width / 2) + (shedWidth / 2)%>" y2="<%= shedLength%>" stroke-width="4" stroke="black"/>
+
+                    <%-- Skur Stolper i hjørner, ikke inkl dør. --%>
+
+                    <rect x="<%= (width / 2) - 10%>" y="<%= length - length * 0.95%>" height="15" width="15" stroke="black" stroke-width="3" fill="none"/>
+                    <rect x="<%= (width / 2) - 10%>" y="<%= shedLength - 15%>" height="15" width="15" stroke="black" stroke-width="3" fill="none"/>
+                    <rect x="<%= (width / 2) - (shedWidth / 2)%>" y="<%= shedLength - 15%>" height="15" width="15" stroke="black" stroke-width="3" fill="none"/>
+                    <rect x="<%= (width / 2) + (shedWidth / 2) - 15%>" y="<%= shedLength - 15%>" height="15" width="15" stroke="black" stroke-width="3" fill="none"/>
+
                     </svg>
 
 
@@ -257,6 +271,7 @@
                     <line x1="20" y1="0" x2="<%= length%>" y2="0" stroke="black" stroke-width="2" stroke-dasharray="5 5"/>
                     <line x1="<%= length%>" y1="0" x2="<%= length%>" y2="<%= 15%>" stroke="black" stroke-width="2" stroke-dasharray="5 5"/>
 
+
                     </svg>
 
 
@@ -326,7 +341,7 @@
                     <rect x="20" y="12" width="<%=length - 20%>" height="10" fill="snow" stroke="black" stroke-width="1" 
                           transform="translate(0) rotate(1 100 50)"/>
                     <% }
-                        if (length >= 600) {%>
+                        if (length >= 60) {%>
                     <rect x="20" y="12" width="<%=length - 20%>" height="10" fill="snow" stroke="black" stroke-width="1" 
                           transform="translate(0) rotate(0.5 250 50)"/>
                     <% }
@@ -415,8 +430,8 @@
                     <% }
                         }%>
 
-                        <%--
-                    <defs>
+                    <%--
+                <defs>
 
                     <pattern id="pattern"
                              width="15" height="10"
@@ -434,6 +449,49 @@
                           stroke-width="2px" 
                           transform="translate(0) rotate(1.1 80 45)"/>/>
                     --%>
+
+
+
+                    </svg>
+
+
+
+
+
+
+
+
+
+
+
+
+                    <%-- Jespers tegning --%> 
+
+                    <%-- <svg height="<%= length + 50%>" width="<%= width + 50%>"> --%>
+                    <svg height="600" width="750" viewbox="0 0 <%= width%> <%= length%>">
+
+                    <line x1="0" y1="<%=length%>" x2="<%= width%>" y2="<%=length%>" stroke="black"/> 
+
+                    <line x1="<%= width * 0.3%>" y1="<%=length%>" x2="<%= width * 0.3%>" y2="<%=length * 0.86%>" stroke="black" stroke-width="5"/>
+                    <line x1="<%= width * 0.6%>" y1="<%=length%>" x2="<%= width * 0.6%>" y2="<%=length * 0.85%>" stroke="black"stroke-width="5"/>
+
+                    <line x1="<%= width * 0.25%>" y1="<%=length * 0.86%>" x2="<%= width * 0.66%>" y2="<%=length * 0.85%>" stroke="black" stroke-width="5"/>
+
+                    <%-- meassuree for back of carport --%>
+                    <line x1="<%= width * 0.24%>" y1="<%=length%>" x2="<%= width * 0.24%>" y2="<%=length * 0.86%>" stroke="black"/>
+                    <text x="<%= width * 0.17%>" y="<%=length * 0.90%>" fill="black" font-size="10" text-anchor="middle" > 200cm  </text>
+
+                    <%-- meassure for front of carport --%>
+                    <line x1="<%= width * 0.72%>" y1="<%=length%>" x2="<%= width * 0.72%>" y2="<%=length * 0.87%>" stroke="black"/>
+                    <text x="<%= width * 0.67%>" y="<%=length * 0.9%>" fill="black" font-size="10" text-anchor="middle" > 210cm  </text>
+
+                    <line x1="<%= width * 0.75%>" y1="<%=length%>" x2="<%= width * 0.75%>" y2="<%=length * 0.84%>" stroke="black"/>
+                    <text x="<%= width * 0.82%>" y="<%=length * 0.9%>" fill="black" font-size="10" text-anchor="middle" > 225cm  </text>
+
+                    <% if (posts > 4) {%>
+                    <line x1="<%= width * 0.45%>" y1="<%=length%>" x2="<%= width * 0.45%>" y2="<%=length * 0.85%>" stroke="black"stroke-width="5"/>
+                    <%}%>
+
                     </svg>
                 </div>
             </div>
