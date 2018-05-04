@@ -27,11 +27,11 @@
                             <%}%> </p>
                         <div class="form-group">
                             <label for="username">Username:</label>
-                            <input type="email" class="form-control" id="username" name="username" placeholder="Enter Username/E-mail">
+                            <input type="email" class="form-control" id="username" name="username" value="test@test.dk">
                         </div>
                         <div class="form-group">
                             <label for="password">Password:</label>
-                            <input type="password" class="form-control" id="Password" name="password" placeholder="Enter password:">
+                            <input type="password" class="form-control" id="Password" name="password" value="test">
                         </div>
                         <br>
                         <input type="submit" class="btn btn-primary" value="Login"/><br>
