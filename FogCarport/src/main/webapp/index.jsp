@@ -68,6 +68,8 @@
                             <div id="myDIV" style="display:none;">
                             <label for="shedlength">Længde i CM :</label><br>
                             <select class="custom-select" name="shedlength">
+                             <option> 0 </option>
+
                                 <% 
                                     int shedlength = 210;
                                     for (int idx = 1; idx <= 18; idx++) {
@@ -77,6 +79,7 @@
                             
                             <label for="shedwidth">Bredde i CM:</label><br>
                             <select class="custom-select" name="shedwidth">
+                                <option> 0 </option>
                                 <% 
                                     int shedwidth = 150;
                                     for (int idx = 1; idx <= 19; idx++) {

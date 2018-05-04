@@ -17,6 +17,7 @@
         <title>Stykliste</title>
     </head>
     <body>
+        
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-6">
@@ -101,7 +102,7 @@
                         int shedWidth = Integer.parseInt(request.getParameter("shedwidth"));
                     %>
 
-
+                    <h1> <%= shedLength %> </h1>
                     <%-- carport set oppefra --%>
                     <svg height="500" width="500" viewbox="0 0 <%= width + 150%> <%= length + 60%>">
 
@@ -173,20 +174,24 @@
                     <%-- Skur --%>
 
                     
-                    <line x1= "<%= (width / 2) - (shedWidth / 2)%>" y1="<%= length - length * 0.95%>" x2="<%= (width / 2) + (shedWidth / 2)%>" y2="<%= length - length * 0.95%>" stroke-width="4" stroke="black"/>
-                    
-                    <line x1= "<%= (width / 2) - (shedWidth / 2)%>" y1="<%= length - length * 0.95%>" x2="<%= (width / 2) - (shedWidth / 2)%>" y2="<%= shedLength%>" stroke-width="4" stroke="black"/>
-                    <line x1= "<%= (width / 2) - (shedWidth / 2)%>" y1="<%= shedLength%>" x2="<%= (width / 2) + (shedWidth / 2)%>" y2="<%= shedLength%>" stroke-width="4" stroke="black"/>
-                    <line x1= "<%= (width / 2) + (shedWidth / 2)%>" y1="<%= length - length * 0.95%>" x2="<%= (width / 2) + (shedWidth / 2)%>" y2="<%= shedLength%>" stroke-width="4" stroke="black"/>
-
+                    <line x1= "<%= (width / 2) - (shedWidth / 2)%>" y1="<%= length - length * 0.95%>" x2="<%= (width / 2) + (shedWidth / 2)%>" y2="<%= length - length * 0.95%>" stroke-width="4" stroke="red"/>
+                    <%--
+                    <line x1= "<%= (width / 2) - (shedWidth / 2)%>" y1="<%= length - length * 0.95%>" x2="<%= (width / 2) - (shedWidth / 2)%>" y2="<%= shedLength%>" stroke-width="4" stroke="red"/>
+                    <line x1= "<%= (width / 2) - (shedWidth / 2)%>" y1="<%= shedLength%>" x2="<%= (width / 2) + (shedWidth / 2)%>" y2="<%= shedLength%>" stroke-width="4" stroke="red"/>
+                    <line x1= "<%= (width / 2) + (shedWidth / 2)%>" y1="<%= length - length * 0.95%>" x2="<%= (width / 2) + (shedWidth / 2)%>" y2="<%= shedLength%>" stroke-width="4" stroke="red"/>
+                    --%>
                      <%-- Skur Stolper i hjørner, ikke inkl dør. --%>
+                    <%--
+                    <rect x="<%= (width / 2)-10 %>" y="<%= length - length * 0.95%>" height="15" width="15" stroke="red" stroke-width="3" fill="none"/>
+                    <rect x="<%= (width / 2)-10 %>" y="<%= shedLength - 15%>" height="15" width="15" stroke="red" stroke-width="3" fill="none"/>
+                    <rect x="<%= (width / 2) - (shedWidth / 2)%>" y="<%= shedLength - 15%>" height="15" width="15" stroke="red" stroke-width="3" fill="none"/>
+                    <rect x="<%= (width / 2) + (shedWidth / 2) -15%>" y="<%= shedLength - 15%>" height="15" width="15" stroke="red" stroke-width="3" fill="none"/>
+                    --%>
+
+                        
                     
-                    <rect x="<%= (width / 2)-10 %>" y="<%= length - length * 0.95%>" height="15" width="15" stroke="black" stroke-width="3" fill="none"/>
-                    <rect x="<%= (width / 2)-10 %>" y="<%= shedLength - 15%>" height="15" width="15" stroke="black" stroke-width="3" fill="none"/>
-                    <rect x="<%= (width / 2) - (shedWidth / 2)%>" y="<%= shedLength - 15%>" height="15" width="15" stroke="black" stroke-width="3" fill="none"/>
-                    <rect x="<%= (width / 2) + (shedWidth / 2) -15%>" y="<%= shedLength - 15%>" height="15" width="15" stroke="black" stroke-width="3" fill="none"/>
-
-
+                    
+                    
                     </svg>
 
 
