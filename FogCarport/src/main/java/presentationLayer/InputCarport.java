@@ -32,6 +32,7 @@ public class InputCarport extends Command {
         int angle = Integer.parseInt(request.getParameter("angle"));
         int shedLength = Integer.parseInt(request.getParameter("shedlength"));
         int shedWidth = Integer.parseInt(request.getParameter("shedwidth"));
+        String shedPos = request.getParameter("shedPos");
         
         
         
@@ -66,11 +67,20 @@ public class InputCarport extends Command {
             }
         }
         
+        if((shedLength == 0 && shedWidth != 0) || (shedLength != 0 && shedWidth == 0)){
+            request.setAttribute("error", "Der skal vælges nummer for Højde og Bredde såfremt du ønsker et skur!");
+            return "index";
+        }
+            else{
+            request.setAttribute("shedlength", shedLength);
+            request.setAttribute("shedwidth", shedWidth); 
+            request.setAttribute("shedPos", shedPos);
+        }
+        
         request.setAttribute("length", length);
         request.setAttribute("width", width);
         request.setAttribute("angle", angle); 
-        request.setAttribute("shedlength", shedLength);
-        request.setAttribute("shedwidth", shedWidth);  
+         
         
 
         return "bom";

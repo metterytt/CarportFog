@@ -89,8 +89,9 @@
                                     <% shedwidth += 30;}%>
                             </select>
                             
-                            
-                            
+                            <p> Højre eller venstre siddende skur? </p>
+                            <INPUT TYPE="radio" NAME="shedPos" VALUE="right">Højre
+                           <INPUT TYPE="radio" NAME="shedPos" VALUE="left">Venstre
 
                             </div>
 
