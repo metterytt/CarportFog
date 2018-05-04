@@ -98,9 +98,9 @@
                     <% int length = (int) request.getAttribute("length");
                         int width = (int) request.getAttribute("width");
                         int height = 210;
-
                         int shedLength = Integer.parseInt(request.getParameter("shedlength"));
                         int shedWidth = Integer.parseInt(request.getParameter("shedwidth"));
+                        int shedAngle = Integer.parseInt(request.getParameter("shedangle"));
                     %>
 
                     <h1> <%= shedLength %> </h1>
@@ -175,19 +175,20 @@
                     <%-- Skur --%>
 
                     
-                    <line x1= "<%= width - width - 0.9%>" y1="<%= length - length * 0.95%>" x2="<%=  shedWidth %>" y2="<%= length - length * 0.95%>" stroke-width="4" stroke="red"/>
-                    <%--
-                    <line x1= "<%= (width / 2) - (shedWidth / 2)%>" y1="<%= length - length * 0.95%>" x2="<%= (width / 2) - (shedWidth / 2)%>" y2="<%= shedLength%>" stroke-width="4" stroke="red"/>
-                    <line x1= "<%= (width / 2) - (shedWidth / 2)%>" y1="<%= shedLength%>" x2="<%= (width / 2) + (shedWidth / 2)%>" y2="<%= shedLength%>" stroke-width="4" stroke="red"/>
-                    <line x1= "<%= (width / 2) + (shedWidth / 2)%>" y1="<%= length - length * 0.95%>" x2="<%= (width / 2) + (shedWidth / 2)%>" y2="<%= shedLength%>" stroke-width="4" stroke="red"/>
-                    --%>
-                     <%-- Skur Stolper i hjørner, ikke inkl dør. --%>
-                    <%--
-                    <rect x="<%= (width / 2)-10 %>" y="<%= length - length * 0.95%>" height="15" width="15" stroke="red" stroke-width="3" fill="none"/>
-                    <rect x="<%= (width / 2)-10 %>" y="<%= shedLength - 15%>" height="15" width="15" stroke="red" stroke-width="3" fill="none"/>
-                    <rect x="<%= (width / 2) - (shedWidth / 2)%>" y="<%= shedLength - 15%>" height="15" width="15" stroke="red" stroke-width="3" fill="none"/>
-                    <rect x="<%= (width / 2) + (shedWidth / 2) -15%>" y="<%= shedLength - 15%>" height="15" width="15" stroke="red" stroke-width="3" fill="none"/>
-                    --%>
+                    <line x1= "<%= width - width * 0.9%>" y1="<%= length - length * 0.95%>" x2="<%= (width - width * 0.9) + shedWidth %>" y2="<%= length - length * 0.95%>" stroke-width="4" stroke="red"/>
+                   
+                    <line x1= "<%= width - width * 0.9%>" y1="<%= length - length * 0.95%>" x2="<%= width - width * 0.9%>" y2="<%= shedLength%>" stroke-width="4" stroke="red"/>
+                    
+                    <line x1= "<%= width - width * 0.9%>" y1="<%= shedLength%>" x2="<%= (width - width * 0.9) + shedWidth %>" y2="<%= shedLength%>" stroke-width="4" stroke="red"/>
+                    
+                    <line x1= "<%= (width - width * 0.9) + shedWidth %>" y1="<%= shedLength%>" x2="<%= (width - width * 0.9) + shedWidth %>" y2="<%= length - length * 0.95%>" stroke-width="4" stroke="red"/>
+                     
+                    <%-- Skur Stolper i hjørner, ikke inkl dør. --%>
+                    <rect x="<%= width - width * 0.9  %>" y="<%= length - length * 0.95%>" height="15" width="15" stroke="red" stroke-width="3" fill="none"/>
+                    <rect x="<%= width - width * 0.9%>" y="<%= shedLength -15%>" height="15" width="15" stroke="red" stroke-width="3" fill="none"/>
+                    <rect x="<%= (width - width * 0.9)-15 + shedWidth %>" y="<%= shedLength -15%>" height="15" width="15" stroke="red" stroke-width="3" fill="none"/>
+                    
+                    <rect x="<%= (width - width * 0.9) + shedWidth -15%>" y="<%= length - length * 0.95%>" height="15" width="15" stroke="red" stroke-width="3" fill="none"/>
 
                         
              
