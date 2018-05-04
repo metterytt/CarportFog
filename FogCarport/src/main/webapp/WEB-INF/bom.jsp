@@ -194,7 +194,7 @@
 
                     <rect x="<%= (width - width * 0.9) + shedWidth - 15%>" y="<%= length - length * 0.95%>" height="15" width="15" stroke="red" stroke-width="3" fill="none"/>
 
-                    <%} else if(shedLength != 0 && shedWidth != 0){%>
+                    <%} else if (shedLength != 0 && shedWidth != 0) {%>
 
                     <%-- Skur HØJRE --%>
                     <line x1= "<%= width * 0.9%>" y1="<%= length - length * 0.95%>" x2="<%= width * 0.9 - shedWidth%>" y2="<%= length - length * 0.95%>" stroke-width="4" stroke="red"/>
@@ -488,8 +488,8 @@
                     <svg width="600" height="500" viewbox="-10 -80 <%= width * 2.5%> <%= length%>"> 
 
                     <%-- stolper --%>
-                    <rect x="20" y="<%=height - height%>" width="10" height="<%= height%>" fill="snow" stroke="black" stroke-width="1"/>
-                    <rect x="<%= width + 20%>" y="<%=height - height%>" width="10" height="<%= height%>" fill="snow" stroke="black" stroke-width="1"/>
+                    <rect x="40" y="<%=height - height%>" width="10" height="<%= height%>" fill="snow" stroke="black" stroke-width="1"/>
+                    <rect x="<%= width%>" y="<%=height - height%>" width="10" height="<%= height%>" fill="snow" stroke="black" stroke-width="1"/>
 
 
                     <%-- over- og understern --%>
@@ -501,6 +501,17 @@
                         double calcAngle = Math.toRadians(angle);
                         double gableHeight = (width / 2) * Math.tan(calcAngle);
                     %>
+                    <rect x="<%= width / 2 + 20%>" y="<%= -10 - gableHeight%>" width="10" height="<%= gableHeight%>" fill="snow" stroke="black" stroke-width="1"/>
+
+                    <%-- vindskede/stern --%>
+                    <%
+                        calcAngle = Math.toRadians(angle);
+                        double fasciaBoards = ((width / 2) / Math.cos(calcAngle));
+                    %>
+                    <rect x="<%= width / 2 + 20%>" y="<%= -height * 0.5%>" width="10" height="<%= fasciaBoards + 15%>" fill="snow" stroke="black" stroke-width="1"
+                    transform="translate(0) rotate(68 130 -84)"/>
+                    <rect x="<%= width / 2 + 20%>" y="<%= -height * 0.5%>" width="10" height="<%= fasciaBoards + 15%>" fill="snow" stroke="black" stroke-width="1"
+                    transform="translate(0) rotate(-68 190 -84)"/>
 
 
                     </svg>
