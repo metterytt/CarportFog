@@ -21,7 +21,6 @@
                     x.style.display = "none";
                 }
             }
-
         </script>
 
     </head>
@@ -43,7 +42,7 @@
                                     for (int idx = 1; idx <= 18; idx++) {
                                 %> <option> <%=length%> </option> 
                                 <% length += 30;
-                                        }%>
+                                    }%>
                             </select>
 
                             <label for="length">Bredde i CM:</label><br>
@@ -53,7 +52,7 @@
                                     for (int idx = 1; idx <= 17; idx++) {
                                 %> <option> <%=width%> </option> 
                                 <% width += 30;
-                                        }%>
+                                    }%>
                             </select>
 
                             <br> <label for="angle">Hvis tagrejsning ønskes, indtast vinkel på tag:</label>
@@ -69,36 +68,35 @@
                             <input type="button" class="btn btn-primary" onclick="myFunction()" value="Vis/Gem skur!"/>
 
                             <div id="myDIV" style="display:none;">
-                            <label for="shedlength">Længde i CM :</label><br>
-                            <select class="custom-select" name="shedlength">
-                             <option> 0 </option>
+                                <label for="shedlength">Længde i CM :</label><br>
+                                <select class="custom-select" name="shedlength">
+                                    <option> 0 </option>
 
-                                <% 
-                                    int shedlength = 210;
-                                    for (int idx = 1; idx <= 18; idx++) {
-                                     %> <option> <%=shedlength %> </option> 
-                                    <% shedlength += 30;}%>
-                            </select>
-                            
-                            <label for="shedwidth">Bredde i CM:</label><br>
-                            <select class="custom-select" name="shedwidth">
-                                <option> 0 </option>
-                                <% 
-                                    int shedwidth = 150;
-                                    for (int idx = 1; idx <= 19; idx++) {
-                                     %> <option> <%=shedwidth %> </option> 
-                                    <% shedwidth += 30;}%>
-                            </select>
-                            
-                            <p> Højre eller venstre siddende skur? </p>
-                            <input type="radio" name="shedPos" value="right">Højre
-                           <input type="radio" name="shedPos" value="left">Venstre
+                                    <%
+                                        int shedlength = 210;
+                                        for (int idx = 1; idx <= 18; idx++) {
+                                    %> <option> <%=shedlength%> </option> 
+                                    <% shedlength += 30;
+                                        }%>
+                                </select>
 
+                                <label for="shedwidth">Bredde i CM:</label><br>
+                                <select class="custom-select" name="shedwidth">
+                                    <option> 0 </option>
+                                    <%
+                                        int shedwidth = 150;
+                                        for (int idx = 1; idx <= 19; idx++) {
+                                    %> <option> <%=shedwidth%> </option> 
+                                    <% shedwidth += 30;
+                                        }%>
+                                </select>
+
+                                <p> Højre eller venstre siddende skur? </p>
+                                <input type="radio" name="shedPos" value="right">Højre
+                                <input type="radio" name="shedPos" value="left">Venstre
                             </div>
-
                             <input type="submit" class="btn btn-primary" value="Beregn carport">
                         </form>
-
                     </div>
 
                     <% String error = (String) request.getAttribute("error"); // Jesper har kommentar til dette
@@ -106,25 +104,15 @@
                     <p> Error! </p>
                     <p> <%=error%>
                         <%}%> </p>
-                    
-                    
-                    
+
+
                     <form name="login" action="FrontController" method="post">
-                            <input type="hidden" name="command" value="employee">
-                            <br/>
-                            <input type="submit" class="btn btn-primary" value="Gå til medarbejderside">
-                        </form>
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
+                        <input type="hidden" name="command" value="employee">
+                        <br/>
+                        <input type="submit" class="btn btn-primary" value="Gå til medarbejderside">
+                    </form>
                 </div>
             </div>
         </div>
-
     </body>
 </html>
