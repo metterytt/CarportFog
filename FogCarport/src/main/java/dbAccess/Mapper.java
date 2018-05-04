@@ -1,11 +1,14 @@
 package dbAccess;
 
 import functionLayer.CarportException;
+import functionLayer.entity.CustomerCalculation;
 import functionLayer.entity.LineItem;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -53,6 +56,31 @@ public class Mapper {
         } catch (SQLException ex) {
             throw new CarportException("Error adding calculation", "index");
         }
+    }
+
+    public static ArrayList<CustomerCalculation> getCustCalcs() throws CarportException {
+        ArrayList<CustomerCalculation> custCalcs = new ArrayList<>();
+        try {
+            dbc.setDataSource(new DataSourceFog().getDataSource());
+            dbc.open();
+
+            String sql = "select * from customercalculations";
+            ResultSet rs = dbc.query(sql);
+            while (rs.next()) {
+                int ccID = rs.getInt("customercalculations_id");
+                int length = rs.getInt("cp_length");
+                int width = rs.getInt("cp_width");
+                int angle = rs.getInt("roof_angle");
+                int shedLength = rs.getInt("shed_length");
+                int shedWidth = rs.getInt("shed_width");
+                CustomerCalculation custCalc = new CustomerCalculation(ccID, length, width, angle, shedLength, shedWidth);
+                custCalcs.add(custCalc);
+            }
+
+        } catch (SQLException ex) {
+            throw new CarportException("Error fetching calculations", "employee");
+        }
+        return custCalcs;
     }
 
 }
