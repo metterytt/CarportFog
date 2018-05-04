@@ -17,6 +17,12 @@
         <title>Stykliste</title>
     </head>
     <body>
+        
+        <form name="sendrequest" action="FrontController" method="post">
+                            <input type="hidden" name="command" value="sendrequest">
+                            <br/>
+                            <input type="submit" class="btn btn-primary" value="Send forespørgsel på denne carport">
+        </form>
 
         <div class="container-fluid">
             <div class="row">

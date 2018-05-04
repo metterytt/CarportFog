@@ -21,6 +21,13 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-6">
+                    
+                    <form action="FrontController" method="post">
+                            <input type="hidden" name="command" value="registeremployee">
+                            <br/>
+                            <input type="submit" class="btn btn-primary" value="Registrer ny medarbejder">
+                        </form>
+                    
                     <h2>Her er de tidligere foretagede beregninger:</h2>
 
                     <% ArrayList<CustomerCalculation> custCalcs = (ArrayList<CustomerCalculation>) request.getAttribute("custcalcs");
