@@ -104,6 +104,26 @@
                     <p> Error! </p>
                     <p> <%=error%>
                         <%}%> </p>
+                    
+                    
+                    
+                    <form name="login" action="FrontController" method="post">
+                            <input type="hidden" name="command" value="employee">
+
+                            
+
+                            <br/>
+
+                            <input type="submit" class="btn btn-primary" value="Gå til medarbejderside">
+                        </form>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
                 </div>
             </div>
         </div>
