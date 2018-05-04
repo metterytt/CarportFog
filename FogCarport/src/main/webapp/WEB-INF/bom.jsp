@@ -99,11 +99,10 @@
                         int angle = (int) request.getAttribute(("angle"));
                         int shedLength = (int) request.getAttribute("shedlength");
                         int shedWidth = (int) request.getAttribute(("shedwidth"));
-                        
+                        String shedPos = (String) request.getAttribute("shedPos");
+
                     %>
 
-                    <h1> Its: <%= shedLength %> </h1>
-                    
 
                     <%-- carport set oppefra --%>
                     <svg height="500" width="500" viewbox="0 0 <%= width + 150%> <%= length + 60%>">
@@ -173,7 +172,10 @@
                     <line x1="<%= width - width * 0.9%>" y1="<%= rafterGap + 10%>" x2="<%= width * 0.9%>" y2="<%= (length - 10) - rafterGap%>" stroke="black" stroke-dasharray="5 5"/>
                     <line x1="<%= width - width * 0.9%>" y1="<%= (length - 10) - rafterGap%>" x2="<%= width * 0.9%>" y2="<%= rafterGap + 10%>" stroke="black" stroke-dasharray="5 5"/>
 
-                    <%-- Skur --%>
+
+                    <% if (shedLength != 0 && shedWidth != 0 && shedPos.equals("left")) {%>
+
+                    <%-- Skur VENSTRE --%>
 
 
                     <line x1= "<%= width - width * 0.9%>" y1="<%= length - length * 0.95%>" x2="<%= (width - width * 0.9) + shedWidth%>" y2="<%= length - length * 0.95%>" stroke-width="4" stroke="red"/>
@@ -184,14 +186,33 @@
 
                     <line x1= "<%= (width - width * 0.9) + shedWidth%>" y1="<%= shedLength%>" x2="<%= (width - width * 0.9) + shedWidth%>" y2="<%= length - length * 0.95%>" stroke-width="4" stroke="red"/>
 
-                    <%-- Skur Stolper i hjørner, ikke inkl dør. --%>
+                   
                     <rect x="<%= width - width * 0.9%>" y="<%= length - length * 0.95%>" height="15" width="15" stroke="red" stroke-width="3" fill="none"/>
                     <rect x="<%= width - width * 0.9%>" y="<%= shedLength - 15%>" height="15" width="15" stroke="red" stroke-width="3" fill="none"/>
                     <rect x="<%= (width - width * 0.9) - 15 + shedWidth%>" y="<%= shedLength - 15%>" height="15" width="15" stroke="red" stroke-width="3" fill="none"/>
 
                     <rect x="<%= (width - width * 0.9) + shedWidth - 15%>" y="<%= length - length * 0.95%>" height="15" width="15" stroke="red" stroke-width="3" fill="none"/>
 
+                    <%} else {%>
 
+                      <%-- Skur HØJRE --%>
+                    <line x1= "<%= width * 0.9%>" y1="<%= length - length * 0.95%>" x2="<%= width * 0.9 - shedWidth%>" y2="<%= length - length * 0.95%>" stroke-width="4" stroke="red"/>
+                    <line x1= "<%= width * 0.9%>" y1="<%= length - length * 0.95%>" x2="<%= width * 0.9%>" y2="<%= shedLength%>" stroke-width="4" stroke="red"/>
+                    <line x1= "<%= width * 0.9%>" y1="<%= shedLength%>" x2="<%= width * 0.9 - shedWidth%>" y2="<%= shedLength%>" stroke-width="4" stroke="red"/>
+                    <line x1= "<%= width * 0.9 - shedWidth%>" y1="<%= shedLength%>" x2="<%= width * 0.9 - shedWidth%>" y2="<%= length - length * 0.95%>" stroke-width="4" stroke="red"/>
+ 
+                    <%-- Skur Stolper i hjørner, ikke inkl dør. --%>
+                    <rect x="<%= width * 0.9 - 15%>" y="<%= length - length * 0.95%>" height="15" width="15" stroke="red" stroke-width="3" fill="none"/>
+                    <rect x="<%= width * 0.9 - 15%>" y="<%= shedLength - 15%>" height="15" width="15" stroke="red" stroke-width="3" fill="none"/>
+                    <rect x="<%= width * 0.9 - shedWidth%>" y="<%= shedLength - 15%>" height="15" width="15" stroke="red" stroke-width="3" fill="none"/>
+                    <rect x="<%= width * 0.9 - shedWidth%>" y="<%= length - length * 0.95%>" height="15" width="15" stroke="red" stroke-width="3" fill="none"/>
+
+                    <%--
+                    <rect x="<%= (width - width * 0.9) + shedWidth - 15%>" y="<%= length - length * 0.95%>" height="15" width="15" stroke="red" stroke-width="3" fill="none"/>
+                    --%>
+
+
+                    <%}%>
 
                     </svg>
 
