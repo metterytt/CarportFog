@@ -104,6 +104,7 @@
                     %>
 
 
+
                     <%-- carport set oppefra --%>
                     <svg height="500" width="500" viewbox="0 0 <%= width + 150%> <%= length + 60%>">
 
@@ -186,7 +187,7 @@
 
                     <line x1= "<%= (width - width * 0.9) + shedWidth%>" y1="<%= shedLength%>" x2="<%= (width - width * 0.9) + shedWidth%>" y2="<%= length - length * 0.95%>" stroke-width="4" stroke="red"/>
 
-                   
+
                     <rect x="<%= width - width * 0.9%>" y="<%= length - length * 0.95%>" height="15" width="15" stroke="red" stroke-width="3" fill="none"/>
                     <rect x="<%= width - width * 0.9%>" y="<%= shedLength - 15%>" height="15" width="15" stroke="red" stroke-width="3" fill="none"/>
                     <rect x="<%= (width - width * 0.9) - 15 + shedWidth%>" y="<%= shedLength - 15%>" height="15" width="15" stroke="red" stroke-width="3" fill="none"/>
@@ -195,12 +196,12 @@
 
                     <%} else if(shedLength != 0 && shedWidth != 0){%>
 
-                      <%-- Skur HØJRE --%>
+                    <%-- Skur HØJRE --%>
                     <line x1= "<%= width * 0.9%>" y1="<%= length - length * 0.95%>" x2="<%= width * 0.9 - shedWidth%>" y2="<%= length - length * 0.95%>" stroke-width="4" stroke="red"/>
                     <line x1= "<%= width * 0.9%>" y1="<%= length - length * 0.95%>" x2="<%= width * 0.9%>" y2="<%= shedLength%>" stroke-width="4" stroke="red"/>
                     <line x1= "<%= width * 0.9%>" y1="<%= shedLength%>" x2="<%= width * 0.9 - shedWidth%>" y2="<%= shedLength%>" stroke-width="4" stroke="red"/>
                     <line x1= "<%= width * 0.9 - shedWidth%>" y1="<%= shedLength%>" x2="<%= width * 0.9 - shedWidth%>" y2="<%= length - length * 0.95%>" stroke-width="4" stroke="red"/>
- 
+
                     <%-- Skur Stolper i hjørner, ikke inkl dør. --%>
                     <rect x="<%= width * 0.9 - 15%>" y="<%= length - length * 0.95%>" height="15" width="15" stroke="red" stroke-width="3" fill="none"/>
                     <rect x="<%= width * 0.9 - 15%>" y="<%= shedLength - 15%>" height="15" width="15" stroke="red" stroke-width="3" fill="none"/>
@@ -231,6 +232,8 @@
 
 
                     <%-- carport set fra siden stor tegning/Nillers tegning --%>
+
+                    <% if (angle == 0) {%>
 
                     <svg width="600" height="500" viewbox="-10 -80 <%= width * 2.5%> <%= length%>"> 
 
@@ -300,6 +303,7 @@
 
                     </svg>
 
+                    <% } %>
 
 
 
@@ -320,8 +324,7 @@
 
 
 
-
-
+                    <% if (angle > 0) {%>
                     <%-- carport med rejsning set fra siden stor tegning/Nillers tegning --%>
 
                     <svg width="600" height="500" viewbox="-10 -80 <%= width * 2.5%> <%= length%>"> 
@@ -479,6 +482,31 @@
 
 
                     </svg>
+
+
+                    <%-- carport set forfra med rejsning --%>
+                    <svg width="600" height="500" viewbox="-10 -80 <%= width * 2.5%> <%= length%>"> 
+
+                    <%-- stolper --%>
+                    <rect x="20" y="<%=height - height%>" width="10" height="<%= height%>" fill="snow" stroke="black" stroke-width="1"/>
+                    <rect x="<%= width + 20%>" y="<%=height - height%>" width="10" height="<%= height%>" fill="snow" stroke="black" stroke-width="1"/>
+
+
+                    <%-- over- og understern --%>
+                    <rect x="15" y="-10" width="<%= width + 20%>" height="10" fill="snow" stroke="black"/>
+
+
+                    <%-- gavl --%>
+                    <%
+                        double calcAngle = Math.toRadians(angle);
+                        double gableHeight = (width / 2) * Math.tan(calcAngle);
+                    %>
+
+
+                    </svg>
+
+                    <% }%>
+
                 </div>
             </div>
         </div>
