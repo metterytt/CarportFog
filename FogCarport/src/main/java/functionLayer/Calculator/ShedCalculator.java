@@ -25,6 +25,8 @@ public class ShedCalculator implements CarportCalculator {
 
     private BOM calculateBOM() throws CarportException {
         bom = new BOM();
+        bom.setShedLength(shedLength);
+        bom.setShedWidth(shedWidth);
 
         LineItem lath = StorageFacade.getProduct(16);
         lath.setQuantity(420); // altid samme mængde, til Z på dør

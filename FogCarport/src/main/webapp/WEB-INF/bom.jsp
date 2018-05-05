@@ -17,12 +17,13 @@
         <title>Stykliste</title>
     </head>
     <body>
-        
-        <form name="sendrequest" action="FrontController" method="post">
-                            <input type="hidden" name="command" value="sendrequest">
-                            <br/>
-                            <input type="submit" class="btn btn-primary" value="Send forespørgsel på denne carport">
+
+        <form name="login" action="FrontController" method="post">
+            <input type="hidden" name="command" value="sendrequest">
+            <br/>
+            <input type="submit" class="btn btn-primary" value="Send forespørgsel på denne carport">
         </form>
+
 
         <div class="container-fluid">
             <div class="row">
@@ -62,8 +63,10 @@
                             </tr> 
                         </tbody>
                     </table>    
-                    <% if (request.getSession().getAttribute("shedbom") != null) {
-                            BOM shedBOM = (BOM) session.getAttribute("shedbom");
+                    <%
+                        BOM shedBOM = (BOM) request.getSession().getAttribute("shedbom");
+                        if (shedBOM != null) {
+
                     %>
                     <h2>Herunder er styklisten for skuret:</h2>
 
@@ -78,8 +81,7 @@
                             </tr>
                         </thead> 
                         <tbody>
-                            <%
-                                ArrayList<LineItem> shedBom = shedBOM.getListOfProducts();
+                            <%  ArrayList<LineItem> shedBom = shedBOM.getListOfProducts();
                                 for (LineItem p : shedBom) {
                             %>
                             <tr>
@@ -93,18 +95,23 @@
                         </tbody>
                     </table>    
                     <%}%>
-
                 </div>
+
+
 
                 <div class="col-md-6">
                     <br><h1>Visualization</h1>
 
-                    <% int length = (int) request.getAttribute("length");
-                        int width = (int) request.getAttribute("width");
+                    <%  int length = carportBOM.getLength();
+                        int width = carportBOM.getWidth();
                         int height = 210;
-                        int angle = (int) request.getAttribute(("angle"));
-                        int shedLength = (int) request.getAttribute("shedlength");
-                        int shedWidth = (int) request.getAttribute(("shedwidth"));
+                        int angle = carportBOM.getAngle();
+                        int shedLength = 0;
+                        int shedWidth = 0;
+                        if (shedBOM != null) {
+                            shedLength = shedBOM.getShedLength();
+                            shedWidth = shedBOM.getWidth();
+                        }
                         String shedPos = (String) request.getAttribute("shedPos");
 
                     %>
@@ -540,5 +547,8 @@
                 </div>
             </div>
         </div>
+
+
+
     </body>
 </html>

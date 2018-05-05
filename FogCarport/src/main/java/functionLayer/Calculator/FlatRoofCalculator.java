@@ -37,6 +37,8 @@ public class FlatRoofCalculator implements CarportCalculator {
 
     private BOM calculateBOM() throws CarportException {
         bom = new BOM();
+        bom.setLength(length);
+        bom.setWidth(width);
 
         LineItem subFasciaBoards = StorageFacade.getProduct(1);
         subFasciaBoards.setQuantity(calcSubFasciaBoards(length, width));

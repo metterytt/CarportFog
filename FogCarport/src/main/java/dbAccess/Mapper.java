@@ -107,4 +107,28 @@ public class Mapper {
         return custCalcs;
     }
 
+    public static void addRequest(int length, int width, int angle, int shedLength, int shedWidth, int price) throws CarportException {
+        
+        try {
+            dbc.setDataSource(new DataSourceFog().getDataSource());
+            dbc.open();
+            Connection con = dbc.getConnector();
+            String sql = "INSERT INTO orders (customer, length, width, roof_angle,"
+                    + " shed_length, shed_width, price, employees_userID) values (?, ?, ?, ?, ?, ?, ?, ?)";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, "dummy");
+            ps.setInt(2, length);
+            ps.setInt(3, width);
+            ps.setInt(4, angle);
+            ps.setInt(5, shedLength);
+            ps.setInt(6, shedWidth);
+            ps.setInt(7, price);
+            ps.setInt(8, 1); // dette er en dummy!
+            ps.execute();
+        }
+        catch (SQLException ex) {
+            throw new CarportException("Error adding calculation", "index");
+        }
+    }
+
 }

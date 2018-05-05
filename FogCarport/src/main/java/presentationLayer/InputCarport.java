@@ -33,9 +33,6 @@ public class InputCarport extends Command {
         int shedLength = Integer.parseInt(request.getParameter("shedlength"));
         int shedWidth = Integer.parseInt(request.getParameter("shedwidth"));
         String shedPos = request.getParameter("shedPos");
-        
-        
-        
         StorageFacade.addCustCalc(length, width, angle, shedLength, shedWidth);
         
         
@@ -67,6 +64,10 @@ public class InputCarport extends Command {
             }
         }
         
+//        request.setAttribute("length", length);
+//        request.setAttribute("width", width);
+//        request.setAttribute("angle", angle); 
+        
         if((shedLength == 0 && shedWidth != 0) || (shedLength != 0 && shedWidth == 0)){
             request.setAttribute("error", "Der skal vælges nummer for Højde og Bredde såfremt du ønsker et skur!");
             return "index";
@@ -77,9 +78,7 @@ public class InputCarport extends Command {
             request.setAttribute("shedPos", shedPos);
         }
         
-        request.setAttribute("length", length);
-        request.setAttribute("width", width);
-        request.setAttribute("angle", angle); 
+        
          
         
 

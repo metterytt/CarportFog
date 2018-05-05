@@ -24,5 +24,9 @@ public class StorageFacade {
     public static ArrayList<CustomerCalculation> getCustCalcs() throws CarportException {
         return Mapper.getCustCalcs();
     }
+
+    public static void addRequest(int length, int width, int angle, int shedLength, int shedWidth, int price) throws CarportException {
+        Mapper.addRequest(length, width, angle, shedLength, shedWidth, price);
+    }
     
 }

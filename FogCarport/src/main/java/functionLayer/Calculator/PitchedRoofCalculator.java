@@ -21,6 +21,9 @@ public class PitchedRoofCalculator implements CarportCalculator {
 
     private BOM calculateBOM() throws CarportException {
         bom = new BOM();
+        bom.setLength(length);
+        bom.setWidth(width);
+        bom.setAngle(angle);
 
         LineItem fasciaPitch = StorageFacade.getProduct(18);
         fasciaPitch.setQuantity(calcFasciaPitch(width, angle));

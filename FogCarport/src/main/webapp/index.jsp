@@ -69,7 +69,7 @@
 
                             <div id="myDIV" style="display:none;">
                                 <label for="shedlength">Længde i CM :</label><br>
-                                <select class="custom-select" name="shedlength">
+                                <select class="custom-select" name="shedlength" value="0">
                                     <option> 0 </option>
 
                                     <%
@@ -81,7 +81,7 @@
                                 </select>
 
                                 <label for="shedwidth">Bredde i CM:</label><br>
-                                <select class="custom-select" name="shedwidth">
+                                <select class="custom-select" name="shedwidth" value="0">
                                     <option> 0 </option>
                                     <%
                                         int shedwidth = 150;
@@ -99,7 +99,7 @@
                         </form>
                     </div>
 
-                    <% String error = (String) request.getAttribute("error"); // Jesper har kommentar til dette
+                    <% String error = (String) request.getAttribute("error");
                         if (error != null) {%>
                     <p> Error! </p>
                     <p> <%=error%>
