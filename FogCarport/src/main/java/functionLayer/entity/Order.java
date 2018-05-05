@@ -1,14 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package functionLayer.entity;
 
-/**
- *
- * @author mette
- */
 public class Order {
     
     private int orderID;
@@ -114,7 +105,5 @@ public class Order {
     public void setPlaced(boolean placed) {
         this.placed = placed;
     }
-    
-    
     
 }

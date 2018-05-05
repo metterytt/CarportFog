@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Mapper {
 
@@ -33,8 +34,7 @@ public class Mapper {
             LineItem product = new LineItem(productID, name, uom, price);
             return product;
 
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             throw new CarportException("Error fetching product.", "index");
         }
     }
@@ -53,8 +53,7 @@ public class Mapper {
             ps.setInt(4, shedLength);
             ps.setInt(5, shedWidth);
             ps.execute();
-        }
-        catch (SQLException ex) {
+        } catch (SQLException ex) {
             throw new CarportException("Error adding calculation", "index");
         }
     }
@@ -72,16 +71,14 @@ public class Mapper {
             if (rs.next()) {
                 String role = rs.getString("role");
                 return new Employee(username, password, role);
-            }
-            else {
+            } else {
                 throw new CarportException("No user found.. Invalid input", "login");
             }
-        }
-        catch (SQLException ex) {
+        } catch (SQLException ex) {
             throw new CarportException("something went wrong trying to login", "login");
         }
     }
-    
+
     public static void registerEmp(String username, String password, String role) throws CarportException {
         try {
             dbc.setDataSource(new DataSourceFog().getDataSource());
@@ -93,8 +90,7 @@ public class Mapper {
             ps.setString(2, password);
             ps.setString(3, role);
             ps.executeUpdate();
-        }
-        catch (SQLException ex) {
+        } catch (SQLException ex) {
             throw new CarportException("Noget gik galt, prøv igen!", "registeremployee");
         }
     }
@@ -117,15 +113,14 @@ public class Mapper {
                 CustomerCalculation custCalc = new CustomerCalculation(ccID, length, width, angle, shedLength, shedWidth);
                 custCalcs.add(custCalc);
             }
-        }
-        catch (SQLException ex) {
+        } catch (SQLException ex) {
             throw new CarportException("Error fetching calculations", "employee");
         }
         return custCalcs;
     }
 
     public static void addRequest(int length, int width, int angle, int shedLength, int shedWidth, int price) throws CarportException {
-        
+
         try {
             dbc.setDataSource(new DataSourceFog().getDataSource());
             dbc.open();
@@ -142,19 +137,18 @@ public class Mapper {
             ps.setInt(7, price);
             ps.setInt(8, 1); // dette er en dummy!
             ps.execute();
-        }
-        catch (SQLException ex) {
+        } catch (SQLException ex) {
             throw new CarportException("Error adding calculation", "index");
         }
     }
 
-    public static ArrayList<Order> getOpenRequests() throws CarportException {
+    public static List<Order> getOpenRequests() throws CarportException {
         ArrayList<Order> openRequests = new ArrayList<>();
         try {
             dbc.setDataSource(new DataSourceFog().getDataSource());
             dbc.open();
 
-            String sql = "select * from orders";
+            String sql = "select * from orders where order_placed=0";
             ResultSet rs = dbc.query(sql);
             while (rs.next()) {
                 int orderID = rs.getInt("orderID");
@@ -170,11 +164,25 @@ public class Mapper {
                 Order order = new Order(orderID, customer, length, width, angle, shedLength, shedWidth, price, empID, placed);
                 openRequests.add(order);
             }
-        }
-        catch (SQLException ex) {
+        } catch (SQLException ex) {
             throw new CarportException("Error fetching requests", "employee");
         }
         return openRequests;
+    }
+
+    public static void setOrdered(int orderID) throws CarportException {
+        try {
+            dbc.setDataSource(new DataSourceFog().getDataSource());
+            dbc.open();
+            Connection con = dbc.getConnector();
+            String sql = "UPDATE `carport`.`orders` SET `order_placed`='1' WHERE `orderID`=?;";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, orderID);
+            ps.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new CarportException("Error setting sent status.", "employee");
+        }
     }
 
 }

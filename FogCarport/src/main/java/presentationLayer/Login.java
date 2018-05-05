@@ -19,15 +19,10 @@ public class Login extends Command {
 
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws CarportException {
-        
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         Employee employee = StorageFacade.login(username, password);
         request.getSession().setAttribute("employee", employee);
-        
-//        ArrayList<CustomerCalculation> custCalcs = StorageFacade.getCustCalcs();
-//        request.setAttribute("custcalcs", custCalcs);
-        
         return "employee";
     }
     

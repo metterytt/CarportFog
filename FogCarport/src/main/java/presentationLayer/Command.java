@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package presentationLayer;
 
 import functionLayer.CarportException;
@@ -24,7 +19,7 @@ abstract class Command {
         commands.put("allcalculations", new AllCalculations());
         commands.put("backtoemp", new BackToEmp());
         commands.put("allrequests", new AllRequests());
-
+        commands.put("setordered", new SetOrdered());
     }
 
     static Command from(HttpServletRequest request) {

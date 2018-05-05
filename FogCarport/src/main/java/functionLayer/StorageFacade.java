@@ -7,6 +7,7 @@ import functionLayer.entity.Employee;
 import functionLayer.entity.LineItem;
 import functionLayer.entity.Order;
 import java.util.ArrayList;
+import java.util.List;
 
 public class StorageFacade {
     
@@ -29,12 +30,17 @@ public class StorageFacade {
     public static void addRequest(int length, int width, int angle, int shedLength, int shedWidth, int price) throws CarportException {
         Mapper.addRequest(length, width, angle, shedLength, shedWidth, price);
     }
+    
     public static void registerEmp(String username, String password, String role) throws CarportException{
         Mapper.registerEmp(username, password, role);
     }
 
-    public static ArrayList<Order> getOpenRequests() throws CarportException {
+    public static List<Order> getOpenRequests() throws CarportException {
         return Mapper.getOpenRequests();
+    }
+
+    public static void setOrdered(int orderID) throws CarportException {
+        Mapper.setOrdered(orderID);
     }
     
 }

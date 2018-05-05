@@ -16,13 +16,11 @@
         <title>JSP Page</title>
     </head>
     <body>
-        
+
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-8">
 
-                    
-                    
                     <h2>Her er de åbne forespørgsler:</h2>
                     <% ArrayList<Order> openRequests = (ArrayList<Order>) request.getAttribute("openrequests");
                         if (openRequests.size() == 0) {%>
@@ -50,7 +48,6 @@
                             <tr>
                                 <th> <% out.print(o.getOrderID()); %> </th>
                                 <th> <% out.print(o.getCustomer()); %> </th>
-                                
                                 <th> <% out.print(o.getLength()); %> </th>
                                 <th> <% out.print(o.getWidth()); %> </th>
                                 <th> <% out.print(o.getAngle()); %> </th>
@@ -59,22 +56,32 @@
                                 <th> <% out.print(o.getPrice()); %> </th>
                                 <th> <% out.print(o.getEmpID()); %> </th>
                                 <th> <% out.print(o.isPlaced()); %> </th>
-                                    <%}%>
+
+                                <th>
+                                    <form action="FrontController" method="post">
+                                        <input type="hidden" name="command" value="setordered">
+                                        <input type="hidden" name="orderID" value="<%out.print(o.getOrderID());%>" />
+                                        <input type="submit" class="btn btn-primary" value="Sæt til bestilt"/>
+                                    </form>
+                                </th>
+
+                                <%}%>
                             </tr> 
                         </tbody>
                     </table>   
                     <%}%>
                 </div>
+
+                <div class="col-md-4">
+
+                    <form action="FrontController" method="post">
+                        <input type="hidden" name="command" value="backtoemp">
+                        <br/>
+                        <input type="submit" class="btn btn-primary" value="Tilbage til medarbejderside">
+                    </form>
+
+                </div>
             </div>
         </div>
-                
-        <form action="FrontController" method="post">
-            <input type="hidden" name="command" value="backtoemp">
-            <br/>
-            <input type="submit" class="btn btn-primary" value="Tilbage til medarbejderside">
-        </form>
-        
-        
-        
     </body>
 </html>

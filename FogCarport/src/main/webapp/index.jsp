@@ -29,7 +29,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-6">
-                    <h1>Velkommen til Carport beregner!</h1>
+                    <h1>Velkommen til Carport beregner.</h1>
                     <p>Her kan du indtaste de ønskede mål på din carport.</p>
                     <div class="form-group">
                         
@@ -64,9 +64,10 @@
                                 <option value="30">30°</option>
                                 <option value="40">40°</option>
                             </select>
-
-                            <br/>
-                            <input type="button" class="btn btn-primary" onclick="myFunction()" value="Vis/Gem skur!"/>
+                            
+                            <br>
+                            <br>
+                            <input type="button" class="btn btn-primary" onclick="myFunction()" value="Vis/gem skur"/>
 
                             <div id="myDIV" style="display:none;">
                                 <label for="shedlength">Længde i CM :</label><br>
