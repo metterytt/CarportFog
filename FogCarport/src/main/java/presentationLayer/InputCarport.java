@@ -5,11 +5,11 @@
  */
 package presentationLayer;
 
-import functionLayer.Calculator.CarportCalculator;
-import functionLayer.Calculator.FlatRoofCalculator;
+import functionLayer.Calculators.CarportCalculator;
+import functionLayer.Calculators.FlatRoofCalculator;
 import functionLayer.BOM;
-import functionLayer.Calculator.PitchedRoofCalculator;
-import functionLayer.Calculator.ShedCalculator;
+import functionLayer.Calculators.PitchedRoofCalculator;
+import functionLayer.Calculators.ShedCalculator;
 import functionLayer.CarportException;
 import functionLayer.StorageFacade;
 import functionLayer.entity.LineItem;

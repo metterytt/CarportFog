@@ -1,6 +1,6 @@
 // Lægte = lath
 // Beklædning = cladding
-package functionLayer.Calculator;
+package functionLayer.Calculators;
 
 import functionLayer.BOM;
 import functionLayer.CarportException;
