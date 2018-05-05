@@ -28,5 +28,8 @@ public class StorageFacade {
     public static void addRequest(int length, int width, int angle, int shedLength, int shedWidth, int price) throws CarportException {
         Mapper.addRequest(length, width, angle, shedLength, shedWidth, price);
     }
+    public static void registerEmp(String username, String password, String role) throws CarportException{
+        Mapper.registerEmp(username, password, role);
+    }
     
 }

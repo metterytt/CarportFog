@@ -80,6 +80,23 @@ public class Mapper {
             throw new CarportException("something went wrong trying to login", "login");
         }
     }
+    
+    public static void registerEmp(String username, String password, String role) throws CarportException {
+        try {
+            dbc.setDataSource(new DataSourceFog().getDataSource());
+            dbc.open();
+            Connection con = dbc.getConnector();
+            String sql = "insert into employees values (null, ?, ?, ?)";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, username);
+            ps.setString(2, password);
+            ps.setString(3, role);
+            ps.executeUpdate();
+        }
+        catch (SQLException ex) {
+            throw new CarportException("Noget gik galt, prøv igen!", "registeremployee");
+        }
+    }
 
     public static ArrayList<CustomerCalculation> getCustCalcs() throws CarportException {
         ArrayList<CustomerCalculation> custCalcs = new ArrayList<>();
