@@ -16,12 +16,12 @@ abstract class Command {
 
     private static void initCommands() {
         commands = new HashMap<>();
-        commands.put("employee", new Employee());
         commands.put("login", new Login());
         commands.put("navbar", new Navbar());
         commands.put("inputcarport", new InputCarport());
         commands.put("sendrequest", new SendRequest());
         commands.put("registeremployee", new RegisterEmployee());
+        commands.put("allcalculations", new AllCalculations());
 
     }
 

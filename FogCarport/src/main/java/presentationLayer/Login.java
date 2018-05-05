@@ -7,8 +7,7 @@ package presentationLayer;
 
 import functionLayer.CarportException;
 import functionLayer.StorageFacade;
-import functionLayer.entity.CustomerCalculation;
-import java.util.ArrayList;
+import functionLayer.entity.Employee;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -23,11 +22,11 @@ public class Login extends Command {
         
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        functionLayer.entity.Employee employee = StorageFacade.login(username, password);
+        Employee employee = StorageFacade.login(username, password);
         request.getSession().setAttribute("employee", employee);
         
-        ArrayList<CustomerCalculation> custCalcs = StorageFacade.getCustCalcs();
-        request.setAttribute("custcalcs", custCalcs);
+//        ArrayList<CustomerCalculation> custCalcs = StorageFacade.getCustCalcs();
+//        request.setAttribute("custcalcs", custCalcs);
         
         return "employee";
     }

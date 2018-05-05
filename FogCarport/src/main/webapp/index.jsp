@@ -32,6 +32,7 @@
                     <h1>Velkommen til Carport beregner!</h1>
                     <p>Her kan du indtaste de ønskede mål på din carport.</p>
                     <div class="form-group">
+                        
                         <form name="login" action="FrontController" method="post">
                             <input type="hidden" name="command" value="inputcarport">
 
@@ -97,6 +98,7 @@
                             </div>
                             <input type="submit" class="btn btn-primary" value="Beregn carport">
                         </form>
+                                
                     </div>
 
                     <% String error = (String) request.getAttribute("error");
@@ -105,12 +107,6 @@
                     <p> <%=error%>
                         <%}%> </p>
 
-
-                    <form name="login" action="FrontController" method="post">
-                        <input type="hidden" name="command" value="employee">
-                        <br/>
-                        <input type="submit" class="btn btn-primary" value="Gå til medarbejderside">
-                    </form>
                 </div>
             </div>
         </div>
