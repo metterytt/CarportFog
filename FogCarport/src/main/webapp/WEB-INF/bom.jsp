@@ -27,6 +27,11 @@
 
         <div class="container-fluid">
             <div class="row">
+                <% BOM carportBOM = (BOM) session.getAttribute("carportbom");
+                    BOM shedBOM = (BOM) request.getSession().getAttribute("shedbom");
+                    ArrayList<LineItem> bom = carportBOM.getListOfProducts();
+                %>
+                <%--
                 <div class="col-md-6">
                     <br>
                     <h1>Styklisteberegning</h1>
@@ -95,7 +100,7 @@
                         </tbody>
                     </table>    
                     <%}%>
-                </div>
+                </div> --%>
 
 
 

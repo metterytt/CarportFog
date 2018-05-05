@@ -20,6 +20,7 @@ abstract class Command {
         commands.put("backtoemp", new BackToEmp());
         commands.put("allrequests", new AllRequests());
         commands.put("setordered", new SetOrdered());
+        commands.put("viewbom", new ViewBom());
     }
 
     static Command from(HttpServletRequest request) {

@@ -22,7 +22,7 @@ public class SendRequest extends Command {
         int shedPrice = 0;
         if (shedBom != null) {
             shedLength = shedBom.getShedLength();
-            shedWidth = shedBom.getWidth();
+            shedWidth = shedBom.getShedWidth();
             shedPrice = shedBom.totalPrice();
         }
         int price = carportBom.totalPrice() + shedPrice;

@@ -4,6 +4,8 @@
     Author     : mette
 --%>
 
+<%@page import="functionLayer.entity.LineItem"%>
+<%@page import="functionLayer.BOM"%>
 <%@page import="functionLayer.entity.Order"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -59,6 +61,17 @@
 
                                 <th>
                                     <form action="FrontController" method="post">
+                                        <input type="hidden" name="command" value="viewbom">
+                                        <input type="hidden" name="length" value="<%out.print(o.getLength());%>" />
+                                        <input type="hidden" name="width" value="<%out.print(o.getWidth());%>" />
+                                        <input type="hidden" name="angle" value="<%out.print(o.getAngle());%>" />
+                                        <input type="hidden" name="shedlength" value="<%out.print(o.getShedLength());%>" />
+                                        <input type="hidden" name="shedwidth" value="<%out.print(o.getShedWidth());%>" />
+                                        <input type="submit" class="btn btn-primary" value="Se stykliste"/>
+                                    </form>
+                                </th>
+                                <th>
+                                    <form action="FrontController" method="post">
                                         <input type="hidden" name="command" value="setordered">
                                         <input type="hidden" name="orderID" value="<%out.print(o.getOrderID());%>" />
                                         <input type="submit" class="btn btn-primary" value="Sæt til bestilt"/>
@@ -73,15 +86,94 @@
                 </div>
 
                 <div class="col-md-4">
-
                     <form action="FrontController" method="post">
                         <input type="hidden" name="command" value="backtoemp">
                         <br/>
                         <input type="submit" class="btn btn-primary" value="Tilbage til medarbejderside">
                     </form>
+                </div>
 
+            </div>
+
+
+
+
+            <div class="row">
+                <div class="col-md-8">
+                    <br>
+                    <br>
+
+                    <% BOM carportBOM = (BOM) request.getAttribute("carportbom");
+                        if (carportBOM != null) {
+                    %>
+                    <h1>Styklisteberegning</h1>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Produktnavn</th>
+                                <th>Brug</th>
+                                <th>Enhed</th>
+                                <th>Antal</th>
+                                <th>Pris</th>
+
+                            </tr>
+                        </thead> 
+                        <tbody>
+                            <%
+                                ArrayList<LineItem> bom = carportBOM.getListOfProducts();
+
+                                for (LineItem p : bom) {
+                            %>
+                            <tr>
+                                <th> <% out.print(p.getName()); %> </th>
+                                <th> <% out.print(p.getUseInContext()); %> </th>
+                                <th> <% out.print(p.getUom()); %> </th>
+                                <th> <% out.print(p.getQuantity()); %> </th>
+                                <th> <% out.print(p.getPrice()); %>  </th>
+
+                                <%}%>
+                            </tr> 
+                        </tbody>
+                    </table>   
+                    <%}%>
+                    <%
+                        BOM shedBOM = (BOM) request.getAttribute("shedbom");
+                        if (shedBOM != null) {
+
+                    %>
+                    <h2>Herunder er styklisten for skuret:</h2>
+
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Produktnavn</th>
+                                <th>Brug</th>
+                                <th>Enhed</th>
+                                <th>Antal</th>
+                                <th>Pris pr. enhed</th>
+                            </tr>
+                        </thead> 
+                        <tbody>
+                            <%  ArrayList<LineItem> shedBom = shedBOM.getListOfProducts();
+                                for (LineItem p : shedBom) {
+                            %>
+                            <tr>
+                                <th> <% out.print(p.getName()); %> </th>
+                                <th> <% out.print(p.getUseInContext()); %> </th>
+                                <th> <% out.print(p.getUom()); %> </th>
+                                <th> <% out.print(p.getQuantity()); %> </th>
+                                <th> <% out.print(p.getPrice()); %>  </th>
+                                    <%}%>
+                            </tr> 
+                        </tbody>
+                    </table>    
+                    <%}%>
                 </div>
             </div>
         </div>
-    </body>
+
+
+
+    </div>
+</body>
 </html>
