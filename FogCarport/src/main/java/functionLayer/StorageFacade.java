@@ -5,6 +5,7 @@ import dbAccess.Mapper;
 import functionLayer.entity.CustomerCalculation;
 import functionLayer.entity.Employee;
 import functionLayer.entity.LineItem;
+import functionLayer.entity.Order;
 import java.util.ArrayList;
 
 public class StorageFacade {
@@ -30,6 +31,10 @@ public class StorageFacade {
     }
     public static void registerEmp(String username, String password, String role) throws CarportException{
         Mapper.registerEmp(username, password, role);
+    }
+
+    public static ArrayList<Order> getOpenRequests() throws CarportException {
+        return Mapper.getOpenRequests();
     }
     
 }

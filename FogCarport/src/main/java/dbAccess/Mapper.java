@@ -4,6 +4,7 @@ import functionLayer.CarportException;
 import functionLayer.entity.CustomerCalculation;
 import functionLayer.entity.Employee;
 import functionLayer.entity.LineItem;
+import functionLayer.entity.Order;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -116,7 +117,6 @@ public class Mapper {
                 CustomerCalculation custCalc = new CustomerCalculation(ccID, length, width, angle, shedLength, shedWidth);
                 custCalcs.add(custCalc);
             }
-
         }
         catch (SQLException ex) {
             throw new CarportException("Error fetching calculations", "employee");
@@ -146,6 +146,35 @@ public class Mapper {
         catch (SQLException ex) {
             throw new CarportException("Error adding calculation", "index");
         }
+    }
+
+    public static ArrayList<Order> getOpenRequests() throws CarportException {
+        ArrayList<Order> openRequests = new ArrayList<>();
+        try {
+            dbc.setDataSource(new DataSourceFog().getDataSource());
+            dbc.open();
+
+            String sql = "select * from orders";
+            ResultSet rs = dbc.query(sql);
+            while (rs.next()) {
+                int orderID = rs.getInt("orderID");
+                String customer = rs.getString("customer");
+                int length = rs.getInt("length");
+                int width = rs.getInt("width");
+                int angle = rs.getInt("roof_angle");
+                int shedLength = rs.getInt("shed_length");
+                int shedWidth = rs.getInt("shed_width");
+                int price = rs.getInt("price");
+                int empID = rs.getInt("employees_userID");
+                boolean placed = rs.getBoolean("order_placed");
+                Order order = new Order(orderID, customer, length, width, angle, shedLength, shedWidth, price, empID, placed);
+                openRequests.add(order);
+            }
+        }
+        catch (SQLException ex) {
+            throw new CarportException("Error fetching requests", "employee");
+        }
+        return openRequests;
     }
 
 }

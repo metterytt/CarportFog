@@ -35,6 +35,12 @@
                         <br/>
                         <input type="submit" class="btn btn-primary" value="Se alle indtastede beregninger">
                     </form>
+                    
+                    <form action="FrontController" method="post">
+                        <input type="hidden" name="command" value="allrequests">
+                        <br/>
+                        <input type="submit" class="btn btn-primary" value="Se alle åbne forespørgsler">
+                    </form>
 
                 </div>
             </div>

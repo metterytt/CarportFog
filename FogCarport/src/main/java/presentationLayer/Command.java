@@ -22,6 +22,8 @@ abstract class Command {
         commands.put("sendrequest", new SendRequest());
         commands.put("registeremployee", new RegisterEmployee());
         commands.put("allcalculations", new AllCalculations());
+        commands.put("backtoemp", new BackToEmp());
+        commands.put("allrequests", new AllRequests());
 
     }
 
