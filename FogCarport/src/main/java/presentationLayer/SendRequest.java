@@ -41,7 +41,6 @@ public class SendRequest extends Command {
             CarportCalculator shedCalculator = new ShedCalculator(shedLength, shedWidth);
             shedBom = shedCalculator.getBom();
         }
-
         int shedPrice = 0;
         if (shedBom != null) {
             shedPrice = shedBom.totalPrice();
