@@ -30,6 +30,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <h1>Velkommen til Carport beregner.</h1>
+                    
                     <p>Her kan du indtaste de ønskede mål på din carport.</p>
                     <div class="form-group">
                         
