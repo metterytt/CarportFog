@@ -47,9 +47,9 @@
                         int angle = drawingMeasures.getAngle();
                         int shedLength = drawingMeasures.getShedLength();
                         int shedWidth = drawingMeasures.getShedWidth();
-                        
+
                         String shedPos = (String) request.getAttribute("shedPos"); %>  <%-- vær opmærksom her --%>
-                     <%   double rafterGap = drawingMeasures.getRafterGap();
+                    <%   double rafterGap = drawingMeasures.getRafterGap();
                         int rafterQty = drawingMeasures.getRafterQty();
                         int posts = drawingMeasures.getPosts();
                         double startingLength = (length - 10);
@@ -86,8 +86,8 @@
                         double rafterGap = (double) request.getAttribute("rafterGap");
                         int rafterQuantity = (int) request.getAttribute("rafterQuantity");
                         double startingLength = (length - 10);
-                        --%>
-                        <%
+                    --%>
+                    <%
                         for (int idx = 0; idx < rafterQty; idx++) {
                     %> <line x1="5" y1="<%= startingLength%>" x2="<%= width - 5%>" y2="<%= startingLength%>" stroke-width="12" stroke="darkgrey"/> <%
                             startingLength -= rafterGap;
@@ -103,7 +103,7 @@
                             }
                         }
                     --%>
-                      <%  if (posts < 5) {
+                    <%  if (posts < 5) {
 
                     %> <rect x="<%= width - width * 0.9 - 4%>" y="<%=length * 0.25%>" height="15" width="15" stroke="black" stroke-width="3" fill="none" />
                     <rect x="<%= width - width * 0.9 - 4%>" y="<%=length * 0.75%>" height="15" width="15" stroke="black" stroke-width="3" fill="none"/>
@@ -431,8 +431,7 @@
                     <% }
                         }%>
 
-                    <%--
-                <defs>
+                    <defs>
 
                     <pattern id="pattern"
                              width="15" height="10"
@@ -444,16 +443,18 @@
                     </defs>
 
                     <rect x="31" y="<%=height - height - 59%>"
-                          width="345" height="60"
+                          width="<%= length - 42%>" height="62"
                           fill= "url(#pattern)"
-                          stroke="darkgrey"
+                          stroke="none"
                           stroke-width="2px" 
-                          transform="translate(0) rotate(1.1 80 45)"/>/>
-                    --%>
-
-
+                          transform="translate(0) rotate(1.2 80 45)"/>
 
                     </svg>
+
+
+
+
+
 
 
                     <%-- carport set forfra med rejsning --%>
@@ -480,10 +481,18 @@
                         calcAngle = Math.toRadians(angle);
                         double fasciaBoards = ((width / 2) / Math.cos(calcAngle));
                     %>
+
+                    <polygon points="<%=width / 2 + 25%>,<%=-13 - gableHeight%> <%=width / 2 + 25%>,<%=-3 - gableHeight%> 15,-5 15,-15" 
+                             fill="snow" stroke="black"/>
+                    <polygon points="<%=width / 2 + 25%>,<%=-13 - gableHeight%> <%=width / 2 + 25%>,<%=-3 - gableHeight%> <%= width + 35%>,<%= -5%> <%= width + 35%>,<%= -15%>" 
+                             fill="snow" stroke="black"/>
+
+                    <%-- 
                     <rect x="<%= width / 2 + 20%>" y="<%= -height * 0.5%>" width="10" height="<%= fasciaBoards + 15%>" fill="snow" stroke="black" stroke-width="1"
                           transform="translate(0) rotate(68 131 -84)"/>
                     <rect x="<%= width / 2 + 20%>" y="<%= -height * 0.5%>" width="10" height="<%= fasciaBoards + 15%>" fill="snow" stroke="black" stroke-width="1"
                           transform="translate(0) rotate(-68 189 -84)"/>
+                    --%>
 
                     <%-- streg for højde med tag --%>
                     <line x1="<%= width + 50%>" y1="<%= -20 - gableHeight%>" x2="<%= width + 50%>" y2="<%= height%>" stroke="black" />

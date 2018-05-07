@@ -31,8 +31,8 @@ public class Mapper {
             rs.next();
             String name = rs.getString("name");
             String uom = rs.getString("uom");
-            int price = rs.getInt("price");
-            LineItem product = new LineItem(productID, name, uom, price);
+            int pricePerUnit = rs.getInt("price");
+            LineItem product = new LineItem(productID, name, uom, pricePerUnit);
             return product;
 
         } catch (SQLException e) {
@@ -209,6 +209,34 @@ public class Mapper {
         } catch (SQLException e) {
             throw new CarportException("Error setting sent status.", "employee");
         }
+    }
+
+    public static List<Order> getOrders() throws CarportException {
+        ArrayList<Order> orders = new ArrayList<>();
+        try {
+            dbc.setDataSource(new DataSourceFog().getDataSource());
+            dbc.open();
+
+            String sql = "select * from orders where order_placed=1";
+            ResultSet rs = dbc.query(sql);
+            while (rs.next()) {
+                int orderID = rs.getInt("orderID");
+                String customer = rs.getString("customer");
+                int length = rs.getInt("length");
+                int width = rs.getInt("width");
+                int angle = rs.getInt("roof_angle");
+                int shedLength = rs.getInt("shed_length");
+                int shedWidth = rs.getInt("shed_width");
+                int price = rs.getInt("price");
+                int empID = rs.getInt("employees_userID");
+                boolean placed = rs.getBoolean("order_placed");
+                Order order = new Order(orderID, customer, length, width, angle, shedLength, shedWidth, price, empID, placed);
+                orders.add(order);
+            }
+        } catch (SQLException ex) {
+            throw new CarportException("Error fetching orders", "employee");
+        }
+        return orders;
     }
 
 }
