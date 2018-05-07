@@ -68,5 +68,5 @@ public class BOM {
     public void setShedWidth(int shedWidth) {
         this.shedWidth = shedWidth;
     }
-    
+ 
 }
