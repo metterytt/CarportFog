@@ -3,6 +3,7 @@
     Created on : 24-04-2018, 19:33:17
 --%>
 
+<%@page import="functionLayer.DrawingMeasures"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="functionLayer.entity.LineItem"%>
 <%@page import="functionLayer.BOM"%>
@@ -17,8 +18,6 @@
         <title>Stykliste</title>
     </head>
     <body>
-        
-        
 
         <form name="login" action="FrontController" method="post">
             <input type="hidden" name="command" value="sendrequest">
@@ -26,89 +25,37 @@
             <input type="submit" class="btn btn-primary" value="Send forespørgsel på denne carport">
         </form>
 
-
         <div class="container-fluid">
             <div class="row">
-                <% BOM carportBOM = (BOM) session.getAttribute("carportbom");
+
+
+
+                <%--<% BOM carportBOM = (BOM) session.getAttribute("carportbom");
                     BOM shedBOM = (BOM) request.getSession().getAttribute("shedbom");
                     ArrayList<LineItem> bom = carportBOM.getListOfProducts();
-                %>
-                <%--
-                <div class="col-md-6">
-                    <br>
-                    <h1>Styklisteberegning</h1>
-                    <br>
-                    <br>
-
-                    <% BOM carportBOM = (BOM) session.getAttribute("carportbom");
-                    %>
-
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th>Produktnavn</th>
-                                <th>Brug</th>
-                                <th>Enhed</th>
-                                <th>Antal</th>
-                                <th>Pris</th>
-
-                            </tr>
-                        </thead> 
-                        <tbody>
-                            <%
-                                ArrayList<LineItem> bom = carportBOM.getListOfProducts();
-                                for (LineItem p : bom) {
-                            %>
-                            <tr>
-                                <th> <% out.print(p.getName()); %> </th>
-                                <th> <% out.print(p.getUseInContext()); %> </th>
-                                <th> <% out.print(p.getUom()); %> </th>
-                                <th> <% out.print(p.getQuantity()); %> </th>
-                                <th> <% out.print(p.getPrice()); %>  </th>
-
-                                <%}%>
-                            </tr> 
-                        </tbody>
-                    </table>    
-                    <%
-                        BOM shedBOM = (BOM) request.getSession().getAttribute("shedbom");
-                        if (shedBOM != null) {
-
-                    %>
-                    <h2>Herunder er styklisten for skuret:</h2>
-
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th>Produktnavn</th>
-                                <th>Brug</th>
-                                <th>Enhed</th>
-                                <th>Antal</th>
-                                <th>Pris pr. enhed</th>
-                            </tr>
-                        </thead> 
-                        <tbody>
-                            <%  ArrayList<LineItem> shedBom = shedBOM.getListOfProducts();
-                                for (LineItem p : shedBom) {
-                            %>
-                            <tr>
-                                <th> <% out.print(p.getName()); %> </th>
-                                <th> <% out.print(p.getUseInContext()); %> </th>
-                                <th> <% out.print(p.getUom()); %> </th>
-                                <th> <% out.print(p.getQuantity()); %> </th>
-                                <th> <% out.print(p.getPrice()); %>  </th>
-                                    <%}%>
-                            </tr> 
-                        </tbody>
-                    </table>    
-                    <%}%>
-                </div> --%>
+                %> --%>
 
 
 
                 <div class="col-md-6">
                     <br><h1>Visualization</h1>
+                    <%
+                        DrawingMeasures drawingMeasures = (DrawingMeasures) session.getAttribute("drawingmeasures");
+                        int length = drawingMeasures.getLength();
+                        int width = drawingMeasures.getWidth();
+                        int height = drawingMeasures.getHeight();
+                        int angle = drawingMeasures.getAngle();
+                        int shedLength = drawingMeasures.getShedLength();
+                        int shedWidth = drawingMeasures.getShedWidth();
+                        
+                        String shedPos = (String) request.getAttribute("shedPos"); %>  <%-- vær opmærksom her --%>
+                     <%   double rafterGap = drawingMeasures.getRafterGap();
+                        int rafterQty = drawingMeasures.getRafterQty();
+                        int posts = drawingMeasures.getPosts();
+                        double startingLength = (length - 10);
+                    %>
 
+                    <%--
                     <%  int length = carportBOM.getLength();
                         int width = carportBOM.getWidth();
                         int height = 210;
@@ -122,7 +69,7 @@
                         String shedPos = (String) request.getAttribute("shedPos");
 
                     %>
-
+                    --%>
 
 
                     <%-- carport set oppefra --%>
@@ -133,25 +80,30 @@
                     <line x1="<%= width - width * 0.9%>" y1="0" x2="<%= width - width * 0.9%>" y2="<%= length%>" stroke="black" stroke-width="12" stroke-opacity = "0.5"/>
 
                     <%-- spær --%>
-                    <%
+                    <%--
+                    
+                        
                         double rafterGap = (double) request.getAttribute("rafterGap");
                         int rafterQuantity = (int) request.getAttribute("rafterQuantity");
                         double startingLength = (length - 10);
-
-                        for (int idx = 0; idx < rafterQuantity; idx++) {
+                        --%>
+                        <%
+                        for (int idx = 0; idx < rafterQty; idx++) {
                     %> <line x1="5" y1="<%= startingLength%>" x2="<%= width - 5%>" y2="<%= startingLength%>" stroke-width="12" stroke="darkgrey"/> <%
                             startingLength -= rafterGap;
                         }
                     %>
 
                     <%-- stolper --%>
+                    <%--
                     <% int posts = 0;
                         for (LineItem li : bom) {
                             if (li.getUseInContext().equals("Nedgraves 90cm i jord")) {
                                 posts = li.getQuantity();
                             }
                         }
-                        if (posts < 5) {
+                    --%>
+                      <%  if (posts < 5) {
 
                     %> <rect x="<%= width - width * 0.9 - 4%>" y="<%=length * 0.25%>" height="15" width="15" stroke="black" stroke-width="3" fill="none" />
                     <rect x="<%= width - width * 0.9 - 4%>" y="<%=length * 0.75%>" height="15" width="15" stroke="black" stroke-width="3" fill="none"/>
