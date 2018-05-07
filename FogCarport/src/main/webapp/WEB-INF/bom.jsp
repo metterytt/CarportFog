@@ -431,8 +431,8 @@
                     <% }
                         }%>
 
-                    <%--
-                <defs>
+                    <%-- 
+                 <defs>
 
                     <pattern id="pattern"
                              width="15" height="10"
@@ -449,9 +449,8 @@
                           stroke="darkgrey"
                           stroke-width="2px" 
                           transform="translate(0) rotate(1.1 80 45)"/>/>
+
                     --%>
-
-
 
                     </svg>
 
@@ -485,12 +484,12 @@
                         calcAngle = Math.toRadians(angle);
                         double fasciaBoards = ((width / 2) / Math.cos(calcAngle));
                     %>
-                    
-                    <polygon points="<%=width / 2 + 25%>,<%=-13 - gableHeight%> <%=width / 2 + 25%>,<%=-3 -gableHeight%> 15,-5 15,-15" 
+
+                    <polygon points="<%=width / 2 + 25%>,<%=-13 - gableHeight%> <%=width / 2 + 25%>,<%=-3 - gableHeight%> 15,-5 15,-15" 
                              fill="snow" stroke="black"/>
-                    <polygon points="<%=width / 2 + 25%>,<%=-13 - gableHeight%> <%=width / 2 + 25%>,<%=-3 -gableHeight%> <%= length + 35%>,<%= -5%> <%= length + 35%>,<%= -15%>" 
+                    <polygon points="<%=width / 2 + 25%>,<%=-13 - gableHeight%> <%=width / 2 + 25%>,<%=-3 - gableHeight%> <%= width + 35%>,<%= -5%> <%= width + 35%>,<%= -15%>" 
                              fill="snow" stroke="black"/>
-                    
+
                     <%-- 
                     <rect x="<%= width / 2 + 20%>" y="<%= -height * 0.5%>" width="10" height="<%= fasciaBoards + 15%>" fill="snow" stroke="black" stroke-width="1"
                           transform="translate(0) rotate(68 131 -84)"/>
