@@ -13,6 +13,10 @@ public class AllRequests extends Command {
     String execute(HttpServletRequest request, HttpServletResponse response) throws CarportException {
         List<Order> openRequests = StorageFacade.getOpenRequests();
         request.setAttribute("openrequests", openRequests);
+
+        List<Order> orders = StorageFacade.getOrders();
+        request.setAttribute("orders", orders);
+
         return "allrequests";
     }
 

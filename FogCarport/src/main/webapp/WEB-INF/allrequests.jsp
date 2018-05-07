@@ -18,7 +18,7 @@
         <title>JSP Page</title>
     </head>
     <body>
- <%@include file="../Include/Navbar.jspf" %>
+        <%@include file="../Include/Navbar.jspf" %>
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-8">
@@ -83,8 +83,70 @@
                         </tbody>
                     </table>   
                     <%}%>
-                </div>
 
+
+                    <%--
+                                        <h2>Her er de bestilte ordrer:</h2>
+                                        <% ArrayList<Order> orders = (ArrayList<Order>) request.getAttribute("orders");
+                                            if (orders.size() == 0) {%>
+                                        <p> Ingen ordrer....</p>
+                                        <% } else { %>
+                                        <table class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>ID</th>
+                                                    <th>Kunde</th>
+                                                    <th>Længde</th>
+                                                    <th>Bredde</th>
+                                                    <th>Tagvinkel</th>
+                                                    <th>Skur længde</th>
+                                                    <th>Skur bredde</th>
+                                                    <th>Pris</th>
+                                                    <th>Sælger</th>
+                                                    <th>Bestilt</th>
+                                                </tr>
+                                            </thead> 
+                                            <tbody>
+                                                <%
+                                                    for (Order o : orders) {
+                                                %>
+                                                <tr>
+                                                    <th> <% out.print(o.getOrderID()); %> </th>
+                                                    <th> <% out.print(o.getCustomer()); %> </th>
+                                                    <th> <% out.print(o.getLength()); %> </th>
+                                                    <th> <% out.print(o.getWidth()); %> </th>
+                                                    <th> <% out.print(o.getAngle()); %> </th>
+                                                    <th> <% out.print(o.getShedLength()); %>  </th>
+                                                    <th> <% out.print(o.getShedWidth()); %>  </th>
+                                                    <th> <% out.print(o.getPrice()); %> </th>
+                                                    <th> <% out.print(o.getEmpID()); %> </th>
+                                                    <th> <% out.print(o.isPlaced()); %> </th>
+
+                                <th>
+                                    <form action="FrontController" method="post">
+                                        <input type="hidden" name="command" value="viewbom">
+                                        <input type="hidden" name="length" value="<%out.print(o.getLength());%>" />
+                                        <input type="hidden" name="width" value="<%out.print(o.getWidth());%>" />
+                                        <input type="hidden" name="angle" value="<%out.print(o.getAngle());%>" />
+                                        <input type="hidden" name="shedlength" value="<%out.print(o.getShedLength());%>" />
+                                        <input type="hidden" name="shedwidth" value="<%out.print(o.getShedWidth());%>" />
+                                        <input type="submit" class="btn btn-primary" value="Se stykliste"/>
+                                    </form>
+                                </th>
+                                <%}%>
+                            </tr> 
+                        </tbody>
+                    </table>   
+                    <%}%>
+                    --%>
+
+
+
+
+
+
+
+                </div>
                 <div class="col-md-4">
                     <form action="FrontController" method="post">
                         <input type="hidden" name="command" value="backtoemp">
@@ -93,11 +155,8 @@
                     </form>
                 </div>
 
+
             </div>
-
-
-
-
             <div class="row">
                 <div class="col-md-8">
                     <br>
@@ -170,10 +229,13 @@
                     <%}%>
                 </div>
             </div>
+
+
+
+
+
+
         </div>
 
-
-
-    </div>
-</body>
+    </body>
 </html>

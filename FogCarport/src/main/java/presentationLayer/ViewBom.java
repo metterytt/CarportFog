@@ -26,9 +26,12 @@ public class ViewBom extends Command {
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws CarportException {
         
-        // disse 2 linier er bare så vi beholder listen på over åbne requests på allrequests.jsp
+        // disse 4 linier er bare så vi beholder listen på over åbne requests på allrequests.jsp
         List<Order> openRequests = StorageFacade.getOpenRequests();
         request.setAttribute("openrequests", openRequests);
+        
+        List<Order> orders = StorageFacade.getOrders();
+        request.setAttribute("orders", orders);
         
         
         int length = Integer.parseInt(request.getParameter("length"));
