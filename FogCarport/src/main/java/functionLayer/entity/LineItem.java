@@ -7,22 +7,22 @@ public class LineItem {
     private String description;
     private String uom;
     private String uomForDisplay;
-    private int price;
+    private double pricePerUnit;
     private String extraInfo;
-    private int quantity;
+    private double quantity;
     private String useInContext;
-    private int qtyForDisplay;
+    private double qtyForDisplay;
     private int length;
 
-    public LineItem(int productID, String name, String uom, int price) {
+    public LineItem(int productID, String name, String uom, int pricePerUnit) {
         this.productID = productID;
         this.name = name;
         this.uom = uom;
-        this.price = price;
+        this.pricePerUnit = pricePerUnit;
         uomForDisplay = uom;
     }
 
-    public void setQuantity(int quantity) {
+    public void setQuantity(double quantity) {
         this.quantity = quantity;
         qtyForDisplay = quantity;
     }
@@ -43,15 +43,15 @@ public class LineItem {
         return uom;
     }
 
-    public double getPrice() { // TODO ordentlig formatering af kroner/øre
-        return price / 100;
+    public double getPricePerUnit() { // TODO ordentlig formatering af kroner/øre
+        return pricePerUnit / 100;
     }
 
     public String getExtraInfo() {
         return extraInfo;
     }
 
-    public int getQuantity() {
+    public double getQuantity() {
         return quantity;
     }
 
@@ -63,7 +63,7 @@ public class LineItem {
         return uomForDisplay;
     }
 
-    public int getQtyForDisplay() {
+    public double getQtyForDisplay() {
         return qtyForDisplay;
     }
 
@@ -79,8 +79,8 @@ public class LineItem {
         this.uom = uom;
     }
 
-    public void setPrice(int price) {
-        this.price = price;
+    public void setPricePerUnit(int pricePerUnit) {
+        this.pricePerUnit = pricePerUnit;
     }
 
     public void setExtraInfo(String extraInfo) {

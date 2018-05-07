@@ -25,11 +25,11 @@ import functionLayer.entity.LineItem;
 
 public class FlatRoofCalculator implements CarportCalculator {
 
-    private int length;
+    private double length;
     private int width;
     private BOM bom = new BOM();
 
-    public FlatRoofCalculator(int length, int width) throws CarportException {
+    public FlatRoofCalculator(double length, int width) throws CarportException {
         this.length = length;
         this.width = width;
         bom = calculateBOM();
@@ -40,25 +40,33 @@ public class FlatRoofCalculator implements CarportCalculator {
         bom.setLength(length);
         bom.setWidth(width);
 
+        // nts denne er tilpasset units
         LineItem subFasciaBoards = StorageFacade.getProduct(1);
         subFasciaBoards.setQuantity(calcSubFasciaBoards(length, width));
         subFasciaBoards.setUseInContext("Understernbrædder");
         bom.addToBOM(subFasciaBoards);
 
+        // nts denne er tilpasset units
         LineItem fasciaBoards = StorageFacade.getProduct(2);
         fasciaBoards.setQuantity(calcFasciaBoards(length, width));
         fasciaBoards.setUseInContext("Oversternbrædder");
         bom.addToBOM(fasciaBoards);
 
-        LineItem plates = StorageFacade.getProduct(4); // samme træ til remme og spær
-        plates.setQuantity(calcPlate(length));
-        plates.setUseInContext("Remme");
-        bom.addToBOM(plates);
+        // nts denne er tilpasset units
+        LineItem platesAndRafters = StorageFacade.getProduct(4); // samme træ til remme og spær
+        platesAndRafters.setQuantity(calcPlatesAndRafters(length, width));
+        platesAndRafters.setUseInContext("Remme og spær");
+        bom.addToBOM(platesAndRafters);
 
-        LineItem rafters = StorageFacade.getProduct(4); // samme træ til remme og spær
-        rafters.setQuantity(calcRafters(length, width));
-        rafters.setUseInContext("Spær, monteres på rem");
-        bom.addToBOM(rafters);
+        // disse to metoder bruges ikke siden at kunden ikke skulle have stykliste alligevel
+//        LineItem plates = StorageFacade.getProduct(4); // samme træ til remme og spær
+//        plates.setQuantity(calcPlate(length));
+//        plates.setUseInContext("Remme");
+//        bom.addToBOM(plates);
+//        LineItem rafters = StorageFacade.getProduct(4); // samme træ til remme og spær
+//        rafters.setQuantity(calcRafters(length, width));
+//        rafters.setUseInContext("Spær, monteres på rem");
+//        bom.addToBOM(rafters);
 
         LineItem posts = StorageFacade.getProduct(5);
         posts.setQuantity(calcPosts(length));
@@ -115,7 +123,7 @@ public class FlatRoofCalculator implements CarportCalculator {
     }
 
     // ud fra 4 stolper hvis længde mindre end 481, ellers 6
-    private int calcPosts(int length) {
+    private int calcPosts(double length) {
         if (length <= 480) {
             return 4;
         } else {
@@ -123,59 +131,72 @@ public class FlatRoofCalculator implements CarportCalculator {
         }
     }
 
-    private int calcSubFasciaBoards(int length, int width) {
-        return 2 * length + 2 * width;
+    private double calcSubFasciaBoards(double length, int width) {
+        return (2 * (double) length + 2 * (double) width) / 100; // returnerer antallet i meter
     }
 
-    private int calcFasciaBoards(int length, int width) {
-        return 2 * length + width;
+    private double calcFasciaBoards(double length, int width) {
+        return (2 * length + width) / 100; // returnerer antallet i meter
     }
 
-    private int calcPlate(int length) {
-        return 2 * length;
-    }
-
-    private int calcRafters(int length, int width) { // check om dette regnestykke er rigtigt.
-        int numberOfRafters = (length / 60);
+    private double calcPlatesAndRafters(double length, int width) {
+        double platesAndRafters = 0;
+        int numberOfRafters = ((int) length / 60);
         if (length % 60 == 0) {
             numberOfRafters++;
         } else {
-            numberOfRafters +=2;
+            numberOfRafters += 2;
         }
-        return numberOfRafters;
+        platesAndRafters = numberOfRafters * width;
+        platesAndRafters = platesAndRafters + 2 * length;
+        return platesAndRafters / 100;
     }
 
-    private int calcWaterBoards(int length, int width) {
-        return 2 * length + width;
+//    private double calcPlate(double length) {
+//        return 2 * length;
+//    }
+//
+//    private int calcRafters(double length) {
+//        int numberOfRafters = ((int) length / 60);
+//        if (length % 60 == 0) {
+//            numberOfRafters++;
+//        } else {
+//            numberOfRafters += 2;
+//        }
+//        return numberOfRafters;
+//    }
+
+    private double calcWaterBoards(double length, int width) {
+        return (2 * length + width)/100; // returnerer antallet i meter
     }
 
-    private int calcRoof(int length, int width) { //under forudsætning af ca. 9 cm overlap
-        int rows = length / 100;
+    private double calcRoof(double length, int width) { //under forudsætning af ca. 9 cm overlap
+        int rows = (int) length / 100;
         if (length % 100 != 0) {
             rows++;
         }
         return rows * width;
     }
 
-    private int calcRoofScrews(int length, int width) { //12 skruer/m2, 50 for buffer
-        return ((length * width * 12) / 10000) + 50;
+    private int calcRoofScrews(double length, int width) { //12 skruer/m2, 50 for buffer
+        return (int) ((length * width * 12) / 10000) + 50;
     }
 
-    private int calcMetalTape(int length, int width) {
-        return 2 * (int) (Math.sqrt(length * length + width * width)) + 1;
+    private double calcMetalTape(double length, int width) {
+        return 2 * (Math.sqrt(length * length + width * width)) + 1;
     }
 
-    private int calcUniBrackets(int length) {
-        return (length / 60) + 2;
+    private int calcUniBrackets(double length) {
+        return ((int) length / 60) + 2;
     }
 
-    private int calcFasciaScrews(int length, int width) { // 2 stk. pr. 60 cm omkreds PLUS 4 stk. pr 60 cm (omkreds minus bredde)
+    private int calcFasciaScrews(double length, int width) { // 2 stk. pr. 60 cm omkreds PLUS 4 stk. pr 60 cm (omkreds minus bredde)
         //(pga manglende overstern og vandbræt bagtil) ... 50 for buffer
-        return 2 * ((2 * length + 2 * width) / 60) + (4 * (2 * length + width) / 60) + 50;
+        return (int) (2 * ((2 * length + 2 * width) / 60) + (4 * (2 * length + width) / 60) + 50);
     }
 
-    private int calcBracketScrews(int length) { // 9 pr. universalbeslag ... 50 for buffer
-        return (((length / 60) + 2) * 2) * 9 + 50;
+    private int calcBracketScrews(double length) { // 9 pr. universalbeslag ... 50 for buffer
+        return (int) (((length / 60) + 2) * 2) * 9 + 50;
     }
 
     @Override

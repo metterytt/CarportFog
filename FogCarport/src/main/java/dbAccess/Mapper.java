@@ -30,8 +30,8 @@ public class Mapper {
             rs.next();
             String name = rs.getString("name");
             String uom = rs.getString("uom");
-            int price = rs.getInt("price");
-            LineItem product = new LineItem(productID, name, uom, price);
+            int pricePerUnit = rs.getInt("price");
+            LineItem product = new LineItem(productID, name, uom, pricePerUnit);
             return product;
 
         } catch (SQLException e) {

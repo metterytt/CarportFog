@@ -174,6 +174,7 @@
                                 <th>Enhed</th>
                                 <th>Antal</th>
                                 <th>Pris</th>
+                                <th>Ialt kr.</th>
 
                             </tr>
                         </thead> 
@@ -188,7 +189,8 @@
                                 <th> <% out.print(p.getUseInContext()); %> </th>
                                 <th> <% out.print(p.getUom()); %> </th>
                                 <th> <% out.print(p.getQuantity()); %> </th>
-                                <th> <% out.print(p.getPrice()); %>  </th>
+                                <th> <% out.print(p.getPricePerUnit()); %>  </th>
+                                <th> <% out.print(p.getPricePerUnit() * p.getQuantity()); %>  </th>
 
                                 <%}%>
                             </tr> 
@@ -221,7 +223,7 @@
                                 <th> <% out.print(p.getUseInContext()); %> </th>
                                 <th> <% out.print(p.getUom()); %> </th>
                                 <th> <% out.print(p.getQuantity()); %> </th>
-                                <th> <% out.print(p.getPrice()); %>  </th>
+                                <th> <% out.print(p.getPricePerUnit()); %>  </th>
                                     <%}%>
                             </tr> 
                         </tbody>
