@@ -27,7 +27,7 @@ public class SendRequest extends Command {
         }
         int price = carportBom.totalPrice() + shedPrice;
         StorageFacade.addRequest(length, width, angle, shedLength, shedWidth, price);
-
+//        request.setAttribute("message", "Din forespørgsel er nu i systemet, og du vil snart blive kontaktet."); 
         return "requestplaced"; 
     }
 

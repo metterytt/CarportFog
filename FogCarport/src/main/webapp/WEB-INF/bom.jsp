@@ -17,6 +17,8 @@
         <title>Stykliste</title>
     </head>
     <body>
+        
+        
 
         <form name="login" action="FrontController" method="post">
             <input type="hidden" name="command" value="sendrequest">
