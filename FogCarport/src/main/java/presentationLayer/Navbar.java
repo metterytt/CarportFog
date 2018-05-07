@@ -28,7 +28,11 @@ public class Navbar extends Command {
     String execute(HttpServletRequest request, HttpServletResponse response) throws CarportException {
 
     if(request.getParameter("logout") != null){
-        request.getSession().removeAttribute("employee");
+        if(request.getSession().getAttribute("employee") != null){
+        request.getSession().removeAttribute("employee");}
+        else{
+            request.getSession().removeAttribute("customer");
+        }
     }
         
         String page = null;

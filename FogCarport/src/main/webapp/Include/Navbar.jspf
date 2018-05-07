@@ -1,6 +1,6 @@
 <%-- Second hidden input value determines which jsp file, the navbar will send the user to --%>
 <%@ page pageEncoding="UTF-8" %>
-<% if(request.getSession().getAttribute("employee") == null){  %>
+<% if(request.getSession().getAttribute("employee") == null && request.getSession().getAttribute("customer") == null){  %>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <form class="form-inline my-2 my-lg-0" action="FrontController" method="post">
         <input type="hidden" name="command" value="navbar">

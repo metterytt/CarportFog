@@ -17,10 +17,26 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    <h1 class="display-4">Login</h1>
-                    <br>
+                 
+                    <%if(request.getAttribute("empLogin") == null){ %>
                     <form action="FrontController" method="post">
                         <input type="hidden" name="command" value="login">
+                        <input type="hidden" name="showEmpLogin">
+                        <input type="submit" class="btn btn-primary" value="Login as Employee"/><br>
+                    </form>
+                    <%}else{ %>
+                    <form action="FrontController" method="post">
+                        <input type="hidden" name="command" value="login">
+                        <input type="hidden" name="showCustomerLogin">
+                        <input type="submit" class="btn btn-primary" value="Login as Customer"/><br>
+                    </form>
+                    <%}%>
+                     
+                    <% if(request.getAttribute("empLogin") != null){%>
+                    <h1 class="display-4">Login as Employee</h1>
+                    <form action="FrontController" method="post">
+                        <input type="hidden" name="command" value="login">
+                        <input type="hidden" name="loginEmp">
                         <% String error = (String) request.getAttribute("error");
                             if (error != null) {%>
                         <p> <%=error%>
@@ -36,7 +52,30 @@
                         <br>
                         <input type="submit" class="btn btn-primary" value="Login"/><br>
                     </form>
+                <%}else{ %>
+                <h1 class="display-4">Login as Customer</h1>
+                    <form action="FrontController" method="post">
+                        <input type="hidden" name="command" value="login">
+                          <input type="hidden" name="loginCustomer">
+                        <% String error = (String) request.getAttribute("error");
+                            if (error != null) {%>
+                        <p> <%=error%>
+                            <%}%> </p>
+                        <div class="form-group">
+                            <label for="username">Username:</label>
+                            <input type="email" class="form-control" id="username" name="username" value="lars@lars.dk">
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password:</label>
+                            <input type="password" class="form-control" id="Password" name="password" value="123">
+                        </div>
+                        <br>
+                        <input type="submit" class="btn btn-primary" value="Login"/><br>
+                    </form>
+                
+                <%} %>
                 </div>
+                        
             </div>
         </div>
     </body>

@@ -2,6 +2,7 @@
 package functionLayer;
 
 import dbAccess.Mapper;
+import functionLayer.entity.Customer;
 import functionLayer.entity.CustomerCalculation;
 import functionLayer.entity.Employee;
 import functionLayer.entity.LineItem;
@@ -21,6 +22,10 @@ public class StorageFacade {
     
     public static Employee login(String username, String password) throws CarportException {
         return Mapper.login(username, password);
+    }
+    
+    public static Customer loginCustomer(String username, String password) throws CarportException{
+        return Mapper.loginCustomer(username, password);
     }
 
     public static ArrayList<CustomerCalculation> getCustCalcs() throws CarportException {

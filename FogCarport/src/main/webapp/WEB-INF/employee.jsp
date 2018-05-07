@@ -35,7 +35,7 @@
                         <br/>
                         <input type="submit" class="btn btn-primary" value="Registrer ny medarbejder">
                     </form>
-                    <%} %>
+                    <%}%>
                     <form action="FrontController" method="post">
                         <input type="hidden" name="command" value="allcalculations">
                         <br/>

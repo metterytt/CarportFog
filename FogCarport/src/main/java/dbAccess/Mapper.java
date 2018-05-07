@@ -1,6 +1,7 @@
 package dbAccess;
 
 import functionLayer.CarportException;
+import functionLayer.entity.Customer;
 import functionLayer.entity.CustomerCalculation;
 import functionLayer.entity.Employee;
 import functionLayer.entity.LineItem;
@@ -71,6 +72,31 @@ public class Mapper {
             if (rs.next()) {
                 String role = rs.getString("role");
                 return new Employee(username, password, role);
+            } else {
+                throw new CarportException("No user found.. Invalid input", "login");
+            }
+        } catch (SQLException ex) {
+            throw new CarportException("something went wrong trying to login", "login");
+        }
+    }
+
+    public static Customer loginCustomer(String email, String password) throws CarportException {
+        try {
+            dbc.setDataSource(new DataSourceFog().getDataSource());
+            dbc.open();
+            Connection con = dbc.getConnector();
+            String sql = "select * from customer where username=? and password=?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, email);
+            ps.setString(2, password);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                int ID = rs.getInt("customerID");
+                String name = rs.getString("firstname");
+                String lastname = rs.getString("lastname");
+                String phonenumber = rs.getString("phonenumber");
+                String role = rs.getString("role");
+                return new Customer(ID, email, password, name, lastname, phonenumber, role);
             } else {
                 throw new CarportException("No user found.. Invalid input", "login");
             }

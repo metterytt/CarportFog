@@ -13,5 +13,7 @@
     </head>
     <body>
         <h1>Request was placed. Denne JSP er dummy lige nu, bare så man kan se at forespørgslen røg i databasen.</h1>
+    
+  
     </body>
 </html>
