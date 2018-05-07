@@ -23,7 +23,7 @@ public class Navbar extends Command {
         this.pages = new ArrayList();
         this.pages.add("login");
     }
-
+    
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws CarportException {
 
