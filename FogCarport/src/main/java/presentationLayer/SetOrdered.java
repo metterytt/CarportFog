@@ -16,6 +16,9 @@ public class SetOrdered extends Command {
 
         List<Order> openRequests = StorageFacade.getOpenRequests();
         request.setAttribute("openrequests", openRequests);
+        
+        List<Order> orders = StorageFacade.getOrders();
+        request.setAttribute("orders", orders);
 
         return "allrequests";
     }

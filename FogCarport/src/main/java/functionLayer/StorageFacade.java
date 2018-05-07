@@ -42,5 +42,9 @@ public class StorageFacade {
     public static void setOrdered(int orderID) throws CarportException {
         Mapper.setOrdered(orderID);
     }
+
+    public static List<Order> getOrders() throws CarportException {
+        return Mapper.getOrders();
+    }
     
 }
