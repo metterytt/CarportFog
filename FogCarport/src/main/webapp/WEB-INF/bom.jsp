@@ -431,8 +431,7 @@
                     <% }
                         }%>
 
-                    <%-- 
-                 <defs>
+                    <defs>
 
                     <pattern id="pattern"
                              width="15" height="10"
@@ -444,13 +443,11 @@
                     </defs>
 
                     <rect x="31" y="<%=height - height - 59%>"
-                          width="345" height="60"
+                          width="<%= length - 42%>" height="62"
                           fill= "url(#pattern)"
-                          stroke="darkgrey"
+                          stroke="none"
                           stroke-width="2px" 
-                          transform="translate(0) rotate(1.1 80 45)"/>/>
-
-                    --%>
+                          transform="translate(0) rotate(1.2 80 45)"/>
 
                     </svg>
 
