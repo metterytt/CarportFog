@@ -30,10 +30,10 @@
             <div class="row">
                 <div class="col-md-6">
                     <h1>Velkommen til Carport beregner.</h1>
-                    
+
                     <p>Her kan du indtaste de ønskede mål på din carport.</p>
                     <div class="form-group">
-                        
+
                         <form name="login" action="FrontController" method="post">
                             <input type="hidden" name="command" value="inputcarport">
 
@@ -65,7 +65,7 @@
                                 <option value="30">30°</option>
                                 <option value="40">40°</option>
                             </select>
-                            
+
                             <br>
                             <br>
                             <input type="button" class="btn btn-primary" onclick="myFunction()" value="Vis/gem skur"/>
@@ -93,8 +93,8 @@
                                     <% shedwidth += 30;
                                         }%>
                                 </select>
-                                
-                                
+
+
 
                                 <p> Højre eller venstre siddende skur? </p>
                                 <input type="radio" name="shedPos" value="right">Højre
@@ -102,7 +102,7 @@
                             </div>
                             <input type="submit" class="btn btn-primary" value="Beregn carport">
                         </form>
-                                
+
                     </div>
 
                     <% String error = (String) request.getAttribute("error");
