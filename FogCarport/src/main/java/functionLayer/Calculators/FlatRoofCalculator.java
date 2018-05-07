@@ -73,17 +73,21 @@ public class FlatRoofCalculator implements CarportCalculator {
         posts.setUseInContext("Nedgraves 90cm i jord");
         bom.addToBOM(posts);
 
+        // nts denne er tilpasset units
         LineItem waterBoards = StorageFacade.getProduct(6);
         waterBoards.setQuantity(calcWaterBoards(length, width));
         waterBoards.setUseInContext("Vandbræt, monteres på stern");
         bom.addToBOM(waterBoards);
 
         // mangler tagplader
+        
+        // denne er tilpasset units. regner nu i stk.
         LineItem roofScrews = StorageFacade.getProduct(8);
         roofScrews.setQuantity(calcRoofScrews(length, width));
         roofScrews.setUseInContext("Skruer til tagplader");
         bom.addToBOM(roofScrews);
 
+        // denne er tilpasset units
         LineItem metalTape = StorageFacade.getProduct(9);
         metalTape.setQuantity(calcMetalTape(length, width));
         metalTape.setUseInContext("Til vindkryds på spær");
@@ -182,8 +186,8 @@ public class FlatRoofCalculator implements CarportCalculator {
         return (int) ((length * width * 12) / 10000) + 50;
     }
 
-    private double calcMetalTape(double length, int width) {
-        return 2 * (Math.sqrt(length * length + width * width)) + 1;
+    private int calcMetalTape(double length, int width) { // regner ud i meter, og runder op til nærmeste hele meter
+        return (int) (2 * (Math.sqrt(length * length + width * width)))/100 + 1;
     }
 
     private int calcUniBrackets(double length) {
