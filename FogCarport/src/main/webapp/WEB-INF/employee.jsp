@@ -3,6 +3,7 @@
     Created on : 04-05-2018, 11:13:39
 --%>
 
+<%@page import="functionLayer.entity.Employee"%>
 <%@page import="functionLayer.entity.LineItem"%>
 <%@page import="functionLayer.BOM"%>
 <%@page import="functionLayer.entity.CustomerCalculation"%>
@@ -22,14 +23,19 @@
             <div class="row">
                 <div class="col-md-6">
                     
-                    <h2>Velkommen til medarbejdersiden. Her har du følgende muligheder:</h2>
+                     <%@include file="../Include/Navbar.jspf" %>
                     
+                    <% Employee emp = (Employee) request.getSession().getAttribute("employee"); %>
+                    
+                    <h2>Velkommen <%= emp.getUsername() %> til medarbejdersiden. Her har du følgende muligheder:</h2>
+                    
+                    <% if(emp.getRole().equals("IT")){ %>
                     <form action="FrontController" method="post">
                         <input type="hidden" name="command" value="registeremployee">
                         <br/>
                         <input type="submit" class="btn btn-primary" value="Registrer ny medarbejder">
                     </form>
-
+                    <%} %>
                     <form action="FrontController" method="post">
                         <input type="hidden" name="command" value="allcalculations">
                         <br/>
