@@ -154,13 +154,14 @@
 
 
 
-
                     <%-- carport set fra siden med fladt tag --%>
 
                     <%-- checker om der er fladt tag --%>
                     <% if (angle == 0) {%>
 
-                    <svg width="600" height="500" viewbox="-10 -80 <%= width * 2.5%> <%= length%>"> 
+                    <%-- <svg width="600" height="500" viewbox="-10 -80 <%= width * 2.5%> <%= length%>"> --%>
+                    <svg width="1000" height="1000" viewbox="-200 -200 <%= width * 3%> <%= length * 2%>"> 
+
 
                     <%-- stolper --%>
                     <%
@@ -170,7 +171,14 @@
                     <rect x="50" y="<%=10%>" width="10" height="<%= height%>" fill="snow" stroke="black" stroke-width="1"/>
                     <rect x="<%= length - 40%>" y="<%=10%>" width="10" height="<%= height%>" fill="snow" stroke="black" stroke-width="1"/>
 
-                    <text x="<%=length / 2%>" y="<%=height - 160%>" fill="black" text-anchor="middle">Længde: <%=length%> </text>
+                    <%-- tekst til længde --%>
+                    <% if (shedLength == 0) {%>
+                    <text x="<%=length / 2%>" y="<%=height - 230%>" fill="black" text-anchor="middle">Længde: <%=length%> </text>
+                    <% } %>
+
+                    <% if (shedLength != 0) {%>
+                    <text x="<%=length / 2%>" y="<%=height - 230%>" fill="black" text-anchor="middle">Længde: <%=length%> </text>
+                    <% } %>
 
                     <%-- rem til 4 stolper--%>
                     <% if (length < 349) {%>
@@ -191,8 +199,14 @@
                     <rect x="<%= length / 2%>" y="<%=10%>" width="10" height="<%= height%>" fill="snow" stroke="black" stroke-width="1"/>
                     <rect x="<%= length - 40%>" y="<%=10%>" width="10" height="<%= height%>" fill="snow" stroke="black" stroke-width="1"/>
 
-                    <text x="<%=length * 0.3%>" y="<%=height - 160%>" fill="black" text-anchor="middle">Længde: <%=length%> </text>
+                    <%-- tekst til længde --%>
+                    <% if (shedLength == 0) {%>
+                    <text x="<%=length / 2%>" y="<%=height - 230%>" fill="black" text-anchor="middle">Længde: <%=length%> </text>
+                    <% } %>
 
+                    <% if (shedLength != 0) {%>
+                    <text x="<%=length / 2%>" y="<%=height - 230%>" fill="black" text-anchor="middle">Længde: <%=length%> </text>
+                    <% } %>
 
                     <%-- rem til 6 stolper--%>
                     <% if (length < 599) {%>
@@ -224,6 +238,28 @@
                     <line x1="20" y1="0" x2="<%= length%>" y2="0" stroke="black" stroke-width="2" stroke-dasharray="5 5"/>
                     <line x1="<%= length%>" y1="0" x2="<%= length%>" y2="<%= 15%>" stroke="black" stroke-width="2" stroke-dasharray="5 5"/>
 
+                    <%-- pattern med striber til skur --%>
+                    <defs>
+                    <pattern id="patternSkur"
+                             width="15" height="10"
+                             patternUnits="userSpaceOnUse"
+                             patternTransform="rotate(0 0 0)">
+                        <line stroke="black" stroke-width="3px" y2="10"/>
+                    </pattern>
+                    </defs>
+
+                    <%-- checker om der er skur (fladt tag) --%>
+                    <% if (shedLength != 0) {%>
+
+                    <% if (length < 600) {%>
+                    <polygon points="<%=length - shedLength - 40%>,<%=27%> <%=length - 40%>,<%=33%> <%= length - 40%>,<%= height + 10%> <%= length - shedLength - 40%>,<%= height + 10%>" 
+                             fill="url(#patternSkur)" stroke="black"/>
+                    <% } %>
+                    <% if (length >= 600) {%>
+                    <polygon points="<%=length - shedLength - 40%>,<%=25%> <%=length - 40%>,<%=27%> <%= length - 40%>,<%= height + 10%> <%= length - shedLength - 40%>,<%= height + 10%>" 
+                             fill="url(#patternSkur)" stroke="black"/>
+                    <% }
+                        }%>
 
                     </svg>
 
@@ -251,10 +287,10 @@
                     <%-- checker om der er hældning på taget --%>
                     <% if (angle > 0) {%>
 
-
                     <%-- carport med rejsning set fra siden stor tegning/Nillers tegning --%>
 
-                    <svg width="600" height="500" viewbox="-10 -80 <%= width * 2.5%> <%= length%>"> 
+                    <%-- <svg width="600" height="500" viewbox="-10 -80 <%= width * 2.5%> <%= length%>"> --%>
+                    <svg width="1000" height="1000" viewbox="-200 -200 <%= width * 3%> <%= length * 2%>"> 
 
 
                     <%-- stolper --%>
@@ -265,7 +301,13 @@
                     <rect x="50" y="<%=10%>" width="10" height="<%= height%>" fill="snow" stroke="black" stroke-width="1"/>
                     <rect x="<%= length - 40%>" y="<%=10%>" width="10" height="<%= height%>" fill="snow" stroke="black" stroke-width="1"/>
 
+                    <% if (shedLength == 0) {%>
                     <text x="<%=length / 2%>" y="<%=height - 160%>" fill="black" text-anchor="middle">Længde: <%=length%> </text>
+                    <% } %>
+
+                    <% if (shedLength != 0) {%>
+                    <text x="<%=length * 0.3%>" y="<%=height - 160%>" fill="black" text-anchor="middle">Længde: <%=length%> </text>
+                    <% } %>
 
                     <%-- rem til 4 stolper--%>
                     <% if (length < 349) {%>
@@ -299,10 +341,8 @@
                     <% }
                         }%>
 
-
                     <%-- stiplet linje til jorden --%>
                     <line x1="0" y1="<%= height + 10%>" x2="<%= length * 1.30%>" y2="<%= height + 10%>" stroke="black" stroke-width="2" stroke-dasharray="5 5"/>
-
 
                     <%-- træ --%>
                     <polygon points="<%= length + 70%>,15 <%= length + 20%>,170 <%= length + 120%>,170" fill="green" stroke="black" stroke-width="1" />
@@ -312,17 +352,14 @@
                     <text x="<%=length * 0.05%>" y="<%=height / 2%>" fill="black" text-anchor="middle" writing-mode="tb">Højde: <%=height%> </text>
                     <text x="<%=length + 15%>" y="<%=height / 2 - 100%>" fill="black" text-anchor="middle" writing-mode="tb">Hældning på 9 cm. </text>
 
-
                     <%-- tag og stern --%>
                     <line x1="20" y1="10.5" x2="<%= length%>" y2="18" stroke="darkgrey" stroke-width="3"/>
                     <line x1="20" y1="5" x2="<%= length%>" y2="13" stroke="black" stroke-width="8"/>
-
 
                     <%-- tag med rejsning --%>
                     <%--streg for hældning--%>
                     <line x1="20" y1="<%= height - height - 75%>" x2="<%= length%>" y2="<%= height - height - 75%>" stroke="black" stroke-width="2" stroke-dasharray="5 5"/>
                     <line x1="<%= length%>" y1="<%= height - height - 75%>" x2="<%= length%>" y2="<%= height - height - 63%>" stroke="black" stroke-width="2" stroke-dasharray="5 5"/>
-
 
                     <%-- spær --%>
                     <%
@@ -354,7 +391,6 @@
                     <% }
                         }%>
 
-
                     <%-- spær i toppen til 6 stolper--%>
                     <%
                         if (posts > 4) {
@@ -382,18 +418,17 @@
                     <% }
                         }%>
 
-                    <%-- Lodrette striper på tag --%>
+                    <%-- pattern med striber til tag. --%>
                     <defs>
-
                     <pattern id="pattern"
                              width="15" height="10"
                              patternUnits="userSpaceOnUse"
                              patternTransform="rotate(0 0 0)">
                         <line stroke="darkgrey" stroke-width="3px" y2="10"/>
                     </pattern>
-
                     </defs>
 
+                    <%-- Lodrette striper på tag --%>
                     <rect x="31" y="<%=height - height - 59%>"
                           width="<%= length - 42%>" height="62"
                           fill= "url(#pattern)"
@@ -401,6 +436,28 @@
                           stroke-width="2px" 
                           transform="translate(0) rotate(1.2 80 45)"/>
 
+                    <%-- pattern med striber til skur --%>
+                    <defs>
+                    <pattern id="patternSkur"
+                             width="15" height="10"
+                             patternUnits="userSpaceOnUse"
+                             patternTransform="rotate(0 0 0)">
+                        <line stroke="black" stroke-width="3px" y2="10"/>
+                    </pattern>
+                    </defs>
+
+                    <%-- checker om der er skur (fladt tag) --%>
+                    <% if (shedLength != 0) {%>
+
+                    <% if (length < 600) {%>
+                    <polygon points="<%=length - shedLength - 40%>,<%=27%> <%=length - 40%>,<%=33%> <%= length - 40%>,<%= height + 10%> <%= length - shedLength - 40%>,<%= height + 10%>" 
+                             fill="url(#patternSkur)" stroke="black"/>
+                    <% } %>
+                    <% if (length >= 600) {%>
+                    <polygon points="<%=length - shedLength - 40%>,<%=25%> <%=length - 40%>,<%=27%> <%= length - 40%>,<%= height + 10%> <%= length - shedLength - 40%>,<%= height + 10%>" 
+                             fill="url(#patternSkur)" stroke="black"/>
+                    <% }
+                        }%>
                     </svg>
 
 
@@ -410,16 +467,15 @@
 
 
                     <%-- carport set forfra med rejsning --%>
-                    <svg width="600" height="500" viewbox="-10 -80 <%= width * 2.5%> <%= length%>"> 
+                    <%-- <svg width="600" height="500" viewbox="-10 -80 <%= width * 3%> <%= length%>"> --%>
+                    <svg width="1000" height="1000" viewbox="-200 -200 <%= width * 3%> <%= length * 2%>"> 
 
                     <%-- stolper --%>
                     <rect x="40" y="<%=height - height%>" width="10" height="<%= height%>" fill="snow" stroke="black" stroke-width="1"/>
                     <rect x="<%= width%>" y="<%=height - height%>" width="10" height="<%= height%>" fill="snow" stroke="black" stroke-width="1"/>
 
-
                     <%-- over- og understern --%>
                     <rect x="15" y="-10" width="<%= width + 20%>" height="10" fill="snow" stroke="black"/>
-
 
                     <%-- gavl --%>
                     <%
@@ -428,23 +484,10 @@
                     %>
                     <rect x="<%= width / 2 + 20%>" y="<%= -10 - gableHeight%>" width="10" height="<%= gableHeight%>" fill="snow" stroke="black" stroke-width="1"/>
 
-                    <%-- vindskede/stern --%>
-                    <%
-                        calcAngle = Math.toRadians(angle);
-                        double fasciaBoards = ((width / 2) / Math.cos(calcAngle));
-                    %>
-
                     <polygon points="<%=width / 2 + 25%>,<%=-13 - gableHeight%> <%=width / 2 + 25%>,<%=-3 - gableHeight%> 15,-5 15,-15" 
                              fill="snow" stroke="black"/>
                     <polygon points="<%=width / 2 + 25%>,<%=-13 - gableHeight%> <%=width / 2 + 25%>,<%=-3 - gableHeight%> <%= width + 35%>,<%= -5%> <%= width + 35%>,<%= -15%>" 
                              fill="snow" stroke="black"/>
-
-                    <%-- 
-                    <rect x="<%= width / 2 + 20%>" y="<%= -height * 0.5%>" width="10" height="<%= fasciaBoards + 15%>" fill="snow" stroke="black" stroke-width="1"
-                          transform="translate(0) rotate(68 131 -84)"/>
-                    <rect x="<%= width / 2 + 20%>" y="<%= -height * 0.5%>" width="10" height="<%= fasciaBoards + 15%>" fill="snow" stroke="black" stroke-width="1"
-                          transform="translate(0) rotate(-68 189 -84)"/>
-                    --%>
 
                     <%-- streg for højde med tag --%>
                     <line x1="<%= width + 50%>" y1="<%= -20 - gableHeight%>" x2="<%= width + 50%>" y2="<%= height%>" stroke="black" />
@@ -452,23 +495,15 @@
 
                     <%-- streg for højde uden tag --%>
                     <line x1="<%= width + 80%>" y1="-15" x2="<%= width + 80%>" y2="<%= height%>" stroke="black" />
-                    <text x="<%=width + 90%>" y="<%=height / 2%>" fill="black" text-anchor="middle" writing-mode="tb">Højde uden tag: <%=height + (int) gableHeight%> </text>
-
+                    <text x="<%=width + 90%>" y="<%=height / 2%>" fill="black" text-anchor="middle" writing-mode="tb">Højde uden tag: <%=height%> </text>
 
                     <%-- streg langs jorden --%>
                     <line x1="0" y1="<%= height%>" x2="<%= width + 150%>" y2="<%= height%>" stroke="black"/>
 
-
-
                     </svg>
-
                     <% }%>
-
                 </div>
             </div>
         </div>
-
-
-
     </body>
 </html>
