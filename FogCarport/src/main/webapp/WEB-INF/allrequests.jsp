@@ -4,6 +4,7 @@
     Author     : mette
 --%>
 
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="functionLayer.entity.LineItem"%>
 <%@page import="functionLayer.BOM"%>
 <%@page import="functionLayer.entity.Order"%>
@@ -165,7 +166,11 @@
                     <br>
                     <br>
 
-                    <% BOM carportBOM = (BOM) request.getAttribute("carportbom");
+                    <%
+
+                        DecimalFormat myFormatter = new DecimalFormat("##0.00");
+
+                        BOM carportBOM = (BOM) request.getAttribute("carportbom");
                         if (carportBOM != null) {
                     %>
                     <h1>Styklisteberegning</h1>
@@ -192,8 +197,8 @@
                                 <th> <% out.print(p.getUseInContext()); %> </th>
                                 <th> <% out.print(p.getUom()); %> </th>
                                 <th> <% out.print(p.getQuantity()); %> </th>
-                                <th> <% out.print(p.getPricePerUnit()); %>  </th>
-                                <th> <% out.print(p.getPricePerUnit() * p.getQuantity()); %>  </th>
+                                <th> <% out.print(myFormatter.format((p.getPricePerUnit()))); %>  </th>
+                                <th> <% out.print(myFormatter.format((p.getPricePerUnit() * p.getQuantity()))); %>  </th>
 
                                 <%}%>
                             </tr> 
