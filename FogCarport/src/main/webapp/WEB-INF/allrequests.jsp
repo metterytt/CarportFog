@@ -21,7 +21,7 @@
         <%@include file="../Include/Navbar.jspf" %>
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-8">
+                <div class="col-md-12">
 
                     <h2>Her er de åbne forespørgsler:</h2>
                     <% ArrayList<Order> openRequests = (ArrayList<Order>) request.getAttribute("openrequests");
@@ -40,7 +40,7 @@
                                 <th>Skur bredde</th>
                                 <th>Pris</th>
                                 <th>Sælger</th>
-                                <th>Bestilt</th>
+                                <th> Ændre i ordre </th>
                             </tr>
                         </thead> 
                         <tbody>
@@ -57,7 +57,18 @@
                                 <th> <% out.print(o.getShedWidth()); %>  </th>
                                 <th> <% out.print(o.getPrice()); %> </th>
                                 <th> <% out.print(o.getEmpID()); %> </th>
-                                <th> <% out.print(o.isPlaced()); %> </th>
+                                <th>
+                                    <form action="FrontController" method="post">
+                                        <input type="hidden" name="command" value="editrequest">
+                                        <input type="hidden" name="orderID" value="<%out.print(o.getOrderID());%>"/>
+                                        <input type="hidden" name="length" value="<%out.print(o.getLength());%>"/>
+                                        <input type="hidden" name="width" value="<%out.print(o.getWidth());%>"/>
+                                        <input type="hidden" name="angle" value="<%out.print(o.getAngle());%>"/>
+                                        <input type="hidden" name="shedlength" value="<%out.print(o.getShedLength());%>"/>
+                                        <input type="hidden" name="shedwidth" value="<%out.print(o.getShedWidth());%>"/>
+                                        <input type="submit" class="btn btn-primary" value="Ændre i bestillingen"/>
+                                    </form>
+                                </th>
 
                                 <th>
                                     <form action="FrontController" method="post">
@@ -86,7 +97,8 @@
 
                     <h2>Her er de bestilte ordrer:</h2>
                     <% ArrayList<Order> orders = (ArrayList<Order>) request.getAttribute("orders");
-                                            if (orders.size() == 0) {%>
+
+                        if (orders.size() == 0) {%>
                     <p> Ingen ordrer....</p>
                     <% } else { %>
                     <table class="table table-striped">
@@ -136,6 +148,7 @@
                         </tbody>
                     </table>   
                     <%}%>
+
 
                 </div>
                 <div class="col-md-4">
