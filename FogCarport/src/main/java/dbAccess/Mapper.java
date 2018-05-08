@@ -120,6 +120,21 @@ public class Mapper {
             throw new CarportException("Noget gik galt, prøv igen!", "registeremployee");
         }
     }
+    
+    public static void registerCustomer(String username, String password) throws CarportException {
+        try {
+            dbc.setDataSource(new DataSourceFog().getDataSource());
+            dbc.open();
+            Connection con = dbc.getConnector();
+            String sql = "insert into customer values (null, ?, ?)";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, username);
+            ps.setString(2, password);
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            throw new CarportException("Noget gik galt, prøv igen!", "registercustomer");
+        }
+    }
 
     public static ArrayList<CustomerCalculation> getCustCalcs() throws CarportException {
         ArrayList<CustomerCalculation> custCalcs = new ArrayList<>();

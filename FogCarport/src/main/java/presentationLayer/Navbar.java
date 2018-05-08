@@ -30,7 +30,6 @@ public class Navbar extends Command {
     if(request.getParameter("logout") != null){
         if(request.getSession().getAttribute("employee") != null){
         request.getSession().removeAttribute("employee");
-        
         return "index";
     }
         else{
