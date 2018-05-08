@@ -67,7 +67,6 @@ public class FlatRoofCalculator implements CarportCalculator {
 //        rafters.setQuantity(calcRafters(length, width));
 //        rafters.setUseInContext("Spær, monteres på rem");
 //        bom.addToBOM(rafters);
-
         LineItem posts = StorageFacade.getProduct(5);
         posts.setQuantity(calcPosts(length));
         posts.setUseInContext("Nedgraves 90cm i jord");
@@ -80,7 +79,6 @@ public class FlatRoofCalculator implements CarportCalculator {
         bom.addToBOM(waterBoards);
 
         // mangler tagplader
-        
         // denne er tilpasset units. regner nu i stk.
         LineItem roofScrews = StorageFacade.getProduct(8);
         roofScrews.setQuantity(calcRoofScrews(length, width));
@@ -128,11 +126,12 @@ public class FlatRoofCalculator implements CarportCalculator {
 
     // ud fra 4 stolper hvis længde mindre end 481, ellers 6
     private int calcPosts(double length) {
-        if (length <= 480) {
-            return 4;
-        } else {
-            return 6;
-        }
+        return 2 * (((int) length / 300) + 2);
+//        if (length <= 480) {
+//            return 4;
+//        } else {
+//            return 6;
+//        }
     }
 
     private double calcSubFasciaBoards(double length, int width) {
@@ -169,9 +168,8 @@ public class FlatRoofCalculator implements CarportCalculator {
 //        }
 //        return numberOfRafters;
 //    }
-
     private double calcWaterBoards(double length, int width) {
-        return (2 * length + width)/100; // returnerer antallet i meter
+        return (2 * length + width) / 100; // returnerer antallet i meter
     }
 
     private double calcRoof(double length, int width) { //under forudsætning af ca. 9 cm overlap
@@ -187,11 +185,19 @@ public class FlatRoofCalculator implements CarportCalculator {
     }
 
     private int calcMetalTape(double length, int width) { // regner ud i meter, og runder op til nærmeste hele meter
-        return (int) (2 * (Math.sqrt(length * length + width * width)))/100 + 1;
+        return (int) (2 * (Math.sqrt(length * length + width * width))) / 100 + 1;
     }
 
     private int calcUniBrackets(double length) {
-        return ((int) length / 60) + 2;
+        int uniBrackets = ((int) length / 60);
+        if (length % 60 == 0) {
+            uniBrackets++;
+        } else {
+            uniBrackets += 2;
+        }
+        return uniBrackets;
+
+//        return ((int) length / 60) + 2;
     }
 
     private int calcFasciaScrews(double length, int width) { // 2 stk. pr. 60 cm omkreds PLUS 4 stk. pr 60 cm (omkreds minus bredde)
@@ -200,7 +206,14 @@ public class FlatRoofCalculator implements CarportCalculator {
     }
 
     private int calcBracketScrews(double length) { // 9 pr. universalbeslag ... 50 for buffer
-        return (int) (((length / 60) + 2) * 2) * 9 + 50;
+        int uniBrackets = ((int) length / 60);
+        if (length % 60 == 0) {
+            uniBrackets++;
+        } else {
+            uniBrackets += 2;
+        }
+
+        return uniBrackets * 9 + 50;
     }
 
     @Override
