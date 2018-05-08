@@ -56,4 +56,11 @@ public class StorageFacade {
         return Mapper.getOrders();
     }
     
+    public static void deleteEmployee(int userID) throws CarportException {
+        Mapper.deleteEmployee(userID);
+    }
+    
+    public static List<Employee> getAllEmployees() throws CarportException {
+        return Mapper.getAllEmployees();
+    }
 }
