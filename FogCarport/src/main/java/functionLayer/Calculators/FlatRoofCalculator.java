@@ -124,14 +124,14 @@ public class FlatRoofCalculator implements CarportCalculator {
         return bom;
     }
 
-    // ud fra 4 stolper hvis længde mindre end 481, ellers 6
     private int calcPosts(double length) {
-        return 2 * (((int) length / 300) + 2);
-//        if (length <= 480) {
-//            return 4;
-//        } else {
-//            return 6;
-//        }
+        if (length <= 300) {
+            return 4;
+        }
+        int posts = 2 + ((int) length / 300);
+
+        return 2 * posts;
+
     }
 
     private double calcSubFasciaBoards(double length, int width) {
@@ -205,15 +205,14 @@ public class FlatRoofCalculator implements CarportCalculator {
         return (int) (2 * ((2 * length + 2 * width) / 60) + (4 * (2 * length + width) / 60) + 50);
     }
 
-    private int calcBracketScrews(double length) { // 9 pr. universalbeslag ... 50 for buffer
+    private int calcBracketScrews(double length) { // 9 pr. universalbeslag + 2 * length/60 til hulbånd... 50 for buffer
         int uniBrackets = ((int) length / 60);
         if (length % 60 == 0) {
             uniBrackets++;
         } else {
             uniBrackets += 2;
         }
-
-        return uniBrackets * 9 + 50;
+        return uniBrackets * 9 + 2 * (int) length / 60 + 50;
     }
 
     @Override
