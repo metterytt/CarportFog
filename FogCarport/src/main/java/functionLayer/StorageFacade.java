@@ -40,6 +40,10 @@ public class StorageFacade {
         Mapper.registerEmp(username, password, role);
     }
 
+     public static void registerCustomer(String username, String password) throws CarportException{
+         Mapper.registerCustomer(username, password);
+     }
+    
     public static List<Order> getOpenRequests() throws CarportException {
         return Mapper.getOpenRequests();
     }
