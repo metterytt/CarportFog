@@ -9,6 +9,7 @@ import functionLayer.CarportException;
 import functionLayer.StorageFacade;
 import functionLayer.entity.Customer;
 import functionLayer.entity.Employee;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -33,6 +34,8 @@ public class Login extends Command {
         String password = request.getParameter("password");
         Employee employee = StorageFacade.login(username, password);
         request.getSession().setAttribute("employee", employee);
+        List<Employee> allEmp = StorageFacade.getAllEmployees();
+        request.setAttribute("allEmp", allEmp);
         return "employee";
         }
         else if(request.getParameter("loginCustomer") != null){

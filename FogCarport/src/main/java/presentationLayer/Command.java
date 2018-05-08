@@ -16,6 +16,7 @@ abstract class Command {
         commands.put("inputcarport", new InputCarport());
         commands.put("sendrequest", new SendRequest());
         commands.put("registeremployee", new RegisterEmployee());
+        commands.put("deleteemployee", new DeleteEmployee());
         commands.put("allcalculations", new AllCalculations());
         commands.put("backtoemp", new BackToEmp());
         commands.put("allrequests", new AllRequests());

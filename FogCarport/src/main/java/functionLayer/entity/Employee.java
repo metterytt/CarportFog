@@ -13,11 +13,13 @@ public class Employee {
     private String username;
     private String password;
     private String role;
+    private int userID;
 
-    public Employee(String username, String password, String role) {
+    public Employee(String username, String password, String role, int userID) {
         this.username = username;
         this.password = password;
         this.role = role;
+        this.userID = userID;
     }
 
     public String getUsername() {
@@ -30,5 +32,9 @@ public class Employee {
 
     public String getRole() {
         return role;
+    }
+
+    public int getUserID() {
+        return userID;
     }
 }
