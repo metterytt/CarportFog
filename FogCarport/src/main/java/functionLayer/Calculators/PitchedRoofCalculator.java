@@ -25,16 +25,21 @@ public class PitchedRoofCalculator implements CarportCalculator {
         bom.setWidth(width);
         bom.setAngle(angle);
 
-        LineItem fasciaPitch = StorageFacade.getProduct(18);
-        fasciaPitch.setQuantity(calcFasciaPitch(width, angle));
-        fasciaPitch.setUseInContext("Vindskeder på rejsning");
-        bom.addToBOM(fasciaPitch);
+//        LineItem fasciaPitch = StorageFacade.getProduct(18);
+//        fasciaPitch.setQuantity(calcFasciaPitch(width, angle));
+//        fasciaPitch.setUseInContext("Vindskeder på rejsning");
+//        bom.addToBOM(fasciaPitch);
+//
+//        LineItem fasciaSides = StorageFacade.getProduct(18);
+//        fasciaSides.setQuantity(calcFasciaSides(length));
+//        fasciaSides.setUseInContext("Sternbrædder til siderne");
+//        bom.addToBOM(fasciaSides);
+        LineItem fasciaBoards = StorageFacade.getProduct(18);
+        fasciaBoards.setQuantity(calcFasciaBoards());
+        fasciaBoards.setUseInContext("Stern + vindskeder");
+        bom.addToBOM(fasciaBoards);
 
-        LineItem fasciaSides = StorageFacade.getProduct(18);
-        fasciaSides.setQuantity(calcFasciaSides(length));
-        fasciaSides.setUseInContext("Sternbrædder til siderne");
-        bom.addToBOM(fasciaSides);
-
+        // denne gemmer vi lige til sidst!
         LineItem rafterSet = StorageFacade.getProduct(19); // prisen på disse er tvivlsom
         rafterSet.setQuantity(calcRafterSet(length));
         rafterSet.setUseInContext("Skal samles");
@@ -143,13 +148,21 @@ public class PitchedRoofCalculator implements CarportCalculator {
         return bom;
     }
 
-    private int calcFasciaPitch(int width, int angle) { // c = b/cos V, og vi skal bruge 4 brædder
+    // bruges ikke da kunden ikke skal have stykliste alligevel
+//    private double calcFasciaPitch(int width, int angle) { // c = b/cos V, og vi skal bruge 4 brædder
+//        double calcAngle = Math.toRadians(angle);
+//        return 4 * ((width / 2) / Math.cos(calcAngle));
+//    }
+//
+//    private double calcFasciaSides(int length) {
+//        return 2 * length;
+//    }
+    
+    private double calcFasciaBoards() { // c = b/cos V, og vi skal bruge 4 brædder
         double calcAngle = Math.toRadians(angle);
-        return 4 * (int) ((width / 2) / Math.cos(calcAngle));
-    }
-
-    private int calcFasciaSides(int length) {
-        return 2 * length;
+        double fasciaBoards = 4 * ((width / 2) / Math.cos(calcAngle));
+        fasciaBoards = fasciaBoards + 2 * length;
+        return fasciaBoards / 100;
     }
 
     private int calcRafterSet(int length) {

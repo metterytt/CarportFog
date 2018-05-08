@@ -1,20 +1,19 @@
 /*
+ORDLISTE:
 understernbrædder = sub fascia boards // beam
 oversternbrædder = fascia boards // beam
+rem = plate
 spær = rafter
 stolper = posts
-vandbræt
-rem = plate
-søm
-tagplader
-plastmo bundskruer
-hulbånd
-universalbeslag 190 mm
-skruer til montering af stern og vandbræt
-beslagskruer
-bræddebolt
-firkantskiver
-
+vandbræt = waterboard
+tagplader = roof...
+plastmo bundskruer = roofscrews
+hulbånd = metaltape
+universalbeslag 190 mm = universalbrackets
+skruer til montering af stern og vandbræt = fasciascrews
+beslagskruer = bracketscrews
+bræddebolt = bolts
+firkantskiver = squarebrackets
  */
 package functionLayer.Calculators;
 
@@ -25,8 +24,8 @@ import functionLayer.entity.LineItem;
 
 public class FlatRoofCalculator implements CarportCalculator {
 
-    private double length;
-    private int width;
+    private final double length;
+    private final int width;
     private BOM bom = new BOM();
 
     public FlatRoofCalculator(double length, int width) throws CarportException {
@@ -40,19 +39,16 @@ public class FlatRoofCalculator implements CarportCalculator {
         bom.setLength(length);
         bom.setWidth(width);
 
-        // nts denne er tilpasset units
         LineItem subFasciaBoards = StorageFacade.getProduct(1);
         subFasciaBoards.setQuantity(calcSubFasciaBoards(length, width));
         subFasciaBoards.setUseInContext("Understernbrædder");
         bom.addToBOM(subFasciaBoards);
 
-        // nts denne er tilpasset units
         LineItem fasciaBoards = StorageFacade.getProduct(2);
         fasciaBoards.setQuantity(calcFasciaBoards(length, width));
         fasciaBoards.setUseInContext("Oversternbrædder");
         bom.addToBOM(fasciaBoards);
 
-        // nts denne er tilpasset units
         LineItem platesAndRafters = StorageFacade.getProduct(4); // samme træ til remme og spær
         platesAndRafters.setQuantity(calcPlatesAndRafters(length, width));
         platesAndRafters.setUseInContext("Remme og spær");
@@ -72,20 +68,17 @@ public class FlatRoofCalculator implements CarportCalculator {
         posts.setUseInContext("Nedgraves 90cm i jord");
         bom.addToBOM(posts);
 
-        // nts denne er tilpasset units
         LineItem waterBoards = StorageFacade.getProduct(6);
         waterBoards.setQuantity(calcWaterBoards(length, width));
         waterBoards.setUseInContext("Vandbræt, monteres på stern");
         bom.addToBOM(waterBoards);
 
         // mangler tagplader
-        // denne er tilpasset units. regner nu i stk.
         LineItem roofScrews = StorageFacade.getProduct(8);
         roofScrews.setQuantity(calcRoofScrews(length, width));
         roofScrews.setUseInContext("Skruer til tagplader");
         bom.addToBOM(roofScrews);
 
-        // denne er tilpasset units
         LineItem metalTape = StorageFacade.getProduct(9);
         metalTape.setQuantity(calcMetalTape(length, width));
         metalTape.setUseInContext("Til vindkryds på spær");
@@ -111,13 +104,14 @@ public class FlatRoofCalculator implements CarportCalculator {
         bracketScrews.setUseInContext("Til montering af universalbeslag og hulbånd");
         bom.addToBOM(bracketScrews);
 
+        //disse to metoder regner bare 3 * posts ud - uigennemskueligt hvad det korrekte regnestykke er
         LineItem bolts = StorageFacade.getProduct(14);
-        bolts.setQuantity(posts.getQuantity() * 3); // check dette regnestykke
+        bolts.setQuantity(posts.getQuantity() * 3);
         bolts.setUseInContext("Til montering af rem på stolper");
         bom.addToBOM(bolts);
 
         LineItem squareBrackets = StorageFacade.getProduct(15);
-        squareBrackets.setQuantity(posts.getQuantity() * 3); // check dette regnestykke
+        squareBrackets.setQuantity(posts.getQuantity() * 3);
         squareBrackets.setUseInContext("Til montering af rem på stolper");
         bom.addToBOM(squareBrackets);
 
@@ -131,7 +125,6 @@ public class FlatRoofCalculator implements CarportCalculator {
         int posts = 2 + ((int) length / 300);
 
         return 2 * posts;
-
     }
 
     private double calcSubFasciaBoards(double length, int width) {
@@ -143,14 +136,13 @@ public class FlatRoofCalculator implements CarportCalculator {
     }
 
     private double calcPlatesAndRafters(double length, int width) {
-        double platesAndRafters = 0;
         int numberOfRafters = ((int) length / 60);
         if (length % 60 == 0) {
             numberOfRafters++;
         } else {
             numberOfRafters += 2;
         }
-        platesAndRafters = numberOfRafters * width;
+        double platesAndRafters = numberOfRafters * width;
         platesAndRafters = platesAndRafters + 2 * length;
         return platesAndRafters / 100;
     }
@@ -196,8 +188,6 @@ public class FlatRoofCalculator implements CarportCalculator {
             uniBrackets += 2;
         }
         return uniBrackets;
-
-//        return ((int) length / 60) + 2;
     }
 
     private int calcFasciaScrews(double length, int width) { // 2 stk. pr. 60 cm omkreds PLUS 4 stk. pr 60 cm (omkreds minus bredde)
