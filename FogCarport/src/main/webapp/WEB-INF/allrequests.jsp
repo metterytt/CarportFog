@@ -169,7 +169,7 @@
 
                     <%
 
-                        DecimalFormat myFormatter = new DecimalFormat("##0.00");
+                        DecimalFormat formatter = new DecimalFormat("###,##0.00");
 
                         BOM carportBOM = (BOM) request.getAttribute("carportbom");
                         if (carportBOM != null) {
@@ -197,16 +197,17 @@
                                 <th> <% out.print(p.getName()); %> </th>
                                 <th> <% out.print(p.getUseInContext()); %> </th>
                                 <th> <% out.print(p.getUom()); %> </th>
-                                <th> <% out.print(p.getQuantity()); %> </th>
-                                <th> <% out.print(myFormatter.format((p.getPricePerUnit()))); %>  </th>
-                                <th> <% out.print(myFormatter.format((p.getPricePerUnit() * p.getQuantity()))); %>  </th>
+                                <th> <% out.print(formatter.format((p.getQuantity()))); %> </th>
+                                <th> <% out.print(formatter.format((p.getPricePerUnit()))); %>  </th>
+                                <th> <% out.print(formatter.format((p.getPricePerUnit() * p.getQuantity()))); %>  </th>
 
                                 <%}%>
                             </tr> 
                         </tbody>
-                    </table>   
+                    </table>  
                     <%}%>
-                    <%
+                    <p>Den totale pris for denne carport er : <%= formatter.format(carportBOM.totalPrice()) %></p>
+                    <% 
                         BOM shedBOM = (BOM) request.getAttribute("shedbom");
                         if (shedBOM != null) {
 
@@ -231,7 +232,7 @@
                                 <th> <% out.print(p.getName()); %> </th>
                                 <th> <% out.print(p.getUseInContext()); %> </th>
                                 <th> <% out.print(p.getUom()); %> </th>
-                                <th> <% out.print(p.getQuantity()); %> </th>
+                                <th> <% out.print(formatter.format((p.getQuantity()))); %> </th>
                                 <th> <% out.print(p.getPricePerUnit()); %>  </th>
                                     <%}%>
                             </tr> 
