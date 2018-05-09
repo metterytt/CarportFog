@@ -34,8 +34,6 @@ public class Login extends Command {
         String password = request.getParameter("password");
         Employee employee = StorageFacade.login(username, password);
         request.getSession().setAttribute("employee", employee);
-        List<Employee> allEmp = StorageFacade.getAllEmployees();
-        request.setAttribute("allEmp", allEmp);
         return "employee";
         }
         else if(request.getParameter("loginCustomer") != null){

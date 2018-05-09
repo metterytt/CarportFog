@@ -30,11 +30,19 @@
 
                     <h2>Velkommen <%= emp.getUsername()%> til medarbejdersiden. Her har du følgende muligheder:</h2>
 
-                     <% if(request.getAttribute("complete") != null){
-                        %>
-                        <p> EDIT WAS MADE </p>
-                        <%} %>
+                    <% if (request.getAttribute("complete") != null) {
+                    %>
+                    <p> EDIT WAS MADE </p>
+                    <%} %>
                     <% if (emp.getRole().equals("IT")) { %>
+                    <% if (request.getAttribute("allEmp") == null) { %>
+                    <form action="FrontController" method="post">
+                        <input type="hidden" name="command" value="deleteemployee">
+                        <input type="hidden" name="administrer" value="administrer">
+                        <input type="submit" class="btn btn-primary" value="Administrer brugere">
+                    </form>
+                    <%}
+                    else {%>
                     <form action="FrontController" method="post">
                         <input type="hidden" name="command" value="deleteemployee">
                         <% List<Employee> emps = (List<Employee>) request.getAttribute("allEmp"); %>
@@ -52,9 +60,9 @@
                             if (error != null) {%>
                         <p> <%=error%>
                             <%}%> </p>
-                        <input type="submit" class="btn btn-primary" value="Slet medarbejderprofil">
+                        <input type="submit" class="btn btn-primary" value="Slet bruger">
                     </form>
-
+                    <%}%>
                     <form action="FrontController" method="post">
                         <input type="hidden" name="command" value="registeremployee">
                         <br/>
