@@ -34,7 +34,7 @@
                     <p>Her kan du indtaste de ønskede mål på din carport.</p>
                     <div class="form-group">
 
-                        <form name="login" action="FrontController" method="post">
+                        <form action="FrontController" method="post">
                             <input type="hidden" name="command" value="inputcarport">
 
                             <label for="length">Længde i CM :</label><br>
@@ -112,6 +112,13 @@
                         <%}%> </p>
 
                 </div>
+                        <%if(request.getAttribute("drawingmeasures") != null){  %>
+                        <div class="col-md-6">
+                            
+                            
+                        </div>
+                        
+                        <%}%>
             </div>
         </div>
     </body>

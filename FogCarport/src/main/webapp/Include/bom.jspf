@@ -1,15 +1,9 @@
-<%-- 
-    Document   : bom
-    Created on : 24-04-2018, 19:33:17
---%>
+<%@ page pageEncoding="UTF-8" %>
 
 <%@page import="functionLayer.DrawingMeasures"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="functionLayer.entity.LineItem"%>
 <%@page import="functionLayer.BOM"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -506,4 +500,3 @@
             </div>
         </div>
     </body>
-</html>

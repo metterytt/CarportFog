@@ -11,7 +11,7 @@ public class InputCarport extends Command {
 
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws CarportException {
-        HttpSession session = request.getSession();
+//        HttpSession session = request.getSession();
 
         int length = Integer.parseInt(request.getParameter("length"));
         int width = Integer.parseInt(request.getParameter("width"));
@@ -22,8 +22,9 @@ public class InputCarport extends Command {
         StorageFacade.addCustCalc(length, width, angle, shedLength, shedWidth);
 
         DrawingMeasures drawingMeasures = new DrawingMeasures(length, width, angle, shedLength, shedWidth);
-        session.setAttribute("drawingmeasures", drawingMeasures);
-
+//        session.setAttribute("drawingmeasures", drawingMeasures);
+        request.setAttribute("drawingmeasures", drawingMeasures);
+        
         String shedPos = request.getParameter("shedPos");
         // næste 3 linier er quickfix
         if (shedPos == null) {
@@ -36,6 +37,6 @@ public class InputCarport extends Command {
             request.setAttribute("shedPos", shedPos);
         }
 
-        return "bom";
+        return "index";
     }
 }

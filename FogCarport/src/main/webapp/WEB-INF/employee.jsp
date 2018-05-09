@@ -34,8 +34,8 @@
                         %>
                         <p> EDIT WAS MADE </p>
                         <%} %>
-                        <%--
-                    <% if (emp.getRole().equals("IT")) { %>
+<%else--
+                        <% if (emp.getRole().equals("IT")) { %>
                     <form action="FrontController" method="post">
                         <input type="hidden" name="command" value="deleteemployee">
                         <% List<Employee> emps = (List<Employee>) request.getAttribute("allEmp"); %>
@@ -47,7 +47,7 @@
                             %><option value="<%=e.getUserID()%>"><%=e.getUsername()%></option><%
                                     }
                                 }
-                            %> --%>
+                            %> 
                         </select>
                         <% String error = (String) request.getAttribute("error");
                             if (error != null) {%>
