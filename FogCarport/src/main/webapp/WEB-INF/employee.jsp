@@ -19,19 +19,17 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <br>
+        <%@ include file="/WEB-INF/Include/Navbar.jspf" %>
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-6">
 
-                  <%@ include file="/WEB-INF/Include/Navbar.jspf" %>
 
                     <% Employee emp = (Employee) request.getSession().getAttribute("employee");%>
 
-                    <h2>Velkommen <%= emp.getUsername()%> til medarbejdersiden. Her har du følgende muligheder:</h2>
+                    <h2 class="display-4">Velkommen <%= emp.getUsername()%> til medarbejdersiden.</h2>
+                    <br>
 
-
-                       
                     <% if (request.getAttribute("complete") != null) {
                     %>
                     <p> EDIT WAS MADE </p>
@@ -44,7 +42,7 @@
                         <input type="submit" class="btn btn-primary" value="Administrer brugere">
                     </form>
                     <%}
-                    
+
                     else {%>
                     <form action="FrontController" method="post">
                         <input type="hidden" name="command" value="deleteemployee">
@@ -60,7 +58,7 @@
 
                             %>
                         </select>
-                        
+
                         <% String error = (String) request.getAttribute("error");
                             if (error != null) {%>
                         <p> <%=error%>

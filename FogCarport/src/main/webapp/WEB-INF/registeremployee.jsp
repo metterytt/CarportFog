@@ -16,38 +16,45 @@
     </head>
     <body>
         <%@ include file="/WEB-INF/Include/Navbar.jspf" %>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6">
 
-        
-        <% Employee emp = (Employee) request.getSession().getAttribute("employee"); %>
+                    <% Employee emp = (Employee) request.getSession().getAttribute("employee");%>
 
-        <h1>Hej <%= emp.getUsername()%> </h1> 
+                    <h1 class="display-4">Hej <%= emp.getUsername()%> </h1> 
 
-        <h2> Registrer ny user til systemet </h2>
-        
-        ${error}
-        ${complete}
-        <form action="FrontController" method="POST">
-            <div class="form-group">
-                <input class="form-control" type="hidden" name="command" value="registeremployee">
-                <input class="form-control" type="hidden" name="registeremp">
-                <label for="username">Email:</label>
-                <input class="form-control" type="email" name="username" placeholder="Email:">
-                <br>
-                <label for="password1">Password:</label>
-                <input class="form-control" type="password" name="password1" placeholder="Password:">
-                <br>
-                <label for="password2">Password:</label>
-                <input class="form-control" type="password" name="password2" placeholder="Password:">
-                <br>
-                <input class="btn btn-primary" type="submit" value="Submit">
-                <br>
-                 <input type="radio" name="empRole" value="IT">IT
-                 <input type="radio" name="empRole" value="salesman">Sælger
-                
+                    <h2 class="display-4"> Registrer ny user til systemet </h2>
+
+                    ${error}
+                    ${complete}
+                    <form action="FrontController" method="POST">
+                        <div class="form-group">
+                            <input class="form-control" type="hidden" name="command" value="registeremployee">
+                            <input class="form-control" type="hidden" name="registeremp">
+                            <label for="username">Email:</label>
+                            <input class="form-control" type="email" name="username" placeholder="Email:">
+                            <br>
+                            <label for="password1">Password:</label>
+                            <input class="form-control" type="password" name="password1" placeholder="Password:">
+                            <br>
+                            <label for="password2">Password:</label>
+                            <input class="form-control" type="password" name="password2" placeholder="Password:">
+                            <br>
+                            <div class="custom-control custom-radio">
+                            <input type="radio" id="customRadio1" name="empRole" class="custom-control-input" value="IT">
+                            <label class="custom-control-label" for="empRole">IT</label>
+                            </div>
+                            <div class="custom-control custom-radio">
+                            <input type="radio" id="customRadio1" name="empRole" class="custom-control-input" value="salesman">
+                            <label class="custom-control-label" for="empRole">Sælger</label>
+                            </div>
+                            <br>
+                            <input class="btn btn-primary" type="submit" value="Submit">
+                        </div>
+                    </form>
+                </div>
             </div>
-        </form>
-
-
-        
+        </div>
     </body>
 </html>
