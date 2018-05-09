@@ -39,17 +39,21 @@ public class PitchedRoofCalculator implements CarportCalculator {
         fasciaBoards.setUseInContext("Stern + vindskeder");
         bom.addToBOM(fasciaBoards);
 
-        // denne gemmer vi lige til sidst!
-        LineItem rafterSet = StorageFacade.getProduct(19); // prisen på disse er tvivlsom
-        rafterSet.setQuantity(calcRafterSet(length));
-        rafterSet.setUseInContext("Skal samles");
-        bom.addToBOM(rafterSet);
-
-        // og denne, for det er vist samme træ som ovenstående
-        LineItem plates = StorageFacade.getProduct(4);
-        plates.setQuantity(calcPlates(length));
-        plates.setUseInContext("Remme i sider");
-        bom.addToBOM(plates);
+//        // denne gemmer vi lige til sidst!
+//        LineItem rafterSet = StorageFacade.getProduct(19); // prisen på disse er tvivlsom
+//        rafterSet.setQuantity(calcRafterSet(length));
+//        rafterSet.setUseInContext("Skal samles");
+//        bom.addToBOM(rafterSet);
+//
+//        // og denne, for det er vist samme træ som ovenstående
+//        LineItem plates = StorageFacade.getProduct(4);
+//        plates.setQuantity(calcPlates(length));
+//        plates.setUseInContext("Remme i sider");
+//        bom.addToBOM(plates);
+        LineItem rafterSetAndPlates = StorageFacade.getProduct(4);
+        rafterSetAndPlates.setQuantity(calcRafterSetAndPlates());
+        rafterSetAndPlates.setUseInContext("Træ til remme og byg-selv spær");
+        bom.addToBOM(rafterSetAndPlates);
 
         LineItem posts = StorageFacade.getProduct(5);
         posts.setQuantity(calcPosts(length));
@@ -177,6 +181,27 @@ public class PitchedRoofCalculator implements CarportCalculator {
         return 2 * length;
     }
 
+    private double calcRafterSetAndPlates() {
+        // først regner vi ud hvor mange spær
+        int numberOfRafters = (length / 60);
+        if (length % 60 == 0) {
+            numberOfRafters++;
+        } else {
+            numberOfRafters += 2;
+        }
+        //så længden af træ til hver
+        double calcAngle = Math.toRadians(angle);
+        double lengthOfRafters = 2 * ((width / 2) / Math.cos(calcAngle)); //2 * skrå tagside
+        lengthOfRafters += width; // bredden skal med
+
+        double gableHeight = (width / 2) * Math.tan(calcAngle); // og endelig højden
+        lengthOfRafters += gableHeight;
+        double totalWoodRafters = lengthOfRafters * numberOfRafters;
+        // vi lægger remmene til og returnerer
+        return (totalWoodRafters + 2 * length) / 100;
+
+    }
+
 //    private double calcWaterBoards(int width, int angle) { // samme som vindskeder (fasciaPitch)
 //        double calcAngle = Math.toRadians(angle);
 //        return 4 * ((width / 2) / Math.cos(calcAngle));
@@ -207,7 +232,7 @@ public class PitchedRoofCalculator implements CarportCalculator {
             rows++;
         }
         double topLath = length; // toplægten, svarer til længden
-        return (rows * length + topLath) / 100;
+        return (2 * rows * length + topLath) / 100;
     }
 
     private int calcPosts(int length) {
@@ -248,17 +273,30 @@ public class PitchedRoofCalculator implements CarportCalculator {
         return length / 60 + 1;
     }
 
-    private int calcFasciaScrews(int length, int width) { // hvis carporten er større end eksemplet, bruges flere skruer
-        if (length * width < 270000) {
-            return 1;
+    private int calcFasciaScrews(int length, int width) {
+        // først skal vi have 4 skruer pr spær:
+        int numberOfRafters = (length / 60);
+        if (length % 60 == 0) {
+            numberOfRafters++;
         } else {
-            return 2;
+            numberOfRafters += 2;
         }
+        int screws = 4 * numberOfRafters;
+
+        //så 2 pr. taglægte (1 for vindskede og en for vandbræt)
+        double calcAngle = Math.toRadians(angle);
+        int c = (int) ((width / 2) / Math.cos(calcAngle));
+        int rows = c / 35;
+        if (c % 35 > 3) {
+            rows++;
+        }
+        rows *= 2;
+        return screws + 2 * rows + 30; // 30 for buffer
     }
 
     private int calcBracketScrews(int length) { // 9 pr. universalbeslag + 20 pr. toplægteholder ... 50 for buffer
         int numberOfScrews = ((((length / 60) + 1) * 2)) * 9 + (length / 60 + 1) * 20 + 50;
-        return numberOfScrews / 250 + 1;
+        return numberOfScrews;
     }
 
     private int calcRoofLathScrews(int length, int width, int angle) {
@@ -269,7 +307,7 @@ public class PitchedRoofCalculator implements CarportCalculator {
             rows++;
         }
         int metersOfLaths = rows * length;
-        return ((metersOfLaths / 60) * 2) / 100 + 1;
+        return (metersOfLaths / 60) * 2;
     }
 
     private int calcBolts(int length) { // 2 stk. pr. stolpe
