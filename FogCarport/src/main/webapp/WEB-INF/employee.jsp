@@ -51,7 +51,8 @@
                     
                     <form action="FrontController" method="post">
                         <input type="hidden" name="command" value="allrequests">
-                        <br/>
+                        <input type="hidden" name="loadsite">
+                            <br>
                         <input type="submit" class="btn btn-primary" value="Se alle åbne forespørgsler">
                     </form>
 
