@@ -9,6 +9,7 @@
         <title>Edit Request</title>
     </head>
     <body>
+        <%@ include file="/WEB-INF/Include/Navbar.jspf" %>
         <%
             int orderID = (int) request.getAttribute("orderid");
             int carlength = (int) request.getAttribute("length");

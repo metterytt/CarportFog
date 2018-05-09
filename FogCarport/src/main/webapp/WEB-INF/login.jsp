@@ -14,6 +14,7 @@
         <title>Login</title>
     </head>
     <body>
+        <%@ include file="/WEB-INF/Include/Navbar.jspf" %>
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">

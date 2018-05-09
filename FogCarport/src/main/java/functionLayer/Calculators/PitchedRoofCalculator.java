@@ -84,7 +84,6 @@ public class PitchedRoofCalculator implements CarportCalculator {
 //        topLath.setQuantity(length); // altid 1 lægte tilsvarende længden
 //        topLath.setUseInContext("Toplægte til montering af rygsten");
 //        bom.addToBOM(topLath);
-
         LineItem roofTiles = StorageFacade.getProduct(21);
         roofTiles.setQuantity(calcRoofTiles(length, width, angle));
         roofTiles.setUseInContext("Monteres på taglægter");
@@ -223,9 +222,9 @@ public class PitchedRoofCalculator implements CarportCalculator {
 
     private int calcRoofTiles(int length, int width, int angle) { // 9 sten/m2. +10 er for buffer
         double calcAngle = Math.toRadians(angle);
-        int widthForCalc = (int) ((width / 2) / Math.cos(calcAngle));
-        int roofArea = widthForCalc * length;
-        return (2 * (9 * roofArea) / 10000) + 10;
+        double widthForCalc = (int) ((width / 2) / Math.cos(calcAngle));
+        double roofArea = (widthForCalc * length) / 10000;
+        return 2 * (9 * (int) roofArea) + 10;
     }
 
     private int calcRoofTopTiles(int length) {
@@ -240,17 +239,9 @@ public class PitchedRoofCalculator implements CarportCalculator {
         return length / 30;
     }
 
-    private int calcBinders(int length, int width) {
-        if (width * length <= 150000) {
-            return 1;
-        }
-        if (width * length > 150000 && width * length <= 300000) {
-            return 2;
-        }
-        if (width * length > 300000) {
-            return 3;
-        }
-        return 4;
+    private int calcBinders(int length, int width) { // halvdelen af teglene + 30 for dem i siden
+        int roofTiles = calcRoofTiles(length, width, angle);
+        return roofTiles / 2 + 30;
     }
 
     private int calcUniBrackets(int length) {
