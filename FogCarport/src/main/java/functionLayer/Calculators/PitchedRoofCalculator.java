@@ -187,7 +187,7 @@ public class PitchedRoofCalculator implements CarportCalculator {
 //        double gableHeight = (width / 2) * Math.tan(calcAngle);
 //        return (int) (((((width / 2) * 100) / 750) * gableHeight) * 2);
 //    }
-    private double calcWaterBoardsAndGablesCladding() {
+    double calcWaterBoardsAndGablesCladding() {
         double calcAngle = Math.toRadians(angle);
         double waterBoards = 4 * ((width / 2) / Math.cos(calcAngle));
         double gableHeight = (width / 2) * Math.tan(calcAngle);
