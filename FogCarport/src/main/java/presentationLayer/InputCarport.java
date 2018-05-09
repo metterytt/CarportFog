@@ -37,6 +37,6 @@ public class InputCarport extends Command {
             request.setAttribute("shedPos", shedPos);
         }
 
-        return "index";
+        return "bom";
     }
 }
