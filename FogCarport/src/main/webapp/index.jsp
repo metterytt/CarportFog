@@ -40,20 +40,20 @@
                             <label for="length">Længde i CM :</label><br>
                             <select class="custom-select" name="length">
                                 <%
-                                    int length = 270;
+                                    int lengthInput = 270;
                                     for (int idx = 1; idx <= 18; idx++) {
-                                %> <option> <%=length%> </option> 
-                                <% length += 30;
+                                %> <option> <%=lengthInput%> </option> 
+                                <% lengthInput += 30;
                                     }%>
                             </select>
 
                             <label for="length">Bredde i CM:</label><br>
                             <select class="custom-select" name="width">
                                 <%
-                                    int width = 270;
+                                    int widthInput = 270;
                                     for (int idx = 1; idx <= 17; idx++) {
-                                %> <option> <%=width%> </option> 
-                                <% width += 30;
+                                %> <option> <%=widthInput%> </option> 
+                                <% widthInput += 30;
                                     }%>
                             </select>
 
@@ -76,10 +76,10 @@
                                     <option> 0 </option>
 
                                     <%
-                                        int shedlength = 210;
+                                        int shedlengthInput = 210;
                                         for (int idx = 1; idx <= 18; idx++) {
-                                    %> <option> <%=shedlength%> </option> 
-                                    <% shedlength += 30;
+                                    %> <option> <%=shedlengthInput%> </option> 
+                                    <% shedlengthInput += 30;
                                         }%>
                                 </select>
 
@@ -87,10 +87,10 @@
                                 <select class="custom-select" name="shedwidth" value="0">
                                     <option> 0 </option>
                                     <%
-                                        int shedwidth = 150;
+                                        int shedwidthInput = 150;
                                         for (int idx = 1; idx <= 19; idx++) {
-                                    %> <option> <%=shedwidth%> </option> 
-                                    <% shedwidth += 30;
+                                    %> <option> <%=shedwidthInput%> </option> 
+                                    <% shedwidthInput += 30;
                                         }%>
                                 </select>
 
