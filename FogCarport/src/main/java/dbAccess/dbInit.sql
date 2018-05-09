@@ -22,7 +22,7 @@ INSERT INTO `carport`.`products` (`name`, `uom`, `price`) VALUES ('Tagsten B&C d
 INSERT INTO `carport`.`products` (`name`, `uom`, `price`) VALUES ('Rygsten B&C sort', 'stk.', '4995');
 INSERT INTO `carport`.`products` (`name`, `uom`, `price`) VALUES ('Toplægteholder B&C', 'stk.', '2495');
 INSERT INTO `carport`.`products` (`name`, `uom`, `price`) VALUES ('Rygstenbeslag B&C', 'stk.', '995');
-INSERT INTO `carport`.`products` (`name`, `uom`, `price`) VALUES ('Bindere B&C, 250 stk.', 'pakke', '49995');
+INSERT INTO `carport`.`products` (`name`, `uom`, `price`) VALUES ('Bindere B&C', 'stk.', '200');
 INSERT INTO `carport`.`products` (`name`, `uom`, `price`) VALUES ('Skruer, 5,0x100mm, 100 stk.', 'pakke', '18900');
 INSERT INTO `carport`.`products` (`name`, `uom`, `price`) VALUES ('Skruer, 4,5x70mm, 400 stk.', 'pakke', '19900');
 INSERT INTO `carport`.`products` (`name`, `uom`, `price`) VALUES ('Skruer, 4,5x50mm, 300 stk.', 'pakke', '16900');
