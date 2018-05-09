@@ -34,7 +34,7 @@ public class ViewBom extends Command {
         request.setAttribute("orders", orders);
         
         
-        double length = Double.parseDouble(request.getParameter("length"));
+        int length = Integer.parseInt(request.getParameter("length"));
         int width = Integer.parseInt(request.getParameter("width"));
         int angle = Integer.parseInt(request.getParameter("angle"));
         int shedLength = Integer.parseInt(request.getParameter("shedlength"));
@@ -46,7 +46,7 @@ public class ViewBom extends Command {
             carportCalculator = new FlatRoofCalculator(length, width);
         }
         else {
-            carportCalculator = new PitchedRoofCalculator((int)length, width, angle);
+            carportCalculator = new PitchedRoofCalculator(length, width, angle);
         }
         BOM carportBom = carportCalculator.getBom();
         request.setAttribute("carportbom", carportBom);

@@ -30,6 +30,11 @@
 
                     <h2>Velkommen <%= emp.getUsername()%> til medarbejdersiden. Her har du følgende muligheder:</h2>
 
+                     <% if(request.getAttribute("complete") != null){
+                        %>
+                        <p> EDIT WAS MADE </p>
+                        <%} %>
+                        <%--
                     <% if (emp.getRole().equals("IT")) { %>
                     <form action="FrontController" method="post">
                         <input type="hidden" name="command" value="deleteemployee">
@@ -42,7 +47,7 @@
                             %><option value="<%=e.getUserID()%>"><%=e.getUsername()%></option><%
                                     }
                                 }
-                            %>
+                            %> --%>
                         </select>
                         <% String error = (String) request.getAttribute("error");
                             if (error != null) {%>
@@ -50,6 +55,7 @@
                             <%}%> </p>
                         <input type="submit" class="btn btn-primary" value="Slet medarbejderprofil">
                     </form>
+
                     <form action="FrontController" method="post">
                         <input type="hidden" name="command" value="registeremployee">
                         <br/>
