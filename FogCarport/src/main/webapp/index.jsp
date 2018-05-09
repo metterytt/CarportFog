@@ -116,7 +116,7 @@
                         <%if(request.getAttribute("drawingmeasures") != null){  %>
                         <div class="col-md-6">
                             
-                            
+                           <%@ include file="/WEB-INF/Include/bom.jspf" %> 
                             
                         </div>
                         <%}%>
