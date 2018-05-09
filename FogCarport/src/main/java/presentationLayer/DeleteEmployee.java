@@ -21,12 +21,14 @@ public class DeleteEmployee extends Command {
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws CarportException {
 
-        int empIdForDeletion = Integer.parseInt(request.getParameter("empIdForDeletion"));
-        if (empIdForDeletion != 0) {
-            StorageFacade.deleteEmployee(empIdForDeletion);
-        }
-        else {
-            request.setAttribute("error", "Fejl - Vælg en bruger, hvis du ønsker at slette en profil.");
+        if (request.getParameter("administrer") == null) {
+            int empIdForDeletion = Integer.parseInt(request.getParameter("empIdForDeletion"));
+            if (empIdForDeletion != 0) {
+                StorageFacade.deleteEmployee(empIdForDeletion);
+            }
+            else {
+                request.setAttribute("error", "Fejl - Vælg en bruger, hvis du ønsker at slette en profil.");
+            }
         }
         List<Employee> allEmp = StorageFacade.getAllEmployees();
         request.setAttribute("allEmp", allEmp);

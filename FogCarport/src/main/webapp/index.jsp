@@ -25,7 +25,7 @@
 
     </head>
     <body>
-        <%@include file="Include/Navbar.jspf" %>
+        <%@ include file="/WEB-INF/Include/Navbar.jspf" %>
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-6">
@@ -112,12 +112,13 @@
                         <%}%> </p>
 
                 </div>
+                        
                         <%if(request.getAttribute("drawingmeasures") != null){  %>
                         <div class="col-md-6">
                             
                             
+                            
                         </div>
-                        
                         <%}%>
             </div>
         </div>

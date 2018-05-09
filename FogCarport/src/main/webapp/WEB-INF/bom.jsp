@@ -18,6 +18,7 @@
         <title>Stykliste</title>
     </head>
     <body>
+        <%@ include file="/WEB-INF/Include/Navbar.jspf" %>
 
         <form action="FrontController" method="post">
             <input type="hidden" name="command" value="sendrequest">
@@ -471,8 +472,8 @@
                     <svg width="1000" height="1000" viewbox="-200 -200 <%= width * 3%> <%= length * 2%>"> 
 
                     <%-- stolper --%>
-                    <rect x="40" y="<%=height - height%>" width="10" height="<%= height%>" fill="snow" stroke="black" stroke-width="1"/>
-                    <rect x="<%= width%>" y="<%=height - height%>" width="10" height="<%= height%>" fill="snow" stroke="black" stroke-width="1"/>
+                    <rect x="35" y="<%=height - height%>" width="10" height="<%= height%>" fill="snow" stroke="black" stroke-width="1"/>
+                    <rect x="<%= width + 5%>" y="<%=height - height%>" width="10" height="<%= height%>" fill="snow" stroke="black" stroke-width="1"/>
 
                     <%-- over- og understern --%>
                     <rect x="15" y="-10" width="<%= width + 20%>" height="10" fill="snow" stroke="black"/>

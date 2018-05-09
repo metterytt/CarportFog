@@ -15,7 +15,7 @@
         <title>Register Employee!</title>
     </head>
     <body>
-        <%@include file="../Include/Navbar.jspf" %>
+        <%@ include file="/WEB-INF/Include/Navbar.jspf" %>
 
         
         <% Employee emp = (Employee) request.getSession().getAttribute("employee"); %>

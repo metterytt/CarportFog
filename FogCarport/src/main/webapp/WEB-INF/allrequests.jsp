@@ -19,7 +19,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <%@include file="../Include/Navbar.jspf" %>
+     <%@ include file="/WEB-INF/Include/Navbar.jspf" %>
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
