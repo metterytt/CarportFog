@@ -32,12 +32,21 @@
                     <br><h1>Visualization</h1>
                     <%
                         DrawingMeasures drawingMeasures = (DrawingMeasures) request.getAttribute("drawingmeasures");
+<<<<<<< HEAD
                         int lengthDraw = drawingMeasures.getLength();
                         int widthDraw = drawingMeasures.getWidth();
                         int heightDraw = drawingMeasures.getHeight();
                         int angleDraw = drawingMeasures.getAngle();
                         int shedLengthDraw = drawingMeasures.getShedLength();
                         int shedWidthDraw = drawingMeasures.getShedWidth();
+=======
+                        int length = drawingMeasures.getLength();
+                        int width = drawingMeasures.getWidth();
+                        int height = drawingMeasures.getHeight();
+                        int angle = drawingMeasures.getAngle();
+                        int shedLength = drawingMeasures.getShedLength();
+                        int shedWidth = drawingMeasures.getShedWidth();
+>>>>>>> 1727dba1bc5ddfbbf541e131dbad141d84033057
 
                         String shedPos = (String) request.getAttribute("shedPos"); %>  <%-- vær opmærksom her --%>
                     <%   double rafterGap = drawingMeasures.getRafterGap();
