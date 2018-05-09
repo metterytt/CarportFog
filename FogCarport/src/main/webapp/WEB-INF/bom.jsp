@@ -28,7 +28,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-6">
-                    <br><h1>Visualization</h1>
+                    <br><h1>Visualisering</h1>
                     <%
                         DrawingMeasures drawingMeasures = (DrawingMeasures) session.getAttribute("drawingmeasures");
                         int length = drawingMeasures.getLength();
