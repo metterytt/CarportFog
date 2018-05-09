@@ -27,8 +27,15 @@
                     
                     <% Employee emp = (Employee) request.getSession().getAttribute("employee"); %>
                     
-                    <h2>Velkommen <%= emp.getUsername() %> til medarbejdersiden. Her har du følgende muligheder:</h2>
+                    <h2>Velkommen <%= emp.getUsername() %> til medarbejdersiden. Her har du følgende muligheder: </h2>
                     
+                    <% if(request.getAttribute("complete") != null){
+                        %>
+                        <p> EDIT WAS MADE </p>
+                        <%} %>
+                        
+                        ${error}
+                        
                     <% if(emp.getRole().equals("IT")){ %>
                     <form action="FrontController" method="post">
                         <input type="hidden" name="command" value="registeremployee">

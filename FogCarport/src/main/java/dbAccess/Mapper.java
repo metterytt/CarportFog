@@ -120,7 +120,7 @@ public class Mapper {
             throw new CarportException("Noget gik galt, prøv igen!", "registeremployee");
         }
     }
-    
+
     public static void registerCustomer(String username, String password) throws CarportException {
         try {
             dbc.setDataSource(new DataSourceFog().getDataSource());
@@ -252,6 +252,27 @@ public class Mapper {
             throw new CarportException("Error fetching orders", "employee");
         }
         return orders;
+    }
+
+    public static void editRequest(int orderID, int length, int width, int angle, int shedLength, int shedWidth, int price) throws CarportException {
+        try {
+            dbc.setDataSource(new DataSourceFog().getDataSource());
+            dbc.open();
+            Connection con = dbc.getConnector();
+            String sql = "update orders SET length = ? , width = ?, roof_angle= ?, shed_length= ?, shed_width= ?, price= ?  WHERE orderID= ?;";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, length);
+            ps.setInt(2, width);
+            ps.setInt(3, angle);
+            ps.setInt(4, shedLength);
+            ps.setInt(5, shedWidth);
+            ps.setInt(6, price);
+            ps.setInt(7, orderID);
+            ps.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new CarportException("Error updating order", "employee");
+        }
     }
 
 }

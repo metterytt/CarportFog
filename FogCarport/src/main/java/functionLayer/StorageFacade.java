@@ -55,5 +55,10 @@ public class StorageFacade {
     public static List<Order> getOrders() throws CarportException {
         return Mapper.getOrders();
     }
+
+    public static void editRequest(int orderID, int length, int width, int angle, int shedLength, int shedWidth, int price) throws CarportException {
+    Mapper.editRequest(orderID, length, width, angle, shedLength, shedWidth, price);
+    
+    }
     
 }
