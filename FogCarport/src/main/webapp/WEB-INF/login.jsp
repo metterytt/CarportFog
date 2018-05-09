@@ -18,22 +18,23 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                 
-                    <%if(request.getAttribute("empLogin") == null){ %>
+
+                    <%if (request.getAttribute("empLogin") == null) { %>
                     <form action="FrontController" method="post">
                         <input type="hidden" name="command" value="login">
                         <input type="hidden" name="showEmpLogin">
                         <input type="submit" class="btn btn-primary" value="Login as Employee"/><br>
                     </form>
-                    <%}else{ %>
+                    <%}
+                    else { %>
                     <form action="FrontController" method="post">
                         <input type="hidden" name="command" value="login">
                         <input type="hidden" name="showCustomerLogin">
                         <input type="submit" class="btn btn-primary" value="Login as Customer"/><br>
                     </form>
                     <%}%>
-                     
-                    <% if(request.getAttribute("empLogin") != null){%>
+                    <hr class="my-4">
+                    <% if (request.getAttribute("empLogin") != null) {%>
                     <h1 class="display-4">Login as Employee</h1>
                     <form action="FrontController" method="post">
                         <input type="hidden" name="command" value="login">
@@ -53,11 +54,12 @@
                         <br>
                         <input type="submit" class="btn btn-primary" value="Login"/><br>
                     </form>
-                <%}else{ %>
-                <h1 class="display-4">Login as Customer</h1>
+                    <%}
+                else { %>
+                    <h1 class="display-4">Login as Customer</h1>
                     <form action="FrontController" method="post">
                         <input type="hidden" name="command" value="login">
-                          <input type="hidden" name="loginCustomer">
+                        <input type="hidden" name="loginCustomer">
                         <% String error = (String) request.getAttribute("error");
                             if (error != null) {%>
                         <p> <%=error%>
@@ -73,10 +75,10 @@
                         <br>
                         <input type="submit" class="btn btn-primary" value="Login"/><br>
                     </form>
-                
-                <%} %>
+
+                    <%}%>
                 </div>
-                        
+
             </div>
         </div>
     </body>
