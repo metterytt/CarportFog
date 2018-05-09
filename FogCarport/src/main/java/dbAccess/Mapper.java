@@ -37,8 +37,7 @@ public class Mapper {
             LineItem product = new LineItem(productID, name, uom, pricePerUnit);
             return product;
 
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             throw new CarportException("Error fetching product.", "index");
         }
     }
@@ -57,8 +56,7 @@ public class Mapper {
             ps.setInt(4, shedLength);
             ps.setInt(5, shedWidth);
             ps.execute();
-        }
-        catch (SQLException ex) {
+        } catch (SQLException ex) {
             throw new CarportException("Error adding calculation", "index");
         }
     }
@@ -77,12 +75,10 @@ public class Mapper {
                 int userID = rs.getInt("userID");
                 String role = rs.getString("role");
                 return new Employee(username, password, role, userID);
-            }
-            else {
+            } else {
                 throw new CarportException("No user found.. Invalid input", "login");
             }
-        }
-        catch (SQLException ex) {
+        } catch (SQLException ex) {
             throw new CarportException("something went wrong trying to login", "login");
         }
     }
@@ -104,12 +100,10 @@ public class Mapper {
                 String phonenumber = rs.getString("phonenumber");
                 String role = rs.getString("role");
                 return new Customer(ID, email, password, name, lastname, phonenumber, role);
-            }
-            else {
+            } else {
                 throw new CarportException("No user found.. Invalid input", "login");
             }
-        }
-        catch (SQLException ex) {
+        } catch (SQLException ex) {
             throw new CarportException("something went wrong trying to login", "login");
         }
     }
@@ -125,8 +119,7 @@ public class Mapper {
             ps.setString(2, password);
             ps.setString(3, role);
             ps.executeUpdate();
-        }
-        catch (SQLException ex) {
+        } catch (SQLException ex) {
             throw new CarportException("Noget gik galt, prøv igen!", "registeremployee");
         }
     }
@@ -141,8 +134,7 @@ public class Mapper {
             ps.setString(1, username);
             ps.setString(2, password);
             ps.executeUpdate();
-        }
-        catch (SQLException ex) {
+        } catch (SQLException ex) {
             throw new CarportException("Noget gik galt, prøv igen!", "registercustomer");
         }
     }
@@ -165,8 +157,7 @@ public class Mapper {
                 CustomerCalculation custCalc = new CustomerCalculation(ccID, length, width, angle, shedLength, shedWidth);
                 custCalcs.add(custCalc);
             }
-        }
-        catch (SQLException ex) {
+        } catch (SQLException ex) {
             throw new CarportException("Error fetching calculations", "employee");
         }
         return custCalcs;
@@ -190,8 +181,7 @@ public class Mapper {
             ps.setInt(7, price);
             ps.setInt(8, 1); // dette er en dummy!
             ps.execute();
-        }
-        catch (SQLException ex) {
+        } catch (SQLException ex) {
             throw new CarportException("Error adding calculation", "index");
         }
     }
@@ -218,8 +208,7 @@ public class Mapper {
                 Order order = new Order(orderID, customer, length, width, angle, shedLength, shedWidth, price, empID, placed);
                 openRequests.add(order);
             }
-        }
-        catch (SQLException ex) {
+        } catch (SQLException ex) {
             throw new CarportException("Error fetching requests", "employee");
         }
         return openRequests;
@@ -235,8 +224,7 @@ public class Mapper {
             ps.setInt(1, orderID);
             ps.executeUpdate();
 
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             throw new CarportException("Error setting sent status.", "employee");
         }
     }
@@ -263,14 +251,14 @@ public class Mapper {
                 Order order = new Order(orderID, customer, length, width, angle, shedLength, shedWidth, price, empID, placed);
                 orders.add(order);
             }
-        }
-        catch (SQLException ex) {
+        } catch (SQLException ex) {
             throw new CarportException("Error fetching orders", "employee");
         }
         return orders;
     }
 
     public static void deleteEmployee(int userID) throws CarportException {
+
         try {
             dbc.setDataSource(new DataSourceFog().getDataSource());
             dbc.open();
@@ -279,8 +267,7 @@ public class Mapper {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, userID);
             ps.executeUpdate();
-        }
-        catch (SQLException ex) {
+        } catch (SQLException ex) {
             throw new CarportException("Error - Cannot delete user", "employee");
         }
     }
@@ -303,9 +290,28 @@ public class Mapper {
                 res.add(emp);
             }
             return res;
-        }
-        catch (SQLException ex) {
+        } catch (SQLException ex) {
             throw new CarportException("Error - Cannot fetch all employees", "employee");
+        }
+    }
+
+    public static void editRequest(int orderID, int length, int width, int angle, int shedLength, int shedWidth, int price) throws CarportException {
+        try {
+            dbc.setDataSource(new DataSourceFog().getDataSource());
+            dbc.open();
+            Connection con = dbc.getConnector();
+            String sql = "update orders SET length = ? , width = ?, roof_angle= ?, shed_length= ?, shed_width= ?, price= ?  WHERE orderID= ?;";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, length);
+            ps.setInt(2, width);
+            ps.setInt(3, angle);
+            ps.setInt(4, shedLength);
+            ps.setInt(5, shedWidth);
+            ps.setInt(6, price);
+            ps.setInt(7, orderID);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            throw new CarportException("Error updating order", "employee");
         }
     }
 

@@ -61,6 +61,7 @@
                                 <th>
                                     <form action="FrontController" method="post">
                                         <input type="hidden" name="command" value="editrequest">
+                                        <input type="hidden" name="parseInfo"/>
                                         <input type="hidden" name="orderID" value="<%out.print(o.getOrderID());%>"/>
                                         <input type="hidden" name="length" value="<%out.print(o.getLength());%>"/>
                                         <input type="hidden" name="width" value="<%out.print(o.getWidth());%>"/>
