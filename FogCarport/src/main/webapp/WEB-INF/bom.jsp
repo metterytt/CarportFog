@@ -32,7 +32,7 @@
 
                     <br><h1>Visualization</h1>
                     <%
-                        DrawingMeasures drawingMeasures = (DrawingMeasures) session.getAttribute("drawingmeasures");
+                        DrawingMeasures drawingMeasures = (DrawingMeasures) request.getAttribute("drawingmeasures");
                         int length = drawingMeasures.getLength();
                         int width = drawingMeasures.getWidth();
                         int height = drawingMeasures.getHeight();
