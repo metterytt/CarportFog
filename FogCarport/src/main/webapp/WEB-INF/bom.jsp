@@ -461,7 +461,7 @@
 
                     <%-- carport set forfra med rejsning --%>
                     <%-- <svg width="600" height="500" viewbox="-10 -80 <%= width * 3%> <%= length%>"> --%>
-                    <svg width="1000" height="1000" viewbox="0 0 <%= width * 3%> <%= length * 2%>"> 
+                    <svg width="1000" height="1000" viewbox="-200 -200 <%= width * 3%> <%= length * 2%>"> 
 
                     <%-- stolper --%>
                     <rect x="30" y="<%=height - height%>" width="10" height="<%= height%>" fill="snow" stroke="black" stroke-width="1"/>
