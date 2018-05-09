@@ -21,9 +21,24 @@
     <body>
      <%@ include file="/WEB-INF/Include/Navbar.jspf" %>
         <div class="container-fluid">
+            
+            <% if(request.getAttribute("openrequests") == null){ %>
+            <form action="FrontController" method="post">
+                <input type="hidden" name="command" value="allrequests">
+                <input type="hidden" name="showrequests"/>
+                <input type="submit" class="btn btn-primary" value="Vis Requests"/>
+            </form>
+            <% }if (request.getAttribute("openrequests") != null){ %>
+            <form action="FrontController" method="post">
+                <input type="hidden" name="command" value="allrequests">
+                <input type="hidden" name="showorders"/>
+                <input type="submit" class="btn btn-primary" value="Vis Ordre"/>
+            </form>
+            <%}%>
+
             <div class="row">
                 <div class="col-md-12">
-
+                    <% if (request.getAttribute("openrequests") != null) { %>
                     <h2>Her er de åbne forespørgsler:</h2>
                     <% ArrayList<Order> openRequests = (ArrayList<Order>) request.getAttribute("openrequests");
                         if (openRequests.size() == 0) {%>
@@ -95,7 +110,9 @@
                             </tr> 
                         </tbody>
                     </table>   
-                    <%}%>
+                    <%}
+                                    }
+                                    if (request.getAttribute("orders") != null) { %>
 
                     <h2>Her er de bestilte ordrer:</h2>
                     <% ArrayList<Order> orders = (ArrayList<Order>) request.getAttribute("orders");
@@ -153,6 +170,7 @@
 
 
                 </div>
+                <%} %>
                 <div class="col-md-4">
                     <form action="FrontController" method="post">
                         <input type="hidden" name="command" value="backtoemp">
