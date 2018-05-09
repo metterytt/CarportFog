@@ -168,7 +168,7 @@
 
                     <%
 
-                        DecimalFormat formatter = new DecimalFormat("##0.00");
+                        DecimalFormat formatter = new DecimalFormat("###,##0.00");
 
                         BOM carportBOM = (BOM) request.getAttribute("carportbom");
                         if (carportBOM != null) {
@@ -203,9 +203,10 @@
                                 <%}%>
                             </tr> 
                         </tbody>
-                    </table>   
+                    </table>  
                     <%}%>
-                    <%
+                    <p>Den totale pris for denne carport er : <%= formatter.format(carportBOM.totalPrice()) %></p>
+                    <% 
                         BOM shedBOM = (BOM) request.getAttribute("shedbom");
                         if (shedBOM != null) {
 

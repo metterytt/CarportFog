@@ -24,11 +24,11 @@ import functionLayer.entity.LineItem;
 
 public class FlatRoofCalculator implements CarportCalculator {
 
-    private final double length;
+    private final int length;
     private final int width;
     private BOM bom = new BOM();
 
-    public FlatRoofCalculator(double length, int width) throws CarportException {
+    public FlatRoofCalculator(int length, int width) throws CarportException {
         this.length = length;
         this.width = width;
         bom = calculateBOM();
