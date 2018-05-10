@@ -19,16 +19,17 @@
         <title>JSP Page</title>
     </head>
     <body>
-     <%@ include file="/WEB-INF/Include/Navbar.jspf" %>
+        <%@ include file="/WEB-INF/Include/Navbar.jspf" %>
         <div class="container-fluid">
-            
-            <% if(request.getAttribute("openrequests") == null){ %>
+
+            <% if (request.getAttribute("openrequests") == null) { %>
             <form action="FrontController" method="post">
                 <input type="hidden" name="command" value="allrequests">
                 <input type="hidden" name="showrequests"/>
                 <input type="submit" class="btn btn-primary" value="Vis Requests"/>
             </form>
-            <% }if (request.getAttribute("openrequests") != null){ %>
+            <% }
+                if (request.getAttribute("openrequests") != null) { %>
             <form action="FrontController" method="post">
                 <input type="hidden" name="command" value="allrequests">
                 <input type="hidden" name="showorders"/>
@@ -111,8 +112,8 @@
                         </tbody>
                     </table>   
                     <%}
-                                    }
-                                    if (request.getAttribute("orders") != null) { %>
+                        }
+                        if (request.getAttribute("orders") != null) { %>
 
                     <h2>Her er de bestilte ordrer:</h2>
                     <% ArrayList<Order> orders = (ArrayList<Order>) request.getAttribute("orders");
@@ -186,9 +187,7 @@
                     <br>
 
                     <%
-
                         DecimalFormat formatter = new DecimalFormat("###,##0.00");
-
                         BOM carportBOM = (BOM) request.getAttribute("carportbom");
                         if (carportBOM != null) {
                     %>
@@ -223,9 +222,10 @@
                             </tr> 
                         </tbody>
                     </table>  
+                    <h3>Den totale pris for carporten er : <%= formatter.format(carportBOM.totalPrice())%></h3>
                     <%}%>
-                    <p>Den totale pris for denne carport er : <%= formatter.format(carportBOM.totalPrice()) %></p>
-                    <% 
+
+                    <%
                         BOM shedBOM = (BOM) request.getAttribute("shedbom");
                         if (shedBOM != null) {
 
@@ -240,6 +240,7 @@
                                 <th>Enhed</th>
                                 <th>Antal</th>
                                 <th>Pris pr. enhed</th>
+                                <th>Ialt kr.</th>
                             </tr>
                         </thead> 
                         <tbody>
@@ -251,11 +252,13 @@
                                 <th> <% out.print(p.getUseInContext()); %> </th>
                                 <th> <% out.print(p.getUom()); %> </th>
                                 <th> <% out.print(formatter.format((p.getQuantity()))); %> </th>
-                                <th> <% out.print(p.getPricePerUnit()); %>  </th>
+                                <th> <% out.print(formatter.format(p.getPricePerUnit())); %>  </th>
+                                <th> <% out.print(formatter.format((p.getPricePerUnit() * p.getQuantity()))); %>  </th>
                                     <%}%>
                             </tr> 
                         </tbody>
-                    </table>    
+                    </table> 
+                    <h3>Den totale pris for skuret er : <%= formatter.format(shedBOM.totalPrice())%></h3>
                     <%}%>
                 </div>
             </div>

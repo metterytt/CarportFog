@@ -29,7 +29,7 @@ public class ShedCalculator implements CarportCalculator {
         bom.setShedWidth(shedWidth);
 
         LineItem lath = StorageFacade.getProduct(16);
-        lath.setQuantity(420); // altid samme mængde, til Z på dør
+        lath.setQuantity(4.20); // altid samme mængde, til Z på dør
         lath.setUseInContext("Til Z på bagside af dør");
         bom.addToBOM(lath);
 
@@ -64,48 +64,35 @@ public class ShedCalculator implements CarportCalculator {
         bom.addToBOM(tHinge);
 
         LineItem angleBrackets = StorageFacade.getProduct(31);
-        angleBrackets.setQuantity(calcAngleBrackets(shedLength, shedWidth));
+        angleBrackets.setQuantity(20); // altid 20
         angleBrackets.setUseInContext("Til montering af løsholter i skur");
         bom.addToBOM(angleBrackets);
 
         return bom;
     }
 
-    private int calcReglar(int shedLength, int shedWidth) {
-        return 4 * shedLength + 4 * shedWidth;
+    private double calcReglar(int shedLength, int shedWidth) {
+        return (4 * shedLength + 4 * shedWidth) / 100;
     }
 
-    private int calcCladding(int shedLength, int shedWidth) { // pga overlap fylder hvert bræt 7,5 cm
-        return ((((shedLength * 100) / 750) + ((shedWidth * 100) / 750)) * 210) * 2; //210 er standard højden.
+    private double calcCladding(int shedLength, int shedWidth) { // pga overlap fylder hvert bræt 7,5 cm
+        return (((((shedLength * 100) / 750) + ((shedWidth * 100) / 750)) * 210) * 2) / 100; //210 er standard højden.
+    }
+
+    private int calcShedScrews(int shedLength, int shedWidth) { // 3 skruer pr. bræt, halvdelen af brædderne
+        int numberOfBoards = (((shedLength * 100) / 750) + ((shedWidth * 100) / 750)) * 2;
+        return numberOfBoards * 3;
+
+    }
+
+    private int calcSmallShedScrews(int shedLength, int shedWidth) { // 6 skruer pr. bræt, halvdelen af brædderne
+        int numberOfBoards = (((shedLength * 100) / 750) + ((shedWidth * 100) / 750)) * 2;
+        return numberOfBoards * 6;
     }
 
     @Override
     public BOM getBom() {
         return bom;
-    }
-
-    private int calcShedScrews(int shedLength, int shedWidth) {
-        if (shedLength * shedWidth < 110000) {
-            return 2;
-        } else {
-            return 3;
-        }
-    }
-
-    private int calcSmallShedScrews(int shedLength, int shedWidth) {
-        if (shedLength * shedWidth < 110000) {
-            return 2;
-        } else {
-            return 3;
-        }
-    }
-
-    private int calcAngleBrackets(int shedLength, int shedWidth) {
-        if (shedLength * shedWidth < 110000) {
-            return 35;
-        } else {
-            return 50;
-        }
     }
 
 }

@@ -25,31 +25,11 @@ public class PitchedRoofCalculator implements CarportCalculator {
         bom.setWidth(width);
         bom.setAngle(angle);
 
-//        LineItem fasciaPitch = StorageFacade.getProduct(18);
-//        fasciaPitch.setQuantity(calcFasciaPitch(width, angle));
-//        fasciaPitch.setUseInContext("Vindskeder på rejsning");
-//        bom.addToBOM(fasciaPitch);
-//
-//        LineItem fasciaSides = StorageFacade.getProduct(18);
-//        fasciaSides.setQuantity(calcFasciaSides(length));
-//        fasciaSides.setUseInContext("Sternbrædder til siderne");
-//        bom.addToBOM(fasciaSides);
         LineItem fasciaBoards = StorageFacade.getProduct(18);
         fasciaBoards.setQuantity(calcFasciaBoards());
         fasciaBoards.setUseInContext("Stern + vindskeder");
         bom.addToBOM(fasciaBoards);
 
-//        // denne gemmer vi lige til sidst!
-//        LineItem rafterSet = StorageFacade.getProduct(19); // prisen på disse er tvivlsom
-//        rafterSet.setQuantity(calcRafterSet(length));
-//        rafterSet.setUseInContext("Skal samles");
-//        bom.addToBOM(rafterSet);
-//
-//        // og denne, for det er vist samme træ som ovenstående
-//        LineItem plates = StorageFacade.getProduct(4);
-//        plates.setQuantity(calcPlates(length));
-//        plates.setUseInContext("Remme i sider");
-//        bom.addToBOM(plates);
         LineItem rafterSetAndPlates = StorageFacade.getProduct(4);
         rafterSetAndPlates.setQuantity(calcRafterSetAndPlates());
         rafterSetAndPlates.setUseInContext("Træ til remme og byg-selv spær");
@@ -60,15 +40,6 @@ public class PitchedRoofCalculator implements CarportCalculator {
         posts.setUseInContext("Nedgraves 90cm i jord");
         bom.addToBOM(posts);
 
-//        LineItem waterBoards = StorageFacade.getProduct(6);
-//        waterBoards.setQuantity(calcWaterBoards(width, angle));
-//        waterBoards.setUseInContext("Vandbræt på vindskeder");
-//        bom.addToBOM(waterBoards);
-//
-//        LineItem gablesCladding = StorageFacade.getProduct(6);
-//        gablesCladding.setQuantity(calcGablesCladding(width, angle));
-//        gablesCladding.setUseInContext("Beklædning af gavle 1 på 2");
-//        bom.addToBOM(gablesCladding); 
         LineItem waterBoardsAndGablesCladding = StorageFacade.getProduct(6);
         waterBoardsAndGablesCladding.setQuantity(calcWaterBoardsAndGablesCladding());
         waterBoardsAndGablesCladding.setUseInContext("Vandbrædder + gavlbeklædning");
@@ -84,10 +55,6 @@ public class PitchedRoofCalculator implements CarportCalculator {
         roofLaths.setUseInContext("Monteres på spær, inkl. toplægte");
         bom.addToBOM(roofLaths);
 
-//        LineItem topLath = StorageFacade.getProduct(3);
-//        topLath.setQuantity(length); // altid 1 lægte tilsvarende længden
-//        topLath.setUseInContext("Toplægte til montering af rygsten");
-//        bom.addToBOM(topLath);
         LineItem roofTiles = StorageFacade.getProduct(21);
         roofTiles.setQuantity(calcRoofTiles(length, width, angle));
         roofTiles.setUseInContext("Monteres på taglægter");
@@ -151,34 +118,11 @@ public class PitchedRoofCalculator implements CarportCalculator {
         return bom;
     }
 
-    // bruges ikke da kunden ikke skal have stykliste alligevel
-//    private double calcFasciaPitch(int width, int angle) { // c = b/cos V, og vi skal bruge 4 brædder
-//        double calcAngle = Math.toRadians(angle);
-//        return 4 * ((width / 2) / Math.cos(calcAngle));
-//    }
-//
-//    private double calcFasciaSides(int length) {
-//        return 2 * length;
-//    }
     private double calcFasciaBoards() { // c = b/cos V, og vi skal bruge 4 brædder
         double calcAngle = Math.toRadians(angle);
         double fasciaBoards = 4 * ((width / 2) / Math.cos(calcAngle));
         fasciaBoards = fasciaBoards + 2 * length;
         return fasciaBoards / 100;
-    }
-
-    private int calcRafterSet(int length) {
-        int numberOfRafters = (length / 60);
-        if (length % 60 == 0) {
-            numberOfRafters++;
-        } else {
-            numberOfRafters += 2;
-        }
-        return numberOfRafters;
-    }
-
-    private int calcPlates(int length) {
-        return 2 * length;
     }
 
     private double calcRafterSetAndPlates() {
@@ -191,7 +135,7 @@ public class PitchedRoofCalculator implements CarportCalculator {
         }
         //så længden af træ til hver
         double calcAngle = Math.toRadians(angle);
-        double lengthOfRafters = 2 * ((width / 2) / Math.cos(calcAngle)); //2 * skrå tagside
+        double lengthOfRafters = 2 * ((width / 2) / Math.cos(calcAngle)); // 2 * skrå tagside
         lengthOfRafters += width; // bredden skal med
 
         double gableHeight = (width / 2) * Math.tan(calcAngle); // og endelig højden
@@ -202,16 +146,6 @@ public class PitchedRoofCalculator implements CarportCalculator {
 
     }
 
-//    private double calcWaterBoards(int width, int angle) { // samme som vindskeder (fasciaPitch)
-//        double calcAngle = Math.toRadians(angle);
-//        return 4 * ((width / 2) / Math.cos(calcAngle));
-//    }
-//
-//    private int calcGablesCladding(int width, int angle) { // 7,5 pr. bræt pga 2 på 1
-//        double calcAngle = Math.toRadians(angle);
-//        double gableHeight = (width / 2) * Math.tan(calcAngle);
-//        return (int) (((((width / 2) * 100) / 750) * gableHeight) * 2);
-//    }
     double calcWaterBoardsAndGablesCladding() {
         double calcAngle = Math.toRadians(angle);
         double waterBoards = 4 * ((width / 2) / Math.cos(calcAngle));

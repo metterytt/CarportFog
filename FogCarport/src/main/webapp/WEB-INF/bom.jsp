@@ -29,7 +29,7 @@
                         <input type="submit" class="btn btn-primary" value="Send forespørgsel på denne carport">
                     </form>
 
-
+                    
                     <br><h1>Visualisering</h1>
 
                     <%

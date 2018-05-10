@@ -30,7 +30,10 @@
             <div class="row">
                 <div class="col-md-6">
                     <h1 class="display-4">Velkommen til Carport beregner.</h1>
-
+                    
+                    <h4>${message}</h4>
+                    <br>
+                    
                     <p>Her kan du indtaste de ønskede mål på din carport.</p>
                     <div class="form-group">
 
@@ -112,14 +115,14 @@
                         <%}%> </p>
 
                 </div>
-                        
-                        <%if(request.getAttribute("drawingmeasures") != null){  %>
-                        <div class="col-md-6">
-                            
-                           <%@ include file="/WEB-INF/Include/bom.jspf" %> 
-                            
-                        </div>
-                        <%}%>
+
+                <%if (request.getAttribute("drawingmeasures") != null) {%>
+                <div class="col-md-6">
+
+                    <%@ include file="/WEB-INF/Include/bom.jspf" %> 
+
+                </div>
+                <%}%>
             </div>
         </div>
     </body>
