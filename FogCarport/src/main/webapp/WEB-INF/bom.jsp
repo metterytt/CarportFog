@@ -20,16 +20,16 @@
     <body>
         <%@ include file="/WEB-INF/Include/Navbar.jspf" %>
 
-        <form action="FrontController" method="post">
-            <input type="hidden" name="command" value="sendrequest">
-            <br/>
-            <input type="submit" class="btn btn-primary" value="Send forespørgsel på denne carport">
-        </form>
-
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-6">
-                    
+                <div class="col-md-12">
+                    <form action="FrontController" method="post">
+                        <input type="hidden" name="command" value="sendrequest">
+                        <br/>
+                        <input type="submit" class="btn btn-primary" value="Send forespørgsel på denne carport">
+                    </form>
+
+
                     <br><h1>Visualisering</h1>
 
                     <%
@@ -71,7 +71,8 @@
 
                     <rect x="<%= width - 15 - 11%>" y="<%=length * 0.25%>" height="15" width="15" stroke="black" stroke-width="3" fill="none"/>
                     <rect x="<%= width - 15 - 11%>" y="<%=length * 0.75%>" height="15" width="15" stroke="black" stroke-width="3" fill="none"/>
-                    <%} else {
+                    <%}
+                    else {
 
                     %> <rect x="<%= width - width + 15 - 4%>" y="<%=length * 0.1%>" height="15" width="15" stroke="black" stroke-width="3" fill="none"/>
                     <rect x="<%= width - width + 15 - 4%>" y="<%=length * 0.9%>" height="15" width="15" stroke="black" stroke-width="3" fill="none"/>
@@ -116,9 +117,10 @@
                     <rect x="<%= shedWidth - 4%>" y="<%= shedLength%>" height="15" width="15" stroke="black" stroke-width="3" fill="none"/>
                     <rect x="<%= shedWidth - 4%>" y="15" height="15" width="15" stroke="black" stroke-width="3" fill="none"/>
                     <rect x="11" y="<%= shedLength%>" height="15" width="15" stroke="black" stroke-width="3" fill="none"/>
-                    
 
-                    <%} else if (shedLength != 0 && shedWidth != 0) {%>
+
+                    <%}
+                    else if (shedLength != 0 && shedWidth != 0) {%>
 
                     <%-- Skur til højre --%>
                     <rect x="<%= width - shedWidth - 11%>" y="15" height="<%=shedLength%>" width="<%=shedWidth%>" stroke="black" stroke-width="2" fill="none" stroke-dasharray="10 10"/>
@@ -129,7 +131,7 @@
                     <rect x="<%= width - 26%>" y="<%= shedLength%>" height="15" width="15" stroke="black" stroke-width="3" fill="none"/>
 
                     <%}%>
-                    
+
                     </svg>
 
 
@@ -151,7 +153,7 @@
                     <% if (angle == 0) {%>
 
                     <%-- <svg width="600" height="500" viewbox="-10 -80 <%= width * 2.5%> <%= length%>"> --%>
-                    <svg width="1000" height="1000" viewbox="-200 -200 <%= width * 3%> <%= length * 2%>"> 
+                    <svg width="1000" height="1000" viewbox="0 0 <%= width * 3%> <%= length * 2%>"> 
 
 
                     <%-- stolper --%>
@@ -281,7 +283,7 @@
                     <%-- carport med rejsning set fra siden stor tegning/Nillers tegning --%>
 
                     <%-- <svg width="600" height="500" viewbox="-10 -80 <%= width * 2.5%> <%= length%>"> --%>
-                    <svg width="1000" height="1000" viewbox="-200 -200 <%= width * 3%> <%= length * 2%>"> 
+                    <svg width="1000" height="1000" viewbox="0 0 <%= width * 3%> <%= length * 2%>"> 
 
 
                     <%-- stolper --%>
