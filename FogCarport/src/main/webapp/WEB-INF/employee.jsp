@@ -80,7 +80,7 @@
 
                     <form action="FrontController" method="post">
                         <input type="hidden" name="command" value="allrequests">
-                        <input type="hidden" name="loadsite">
+                        <input type="hidden" name="showrequests">
                             <br>
                         <input type="submit" class="btn btn-primary" value="Se alle åbne forespørgsler">
                     </form>

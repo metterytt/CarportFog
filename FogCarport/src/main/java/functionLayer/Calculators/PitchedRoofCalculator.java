@@ -210,7 +210,7 @@ public class PitchedRoofCalculator implements CarportCalculator {
         return (rows * length + topLath) / 100;
     }
 
-    private int calcPosts(int length) {
+      int calcPosts(int length) {
         if (length <= 300) {
             return 4;
         }
