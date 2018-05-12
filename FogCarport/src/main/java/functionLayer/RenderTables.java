@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package functionLayer;
 
 import functionLayer.entity.LineItem;
@@ -10,34 +5,35 @@ import functionLayer.entity.Order;
 import java.text.DecimalFormat;
 import java.util.List;
 
-/**
- *
- * @author mette
- */
 public class RenderTables {
+    
+//    private static DecimalFormat totalformatter = new DecimalFormat("###,##0.00");
 
     public static String getOpenRequestsTable(List<Order> openRequests) {
         if (openRequests == null) {
             return "---Ingen forespørgsler i øjeblikket---";
         }
         StringBuilder sb = new StringBuilder();
+        DecimalFormat formatter = new DecimalFormat("###,###.-");
         // selve tabellen starter her
         sb.append("<table class=\"table table-striped\">\n"
                 + "<thead><tr><th>ID</th><th>Kunde</th><th>Længde</th><th>Bredde</th>"
-                + "<th>Tagvinkel</th><th>Skur længde</th><th>Skur bredde</th><th>Pris</th>"
+                + "<th style=\"text-align:right\">Tagvinkel</th><th style=\"text-align:right\">"
+                + "Skur længde</th><th style=\"text-align:right\">Skur bredde</th>"
+                + "<th style=\"text-align:right\">Pris</th>"
                 + "<th>Sælger</th><th>Ændre i ordre</th>");
         sb.append("</tr></thead><tbody>\n");
         for (Order o : openRequests) {
             sb.append("<tr>");
-            sb.append("<th>").append(o.getOrderID()).append("</th>");
-            sb.append("<th>").append(o.getCustomer()).append("</th>");
-            sb.append("<th>").append(o.getLength()).append("</th>");
-            sb.append("<th>").append(o.getWidth()).append("</th>");
-            sb.append("<th>").append(o.getAngle()).append("</th>");
-            sb.append("<th>").append(o.getShedLength()).append("</th>");
-            sb.append("<th>").append(o.getShedWidth()).append("</th>");
-            sb.append("<th>").append(o.getPrice()).append("</th>");
-            sb.append("<th>").append(o.getEmpID()).append("</th>");
+            sb.append("<td>").append(o.getOrderID()).append("</td>");
+            sb.append("<td>").append(o.getCustomer()).append("</td>");
+            sb.append("<td>").append(o.getLength()).append("</td>");
+            sb.append("<td>").append(o.getWidth()).append("</td>");
+            sb.append("<td style=\"text-align:right\">").append(o.getAngle()).append("</td>");
+            sb.append("<td style=\"text-align:right\">").append(o.getShedLength()).append("</td>");
+            sb.append("<td style=\"text-align:right\">").append(o.getShedWidth()).append("</td>");
+            sb.append("<td style=\"text-align:right\">").append(formatter.format(o.getPrice())).append("</td>");
+            sb.append("<td>").append(o.getEmpID()).append("</td>");
             // så første form
             sb.append("<th>\n<form action=\"FrontController\" method=\"post\">\n"
                     + "<input type=\"hidden\" name=\"command\" value=\"editrequest\">\n"
@@ -80,25 +76,27 @@ public class RenderTables {
             return "---Ingen ordrer i systemet---";
         }
         StringBuilder sb = new StringBuilder();
-        // selve tabellen starter her
+        DecimalFormat formatter = new DecimalFormat("###,###.-");
+        // tabellen starter her
         sb.append("<table class=\"table table-striped\">\n"
                 + "<thead><tr><th>ID</th><th>Kunde</th><th>Længde</th><th>Bredde</th>"
-                + "<th>Tagvinkel</th><th>Skur længde</th><th>Skur bredde</th><th>Pris</th>"
+                + "<th style=\"text-align:right\">Tagvinkel</th><th style=\"text-align:right\">"
+                + "Skur længde</th><th style=\"text-align:right\">Skur bredde</th>"
+                + "<th style=\"text-align:right\">Pris</th>"
                 + "<th>Sælger</th><th>Bestilt</th>");
         sb.append("</tr></thead><tbody>\n");
         for (Order o : orders) {
             sb.append("<tr>");
-            sb.append("<th>").append(o.getOrderID()).append("</th>");
-            sb.append("<th>").append(o.getCustomer()).append("</th>");
-            sb.append("<th>").append(o.getLength()).append("</th>");
-            sb.append("<th>").append(o.getWidth()).append("</th>");
-            sb.append("<th>").append(o.getAngle()).append("</th>");
-            sb.append("<th>").append(o.getShedLength()).append("</th>");
-            sb.append("<th>").append(o.getShedWidth()).append("</th>");
-            sb.append("<th>").append(o.getPrice()).append("</th>");
-            sb.append("<th>").append(o.getEmpID()).append("</th>");
-            sb.append("<th>").append(o.isPlaced()).append("</th>");
-
+            sb.append("<td>").append(o.getOrderID()).append("</td>");
+            sb.append("<td>").append(o.getCustomer()).append("</td>");
+            sb.append("<td>").append(o.getLength()).append("</td>");
+            sb.append("<td>").append(o.getWidth()).append("</td>");
+            sb.append("<td style=\"text-align:right\">").append(o.getAngle()).append("</td>");
+            sb.append("<td style=\"text-align:right\">").append(o.getShedLength()).append("</td>");
+            sb.append("<td style=\"text-align:right\">").append(o.getShedWidth()).append("</td>");
+            sb.append("<td style=\"text-align:right\">").append(formatter.format(o.getPrice())).append("</td>");
+            sb.append("<td>").append(o.getEmpID()).append("</td>");
+            sb.append("<td>").append(o.isPlaced()).append("</td>");
             // så formen
             sb.append("<th>");
             sb.append("<form action=\"FrontController\" method=\"post\">");
@@ -110,7 +108,6 @@ public class RenderTables {
             sb.append("<input type=\"hidden\" name=\"shedwidth\" value=\"").append(o.getShedWidth()).append("\"/>");
             sb.append("<input type=\"submit\" class=\"btn btn-primary\" value=\"Se stykliste\"/>");
             sb.append("</form></th>");
-
             sb.append("</tr>\n");
         }
         sb.append("</tbody>");
@@ -123,20 +120,20 @@ public class RenderTables {
             return "---Ingenting på styklisten---";
         }
         StringBuilder sb = new StringBuilder();
-
         sb.append("<table class=\"table table-striped\">\n"
-                + "<thead><tr><th>Produktnavn</th><th>Brug</th><th>Enhed</th><th>Antal</th>"
-                + "<th>Pris</th><th>Ialt kr.</th>");
+                + "<thead><tr><th>Produktnavn</th><th>Brug</th><th style=\"text-align:right\">"
+                + "Antal</th><th style=\"text-align:right\">Enhed</th>"
+                + "<th style=\"text-align:right\">Pris</th><th style=\"text-align:right\">Ialt kr.</th>");
         sb.append("</tr></thead><tbody>\n");
         DecimalFormat formatter = new DecimalFormat("###,##0.00");
         for (LineItem li : bom) {
             sb.append("<tr>");
-            sb.append("<th>").append(li.getName()).append("</th>");
-            sb.append("<th>").append(li.getUseInContext()).append("</th>");
-            sb.append("<th>").append(li.getUom()).append("</th>");
-            sb.append("<th>").append(formatter.format(li.getQuantity())).append("</th>");
-            sb.append("<th>").append(formatter.format(li.getPricePerUnit())).append("</th>");
-            sb.append("<th>").append(formatter.format(li.getPricePerUnit() * li.getQuantity())).append("</th>");
+            sb.append("<td>").append(li.getName()).append("</td>");
+            sb.append("<td>").append(li.getUseInContext()).append("</td>");
+            sb.append("<td style=\"text-align:right\">").append(formatter.format(li.getQuantity())).append("</td>");
+            sb.append("<td style=\"text-align:right\">").append(li.getUom()).append("</td>");
+            sb.append("<td style=\"text-align:right\">").append(formatter.format(li.getPricePerUnit())).append("</td>");
+            sb.append("<td style=\"text-align:right\">").append(formatter.format(li.getPricePerUnit() * li.getQuantity())).append("</td>");
             sb.append("</tr>\n");
         }
         sb.append("</tbody>");

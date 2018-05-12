@@ -10,7 +10,6 @@
 <%@page import="functionLayer.entity.LineItem"%>
 <%@page import="functionLayer.BOM"%>
 <%@page import="functionLayer.entity.Order"%>
-<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -73,18 +72,18 @@
                     <%  DecimalFormat formatter = new DecimalFormat("###,##0.00");
                         BOM carportBOM = (BOM) request.getAttribute("carportbom");
                         if (carportBOM != null) {
-                            ArrayList<LineItem> bom = carportBOM.getListOfProducts();%>
+                            List<LineItem> bom = carportBOM.getListOfProducts();%>
                             <h1>Styklisteberegning</h1>
                             <%= RenderTables.getListOfProducts(bom)%>
-                            <h3>Den totale pris for carporten er : <%= formatter.format(carportBOM.totalPrice())%></h3>
+                            <h3>Den totale pris for carporten er: <%= formatter.format(carportBOM.totalPrice())%></h3>
                     <% }
 
                         BOM shedBOM = (BOM) request.getAttribute("shedbom");
                         if (shedBOM != null) {
-                            ArrayList<LineItem> shedBom = shedBOM.getListOfProducts();%>
+                            List<LineItem> shedBom = shedBOM.getListOfProducts();%>
                             <h2>Herunder er styklisten for skuret:</h2>
                             <%= RenderTables.getListOfProducts(shedBom)%>
-                            <h3>Den totale pris for skuret er : <%= formatter.format(shedBOM.totalPrice())%></h3>
+                            <h3>Den totale pris for skuret er: <%= formatter.format(shedBOM.totalPrice())%></h3>
                     <% } %>
 
                     <%--
