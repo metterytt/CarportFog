@@ -3,6 +3,7 @@
     Created on : 24-04-2018, 19:33:17
 --%>
 
+<%@page import="functionLayer.RenderDrawings"%>
 <%@page import="functionLayer.DrawingMeasures"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="functionLayer.entity.LineItem"%>
@@ -25,7 +26,7 @@
                 <div class="col-md-12">
 
 
-
+                     
                     <br><h1>Visualisering</h1>
 
                     <p> ${message} </p>
@@ -61,6 +62,8 @@
                         int posts = drawingMeasures.getPosts();
                         double startingLength = (length - 10);
                     %>
+                    
+                    
                     <form action="FrontController" method="post">
                         <input type="hidden" name="command" value="sendrequest">
                         <input type="hidden" name="shedPos" value="<%= shedPos%>">
@@ -186,16 +189,10 @@
                     <rect x="<%= length - 40%>" y="<%=10%>" width="10" height="<%= height%>" fill="snow" stroke="black" stroke-width="1"/>
 
                     <%-- tekst til længde --%>
-                    <% if (shedLength == 0) {%>
                     <text x="<%=length / 2%>" y="<%=height - 230%>" fill="black" text-anchor="middle">Længde: <%=length%> </text>
-                    <% } %>
-
-                    <% if (shedLength != 0) {%>
-                    <text x="<%=length / 2%>" y="<%=height - 230%>" fill="black" text-anchor="middle">Længde: <%=length%> </text>
-                    <% } %>
 
                     <%-- rem til 4 stolper--%>
-                    <% if (length < 349) {%>
+                    <% if (length < 350) {%>
                     <rect x="20" y="12" width="<%=length - 20%>" height="10" fill="snow" stroke="black" stroke-width="1" 
                           transform="translate(0) rotate(1.7 30 40)"/>
                     <% }
@@ -214,21 +211,15 @@
                     <rect x="<%= length - 40%>" y="<%=10%>" width="10" height="<%= height%>" fill="snow" stroke="black" stroke-width="1"/>
 
                     <%-- tekst til længde --%>
-                    <% if (shedLength == 0) {%>
                     <text x="<%=length / 2%>" y="<%=height - 230%>" fill="black" text-anchor="middle">Længde: <%=length%> </text>
-                    <% } %>
-
-                    <% if (shedLength != 0) {%>
-                    <text x="<%=length / 2%>" y="<%=height - 230%>" fill="black" text-anchor="middle">Længde: <%=length%> </text>
-                    <% } %>
 
                     <%-- rem til 6 stolper--%>
-                    <% if (length < 599) {%>
-                    <rect x="20" y="12" width="<%=length - 20%>" height="10" fill="snow" stroke="black" stroke-width="1" 
+                    <% if (length < 600) {%>
+                    <rect x="20" y="12" width="<%=length - 20%>" height="10" fill="snow" stroke="black" stroke-width="1"
                           transform="translate(0) rotate(1 100 50)"/>
                     <% }
                         if (length >= 600) {%>
-                    <rect x="20" y="12" width="<%=length - 20%>" height="10" fill="snow" stroke="black" stroke-width="1" 
+                    <rect x="20" y="12" width="<%=length - 20%>" height="10" fill="snow" stroke="black" stroke-width="1" transform="translate(0) rotate(0.5 250 50)"/>
                           transform="translate(0) rotate(0.5 250 50)"/>
                     <% }
                         }%>
