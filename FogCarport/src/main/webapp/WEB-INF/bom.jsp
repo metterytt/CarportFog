@@ -75,95 +75,15 @@
                     <%= RenderDrawings.drawFromAbove(drawingMeasures)%>
 
 
-                    <%-- carport set oppefra --%>
-                    <svg height="500" width="500" viewbox="0 0 <%= width + 150%> <%= length + 60%>">
 
-                    <%-- remme --%>
-                    <line x1="<%= width - 15%>" y1="0" x2="<%= width - 15%>" y2="<%= length%>" stroke="black" stroke-width="12" stroke-opacity = "0.5"/>
-                    <line x1="<%= width - width + 15%>" y1="0" x2="<%= width - width + 15%>" y2="<%= length%>" stroke="black" stroke-width="12" stroke-opacity = "0.5"/>
+                    <%-- 
+                                        <%  if (shedLength != 0 && shedPos.equals("middle")) {
+                                                shedWidth = width - 22;
+                                                shedPos = "left";
+                                            }
+                                            if (shedLength != 0 && shedWidth != 0 && shedPos.equals("left")) {%>
 
-                    <%-- spær --%>
-                    <%
-                        for (int idx = 0; idx < rafterQty; idx++) {
-                    %> <line x1="5" y1="<%= startingLength%>" x2="<%= width - 5%>" y2="<%= startingLength%>" stroke-width="12" stroke="darkgrey"/> <%
-                            startingLength -= rafterGap;
-                        }
-                    %>
-
-                    <%-- stolper --%>
-                    <%  if (posts < 5) {
-
-                    %> <rect x="<%= width - width + 15 - 4%>" y="<%=length * 0.25%>" height="15" width="15" stroke="black" stroke-width="3" fill="none" />
-                    <rect x="<%= width - width + 15 - 4%>" y="<%=length * 0.75%>" height="15" width="15" stroke="black" stroke-width="3" fill="none"/>
-
-                    <rect x="<%= width - 15 - 11%>" y="<%=length * 0.25%>" height="15" width="15" stroke="black" stroke-width="3" fill="none"/>
-                    <rect x="<%= width - 15 - 11%>" y="<%=length * 0.75%>" height="15" width="15" stroke="black" stroke-width="3" fill="none"/>
-                    <%} else {
-
-                    %> <rect x="<%= width - width + 15 - 4%>" y="<%=length * 0.1%>" height="15" width="15" stroke="black" stroke-width="3" fill="none"/>
-                    <rect x="<%= width - width + 15 - 4%>" y="<%=length * 0.9%>" height="15" width="15" stroke="black" stroke-width="3" fill="none"/>
-
-                    <rect x="<%= width - 15 - 11%>" y="<%=length * 0.1%>" height="15" width="15" stroke="black" stroke-width="3" fill="none"/>
-                    <rect x="<%= width - 15 - 11%>" y="<%=length * 0.9%>" height="15" width="15" stroke="black" stroke-width="3" fill="none"/>
-
-                    <rect x="<%= width - 15 - 11%>" y="<%=length / 2%>" height="15" width="15" stroke="black" stroke-width="3" fill="none"/>
-                    <rect x="<%= width - width + 15 - 4%>" y="<%=length / 2%>" height="15" width="15" stroke="black" stroke-width="3" fill="none"/>
-
-                    <%}%>
-
-                    <text x="<%=width / 2%>" y="<%=length + 20%>" fill="black" text-anchor="middle" >Bredde: <%=width%> </text>
-                    <text x="<%=width + 20%>" y="<%=length / 2%>" fill="black" text-anchor="middle" writing-mode="tb">Længde: <%=length%> </text>
-
-                    <%-- top stern --%>
-                    <line x1="0" y1="0" x2="<%= width%>" y2="0" stroke-width="8" stroke="black"/>
-
-                    <%-- højre stern --%>
-                    <line x1="<%= width%>" y1="0" x2="<%= width%>" y2="<%= length%>" stroke-width="4" stroke="black"/>
-                    <line x1="<%= width - 5%>" y1="0" x2="<%= width - 5%>" y2="<%= length%>" stroke-width="4" stroke="black"/>
-
-                    <%-- bundstern --%>
-                    <line x1="<%= width%>" y1="<%= length%>" x2="0" y2="<%= length%>" stroke-width="4" stroke="black"/>
-                    <line x1="<%= width - 5%>" y1="<%= length - 5%>" x2="5" y2="<%= length - 5%>" stroke-width="4" stroke="black"/>
-
-                    <%-- venstre stern --%>
-                    <line x1="0" y1="<%= length%>" x2="0" y2="0" stroke-width="4" stroke="black"/>
-                    <line x1="5" y1="<%= length%>" x2="5" y2="0" stroke-width="4" stroke="black"/>
-
-                    <%-- hulbånd --%>
-                    <line x1="<%= width - width * 0.9%>" y1="<%= rafterGap + 10%>" x2="<%= width * 0.9%>" y2="<%= (length - 10) - rafterGap%>" stroke="black" stroke-dasharray="5 5"/>
-                    <line x1="<%= width - width * 0.9%>" y1="<%= (length - 10) - rafterGap%>" x2="<%= width * 0.9%>" y2="<%= rafterGap + 10%>" stroke="black" stroke-dasharray="5 5"/>
-
-
-                    <%  if (shedLength != 0 && shedPos.equals("middle")) {
-                            shedWidth = width - 22;
-                            shedPos = "left";
-                        }
-                        if (shedLength != 0 && shedWidth != 0 && shedPos.equals("left")) {%>
-
-                    <%-- Skur VENSTRE --%>
-                    <rect x="11" y="15" height="<%=shedLength%>" width="<%=shedWidth%>" stroke="red" stroke-width="2" fill="none" stroke-dasharray="10 10"/>
-                    <%--  stolper til skur - venstre--%>
-                    <rect x="11" y="15" height="15" width="15" stroke="red" stroke-width="3" fill="none"/>
-                    <rect x="<%= shedWidth - 4%>" y="<%= shedLength%>" height="15" width="15" stroke="red" stroke-width="3" fill="none"/>
-                    <rect x="<%= shedWidth - 4%>" y="15" height="15" width="15" stroke="red" stroke-width="3" fill="none"/>
-                    <rect x="11" y="<%= shedLength%>" height="15" width="15" stroke="red" stroke-width="3" fill="none"/>
-
-
-                    <%} else if (shedLength != 0 && shedWidth != 0) {%>
-
-                    <%-- Skur til højre --%>
-                    <rect x="<%= width - shedWidth - 11%>" y="15" height="<%=shedLength%>" width="<%=shedWidth%>" stroke="red" stroke-width="2" fill="none" stroke-dasharray="10 10"/>
-                    <%--  stolper til skur - venstre--%>
-                    <rect x="<%= width - shedWidth - 11%>" y="15" height="15" width="15" stroke="red" stroke-width="3" fill="none"/>
-                    <rect x="<%= width - shedWidth - 11%>" y="<%= shedLength%>" height="15" width="15" stroke="red" stroke-width="3" fill="none"/>
-                    <rect x="<%= width - 26%>" y="15" height="15" width="15" stroke="red" stroke-width="3" fill="none"/>
-                    <rect x="<%= width - 26%>" y="<%= shedLength%>" height="15" width="15" stroke="red" stroke-width="3" fill="none"/>
-
-                    <%}%>
-
-                    </svg>
-
-
+                    --%>
 
 
 
