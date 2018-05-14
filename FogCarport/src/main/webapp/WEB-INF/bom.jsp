@@ -153,7 +153,7 @@
                     <% if (angle == 0) {%>
 
                     <%-- <svg width="600" height="500" viewbox="-10 -80 <%= width * 2.5%> <%= length%>"> --%>
-                    <svg width="1000" height="1000" viewbox="0 0 <%= width * 3%> <%= length * 2%>"> 
+                    <svg width="1000" height="1000" viewbox="0 -100 <%= width * 3%> <%= length * 2%>"> 
 
 
                     <%-- stolper --%>
