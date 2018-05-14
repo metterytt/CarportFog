@@ -44,7 +44,12 @@ public class Login extends Command {
             Customer customer = StorageFacade.loginCustomer(username, password);
             request.getSession().setAttribute("customer", customer);
 
-            return "index";
+            if(request.getSession().getAttribute("drawingmeasures") != null){
+                request.setAttribute("message", "Du er nu logget ind og kan sende requestet på tegningen her");
+                return "bom";
+            }
+            
+            return "customer";
         }
         return "index";
     }
