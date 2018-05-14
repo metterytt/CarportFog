@@ -131,13 +131,12 @@ public class DrawingMeasures {
     }
 
     private int calcPosts() {
-        return 2 * ((length / 300) + 1);
-        // herunder er den tidligere udregning for posts ved fladt tag
-//        if (length <= 480) {
-//            return 4;
-//        } else {
-//            return 6;
-//        }
+        
+        if (length <= 480) {
+            return 4;
+        } else {
+            return 6;
+        }
     }
 
 }

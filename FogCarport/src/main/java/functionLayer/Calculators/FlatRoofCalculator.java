@@ -119,12 +119,11 @@ public class FlatRoofCalculator implements CarportCalculator {
     }
 
     private int calcPosts(double length) {
-        if (length <= 300) {
+       if (length <= 480) {
             return 4;
+        } else {
+            return 6;
         }
-        int posts = 2 + ((int) length / 300);
-
-        return 2 * posts;
     }
 
     private double calcSubFasciaBoards(double length, int width) {
