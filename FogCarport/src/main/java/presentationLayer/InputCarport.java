@@ -11,31 +11,33 @@ public class InputCarport extends Command {
 
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws CarportException {
-//        HttpSession session = request.getSession();
 
         int length = Integer.parseInt(request.getParameter("length"));
         int width = Integer.parseInt(request.getParameter("width"));
         int angle = Integer.parseInt(request.getParameter("angle"));
         int shedLength = Integer.parseInt(request.getParameter("shedlength"));
         int shedWidth = Integer.parseInt(request.getParameter("shedwidth"));
-
+        
         StorageFacade.addCustCalc(length, width, angle, shedLength, shedWidth);
 
-        DrawingMeasures drawingMeasures = new DrawingMeasures(length, width, angle, shedLength, shedWidth);
-//        session.setAttribute("drawingmeasures", drawingMeasures);
-        request.setAttribute("drawingmeasures", drawingMeasures);
-        
         String shedPos = request.getParameter("shedPos");
-        // næste 3 linier er quickfix
-        if (shedPos == null) {
-            shedPos = "left";
+        if(shedPos.equals("middle") && shedLength != 0){
+            shedWidth = width-30;
         }
+        
         if ((shedLength == 0 && shedWidth != 0) || (shedLength != 0 && shedWidth == 0)) {
             request.setAttribute("error", "Der skal vælges nummer for Højde og Bredde såfremt du ønsker et skur!");
             return "index";
-        } else {
+        }else if((width - shedWidth <= 29) || length - shedLength <= 29){
+           request.setAttribute("error", "Den går ikke du! Din carport skal minimum være 30cm bredere og min 30cm længere end dit skur");
+            return "index";
+        }else {
             request.setAttribute("shedPos", shedPos);
         }
+        
+        DrawingMeasures drawingMeasures = new DrawingMeasures(length, width, angle, shedLength, shedWidth);
+        request.getSession().setAttribute("drawingmeasures", drawingMeasures);
+        
 
         return "bom";
     }

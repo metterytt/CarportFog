@@ -16,7 +16,7 @@ public class AllRequests extends Command {
         List<Order> openRequests = StorageFacade.getOpenRequests();
         request.setAttribute("openrequests", openRequests);
         }
-        if(request.getParameter("showorders") != null){
+        else if(request.getParameter("showorders") != null){
         List<Order> orders = StorageFacade.getOrders();
         request.setAttribute("orders", orders);
         }

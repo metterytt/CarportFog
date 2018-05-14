@@ -163,7 +163,7 @@ public class Mapper {
         return custCalcs;
     }
 
-    public static void addRequest(int length, int width, int angle, int shedLength, int shedWidth, int price) throws CarportException {
+    public static void addRequest(int customerID, int length, int width, int angle, int shedLength, int shedWidth, int price) throws CarportException {
 
         try {
             dbc.setDataSource(new DataSourceFog().getDataSource());
@@ -172,7 +172,7 @@ public class Mapper {
             String sql = "INSERT INTO orders (customer, length, width, roof_angle,"
                     + " shed_length, shed_width, price, employees_userID) values (?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, "dummy");
+            ps.setInt(1, customerID);
             ps.setInt(2, length);
             ps.setInt(3, width);
             ps.setInt(4, angle);

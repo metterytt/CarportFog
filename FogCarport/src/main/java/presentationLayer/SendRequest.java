@@ -8,6 +8,7 @@ import functionLayer.Calculators.ShedCalculator;
 import functionLayer.CarportException;
 import functionLayer.DrawingMeasures;
 import functionLayer.StorageFacade;
+import functionLayer.entity.Customer;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -16,9 +17,20 @@ public class SendRequest extends Command {
 
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws CarportException {
-        HttpSession session = request.getSession();
+        
+        if(request.getSession().getAttribute("customer") == null && request.getParameter("phonenumber") == null){
+            request.setAttribute("userDetailsNeeded", "Vi har brug for at identificere dig, enten log venglist ind, eller indtast et telefon nummer vi kan kontakte dig på vedrørende din carport.");
+            return "bom";
+        }else if(request.getParameter("phonenumber") != null){
+            String phonenumber = request.getParameter("phonenumber");
+            if(phonenumber.length() != 8){
+         request.setAttribute("userDetailsNeeded", "Vi har brug for at identificere dig, enten log venglist ind, eller indtast et telefon nummer vi kan kontakte dig på vedrørende din carport.");
+         request.setAttribute("message", "Der skal være 8 cifre i dit tlf-nummer, eksempelvis: 22464462");
+                return "bom"; 
+            }
+        }
 
-        DrawingMeasures drawingMeasures = (DrawingMeasures) session.getAttribute("drawingmeasures");
+        DrawingMeasures drawingMeasures = (DrawingMeasures) request.getSession().getAttribute("drawingmeasures");
 
         int length = drawingMeasures.getLength();
         int width = drawingMeasures.getWidth();
@@ -46,9 +58,20 @@ public class SendRequest extends Command {
             shedPrice = shedBom.totalPrice();
         }
         int price = carportBom.totalPrice() + shedPrice;
-        StorageFacade.addRequest(length, width, angle, shedLength, shedWidth, price);
-//        request.setAttribute("message", "Din forespørgsel er nu i systemet, og du vil snart blive kontaktet."); 
-        return "requestplaced";
+        
+        if(request.getParameter("phonenumber") == null){
+            Customer customer = (Customer) request.getSession().getAttribute("customer");
+            int customerID = customer.getID();
+        StorageFacade.addRequest(customerID, length, width, angle, shedLength, shedWidth, price);
+        }else{
+            int phoneNumber = Integer.parseInt(request.getParameter("phonenumber"));
+         StorageFacade.addRequest(phoneNumber, length, width, angle, shedLength, shedWidth, price);
+        }
+//        request.getSession().removeAttribute("drawingmeasures");
+        
+        request.setAttribute("message", "Din forespørgsel er nu i systemet, og du vil snart blive kontaktet. \n Du kan se dine forespørgsel under 'Mine forespørgsler' "); 
+        
+    return "customer";
     }
 
 }

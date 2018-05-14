@@ -97,7 +97,9 @@
 
 
                                 <p> Højre eller venstre siddende skur? </p>
+                                <p> Midten = Hele carportens bredde </p>
                                 <input type="radio" name="shedPos" value="right">Højre
+                                <input type="radio" name="shedPos" value="middle" checked>Midten
                                 <input type="radio" name="shedPos" value="left">Venstre
                             </div>
                             <input type="submit" class="btn btn-primary" value="Beregn carport">

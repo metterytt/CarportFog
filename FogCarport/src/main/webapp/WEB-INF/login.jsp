@@ -73,7 +73,9 @@
                             <input type="password" class="form-control" id="Password" name="password" value="123">
                         </div>
                         <br>
-                        <input type="submit" class="btn btn-primary" value="Login"/><br>
+                        
+                       
+                    <input type="submit" class="btn btn-primary" value="Login"/><br>
                     </form>
 
                     <%}%>

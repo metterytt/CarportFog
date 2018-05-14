@@ -21,22 +21,21 @@
     <body>
      <%@ include file="/WEB-INF/Include/Navbar.jspf" %>
         <div class="container-fluid">
-            
-            <% if(request.getAttribute("openrequests") == null){ %>
+            <div class="row">
+            <% if((request.getAttribute("orders") != null) || (request.getAttribute("carportbom") != null)){ %>
             <form action="FrontController" method="post">
                 <input type="hidden" name="command" value="allrequests">
                 <input type="hidden" name="showrequests"/>
                 <input type="submit" class="btn btn-primary" value="Vis Requests"/>
             </form>
-            <% }if (request.getAttribute("openrequests") != null){ %>
+            <% }if ((request.getAttribute("openrequests") != null) || (request.getAttribute("carportbom") != null)){ %>
             <form action="FrontController" method="post">
                 <input type="hidden" name="command" value="allrequests">
                 <input type="hidden" name="showorders"/>
                 <input type="submit" class="btn btn-primary" value="Vis Ordre"/>
             </form>
             <%}%>
-
-            <div class="row">
+            
                 <div class="col-md-12">
                     <% if (request.getAttribute("openrequests") != null) { %>
                     <h2>Her er de åbne forespørgsler:</h2>
@@ -90,6 +89,7 @@
                                 <th>
                                     <form action="FrontController" method="post">
                                         <input type="hidden" name="command" value="viewbom">
+                                        <input type="hidden" name="orderID" value="<%out.print(o.getOrderID());%>" />
                                         <input type="hidden" name="length" value="<%out.print(o.getLength());%>" />
                                         <input type="hidden" name="width" value="<%out.print(o.getWidth());%>" />
                                         <input type="hidden" name="angle" value="<%out.print(o.getAngle());%>" />
@@ -154,6 +154,7 @@
                                 <th>
                                     <form action="FrontController" method="post">
                                         <input type="hidden" name="command" value="viewbom">
+                                        <input type="hidden" name="orderID" value="<%out.print(o.getOrderID());%>" />
                                         <input type="hidden" name="length" value="<%out.print(o.getLength());%>" />
                                         <input type="hidden" name="width" value="<%out.print(o.getWidth());%>" />
                                         <input type="hidden" name="angle" value="<%out.print(o.getAngle());%>" />
@@ -167,33 +168,19 @@
                         </tbody>
                     </table>   
                     <%}%>
-
-
-                </div>
                 <%} %>
-                <div class="col-md-4">
-                    <form action="FrontController" method="post">
-                        <input type="hidden" name="command" value="backtoemp">
-                        <br/>
-                        <input type="submit" class="btn btn-primary" value="Tilbage til medarbejderside">
-                    </form>
-                </div>
-
-            </div>
-            <div class="row">
-                <div class="col-md-8">
-                    <br>
-                    <br>
+                
+             
 
                     <%
 
                         DecimalFormat formatter = new DecimalFormat("###,##0.00");
-
+                        if(request.getAttribute("carportbom") != null){
                         BOM carportBOM = (BOM) request.getAttribute("carportbom");
-                        if (carportBOM != null) {
                     %>
                     <h1>Styklisteberegning</h1>
-                    <table class="table table-striped">
+                    <p> kundensnavn, email adresse eller ordreNR her? </p>
+                       <table class="table table-striped">
                         <thead>
                             <tr>
                                 <th>Produktnavn</th>
@@ -223,11 +210,12 @@
                             </tr> 
                         </tbody>
                     </table>  
-                    <%}%>
+                    
                     <p>Den totale pris for denne carport er : <%= formatter.format(carportBOM.totalPrice()) %></p>
-                    <% 
+                    <% }
+                        if(request.getAttribute("shedbom") != null){
                         BOM shedBOM = (BOM) request.getAttribute("shedbom");
-                        if (shedBOM != null) {
+                        
 
                     %>
                     <h2>Herunder er styklisten for skuret:</h2>
@@ -258,6 +246,10 @@
                     </table>    
                     <%}%>
                 </div>
+             <form action="FrontController" method="post">
+                        <input type="hidden" name="command" value="backtoemp">
+                        <input type="submit" class="btn btn-primary" value="Tilbage til medarbejderside">
+                    </form>
             </div>
         </div>
     </body>

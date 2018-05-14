@@ -6,7 +6,13 @@
 package dbAccess;
 
 import static dbAccess.Mapper.login;
+import functionLayer.entity.Customer;
+import functionLayer.entity.CustomerCalculation;
 import functionLayer.entity.Employee;
+import functionLayer.entity.LineItem;
+import functionLayer.entity.Order;
+import java.util.ArrayList;
+import java.util.List;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -24,6 +30,14 @@ public class MapperTest {
      */
     @Test
     public void testGetProduct() throws Exception {
+    LineItem test = new LineItem(3, "Lægte 38x73 ubeh.", "m", 4395);
+    LineItem itemFromDB = Mapper.getProduct(3);
+    assertEquals(itemFromDB.getProductID(), test.getProductID());
+    assertEquals(itemFromDB.getName(), test.getName());
+    assertEquals(itemFromDB.getUom(), test.getUom());
+    assertEquals(itemFromDB.getPricePerUnit(), 0.1 ,test.getPricePerUnit());
+
+    
     }
 
     /**
@@ -41,6 +55,7 @@ public class MapperTest {
     Employee emp = new Employee("lars", "per", "salesman", 2);
     Employee test = Mapper.login("lars", "per");
     assertEquals(emp.getUserID(), test.getUserID());
+    assertEquals(emp.getRole(), test.getRole());
     }
 
     /**
@@ -48,7 +63,12 @@ public class MapperTest {
      */
     @Test
     public void testLoginCustomer() throws Exception {
-    }
+
+Customer testCustomer = new Customer(1, "lars@lars.dk", "123", "lars", "per", "22464462", "customer");
+Customer dbCustomer = Mapper.loginCustomer("lars@lars.dk", "123");
+assertEquals(dbCustomer.getEmail(), testCustomer.getEmail());
+assertTrue(dbCustomer.getID() == testCustomer.getID());
+}
 
     /**
      * Test of registerEmp method, of class Mapper.
@@ -69,6 +89,15 @@ public class MapperTest {
      */
     @Test
     public void testGetCustCalcs() throws Exception {
+    List<CustomerCalculation> testList = Mapper.getCustCalcs();
+    CustomerCalculation test = testList.get(2);
+    CustomerCalculation cc = new CustomerCalculation(3, 330, 270, 0, 210, 150);
+    
+    assertEquals(test.getCalcID(), cc.getCalcID());
+    assertEquals(test.getLength(), cc.getLength());
+    assertFalse(test.getLength() == 300);
+    assertTrue(test.getWidth() == test.getWidth());
+    
     }
 
     /**
@@ -97,6 +126,18 @@ public class MapperTest {
      */
     @Test
     public void testGetOrders() throws Exception {
+    List<Order> test = Mapper.getOrders();
+        Order orderTest = null;
+        Order orderMade = new Order(3, "dummy", 100, 100, 100, 100, 100, 100, 1, true);
+        for (Order order : test) {
+            if(order.getOrderID() == 3){
+               orderTest = order;
+            }
+        }
+     assertEquals(orderTest.getOrderID(), orderMade.getOrderID());
+     assertFalse(orderTest.getWidth() == 200);
+     assertTrue(orderTest.getWidth() == orderMade.getWidth());
+    
     }
 
     /**
@@ -111,6 +152,13 @@ public class MapperTest {
      */
     @Test
     public void testGetAllEmployees() throws Exception {
+    
+       List<Employee> test = Mapper.getAllEmployees();
+       Employee e = test.get(0);
+       Employee testEmp = new Employee("test@test.dk", "test", "IT", 1);
+       assertEquals(e.getUserID(), testEmp.getUserID());
+       assertEquals(e.getUsername(), testEmp.getUsername());
+        
     }
 
     /**
