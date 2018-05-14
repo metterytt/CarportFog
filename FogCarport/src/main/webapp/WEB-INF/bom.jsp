@@ -219,7 +219,7 @@
                     <polygon points="<%= length + 70%>,15 <%= length + 20%>,170 <%= length + 120%>,170" fill="green" stroke="black" stroke-width="1" />
                     <rect x="<%= length + 60%>" y="170" width="20" height="50" fill="saddlebrown" stroke="black"/>
 
-                    <%-- vil gerne have "højde" til at stå i midten over taget --%> 
+                    <%-- tekst for højde og hældning --%> 
                     <text x="<%=length * 0.05%>" y="<%=height / 2%>" fill="black" text-anchor="middle" writing-mode="tb">Højde: <%=height%> </text>
                     <text x="<%=length + 15%>" y="<%=height / 2 - 25%>" fill="black" text-anchor="middle" writing-mode="tb">Hældning på 9 cm. </text>
 
@@ -283,7 +283,7 @@
                     <%-- carport med rejsning set fra siden stor tegning/Nillers tegning --%>
 
                     <%-- <svg width="600" height="500" viewbox="-10 -80 <%= width * 2.5%> <%= length%>"> --%>
-                    <svg width="1000" height="1000" viewbox="0 0 <%= width * 3%> <%= length * 2%>"> 
+                    <svg width="1000" height="1000" viewbox="0 -100 <%= width * 3%> <%= length * 2%>"> 
 
 
                     <%-- stolper --%>
