@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package presentationLayer;
 
 import functionLayer.BOM;
@@ -17,10 +12,6 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author mette
- */
 public class ViewBom extends Command {
 
     @Override
@@ -44,6 +35,7 @@ public class ViewBom extends Command {
             carportCalculator = new PitchedRoofCalculator(length, width, angle);
         }
         BOM carportBom = carportCalculator.getBom();
+        carportBom.setOrderID(Integer.parseInt(request.getParameter("orderID")));
         request.setAttribute("carportbom", carportBom);
         request.setAttribute("orderid", orderID);
 
@@ -53,7 +45,8 @@ public class ViewBom extends Command {
             request.setAttribute("shedbom", shedBom);
         }
         
-        return "allrequests"; // rigtigt?
+//        return "allrequests";
+        return "viewbom";
     }
 
     

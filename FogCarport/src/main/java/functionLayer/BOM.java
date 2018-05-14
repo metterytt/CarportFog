@@ -7,11 +7,12 @@ public class BOM {
 
     private ArrayList<LineItem> listOfProducts = new ArrayList<>();
     // BOM får nu målene, så de kan kan hentes ud fra at BOM er i sessionen
-    private double length;
+    private int length;
     private int width;
     private int angle;
     private int shedLength;
     private int shedWidth;
+    private int orderID;
 
     public void addToBOM(LineItem product) {
         listOfProducts.add(product);
@@ -29,11 +30,11 @@ public class BOM {
         return totalPrice;
     }
 
-    public double getLength() {
+    public int getLength() {
         return length;
     }
 
-    public void setLength(double length) {
+    public void setLength(int length) {
         this.length = length;
     }
 
@@ -67,6 +68,14 @@ public class BOM {
 
     public void setShedWidth(int shedWidth) {
         this.shedWidth = shedWidth;
+    }
+
+    public int getOrderID() {
+        return orderID;
+    }
+
+    public void setOrderID(int orderID) {
+        this.orderID = orderID;
     }
     
 }
