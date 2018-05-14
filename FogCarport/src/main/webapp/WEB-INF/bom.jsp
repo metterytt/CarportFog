@@ -61,6 +61,20 @@
                         <br/>
                         <input type="submit" class="btn btn-primary" value="Send forespørgsel på denne carport">
                     </form>
+                        
+                        <form action="FrontController" method="post">
+                        <input type="hidden" name="command" value="sendrequest">
+                        <input type="hidden" name="shedPos" value="<%= shedPos%>">
+                        <br/>
+                        <input type="submit" class="btn btn-primary" value="Send forespørgsel på denne carport">
+                    </form>
+                        
+                        <form action="FrontController" method="post">
+                        <input type="hidden" name="command" value="sendrequest">
+                        <input type="hidden" name="shedPos" value="<%= shedPos%>">
+                        <br/>
+                        <input type="submit" class="btn btn-primary" value="Send forespørgsel på denne carport">
+                    </form>
 
 
                     <%= RenderDrawings.drawFromAbove(drawingMeasures)%>
