@@ -3,7 +3,7 @@ package functionLayer.entity;
 public class Order {
     
     private int orderID;
-    private String customer;
+    private int customer;
     private int length;
     private int width;
     private int angle;
@@ -13,7 +13,7 @@ public class Order {
     private int empID;
     private boolean placed;
 
-    public Order(int orderID, String customer, int length, int width, int angle, int shedLength, int shedWidth, int price, int empID, boolean placed) {
+    public Order(int orderID, int customer, int length, int width, int angle, int shedLength, int shedWidth, int price, int empID, boolean placed) {
         this.orderID = orderID;
         this.customer = customer;
         this.length = length;
@@ -34,11 +34,11 @@ public class Order {
         this.orderID = orderID;
     }
 
-    public String getCustomer() {
+    public int getCustomer() {
         return customer;
     }
 
-    public void setCustomer(String customer) {
+    public void setCustomer(int customer) {
         this.customer = customer;
     }
 
