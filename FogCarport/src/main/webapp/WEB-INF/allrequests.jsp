@@ -70,7 +70,9 @@
                     <br>
 
                     <%  DecimalFormat formatter = new DecimalFormat("###,##0.00");
-                        BOM carportBOM = (BOM) request.getAttribute("carportbom");
+                        
+                    
+                    BOM carportBOM = (BOM) request.getAttribute("carportbom");
                         if (carportBOM != null) {
                             List<LineItem> bom = carportBOM.getListOfProducts();%>
                             <h1>Styklisteberegning</h1>

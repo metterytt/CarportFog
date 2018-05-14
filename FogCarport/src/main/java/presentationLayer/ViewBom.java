@@ -40,6 +40,7 @@ public class ViewBom extends Command {
             carportCalculator = new PitchedRoofCalculator(length, width, angle);
         }
         BOM carportBom = carportCalculator.getBom();
+        carportBom.setOrderID(Integer.parseInt(request.getParameter("orderID")));
         request.setAttribute("carportbom", carportBom);
 
         if (shedWidth != 0 && shedLength != 0) {
@@ -48,7 +49,8 @@ public class ViewBom extends Command {
             request.setAttribute("shedbom", shedBom);
         }
         
-        return "allrequests";
+//        return "allrequests";
+        return "viewbom";
     }
 
     

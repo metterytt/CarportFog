@@ -1,5 +1,6 @@
 package functionLayer;
 
+import functionLayer.entity.CustomerCalculation;
 import functionLayer.entity.LineItem;
 import functionLayer.entity.Order;
 import java.text.DecimalFormat;
@@ -21,7 +22,7 @@ public class RenderTables {
                 + "<th style=\"text-align:right\">Tagvinkel</th><th style=\"text-align:right\">"
                 + "Skur længde</th><th style=\"text-align:right\">Skur bredde</th>"
                 + "<th style=\"text-align:right\">Pris</th>"
-                + "<th>Sælger</th><th>Ændre i ordre</th>");
+                + "<th>Sælger</th><th>Ændre i ordre</th><th></th><th></th>");
         sb.append("</tr></thead><tbody>\n");
         for (Order o : openRequests) {
             sb.append("<tr>");
@@ -50,6 +51,7 @@ public class RenderTables {
             sb.append("<th>");
             sb.append("<form action=\"FrontController\" method=\"post\">");
             sb.append("<input type=\"hidden\" name=\"command\" value=\"viewbom\">");
+            sb.append("<input type=\"hidden\" name=\"orderID\" value=\"").append(o.getOrderID()).append("\"/>");
             sb.append("<input type=\"hidden\" name=\"length\" value=\"").append(o.getLength()).append("\"/>");
             sb.append("<input type=\"hidden\" name=\"width\" value=\"").append(o.getWidth()).append("\"/>");
             sb.append("<input type=\"hidden\" name=\"angle\" value=\"").append(o.getAngle()).append("\"/>");
@@ -83,7 +85,7 @@ public class RenderTables {
                 + "<th style=\"text-align:right\">Tagvinkel</th><th style=\"text-align:right\">"
                 + "Skur længde</th><th style=\"text-align:right\">Skur bredde</th>"
                 + "<th style=\"text-align:right\">Pris</th>"
-                + "<th>Sælger</th><th>Bestilt</th>");
+                + "<th>Sælger</th><th></th>");
         sb.append("</tr></thead><tbody>\n");
         for (Order o : orders) {
             sb.append("<tr>");
@@ -96,7 +98,6 @@ public class RenderTables {
             sb.append("<td style=\"text-align:right\">").append(o.getShedWidth()).append("</td>");
             sb.append("<td style=\"text-align:right\">").append(formatter.format(o.getPrice())).append("</td>");
             sb.append("<td>").append(o.getEmpID()).append("</td>");
-            sb.append("<td>").append(o.isPlaced()).append("</td>");
             // så formen
             sb.append("<th>");
             sb.append("<form action=\"FrontController\" method=\"post\">");
@@ -134,6 +135,31 @@ public class RenderTables {
             sb.append("<td style=\"text-align:right\">").append(li.getUom()).append("</td>");
             sb.append("<td style=\"text-align:right\">").append(formatter.format(li.getPricePerUnit())).append("</td>");
             sb.append("<td style=\"text-align:right\">").append(formatter.format(li.getPricePerUnit() * li.getQuantity())).append("</td>");
+            sb.append("</tr>\n");
+        }
+        sb.append("</tbody>");
+        sb.append("</table>\n");
+        return sb.toString();
+    }
+    
+    public static String getAllCalculations(List<CustomerCalculation> custCalcs) {
+        if (custCalcs == null) {
+            return "---Ingen beregninger registreret---";
+        }
+        StringBuilder sb = new StringBuilder();
+        sb.append("<table class=\"table table-striped\">\n"
+                + "<thead><tr><th>ID</th><th>Længde</th><th>"
+                + "Bredde</th><th>Tagvinkel</th>"
+                + "<th>Skur længde</th><th>Skur bredde</th>");
+        sb.append("</tr></thead><tbody>\n");
+        for (CustomerCalculation cc : custCalcs) {
+            sb.append("<tr>");
+            sb.append("<td>").append(cc.getCalcID()).append("</td>");
+            sb.append("<td>").append(cc.getLength()).append("</td>");
+            sb.append("<td>").append(cc.getWidth()).append("</td>");
+            sb.append("<td>").append(cc.getAngle()).append("</td>");
+            sb.append("<td>").append(cc.getShedLength()).append("</td>");
+            sb.append("<td>").append(cc.getShedWidth()).append("</td>");
             sb.append("</tr>\n");
         }
         sb.append("</tbody>");
