@@ -62,6 +62,7 @@ public class SendRequest extends Command {
             shedPrice = shedBom.totalPrice();
         }
         int price = carportBom.totalPrice() + shedPrice;
+//<<<<<<< HEAD
         
         if(request.getParameter("phonenumber") == null){
             Customer customer = (Customer) request.getSession().getAttribute("customer");
@@ -75,6 +76,12 @@ public class SendRequest extends Command {
         request.setAttribute("message", "Din forespørgsel er nu i systemet, og du vil snart blive kontaktet. \n Du kan se dine forespørgsel under 'Mine forespørgsler' "); 
         
     return "customer";
+//=======
+//        StorageFacade.addRequest(length, width, angle, shedLength, shedWidth, price);
+//        request.setAttribute("message", "Din forespørgsel er nu i systemet, og du vil snart blive kontaktet."); 
+//        session.removeAttribute("drawingmeasures");
+//        return "index";
+//>>>>>>> bomunits
     }
 
 }

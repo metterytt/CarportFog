@@ -45,8 +45,12 @@
                     </form>
                     <%} %>
                     
-                  
+
                     
+
+                    
+                    <br><h1>Visualisering</h1>
+
                     <%
                         DrawingMeasures drawingMeasures = (DrawingMeasures) request.getSession().getAttribute("drawingmeasures");
                         int length = drawingMeasures.getLength();
@@ -177,7 +181,6 @@
                     <%-- checker om der er fladt tag --%>
                     <% if (angle == 0) {%>
 
-                    <%-- <svg width="600" height="500" viewbox="-10 -80 <%= width * 2.5%> <%= length%>"> --%>
                     <svg width="1000" height="1000" viewbox="0 -100 <%= width * 3%> <%= length * 2%>"> 
 
 
@@ -307,9 +310,7 @@
 
                     <%-- carport med rejsning set fra siden stor tegning/Nillers tegning --%>
 
-                    <%-- <svg width="600" height="500" viewbox="-10 -80 <%= width * 2.5%> <%= length%>"> --%>
                     <svg width="1000" height="1000" viewbox="0 -100 <%= width * 3%> <%= length * 2%>"> 
-
 
                     <%-- stolper --%>
                     <%
@@ -330,12 +331,10 @@
                     <%-- rem til 4 stolper--%>
                     <% if (length < 349) {%>
                     <rect x="20" y="12" width="<%=length - 20%>" height="10" fill="snow" stroke="black" stroke-width="1" />
-                          <%--transform="translate(0) rotate(1.7 30 40)"/>--%>
                     <% }
                         if (length >= 350) {
                     %>
                     <rect x="20" y="12" width="<%=length - 20%>" height="10" fill="snow" stroke="black" stroke-width="1" />
-                          <%--transform="translate(0) rotate(1.05 0 15)"/> --%>
 
                     <% }
                         }
@@ -351,11 +350,9 @@
                     <%-- rem til 6 stolper--%>
                     <% if (length < 599) {%>
                     <rect x="20" y="12" width="<%=length - 20%>" height="10" fill="snow" stroke="black" stroke-width="1" />
-                          <%-- transform="translate(0) rotate(1 100 50)"/> --%>
                     <% }
                         if (length >= 60) {%>
                     <rect x="20" y="12" width="<%=length - 20%>" height="10" fill="snow" stroke="black" stroke-width="1" />
-                          <%-- transform="translate(0) rotate(0.5 250 50)"/> --%>
                     <% }
                         }%>
 
@@ -368,16 +365,12 @@
 
                     <%-- Tekst til højde og hældning --%>
                     <text x="<%=length * 0.05%>" y="<%=height / 2%>" fill="black" text-anchor="middle" writing-mode="tb">Højde: <%=height%> </text>
-                    <%--<text x="<%=length + 15%>" y="<%=height / 2 - 100%>" fill="black" text-anchor="middle" writing-mode="tb">Hældning på 9 cm. </text> --%>
 
                     <%-- tag og stern --%>
                     <line x1="20" y1="10.5" x2="<%= length%>" y2="10.5" stroke="darkgrey" stroke-width="3"/>
                     <line x1="20" y1="5" x2="<%= length%>" y2="5" stroke="black" stroke-width="8"/>
 
                     <%-- tag med rejsning --%>
-                    <%--streg for hældning--%>
-                    <%-- <line x1="20" y1="<%= height - height - 75%>" x2="<%= length%>" y2="<%= height - height - 75%>" stroke="black" stroke-width="2" stroke-dasharray="5 5"/>
-                    <line x1="<%= length%>" y1="<%= height - height - 75%>" x2="<%= length%>" y2="<%= height - height - 63%>" stroke="black" stroke-width="2" stroke-dasharray="5 5"/> --%>
 
                     <%-- spær --%>
                     <%
@@ -386,25 +379,19 @@
                     <%-- spær i toppen til 4 stolper--%>
                     <% if (length < 349) {%>
                     <rect x="30" y="<%=height - height - 70%>" width="<%=length - 42%>" height="10" fill="snow" stroke="black" stroke-width="1" />
-                          <%-- transform="translate(0) rotate(1.5 40 10)"/> --%>
 
                     <%-- spær i tag-enderne til 4 stolper --%>
                     <rect x="20" y="<%=height - height - 75%>" width="10" height="76" fill="snow" stroke="black" stroke-width="1"/>
-                          <%-- transform="translate(0) rotate(0.7 0 35)"/> --%>
                     <rect x="<%= length - 13%>" y="<%=height - height - 75%>" width="10" height="76" fill="snow" stroke="black" stroke-width="1"/>
-                          <%-- transform="translate(0) rotate(1 330 135)"/> --%>
 
                     <% }
                         if (length >= 350) {
                     %>
                     <rect x="30" y="<%=height - height - 70%>" width="<%=length - 42%>" height="10" fill="snow" stroke="black" stroke-width="1" />
-                          <%-- transform="translate(0) rotate(1 80 40)"/> --%>
 
                     <%-- spær i tag-enderne til 4 stolper --%>
                     <rect x="20" y="<%=height - height - 75%>" width="10" height="76" fill="snow" stroke="black" stroke-width="1"/>
-                          <%-- transform="translate(0) rotate(0.5 0 35)"/> --%>
                     <rect x="<%= length - 11%>" y="<%=height - height - 75%>" width="10" height="76" fill="snow" stroke="black" stroke-width="1"/>
-                          <%-- transform="translate(0) rotate(1 330 135)"/> --%>
 
                     <% }
                         }%>
@@ -416,23 +403,17 @@
 
                     <% if (length < 599) {%>
                     <rect x="30" y="<%=height - height - 70%>" width="<%=length - 42%>" height="10" fill="snow" stroke="black" stroke-width="1" />
-                          <%-- transform="translate(0) rotate(1 80 40)"/> --%>
 
                     <%-- spær i tag-enderne --%>
                     <rect x="20" y="<%=height - height - 75%>" width="10" height="76" fill="snow" stroke="black" stroke-width="1"/>
-                          <%-- transform="translate(0) rotate(0.5 0 35)"/> --%>
                     <rect x="<%= length - 11%>" y="<%=height - height - 75%>" width="10" height="76" fill="snow" stroke="black" stroke-width="1"/>
-                          <%-- transform="translate(0) rotate(1 330 135)"/> --%>
                     <% }
                         if (length >= 600) {%>
                     <rect x="30" y="<%=height - height - 70%>" width="<%=length - 42%>" height="10" fill="snow" stroke="black" stroke-width="1" />
-                          <%-- transform="translate(0) rotate(1 80 40)"/> --%>
 
                     <%-- spær i tag-enderne --%>
                     <rect x="20" y="<%=height - height - 75%>" width="10" height="76" fill="snow" stroke="black" stroke-width="1"/>
-                          <%-- transform="translate(0) rotate(0.5 0 35)"/> --%>
                     <rect x="<%= length - 11%>" y="<%=height - height - 75%>" width="10" height="76" fill="snow" stroke="black" stroke-width="1"/>
-                          <%-- transform="translate(0) rotate(1 330 135)"/> --%>
                     <% }
                         }%>
 
@@ -452,7 +433,6 @@
                           fill= "url(#pattern)"
                           stroke="none"
                           stroke-width="2px" />
-                          <%-- transform="translate(0) rotate(1.2 80 45)"/> --%>
 
                     <%-- pattern med striber til skur --%>
                     <defs>
@@ -485,7 +465,6 @@
 
 
                     <%-- carport set forfra med rejsning --%>
-                    <%-- <svg width="600" height="500" viewbox="-10 -80 <%= width * 3%> <%= length%>"> --%>
                     <svg width="1000" height="1000" viewbox="-200 -200 <%= width * 3%> <%= length * 2%>"> 
 
                     <%-- stolper --%>

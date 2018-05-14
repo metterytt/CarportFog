@@ -12,8 +12,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class Mapper {
 
@@ -196,7 +194,7 @@ public class Mapper {
             ResultSet rs = dbc.query(sql);
             while (rs.next()) {
                 int orderID = rs.getInt("orderID");
-                String customer = rs.getString("customer");
+                int customer = rs.getInt("customer");
                 int length = rs.getInt("length");
                 int width = rs.getInt("width");
                 int angle = rs.getInt("roof_angle");
@@ -239,7 +237,7 @@ public class Mapper {
             ResultSet rs = dbc.query(sql);
             while (rs.next()) {
                 int orderID = rs.getInt("orderID");
-                String customer = rs.getString("customer");
+                int customer = rs.getInt("customer");
                 int length = rs.getInt("length");
                 int width = rs.getInt("width");
                 int angle = rs.getInt("roof_angle");
