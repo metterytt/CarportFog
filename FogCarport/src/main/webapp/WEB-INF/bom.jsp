@@ -1,8 +1,3 @@
-<%-- 
-    Document   : bom
-    Created on : 24-04-2018, 19:33:17
---%>
-
 <%@page import="functionLayer.RenderDrawings"%>
 <%@page import="functionLayer.DrawingMeasures"%>
 <%@page import="java.util.ArrayList"%>
@@ -25,7 +20,6 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-
 
 
                     <br><h1>Visualisering</h1>
