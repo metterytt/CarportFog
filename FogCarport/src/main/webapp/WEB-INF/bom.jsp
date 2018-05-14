@@ -9,6 +9,7 @@
 <%@page import="functionLayer.entity.LineItem"%>
 <%@page import="functionLayer.BOM"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<% DrawingMeasures drawingMeasures = (DrawingMeasures) request.getSession().getAttribute("drawingmeasures"); %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -48,19 +49,15 @@
 
 
                     <%
-                        DrawingMeasures drawingMeasures = (DrawingMeasures) request.getSession().getAttribute("drawingmeasures");
+                        
                         int length = drawingMeasures.getLength();
                         int width = drawingMeasures.getWidth();
                         int height = drawingMeasures.getHeight();
                         int angle = drawingMeasures.getAngle();
                         int shedLength = drawingMeasures.getShedLength();
-                        int shedWidth = drawingMeasures.getShedWidth();
 
                         String shedPos = (String) request.getAttribute("shedPos");
-                        double rafterGap = drawingMeasures.getRafterGap();
-                        int rafterQty = drawingMeasures.getRafterQty();
                         int posts = drawingMeasures.getPosts();
-                        double startingLength = (length - 10);
                     %>
 
 
