@@ -23,13 +23,13 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    
+
 
 
                     <br><h1>Visualisering</h1>
-                    
+
                     <p> ${message} </p>
-                    <% if(request.getAttribute("userDetailsNeeded") != null){ %>
+                    <% if (request.getAttribute("userDetailsNeeded") != null) { %>
                     <p> ${userDetailsNeeded} </p>
 
                     <form action="FrontController" method="post">
@@ -37,19 +37,14 @@
                         <input type="number" name="phonenumber">
                         <input type="submit" class="btn btn-primary" value="Send forespørgsel">
                     </form>
-                    
+
                     <form action="FrontController" method="post">
-                     <input type="hidden" name="command" value="navbar">
-                     <input type="hidden" name="login" value="login">
-                     <input type="submit" class="btn btn-primary" value="Login">
+                        <input type="hidden" name="command" value="navbar">
+                        <input type="hidden" name="login" value="login">
+                        <input type="submit" class="btn btn-primary" value="Login">
                     </form>
                     <%} %>
-                    
 
-                    
-
-                    
-                    <br><h1>Visualisering</h1>
 
                     <%
                         DrawingMeasures drawingMeasures = (DrawingMeasures) request.getSession().getAttribute("drawingmeasures");
@@ -60,15 +55,15 @@
                         int shedLength = drawingMeasures.getShedLength();
                         int shedWidth = drawingMeasures.getShedWidth();
 
-                        String shedPos = (String) request.getAttribute("shedPos");  
+                        String shedPos = (String) request.getAttribute("shedPos");
                         double rafterGap = drawingMeasures.getRafterGap();
                         int rafterQty = drawingMeasures.getRafterQty();
                         int posts = drawingMeasures.getPosts();
-                        double startingLength = (length - 10);   
+                        double startingLength = (length - 10);
                     %>
                     <form action="FrontController" method="post">
                         <input type="hidden" name="command" value="sendrequest">
-                        <input type="hidden" name="shedPos" value="<%= shedPos %>">
+                        <input type="hidden" name="shedPos" value="<%= shedPos%>">
                         <br/>
                         <input type="submit" class="btn btn-primary" value="Send forespørgsel på denne carport">
                     </form>
@@ -96,8 +91,7 @@
 
                     <rect x="<%= width - 15 - 11%>" y="<%=length * 0.25%>" height="15" width="15" stroke="black" stroke-width="3" fill="none"/>
                     <rect x="<%= width - 15 - 11%>" y="<%=length * 0.75%>" height="15" width="15" stroke="black" stroke-width="3" fill="none"/>
-                    <%}
-                    else {
+                    <%} else {
 
                     %> <rect x="<%= width - width + 15 - 4%>" y="<%=length * 0.1%>" height="15" width="15" stroke="black" stroke-width="3" fill="none"/>
                     <rect x="<%= width - width + 15 - 4%>" y="<%=length * 0.9%>" height="15" width="15" stroke="black" stroke-width="3" fill="none"/>
@@ -133,11 +127,11 @@
                     <line x1="<%= width - width * 0.9%>" y1="<%= (length - 10) - rafterGap%>" x2="<%= width * 0.9%>" y2="<%= rafterGap + 10%>" stroke="black" stroke-dasharray="5 5"/>
 
 
-                    <%  if(shedLength != 0 && shedPos.equals("middle")){
-                        shedWidth = width-22;
-                        shedPos = "left";
-                    }
-                    if (shedLength != 0 && shedWidth != 0 && shedPos.equals("left")) {%>
+                    <%  if (shedLength != 0 && shedPos.equals("middle")) {
+                            shedWidth = width - 22;
+                            shedPos = "left";
+                        }
+                        if (shedLength != 0 && shedWidth != 0 && shedPos.equals("left")) {%>
 
                     <%-- Skur VENSTRE --%>
                     <rect x="11" y="15" height="<%=shedLength%>" width="<%=shedWidth%>" stroke="red" stroke-width="2" fill="none" stroke-dasharray="10 10"/>
@@ -148,8 +142,7 @@
                     <rect x="11" y="<%= shedLength%>" height="15" width="15" stroke="red" stroke-width="3" fill="none"/>
 
 
-                    <%}
-                    else if (shedLength != 0 && shedWidth != 0) {%>
+                    <%} else if (shedLength != 0 && shedWidth != 0) {%>
 
                     <%-- Skur til højre --%>
                     <rect x="<%= width - shedWidth - 11%>" y="15" height="<%=shedLength%>" width="<%=shedWidth%>" stroke="red" stroke-width="2" fill="none" stroke-dasharray="10 10"/>
