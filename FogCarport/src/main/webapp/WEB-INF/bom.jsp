@@ -4,7 +4,8 @@
 <%@page import="functionLayer.entity.LineItem"%>
 <%@page import="functionLayer.BOM"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<% DrawingMeasures drawingMeasures = (DrawingMeasures) request.getSession().getAttribute("drawingmeasures"); %>
+<% DrawingMeasures drawingMeasures = (DrawingMeasures) request.getSession().getAttribute("drawingmeasures");
+   %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -43,7 +44,7 @@
 
 
                     <%
-                        
+
                         int length = drawingMeasures.getLength();
                         int width = drawingMeasures.getWidth();
                         int height = drawingMeasures.getHeight();
@@ -61,21 +62,6 @@
                         <br/>
                         <input type="submit" class="btn btn-primary" value="Send forespørgsel på denne carport">
                     </form>
-                        
-                        <form action="FrontController" method="post">
-                        <input type="hidden" name="command" value="sendrequest">
-                        <input type="hidden" name="shedPos" value="<%= shedPos%>">
-                        <br/>
-                        <input type="submit" class="btn btn-primary" value="Send forespørgsel på denne carport">
-                    </form>
-                        
-                        <form action="FrontController" method="post">
-                        <input type="hidden" name="command" value="sendrequest">
-                        <input type="hidden" name="shedPos" value="<%= shedPos%>">
-                        <br/>
-                        <input type="submit" class="btn btn-primary" value="Send forespørgsel på denne carport">
-                    </form>
-
 
                     <%= RenderDrawings.drawFromAbove(drawingMeasures)%>
 
