@@ -194,7 +194,7 @@ public class Mapper {
             ResultSet rs = dbc.query(sql);
             while (rs.next()) {
                 int orderID = rs.getInt("orderID");
-                String customer = rs.getString("customer");
+                int customer = rs.getInt("customer");
                 int length = rs.getInt("length");
                 int width = rs.getInt("width");
                 int angle = rs.getInt("roof_angle");
@@ -237,7 +237,7 @@ public class Mapper {
             ResultSet rs = dbc.query(sql);
             while (rs.next()) {
                 int orderID = rs.getInt("orderID");
-                String customer = rs.getString("customer");
+                int customer = rs.getInt("customer");
                 int length = rs.getInt("length");
                 int width = rs.getInt("width");
                 int angle = rs.getInt("roof_angle");
