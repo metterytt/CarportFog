@@ -45,11 +45,7 @@
                     </form>
                     <%} %>
                     
-                    <form action="FrontController" method="post">
-                        <input type="hidden" name="command" value="sendrequest">
-                        <br/>
-                        <input type="submit" class="btn btn-primary" value="Send forespørgsel på denne carport">
-                    </form>
+                  
                     
                     <%
                         DrawingMeasures drawingMeasures = (DrawingMeasures) request.getSession().getAttribute("drawingmeasures");
@@ -66,7 +62,12 @@
                         int posts = drawingMeasures.getPosts();
                         double startingLength = (length - 10);   
                     %>
-                  
+                    <form action="FrontController" method="post">
+                        <input type="hidden" name="command" value="sendrequest">
+                        <input type="hidden" name="shedPos" value="<%= shedPos %>">
+                        <br/>
+                        <input type="submit" class="btn btn-primary" value="Send forespørgsel på denne carport">
+                    </form>
 
                     <%-- carport set oppefra --%>
                     <svg height="500" width="500" viewbox="0 0 <%= width + 150%> <%= length + 60%>">
@@ -132,7 +133,7 @@
                         shedWidth = width-22;
                         shedPos = "left";
                     }
-                        if (shedLength != 0 && shedWidth != 0 && shedPos.equals("left")) {%>
+                    if (shedLength != 0 && shedWidth != 0 && shedPos.equals("left")) {%>
 
                     <%-- Skur VENSTRE --%>
                     <rect x="11" y="15" height="<%=shedLength%>" width="<%=shedWidth%>" stroke="red" stroke-width="2" fill="none" stroke-dasharray="10 10"/>

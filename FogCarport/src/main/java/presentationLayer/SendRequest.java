@@ -20,12 +20,16 @@ public class SendRequest extends Command {
         
         if(request.getSession().getAttribute("customer") == null && request.getParameter("phonenumber") == null){
             request.setAttribute("userDetailsNeeded", "Vi har brug for at identificere dig, enten log venglist ind, eller indtast et telefon nummer vi kan kontakte dig på vedrørende din carport.");
+            String shedPos = request.getParameter("shedPos");
+            request.setAttribute("shedPos", shedPos);
             return "bom";
         }else if(request.getParameter("phonenumber") != null){
             String phonenumber = request.getParameter("phonenumber");
             if(phonenumber.length() != 8){
          request.setAttribute("userDetailsNeeded", "Vi har brug for at identificere dig, enten log venglist ind, eller indtast et telefon nummer vi kan kontakte dig på vedrørende din carport.");
          request.setAttribute("message", "Der skal være 8 cifre i dit tlf-nummer, eksempelvis: 22464462");
+         String shedPos = request.getParameter("shedPos");
+            request.setAttribute("shedPos", shedPos);
                 return "bom"; 
             }
         }
@@ -67,7 +71,6 @@ public class SendRequest extends Command {
             int phoneNumber = Integer.parseInt(request.getParameter("phonenumber"));
          StorageFacade.addRequest(phoneNumber, length, width, angle, shedLength, shedWidth, price);
         }
-//        request.getSession().removeAttribute("drawingmeasures");
         
         request.setAttribute("message", "Din forespørgsel er nu i systemet, og du vil snart blive kontaktet. \n Du kan se dine forespørgsel under 'Mine forespørgsler' "); 
         
