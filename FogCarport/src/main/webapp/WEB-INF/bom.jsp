@@ -245,11 +245,11 @@
                     <% if (shedLength != 0) {%>
 
                     <% if (length < 600) {%>
-                    <polygon points="<%=length - shedLength - 40%>,<%=27%> <%=length - 40%>,<%=33%> <%= length - 40%>,<%= height + 10%> <%= length - shedLength - 40%>,<%= height + 10%>" 
+                    <polygon points="<%=length - shedLength - 40%>,<%=24%> <%=length - 40%>,<%=29%> <%= length - 40%>,<%= height + 10%> <%= length - shedLength - 40%>,<%= height + 10%>" 
                              fill="url(#patternSkur)" stroke="black"/>
                     <% } %>
                     <% if (length >= 600) {%>
-                    <polygon points="<%=length - shedLength - 40%>,<%=25%> <%=length - 40%>,<%=27%> <%= length - 40%>,<%= height + 10%> <%= length - shedLength - 40%>,<%= height + 10%>" 
+                    <polygon points="<%=length - shedLength - 40%>,<%=24%> <%=length - 40%>,<%=26%> <%= length - 40%>,<%= height + 10%> <%= length - shedLength - 40%>,<%= height + 10%>" 
                              fill="url(#patternSkur)" stroke="black"/>
                     <% }
                         }%>
@@ -304,13 +304,13 @@
 
                     <%-- rem til 4 stolper--%>
                     <% if (length < 349) {%>
-                    <rect x="20" y="12" width="<%=length - 20%>" height="10" fill="snow" stroke="black" stroke-width="1" 
-                          transform="translate(0) rotate(1.7 30 40)"/>
+                    <rect x="20" y="12" width="<%=length - 20%>" height="10" fill="snow" stroke="black" stroke-width="1" />
+                          <%--transform="translate(0) rotate(1.7 30 40)"/>--%>
                     <% }
                         if (length >= 350) {
                     %>
-                    <rect x="20" y="12" width="<%=length - 20%>" height="10" fill="snow" stroke="black" stroke-width="1" 
-                          transform="translate(0) rotate(1.05 0 15)"/>
+                    <rect x="20" y="12" width="<%=length - 20%>" height="10" fill="snow" stroke="black" stroke-width="1" />
+                          <%--transform="translate(0) rotate(1.05 0 15)"/> --%>
 
                     <% }
                         }
@@ -325,12 +325,12 @@
 
                     <%-- rem til 6 stolper--%>
                     <% if (length < 599) {%>
-                    <rect x="20" y="12" width="<%=length - 20%>" height="10" fill="snow" stroke="black" stroke-width="1" 
-                          transform="translate(0) rotate(1 100 50)"/>
+                    <rect x="20" y="12" width="<%=length - 20%>" height="10" fill="snow" stroke="black" stroke-width="1" />
+                          <%-- transform="translate(0) rotate(1 100 50)"/> --%>
                     <% }
                         if (length >= 60) {%>
-                    <rect x="20" y="12" width="<%=length - 20%>" height="10" fill="snow" stroke="black" stroke-width="1" 
-                          transform="translate(0) rotate(0.5 250 50)"/>
+                    <rect x="20" y="12" width="<%=length - 20%>" height="10" fill="snow" stroke="black" stroke-width="1" />
+                          <%-- transform="translate(0) rotate(0.5 250 50)"/> --%>
                     <% }
                         }%>
 
@@ -343,16 +343,16 @@
 
                     <%-- Tekst til højde og hældning --%>
                     <text x="<%=length * 0.05%>" y="<%=height / 2%>" fill="black" text-anchor="middle" writing-mode="tb">Højde: <%=height%> </text>
-                    <text x="<%=length + 15%>" y="<%=height / 2 - 100%>" fill="black" text-anchor="middle" writing-mode="tb">Hældning på 9 cm. </text>
+                    <%--<text x="<%=length + 15%>" y="<%=height / 2 - 100%>" fill="black" text-anchor="middle" writing-mode="tb">Hældning på 9 cm. </text> --%>
 
                     <%-- tag og stern --%>
-                    <line x1="20" y1="10.5" x2="<%= length%>" y2="18" stroke="darkgrey" stroke-width="3"/>
-                    <line x1="20" y1="5" x2="<%= length%>" y2="13" stroke="black" stroke-width="8"/>
+                    <line x1="20" y1="10.5" x2="<%= length%>" y2="10.5" stroke="darkgrey" stroke-width="3"/>
+                    <line x1="20" y1="5" x2="<%= length%>" y2="5" stroke="black" stroke-width="8"/>
 
                     <%-- tag med rejsning --%>
                     <%--streg for hældning--%>
-                    <line x1="20" y1="<%= height - height - 75%>" x2="<%= length%>" y2="<%= height - height - 75%>" stroke="black" stroke-width="2" stroke-dasharray="5 5"/>
-                    <line x1="<%= length%>" y1="<%= height - height - 75%>" x2="<%= length%>" y2="<%= height - height - 63%>" stroke="black" stroke-width="2" stroke-dasharray="5 5"/>
+                    <%-- <line x1="20" y1="<%= height - height - 75%>" x2="<%= length%>" y2="<%= height - height - 75%>" stroke="black" stroke-width="2" stroke-dasharray="5 5"/>
+                    <line x1="<%= length%>" y1="<%= height - height - 75%>" x2="<%= length%>" y2="<%= height - height - 63%>" stroke="black" stroke-width="2" stroke-dasharray="5 5"/> --%>
 
                     <%-- spær --%>
                     <%
@@ -360,26 +360,26 @@
                     %>
                     <%-- spær i toppen til 4 stolper--%>
                     <% if (length < 349) {%>
-                    <rect x="30" y="<%=height - height - 70%>" width="<%=length - 42%>" height="10" fill="snow" stroke="black" stroke-width="1" 
-                          transform="translate(0) rotate(1.5 40 10)"/>
+                    <rect x="30" y="<%=height - height - 70%>" width="<%=length - 42%>" height="10" fill="snow" stroke="black" stroke-width="1" />
+                          <%-- transform="translate(0) rotate(1.5 40 10)"/> --%>
 
                     <%-- spær i tag-enderne til 4 stolper --%>
-                    <rect x="20" y="<%=height - height - 75%>" width="10" height="76" fill="snow" stroke="black" stroke-width="1"
-                          transform="translate(0) rotate(0.7 0 35)"/>
-                    <rect x="<%= length - 13%>" y="<%=height - height - 66%>" width="10" height="76" fill="snow" stroke="black" stroke-width="1"
-                          transform="translate(0) rotate(1 330 135)"/>
+                    <rect x="20" y="<%=height - height - 75%>" width="10" height="76" fill="snow" stroke="black" stroke-width="1"/>
+                          <%-- transform="translate(0) rotate(0.7 0 35)"/> --%>
+                    <rect x="<%= length - 13%>" y="<%=height - height - 75%>" width="10" height="76" fill="snow" stroke="black" stroke-width="1"/>
+                          <%-- transform="translate(0) rotate(1 330 135)"/> --%>
 
                     <% }
                         if (length >= 350) {
                     %>
-                    <rect x="30" y="<%=height - height - 70%>" width="<%=length - 42%>" height="10" fill="snow" stroke="black" stroke-width="1" 
-                          transform="translate(0) rotate(1 80 40)"/>
+                    <rect x="30" y="<%=height - height - 70%>" width="<%=length - 42%>" height="10" fill="snow" stroke="black" stroke-width="1" />
+                          <%-- transform="translate(0) rotate(1 80 40)"/> --%>
 
                     <%-- spær i tag-enderne til 4 stolper --%>
-                    <rect x="20" y="<%=height - height - 75%>" width="10" height="76" fill="snow" stroke="black" stroke-width="1"
-                          transform="translate(0) rotate(0.5 0 35)"/>
-                    <rect x="<%= length - 13%>" y="<%=height - height - 68%>" width="10" height="76" fill="snow" stroke="black" stroke-width="1"
-                          transform="translate(0) rotate(1 330 135)"/>
+                    <rect x="20" y="<%=height - height - 75%>" width="10" height="76" fill="snow" stroke="black" stroke-width="1"/>
+                          <%-- transform="translate(0) rotate(0.5 0 35)"/> --%>
+                    <rect x="<%= length - 11%>" y="<%=height - height - 75%>" width="10" height="76" fill="snow" stroke="black" stroke-width="1"/>
+                          <%-- transform="translate(0) rotate(1 330 135)"/> --%>
 
                     <% }
                         }%>
@@ -390,24 +390,24 @@
                     %>
 
                     <% if (length < 599) {%>
-                    <rect x="30" y="<%=height - height - 70%>" width="<%=length - 42%>" height="10" fill="snow" stroke="black" stroke-width="1" 
-                          transform="translate(0) rotate(1 80 40)"/>
+                    <rect x="30" y="<%=height - height - 70%>" width="<%=length - 42%>" height="10" fill="snow" stroke="black" stroke-width="1" />
+                          <%-- transform="translate(0) rotate(1 80 40)"/> --%>
 
                     <%-- spær i tag-enderne --%>
-                    <rect x="20" y="<%=height - height - 75%>" width="10" height="76" fill="snow" stroke="black" stroke-width="1"
-                          transform="translate(0) rotate(0.5 0 35)"/>
-                    <rect x="<%= length - 13%>" y="<%=height - height - 70%>" width="10" height="76" fill="snow" stroke="black" stroke-width="1"
-                          transform="translate(0) rotate(1 330 135)"/>
+                    <rect x="20" y="<%=height - height - 75%>" width="10" height="76" fill="snow" stroke="black" stroke-width="1"/>
+                          <%-- transform="translate(0) rotate(0.5 0 35)"/> --%>
+                    <rect x="<%= length - 11%>" y="<%=height - height - 75%>" width="10" height="76" fill="snow" stroke="black" stroke-width="1"/>
+                          <%-- transform="translate(0) rotate(1 330 135)"/> --%>
                     <% }
                         if (length >= 600) {%>
-                    <rect x="30" y="<%=height - height - 70%>" width="<%=length - 42%>" height="10" fill="snow" stroke="black" stroke-width="1" 
-                          transform="translate(0) rotate(1 80 40)"/>
+                    <rect x="30" y="<%=height - height - 70%>" width="<%=length - 42%>" height="10" fill="snow" stroke="black" stroke-width="1" />
+                          <%-- transform="translate(0) rotate(1 80 40)"/> --%>
 
                     <%-- spær i tag-enderne --%>
-                    <rect x="20" y="<%=height - height - 75%>" width="10" height="76" fill="snow" stroke="black" stroke-width="1"
-                          transform="translate(0) rotate(0.5 0 35)"/>
-                    <rect x="<%= length - 13%>" y="<%=height - height - 75%>" width="10" height="76" fill="snow" stroke="black" stroke-width="1"
-                          transform="translate(0) rotate(1 330 135)"/>
+                    <rect x="20" y="<%=height - height - 75%>" width="10" height="76" fill="snow" stroke="black" stroke-width="1"/>
+                          <%-- transform="translate(0) rotate(0.5 0 35)"/> --%>
+                    <rect x="<%= length - 11%>" y="<%=height - height - 75%>" width="10" height="76" fill="snow" stroke="black" stroke-width="1"/>
+                          <%-- transform="translate(0) rotate(1 330 135)"/> --%>
                     <% }
                         }%>
 
@@ -422,12 +422,12 @@
                     </defs>
 
                     <%-- Lodrette striper på tag --%>
-                    <rect x="31" y="<%=height - height - 59%>"
-                          width="<%= length - 42%>" height="62"
+                    <rect x="31" y="<%=height - height - 60%>"
+                          width="<%= length - 42%>" height="61"
                           fill= "url(#pattern)"
                           stroke="none"
-                          stroke-width="2px" 
-                          transform="translate(0) rotate(1.2 80 45)"/>
+                          stroke-width="2px" />
+                          <%-- transform="translate(0) rotate(1.2 80 45)"/> --%>
 
                     <%-- pattern med striber til skur --%>
                     <defs>
@@ -443,11 +443,11 @@
                     <% if (shedLength != 0) {%>
 
                     <% if (length < 600) {%>
-                    <polygon points="<%=length - shedLength - 40%>,<%=27%> <%=length - 40%>,<%=33%> <%= length - 40%>,<%= height + 10%> <%= length - shedLength - 40%>,<%= height + 10%>" 
+                    <polygon points="<%=length - shedLength - 40%>,<%=22%> <%=length - 40%>,<%=22%> <%= length - 40%>,<%= height + 10%> <%= length - shedLength - 40%>,<%= height + 10%>" 
                              fill="url(#patternSkur)" stroke="black"/>
                     <% } %>
                     <% if (length >= 600) {%>
-                    <polygon points="<%=length - shedLength - 40%>,<%=25%> <%=length - 40%>,<%=27%> <%= length - 40%>,<%= height + 10%> <%= length - shedLength - 40%>,<%= height + 10%>" 
+                    <polygon points="<%=length - shedLength - 40%>,<%=22%> <%=length - 40%>,<%=22%> <%= length - 40%>,<%= height + 10%> <%= length - shedLength - 40%>,<%= height + 10%>" 
                              fill="url(#patternSkur)" stroke="black"/>
                     <% }
                         }%>
