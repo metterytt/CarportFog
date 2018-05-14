@@ -41,15 +41,9 @@
                             <label for="password2">Password:</label>
                             <input class="form-control" type="password" name="password2" placeholder="Password:">
                             <br>
-                            <div class="custom-control custom-radio">
-                            <input type="radio" id="customRadio1" name="empRole" class="custom-control-input" value="IT">
-                            <label class="custom-control-label" for="empRole">IT</label>
-                            </div>
-                            <div class="custom-control custom-radio">
-                            <input type="radio" id="customRadio1" name="empRole" class="custom-control-input" value="salesman">
-                            <label class="custom-control-label" for="empRole">Sælger</label>
-                            </div>
-                            <br>
+                            <input type="radio" name="empRole" value="IT">IT
+                            <input type="radio" name="empRole" value="salesman">Sælger
+                            <br><br>
                             <input class="btn btn-primary" type="submit" value="Submit">
                         </div>
                     </form>

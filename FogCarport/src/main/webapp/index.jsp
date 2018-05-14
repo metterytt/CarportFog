@@ -72,6 +72,7 @@
                             <br>
                             <br>
                             <input type="button" class="btn btn-primary" onclick="myFunction()" value="Vis/gem skur"/>
+                            <br>
 
                             <div id="myDIV" style="display:none;">
                                 <label for="shedlength">Længde i CM :</label><br>
@@ -105,6 +106,7 @@
                                 <input type="radio" name="shedPos" value="middle" checked>Midten
                                 <input type="radio" name="shedPos" value="left">Venstre
                             </div>
+                            <br>
                             <input type="submit" class="btn btn-primary" value="Beregn carport">
                         </form>
 
@@ -117,7 +119,7 @@
                         <%}%> </p>
 
                 </div>
-
+<%--
                 <%if (request.getAttribute("drawingmeasures") != null) {%>
                 <div class="col-md-6">
 
@@ -125,6 +127,7 @@
 
                 </div>
                 <%}%>
+--%>
             </div>
         </div>
     </body>
