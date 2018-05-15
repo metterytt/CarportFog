@@ -18,20 +18,11 @@ public class SendRequest extends Command {
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws CarportException {
         
-        if(request.getSession().getAttribute("customer") == null && request.getParameter("phonenumber") == null){
-            request.setAttribute("userDetailsNeeded", "Vi har brug for at identificere dig, enten log venglist ind, eller indtast et telefon nummer vi kan kontakte dig på vedrørende din carport.");
+        if(request.getSession().getAttribute("customer") == null){
+            request.setAttribute("userDetailsNeeded", "Vi har brug for at identificere dig log venglist ind, for at sende din request med det samme.");
             String shedPos = request.getParameter("shedPos");
             request.setAttribute("shedPos", shedPos);
             return "bom";
-        }else if(request.getParameter("phonenumber") != null){
-            String phonenumber = request.getParameter("phonenumber");
-            if(phonenumber.length() != 8){
-         request.setAttribute("userDetailsNeeded", "Vi har brug for at identificere dig, enten log venglist ind, eller indtast et telefon nummer vi kan kontakte dig på vedrørende din carport.");
-         request.setAttribute("message", "Der skal være 8 cifre i dit tlf-nummer, eksempelvis: 22464462");
-         String shedPos = request.getParameter("shedPos");
-            request.setAttribute("shedPos", shedPos);
-                return "bom"; 
-            }
         }
 
         DrawingMeasures drawingMeasures = (DrawingMeasures) request.getSession().getAttribute("drawingmeasures");
@@ -62,16 +53,11 @@ public class SendRequest extends Command {
             shedPrice = shedBom.totalPrice();
         }
         int price = carportBom.totalPrice() + shedPrice;
-//<<<<<<< HEAD
         
-        if(request.getParameter("phonenumber") == null){
-            Customer customer = (Customer) request.getSession().getAttribute("customer");
-            int customerID = customer.getID();
+        Customer customer = (Customer) request.getSession().getAttribute("customer");
+        int customerID = customer.getID();
         StorageFacade.addRequest(customerID, length, width, angle, shedLength, shedWidth, price);
-        }else{
-            int phoneNumber = Integer.parseInt(request.getParameter("phonenumber"));
-         StorageFacade.addRequest(phoneNumber, length, width, angle, shedLength, shedWidth, price);
-        }
+        
         
         request.setAttribute("message", "Din forespørgsel er nu i systemet, og du vil snart blive kontaktet. \n Du kan se dine forespørgsel under 'Mine forespørgsler' "); 
         

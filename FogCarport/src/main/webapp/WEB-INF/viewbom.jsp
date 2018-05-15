@@ -4,6 +4,9 @@
     Author     : mette
 --%>
 
+<%@page import="functionLayer.entity.Customer"%>
+<%@page import="dbAccess.Mapper"%>
+<%@page import="functionLayer.entity.Order"%>
 <%@page import="functionLayer.RenderTables"%>
 <%@page import="functionLayer.entity.LineItem"%>
 <%@page import="java.util.List"%>
@@ -13,7 +16,7 @@
 <% DecimalFormat formatter = new DecimalFormat("###,##0.00"); %>
 <% BOM carportBOM = (BOM) request.getAttribute("carportbom"); %>
 <% BOM shedBOM = (BOM) request.getAttribute("shedbom");
-   %>
+%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -27,22 +30,57 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    
+
 
                     <%
-                        if (carportBOM != null) {
-                            List<LineItem> bom = carportBOM.getListOfProducts();%>
+                        List<LineItem> bom = carportBOM.getListOfProducts();
+                        int orderID = (int) request.getAttribute("orderID");
+                        int customerID = (int) request.getAttribute("customerID");
+                        int length = (int) request.getAttribute("length");
+                        int width = (int) request.getAttribute("width");
+                        int angle = (int) request.getAttribute("angle");
+                        int shedLength = (int) request.getAttribute("shedLength");
+                        int shedWidth = (int) request.getAttribute("shedWidth");
+                        //Used in the include file
+                        Customer customer = Mapper.getCustomer(customerID);
+                    %>
                     <h3>Styklisteberegning for ordre/forespørgsel <%=carportBOM.getOrderID()%></h3>
                     <h3>Mål: længde: <%=carportBOM.getLength()%>, bredde: <%=carportBOM.getWidth()%> og tagvinkel: <%=carportBOM.getAngle()%> grader</h3>
-                    <br>
-                    <%= RenderTables.getListOfProducts(bom)%>
-                    <h3>Den totale pris for carporten er: <%= formatter.format(carportBOM.totalPrice())%></h3>
-                    <% }
 
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>    <form action="FrontController" method="post">
+                                        <input type="hidden" name="command" value="editrequest">
+                                        <input type="hidden" name="parseInfo">
+                                        <input type="hidden" name="orderID" value="<%= orderID %>">
+                                        <input type="hidden" name="length" value="<%= length %>">
+                                        <input type="hidden" name="width" value="<%= width %>">
+                                        <input type="hidden" name="angle" value="<%= angle %>">
+                                        <input type="hidden" name="shedlength" value="<%= shedLength %>">
+                                        <input type="hidden" name="shedwidth" value="<%= shedWidth %>">
+                                        <input type="submit" class="btn btn-primary" value="Ændre i bestillingen">
+                                    </form>        </th>
+
+                                <th> <form action="FrontController" method="post">
+                                        <input type="hidden" name="command" value="setordered">
+                                        <input type="hidden" name="orderID" value="<%=orderID%>">
+                                        <input type="submit" class="btn btn-primary" value="Sæt til bestilt">
+                                    </form> </th>
+
+                                <th> <%@ include file="/WEB-INF/jspf/UserInfo.jspf" %>  </th>
+                            </tr>
+                        </thead>
+                    </table>
+
+                    <br>
+                    <%= RenderTables.getListOfProducts(bom, orderID, length, width, angle, shedLength, shedWidth, true)%>
+                    <h3>Den totale pris for carporten er: <%= formatter.format(carportBOM.totalPrice())%></h3>
+                    <%
                         if (shedBOM != null) {
                             List<LineItem> shedBom = shedBOM.getListOfProducts();%>
                     <h2>Herunder er styklisten for skuret:</h2>
-                    <%= RenderTables.getListOfProducts(shedBom)%>
+                    <%= RenderTables.getListOfProducts(shedBom, orderID, length, width, angle, shedLength, shedWidth, false)%>
                     <h3>Den totale pris for skuret er: <%= formatter.format(shedBOM.totalPrice())%></h3>
                     <% }%>
                 </div>
