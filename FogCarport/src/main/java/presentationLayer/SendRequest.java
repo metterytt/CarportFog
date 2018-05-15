@@ -19,7 +19,7 @@ public class SendRequest extends Command {
     String execute(HttpServletRequest request, HttpServletResponse response) throws CarportException {
         
         if(request.getSession().getAttribute("customer") == null){
-            request.setAttribute("userDetailsNeeded", "Vi har brug for at identificere dig log venglist ind, for at sende din request med det samme.");
+            request.setAttribute("userDetailsNeeded", "Vi har brug for at identificere dig.. log venglist ind, for at sende din forespørgsel med det samme.");
             String shedPos = request.getParameter("shedPos");
             request.setAttribute("shedPos", shedPos);
             return "bom";
