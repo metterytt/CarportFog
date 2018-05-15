@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -86,7 +87,7 @@ public class Mapper {
             dbc.setDataSource(new DataSourceFog().getDataSource());
             dbc.open();
             Connection con = dbc.getConnector();
-            String sql = "select * from customer where username=? and password=?";
+            String sql = "select * from customers where username=? and password=?";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, email);
             ps.setString(2, password);
@@ -122,16 +123,25 @@ public class Mapper {
         }
     }
 
-    public static void registerCustomer(String username, String password) throws CarportException {
+    public static void registerCustomer(Customer customer) throws CarportException {
         try {
             dbc.setDataSource(new DataSourceFog().getDataSource());
             dbc.open();
             Connection con = dbc.getConnector();
-            String sql = "insert into customer values (null, ?, ?)";
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, username);
-            ps.setString(2, password);
+            String sql = "insert into customers (username, password, firstname, lastname, phonenumber) values (?, ?, ?, ?, ?)";
+            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setString(1, customer.getEmail());
+            ps.setString(2, customer.getPassword());
+            ps.setString(3, customer.getName());
+            ps.setString(4, customer.getLastname());
+            ps.setString(5, customer.getPassword());
             ps.executeUpdate();
+            ResultSet gk = ps.getGeneratedKeys();
+            gk.next();
+            int id = gk.getInt(1);
+            String role = gk.getString(7);
+            customer.setID(id);
+            customer.setRole(role);
         } catch (SQLException ex) {
             throw new CarportException("Noget gik galt, prøv igen!", "registercustomer");
         }

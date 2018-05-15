@@ -7,6 +7,7 @@ package presentationLayer;
 
 import functionLayer.CarportException;
 import functionLayer.StorageFacade;
+import functionLayer.entity.Customer;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -21,17 +22,22 @@ public class RegisterCustomer extends Command {
 
         if (request.getParameter("registercus") != null) {
 
-            String username = request.getParameter("username");
             String psw1 = request.getParameter("password1");
             String psw2 = request.getParameter("password2");
 
             if (!psw1.equals(psw2)) {
-                request.setAttribute("error", "Passwords skal være ens!");
+                request.setAttribute("error", "De indtastede kodeord er ikke ens");
             }
             else {
-
-                StorageFacade.registerCustomer(username, psw2);
-                request.setAttribute("complete", "Brugeren er nu registreret og kan logge ind!");
+                String firstname = request.getParameter("firstname");
+                String lastname = request.getParameter("lastname");
+                String mobilenumber = request.getParameter("mobilenumber");
+                String username = request.getParameter("username");
+                Customer customer = new Customer(username, psw2, firstname, lastname, mobilenumber);
+                StorageFacade.registerCustomer(customer);
+                request.getSession().setAttribute("customer", customer);
+                request.setAttribute("complete", "Din profil er nu blevet oprettet");
+                return "customer";
             }
         }
 

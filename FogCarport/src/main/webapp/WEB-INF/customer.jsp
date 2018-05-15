@@ -4,6 +4,7 @@
     Author     : Jesper
 --%>
 
+<%@page import="functionLayer.entity.Customer"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -15,14 +16,19 @@
     </head>
     <body>
         <%@ include file="/WEB-INF/Include/Navbar.jspf" %>
+        <% Customer customer = (Customer)request.getSession().getAttribute("customer"); %>
 
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-6">
-                    <h1>Hai customer! </h1>
+                    <h1 class="display-4">Kontaktinformationer:</h1>
                     <p class="text-success">  ${message} </p>
-
-
+                    <p class="text-success">  ${complete} </p>
+                    
+                    <p><b>Navn:</b> <%=customer.getName() %></p>
+                    <p><b>Efternavn:</b> <%=customer.getLastname()%></p>
+                    <p><b>Email:</b> <%=customer.getEmail()%></p>
+                    <p><b>Mobilnummer:</b> <%=customer.getPhoneNumber() %></p>
 
                     <form action="FrontController" method="post">
                         <input type="hidden" name="command" value="sendrequest">
