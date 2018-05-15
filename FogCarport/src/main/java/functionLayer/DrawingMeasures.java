@@ -21,6 +21,7 @@ public class DrawingMeasures {
     private double rafterGap;
     private int rafterQty;
     private int posts;
+    private double gableHeight;
 
     public DrawingMeasures(int length, int width, int angle, int shedLength, int shedWidth) {
         this.length = length;
@@ -34,6 +35,7 @@ public class DrawingMeasures {
         rafterQty = calcRafterQty();
         rafterGap = calcRafterGap();
         posts = calcPosts();
+        if (angle != 0) gableHeight = calcGableHeight(angle);
     }
 
     public double getRafterGap() {
@@ -116,6 +118,14 @@ public class DrawingMeasures {
         this.height = height;
     }
 
+    public double getGableHeight() {
+        return gableHeight;
+    }
+
+    public void setGableHeight(double gableHeight) {
+        this.gableHeight = gableHeight;
+    }
+    
     private double calcRafterGap() {
         return (length - 15) / (rafterQty - 1);
     }
@@ -137,6 +147,11 @@ public class DrawingMeasures {
         } else {
             return 6;
         }
+    }
+
+    private double calcGableHeight(int angle) {
+        double calcAngle = Math.toRadians(angle);
+        return (width / 2) * Math.tan(calcAngle);
     }
 
 }

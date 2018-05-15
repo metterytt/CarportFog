@@ -190,6 +190,8 @@ public class RenderDrawings {
                     sb.append("<rect x=\"").append(dm.getLength() - 11).append("\" y=\"- 75\" width=\"10\" height=\"76\" fill=\"snow\" stroke=\"black\" stroke-width=\"1\"/>");
                 }
             } else {
+                // spær i toppen
+                sb.append("<rect x=\"30\" y=\"-70\" width=\"").append(dm.getLength() - 42).append("\" height=\"10\" fill=\"snow\" stroke=\"black\" stroke-width=\"1\" />"); // samme
                 
             }
 
@@ -197,4 +199,7 @@ public class RenderDrawings {
 
         return sb.toString();
     }
+    
+    
+    
 }
