@@ -15,28 +15,26 @@
     </head>
     <body>
         <%@ include file="/WEB-INF/Include/Navbar.jspf" %>
-        
-         <div class="container-fluid">
+
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-md-6">
-         <h1>Hai customer! </h1>
-        <p class="text-success">  ${message} </p>
-        
-       
-        
-        <form action="FrontController" method="post">
+                    <h1>Hai customer! </h1>
+                    <p class="text-success">  ${message} </p>
+
+
+
+                    <form action="FrontController" method="post">
                         <input type="hidden" name="command" value="sendrequest">
-                        <br/>
                         <input type="submit" class="btn btn-primary" value="Mine forespørgsler">
                     </form>
-        <form action="FrontController" method="post">
+                    <br><form action="FrontController" method="post">
                         <input type="hidden" name="command" value="sendrequest">
-                        <br/>
                         <input type="submit" class="btn btn-primary" value="Mine ordre">
                     </form>
-        
+
                 </div>
             </div>
-         </div>
+        </div>
     </body>
 </html>

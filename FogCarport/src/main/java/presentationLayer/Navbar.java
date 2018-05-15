@@ -22,6 +22,7 @@ public class Navbar extends Command {
     public Navbar() {
         this.pages = new ArrayList();
         this.pages.add("login");
+        this.pages.add("profile");
     }
     
     @Override
