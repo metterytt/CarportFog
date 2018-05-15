@@ -156,7 +156,7 @@ public class RenderDrawings {
                 if (dm.getShedLength() == 0) {
                     sb.append("<text x=\"").append(dm.getLength() / 2).append("\" y=\"").append(dm.getHeight() - 160).append("\" fill=\"black\" text-anchor=\"middle\">Længde: ").append(dm.getLength()).append(" </text>");
                 } else {
-                    sb.append("<text x=\"").append(dm.getLength() * 0.3).append("\" y=\"").append(dm.getHeight() - 230).append("\" fill=\"black\" text-anchor=\"middle\">Længde: ").append(dm.getLength()).append(" </text>");
+                    sb.append("<text x=\"").append(dm.getLength() * 0.3).append("\" y=\"").append(dm.getHeight() - 160).append("\" fill=\"black\" text-anchor=\"middle\">Længde: ").append(dm.getLength()).append(" </text>");
                 }
                 // rem til 4 stolper
                 sb.append("<rect x=\"20\" y=\"12\" width=\"").append(dm.getLength() - 20).append("\" height=\"10\" fill=\"snow\" stroke=\"black\" stroke-width=\"1\"/>");
@@ -183,19 +183,31 @@ public class RenderDrawings {
             if (dm.getPosts() < 5) {
                 // spær i toppen - check om minusangivelserne er ok
                 sb.append("<rect x=\"30\" y=\"-70\" width=\"").append(dm.getLength() - 42).append("\" height=\"10\" fill=\"snow\" stroke=\"black\" stroke-width=\"1\" />");
-                sb.append("<rect x=\"20\" y=\"- 75\" width=\"10\" height=\"76\" fill=\"snow\" stroke=\"black\" stroke-width=\"1\"/>");
+                sb.append("<rect x=\"20\" y=\"-75\" width=\"10\" height=\"76\" fill=\"snow\" stroke=\"black\" stroke-width=\"1\"/>");
                 if (dm.getLength() < 350) {
-                    sb.append("<rect x=\"").append(dm.getLength() - 13).append("\" y=\"- 75\" width=\"10\" height=\"76\" fill=\"snow\" stroke=\"black\" stroke-width=\"1\"/>");
+                    sb.append("<rect x=\"").append(dm.getLength() - 13).append("\" y=\"-75\" width=\"10\" height=\"76\" fill=\"snow\" stroke=\"black\" stroke-width=\"1\"/>");
                 } else {
-                    sb.append("<rect x=\"").append(dm.getLength() - 11).append("\" y=\"- 75\" width=\"10\" height=\"76\" fill=\"snow\" stroke=\"black\" stroke-width=\"1\"/>");
+                    sb.append("<rect x=\"").append(dm.getLength() - 11).append("\" y=\"-75\" width=\"10\" height=\"76\" fill=\"snow\" stroke=\"black\" stroke-width=\"1\"/>");
                 }
             } else {
                 // spær i toppen
                 sb.append("<rect x=\"30\" y=\"-70\" width=\"").append(dm.getLength() - 42).append("\" height=\"10\" fill=\"snow\" stroke=\"black\" stroke-width=\"1\" />"); // samme
-                
-
+                sb.append("<rect x=\"20\" y=\"-75\" width=\"10\" height=\"76\" fill=\"snow\" stroke=\"black\" stroke-width=\"1\"/>"); // samme
+                sb.append("<rect x=\"").append(dm.getLength() - 11).append("\" y=\"-75\" width=\"10\" height=\"76\" fill=\"snow\" stroke=\"black\" stroke-width=\"1\"/>"); // samme
             }
-
+            // pattern med striber til tag
+            sb.append("<defs><pattern id=\"pattern\"width=\"15\" height=\"10\" patternUnits=\"userSpaceOnUse\"patternTransform=\"rotate(0 0 0)\">");
+            sb.append("<line stroke=\"darkgrey\" stroke-width=\"3px\" y2=\"10\"/></pattern></defs>");
+            // lodrette striber på tag
+            sb.append("<rect x=\"31\" y=\"-60 \"width=\"").append(dm.getLength() - 42).append("\" height=\"61\"");
+            sb.append("fill=\"url(#pattern)\"stroke=\"none\"stroke-width=\"2px\" />");
+            // pattern med striber til skur
+            sb.append("<defs><pattern id=\"patternSkur\" width=\"15\" height=\"10\"patternUnits=\"userSpaceOnUse\"patternTransform=\"rotate(0 0 0)\"><line stroke=\"black\" stroke-width=\"3px\" y2=\"10\"/></pattern></defs>");
+            if (dm.getShedLength() != 0) {
+                sb.append("<polygon points=\"").append(dm.getLength() - dm.getShedLength() - 40).append(",22 ").append(dm.getLength() - 40).append(",22 ").append(dm.getLength() - 40).append(",").append(dm.getHeight() + 10).append(" ").append(dm.getLength() - dm.getShedLength() - 40).append(",").append(dm.getHeight() + 10).append("\"");
+                sb.append("fill=\"url(#patternSkur)\" stroke=\"black\"/>");
+            }
+            sb.append("</svg>");
         }
 
         return sb.toString();
