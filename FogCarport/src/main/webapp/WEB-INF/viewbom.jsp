@@ -53,21 +53,21 @@
                                 <th>    <form action="FrontController" method="post">
                                         <input type="hidden" name="command" value="editrequest">
                                         <input type="hidden" name="parseInfo">
-                                        <input type="hidden" name="orderID" value="<%= orderID %>">
-                                        <input type="hidden" name="length" value="<%= length %>">
-                                        <input type="hidden" name="width" value="<%= width %>">
-                                        <input type="hidden" name="angle" value="<%= angle %>">
-                                        <input type="hidden" name="shedlength" value="<%= shedLength %>">
-                                        <input type="hidden" name="shedwidth" value="<%= shedWidth %>">
+                                        <input type="hidden" name="orderID" value="<%= orderID%>">
+                                        <input type="hidden" name="length" value="<%= length%>">
+                                        <input type="hidden" name="width" value="<%= width%>">
+                                        <input type="hidden" name="angle" value="<%= angle%>">
+                                        <input type="hidden" name="shedlength" value="<%= shedLength%>">
+                                        <input type="hidden" name="shedwidth" value="<%= shedWidth%>">
                                         <input type="submit" class="btn btn-primary" value="Ændre i bestillingen">
                                     </form>        </th>
-
+                                    <% if (request.getAttribute("orderPlaced") == null) {%>
                                 <th> <form action="FrontController" method="post">
                                         <input type="hidden" name="command" value="setordered">
                                         <input type="hidden" name="orderID" value="<%=orderID%>">
                                         <input type="submit" class="btn btn-primary" value="Sæt til bestilt">
                                     </form> </th>
-
+                                    <%}%>
                                 <th> <%@ include file="/WEB-INF/jspf/UserInfo.jspf" %>  </th>
                             </tr>
                         </thead>
