@@ -62,8 +62,9 @@
 
                         <% String error = (String) request.getAttribute("error");
                             if (error != null) {%>
-                        <p> <%=error%>
+                        <p class="text-danger"> <%=error%>
                             <%}%> </p>
+
                         <input type="submit" class="btn btn-primary" value="Slet bruger">
                     </form>
                     <%}%>

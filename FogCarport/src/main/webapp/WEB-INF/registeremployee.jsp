@@ -26,8 +26,8 @@
 
                     <h2 class="display-4"> Registrer ny user til systemet </h2>
 
-                    ${error}
-                    ${complete}
+                    <p class="text-danger">${error}</p>
+                    <p class="text-success">${complete}</p> 
                     <div class="form-group">
                         <form action="FrontController" method="POST">
                             <input class="form-control" type="hidden" name="command" value="registeremployee">

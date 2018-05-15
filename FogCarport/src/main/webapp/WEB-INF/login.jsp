@@ -61,7 +61,7 @@
                         <input type="hidden" name="loginCustomer">
                         <% String error = (String) request.getAttribute("error");
                             if (error != null) {%>
-                        <p> <%=error%>
+                        <p class="text-danger"> <%=error%>
                             <%}%> </p>
                         <div class="form-group">
                             <label for="username">Username:</label>
