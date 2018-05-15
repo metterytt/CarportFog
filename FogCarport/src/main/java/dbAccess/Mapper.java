@@ -327,7 +327,7 @@ public class Mapper {
             dbc.setDataSource(new DataSourceFog().getDataSource());
             dbc.open();
             Connection con = dbc.getConnector();
-            String sql = "select * from customer where customerID=?";
+            String sql = "select * from customers where customerID=?";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, customerID);
             ResultSet rs = ps.executeQuery();
