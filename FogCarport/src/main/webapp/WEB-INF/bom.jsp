@@ -138,16 +138,12 @@
                     <line x1="0" y1="<%= height%>" x2="<%= width + 150%>" y2="<%= height%>" stroke="black"/>
 
                     </svg>
-<<<<<<< HEAD
               <%--      <% }%>  --%>
-=======
 
 
 
 
                     
-                    <% }%>
->>>>>>> ffa1b5021e289d43f243b2c69872ed1a8b8acfee
                 </div>
             </div>
         </div>
