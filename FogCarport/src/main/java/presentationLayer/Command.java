@@ -23,6 +23,7 @@ abstract class Command {
         commands.put("allrequests", new AllRequests());
         commands.put("setordered", new SetOrdered());
         commands.put("viewbom", new ViewBom());
+        commands.put("customerview", new CustomerView());
         commands.put("editrequest", new EditRequest());
         
     }

@@ -13,6 +13,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Mapper {
 
@@ -355,12 +357,41 @@ public class Mapper {
                 String phonenumber = rs.getString("phonenumber");
                 String role = rs.getString("role");
                 return new Customer(customerID, email, name, lastname, phonenumber, role);
-            }else{
+            }
+            else {
                 throw new CarportException("Kunne ikke finde kunden", "ordermanagement");
             }
         }
         catch (SQLException ex) {
             throw new CarportException("Noget gik galt.. Prøv igen", "ordermanagement");
+        }
+    }
+
+    public static List<Order> getCustomerOrders(int customerID) throws CarportException {
+        try {
+            dbc.setDataSource(new DataSourceFog().getDataSource());
+            dbc.open();
+            Connection con = dbc.getConnector();
+            String sql = "select * from orders where customer=?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, customerID);
+            ResultSet rs = ps.executeQuery();
+            List<Order> orders = new ArrayList();
+            while (rs.next()) {
+                int orderID = rs.getInt(1);
+                int length = rs.getInt(3);
+                int width = rs.getInt(4);
+                int shedLength = rs.getInt(5);
+                int shedWidth = rs.getInt(6);
+                int angle = rs.getInt(7);
+                int price = rs.getInt(8);
+                Boolean placed = rs.getBoolean(10);
+                orders.add(new Order(orderID, length, width, angle, shedLength, shedWidth, price, placed));
+            }
+            return orders;
+        }
+        catch (SQLException ex) {
+            throw new CarportException("Noget gik galt.. Prøv igen", "customer");
         }
     }
 

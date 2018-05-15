@@ -4,6 +4,7 @@
     Author     : mette
 --%>
 
+<%@page import="functionLayer.StorageFacade"%>
 <%@page import="functionLayer.entity.Customer"%>
 <%@page import="dbAccess.Mapper"%>
 <%@page import="functionLayer.entity.Order"%>
@@ -42,7 +43,7 @@
                         int shedLength = (int) request.getAttribute("shedLength");
                         int shedWidth = (int) request.getAttribute("shedWidth");
                         //Used in the include file
-                        Customer customer = Mapper.getCustomer(customerID);
+                        Customer customer = StorageFacade.getCustomer(customerID);
                     %>
                     <h3>Styklisteberegning for ordre/forespørgsel <%=carportBOM.getOrderID()%></h3>
                     <h3>Mål: længde: <%=carportBOM.getLength()%>, bredde: <%=carportBOM.getWidth()%> og tagvinkel: <%=carportBOM.getAngle()%> grader</h3>

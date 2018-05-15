@@ -16,7 +16,7 @@
     </head>
     <body>
         <%@ include file="/WEB-INF/Include/Navbar.jspf" %>
-        <% Customer customer = (Customer)request.getSession().getAttribute("customer"); %>
+        <% Customer customer = (Customer) request.getSession().getAttribute("customer");%>
 
         <div class="container-fluid">
             <div class="row">
@@ -24,21 +24,20 @@
                     <h1 class="display-4">Kontaktinformationer:</h1>
                     <p class="text-success">  ${message} </p>
                     <p class="text-success">  ${complete} </p>
-                    
-                    <p><b>Navn:</b> <%=customer.getName() %></p>
-                    <p><b>Efternavn:</b> <%=customer.getLastname()%></p>
-                    <p><b>Email:</b> <%=customer.getEmail()%></p>
-                    <p><b>Mobilnummer:</b> <%=customer.getPhoneNumber() %></p>
 
+                    <div class="card" style="width: 18rem;">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><b>Navn:</b> <%=customer.getName()%></li>
+                            <li class="list-group-item"><b>Efternavn:</b> <%=customer.getLastname()%></li>
+                            <li class="list-group-item"><b>Email:</b> <%=customer.getEmail()%></li>
+                            <li class="list-group-item"><b>Mobilnummer:</b> <%=customer.getPhoneNumber()%></li>
+                        </ul>
+                    </div>
+                    <br>
                     <form action="FrontController" method="post">
-                        <input type="hidden" name="command" value="sendrequest">
-                        <input type="submit" class="btn btn-primary" value="Mine forespørgsler">
+                        <input type="hidden" name="command" value="customerview">
+                        <input type="submit" class="btn btn-primary" value="Ordreoversigt">
                     </form>
-                    <br><form action="FrontController" method="post">
-                        <input type="hidden" name="command" value="sendrequest">
-                        <input type="submit" class="btn btn-primary" value="Mine ordre">
-                    </form>
-
                 </div>
             </div>
         </div>
