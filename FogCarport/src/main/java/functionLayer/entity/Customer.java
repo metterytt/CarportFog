@@ -37,6 +37,7 @@ public class Customer {
         this.name = name;
         this.lastname = lastname;
         this.phoneNumber = phoneNumber;
+        this.role = "customer";
     }
     
     public int getID() {
@@ -74,8 +75,4 @@ public class Customer {
         this.ID = ID;
     }
 
-    public void setRole(String role) {
-        this.role = role;
-    }
- 
 }

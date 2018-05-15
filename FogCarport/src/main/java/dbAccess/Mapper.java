@@ -148,9 +148,7 @@ public class Mapper {
             ResultSet gk = ps.getGeneratedKeys();
             gk.next();
             int id = gk.getInt(1);
-            String role = gk.getString(7);
             customer.setID(id);
-            customer.setRole(role);
         }
         catch (SQLException ex) {
             throw new CarportException("Noget gik galt, prøv igen!", "registercustomer");

@@ -179,9 +179,6 @@ public class RenderTables {
     }
 
     public static String getCurrentCustomerRequests(List<Order> requests) {
-        if (requests == null) {
-            return "---Du har ingen forespørgsler i øjeblikket---";
-        }
         StringBuilder sb = new StringBuilder();
         sb.append("<table class=\"table table-striped\">\n"
                 + "<thead><tr><th>ID</th><th>Længde</th><th>Bredde</th>"
@@ -207,9 +204,6 @@ public class RenderTables {
     }
 
     public static String getCurrentCustomerOrders(List<Order> orders) {
-        if (orders == null) {
-            return "---Du har ingen betalte ordrer i øjeblikket---";
-        }
         StringBuilder sb = new StringBuilder();
         sb.append("<table class=\"table table-striped\">\n"
                 + "<thead><tr><th>ID</th><th>Længde</th><th>Bredde</th>"
@@ -225,7 +219,7 @@ public class RenderTables {
                 sb.append("<td>").append(o.getAngle()).append("</td>");
                 sb.append("<td>").append(o.getShedLength()).append("</td>");
                 sb.append("<td>").append(o.getShedWidth()).append("</td>");
-                sb.append("<td>").append(o.getPrice()).append("</td>");
+                sb.append("<td>DKK ").append(o.getPrice()).append(",-</td>");
                 sb.append("</tr>");
             }
         }

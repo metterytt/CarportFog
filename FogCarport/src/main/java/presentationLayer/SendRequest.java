@@ -59,7 +59,7 @@ public class SendRequest extends Command {
         StorageFacade.addRequest(customerID, length, width, angle, shedLength, shedWidth, price);
         
         
-        request.setAttribute("message", "Din forespørgsel er nu i systemet, og du vil snart blive kontaktet. \n Du kan se dine forespørgsel under 'Mine forespørgsler' "); 
+        request.setAttribute("message", "Din forespørgsel er nu i systemet, og du vil snart blive kontaktet. \n Du kan se dine forespørgsler under 'Ordreoversigt' "); 
         
     return "customer";
 //=======
