@@ -20,7 +20,7 @@
 
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-6">
 
 
                     <br><h1>Visualisering</h1>
@@ -65,7 +65,9 @@
 
                     <%= RenderDrawings.drawFromAbove(drawingMeasures)%>
 
-                    <%= RenderDrawings.drawFromSide(drawingMeasures)%>
+                   <%--  <%= RenderDrawings.drawFromSide(drawingMeasures)%> --%>
+
+                    <%= RenderDrawings.drawFromFront(drawingMeasures)%>
 
                     <%-- 
                                         <%  if (shedLength != 0 && shedPos.equals("middle")) {
@@ -100,17 +102,15 @@
 
 
 
-
-
-
-
-
-
+                    
+                    
+                    
+                    
                     <%-- carport set forfra med rejsning --%>
                     <svg width="1000" height="1000" viewbox="-200 -200 <%= width * 3%> <%= length * 2%>"> 
 
                     <%-- stolper --%>
-                    <rect x="30" y="<%=height - height%>" width="10" height="<%= height%>" fill="snow" stroke="black" stroke-width="1"/>
+                    <rect x="30" y="0" width="10" height="<%= height%>" fill="snow" stroke="black" stroke-width="1"/>
                     <rect x="<%= width + 10%>" y="<%=height - height%>" width="10" height="<%= height%>" fill="snow" stroke="black" stroke-width="1"/>
 
                     <%-- over- og understern --%>
@@ -123,10 +123,8 @@
                     %>
                     <rect x="<%= width / 2 + 20%>" y="<%= -10 - gableHeight%>" width="10" height="<%= gableHeight%>" fill="snow" stroke="black" stroke-width="1"/>
 
-                    <polygon points="<%=width / 2 + 25%>,<%=-13 - gableHeight%> <%=width / 2 + 25%>,<%=-3 - gableHeight%> 15,-5 15,-15" 
-                             fill="snow" stroke="black"/>
-                    <polygon points="<%=width / 2 + 25%>,<%=-13 - gableHeight%> <%=width / 2 + 25%>,<%=-3 - gableHeight%> <%= width + 35%>,<%= -5%> <%= width + 35%>,<%= -15%>" 
-                             fill="snow" stroke="black"/>
+                    <polygon points="<%=width / 2 + 25%>,<%=-13 - gableHeight%> <%=width / 2 + 25%>,<%=-3 - gableHeight%> 15,-5 15,-15" fill="snow" stroke="black"/>
+                    <polygon points="<%=width / 2 + 25%>,<%=-13 - gableHeight%> <%=width / 2 + 25%>,<%=-3 - gableHeight%> <%= width + 35%>,-5 <%= width + 35%>,-15" fill="snow" stroke="black"/>
 
                     <%-- streg for højde med tag --%>
                     <line x1="<%= width + 50%>" y1="<%= -20 - gableHeight%>" x2="<%= width + 50%>" y2="<%= height%>" stroke="black" />
@@ -140,7 +138,16 @@
                     <line x1="0" y1="<%= height%>" x2="<%= width + 150%>" y2="<%= height%>" stroke="black"/>
 
                     </svg>
+<<<<<<< HEAD
               <%--      <% }%>  --%>
+=======
+
+
+
+
+                    
+                    <% }%>
+>>>>>>> ffa1b5021e289d43f243b2c69872ed1a8b8acfee
                 </div>
             </div>
         </div>
