@@ -22,6 +22,15 @@ public class Customer {
         this.role = role;
     }
 
+    public Customer(int ID, String email, String name, String lastname, String phoneNumber, String role) {
+        this.ID = ID;
+        this.email = email;
+        this.name = name;
+        this.lastname = lastname;
+        this.phoneNumber = phoneNumber;
+        this.role = role;
+    }
+    
     public Customer(String email, String password, String name, String lastname, String phoneNumber) {
         this.email = email;
         this.password = password;
