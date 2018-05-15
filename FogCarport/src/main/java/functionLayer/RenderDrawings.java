@@ -193,13 +193,24 @@ public class RenderDrawings {
                 // spær i toppen
                 sb.append("<rect x=\"30\" y=\"-70\" width=\"").append(dm.getLength() - 42).append("\" height=\"10\" fill=\"snow\" stroke=\"black\" stroke-width=\"1\" />"); // samme
                 
+
             }
 
         }
 
         return sb.toString();
     }
-    
-    
-    
+
+
+    public static String drawFromFront(DrawingMeasures dm) {
+        if (dm == null || dm.getAngle() == 0) {
+            return "---Ingen tegning---";
+        }
+        StringBuilder sb = new StringBuilder();
+        sb.append("<svg width=\"1000\" height=\"1000\" viewbox=\"-200 -200 ").append(dm.getWidth()* 3).append(" ").append(dm.getLength()*2).append("\">");
+        
+        
+        
+        return sb.toString();
+    }
 }
