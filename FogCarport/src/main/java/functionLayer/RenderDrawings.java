@@ -208,8 +208,33 @@ public class RenderDrawings {
         }
         StringBuilder sb = new StringBuilder();
         sb.append("<svg width=\"1000\" height=\"1000\" viewbox=\"-200 -200 ").append(dm.getWidth()* 3).append(" ").append(dm.getLength()*2).append("\">");
+        //stolper
+        sb.append("<rect x=\"30\" y=\"0\" width=\"10\" height=\"").append(dm.getHeight()).append("\" fill=\"snow\" stroke=\"black\" stroke-width=\"1\"/>");
+        sb.append("<rect x=\"").append(dm.getWidth()+10).append("\" y=\"0\" width=\"10\" height=\"").append(dm.getHeight()).append("\" fill=\"snow\" stroke=\"black\" stroke-width=\"1\"/>");
+        //over- og understern
+        sb.append("<rect x=\"15\" y=\"-10\" width=\"").append(dm.getWidth()+20).append("\" height=\"10\" fill=\"snow\" stroke=\"black\"/>");
         
         
+        
+        //gavl
+        sb.append("<rect x=\"").append(dm.getWidth()/2+20).append("\" y=\"").append(-10 - dm.getGableHeight()).append("\" width=\"10\" height=\"").append(dm.getGableHeight()).append("\" fill=\"snow\" stroke=\"black\" stroke-width=\"1\"/>");
+
+        //sb.append("<polygon points=\"").append(dm.getWidth()/2 + 25).append(",").append(-13 - dm.getGableHeight()).append(" ").append(dm.getWidth()/2 + 25).append(",").append(-13 - dm.getGableHeight()).append(" \" 15,-5 15,-15\" fill=\"snow\" stroke=\"black\"/>");
+        
+        
+        sb.append("<polygon points=\"").append(dm.getWidth()/2+25).append(",").append(-13 - dm.getGableHeight()).append(" ").append(dm.getWidth()/ 2 + 25).append(",").append(-3 - dm.getGableHeight()).append(" ").append(" 15,-5 15,-15\" fill=\"snow\" stroke=\"black\"/>");
+        sb.append("<polygon points=\"").append(dm.getWidth() / 2 + 25).append(",").append(-13 - dm.getGableHeight()).append(" ").append(dm.getWidth() / 2 + 25).append(",").append(-3 - dm.getGableHeight()).append(" ").append(dm.getWidth() + 35).append(",").append("-5 ").append(dm.getWidth() + 35).append(",").append("-15\" fill=\"snow\" stroke=\"black\"/>");
+                    
+        
+        //streg for højde - med tag
+        sb.append("<line x1=\"").append(dm.getWidth()+50).append("\" y1=\"").append(-20 - dm.getGableHeight()).append("\" x2=\"").append(dm.getWidth()+50).append("\" y2=\"").append(dm.getHeight()).append("\" stroke=\"black\" />");
+        sb.append("<text x=\"").append(dm.getWidth()+60).append("\" y=\"").append(dm.getHeight()/2).append("\" fill=\"black\" text-anchor=\"middle\" writing-mode=\"tb\">Højde med tag: ").append(dm.getHeight()+ (int) dm.getGableHeight()).append("\" </text>");
+        //streg for højde - uden tag
+        sb.append("<line x1=\"").append(dm.getWidth()+80).append("\" y1=\"-15\" x2=\"").append(dm.getWidth()+80).append("\" y2=\"").append(dm.getHeight()).append("\" stroke=\"black\" />");
+        sb.append("<text x=\"").append(dm.getWidth()+90).append("\" y=\"").append(dm.getHeight()/2).append("\" fill=\"black\" text-anchor=\"middle\" writing-mode=\"tb\">Højde uden tag: ").append(dm.getHeight()).append("\" </text>");
+        //streg langs jorden
+        sb.append("<line x1=\"0\" y1=\"").append(dm.getHeight()).append("\" x2=\"").append(dm.getWidth()+150).append("\" y2=\"").append(dm.getHeight()).append("\" stroke=\"black\"/>");
+        sb.append("</svg>");
         
         return sb.toString();
     }
