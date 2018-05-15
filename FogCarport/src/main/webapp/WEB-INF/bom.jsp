@@ -1,15 +1,11 @@
-<%-- 
-    Document   : bom
-    Created on : 24-04-2018, 19:33:17
---%>
-
 <%@page import="functionLayer.RenderDrawings"%>
 <%@page import="functionLayer.DrawingMeasures"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="functionLayer.entity.LineItem"%>
 <%@page import="functionLayer.BOM"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<% DrawingMeasures drawingMeasures = (DrawingMeasures) request.getSession().getAttribute("drawingmeasures"); %>
+<% DrawingMeasures drawingMeasures = (DrawingMeasures) request.getSession().getAttribute("drawingmeasures");
+   %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -25,7 +21,6 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-
 
 
                     <br><h1>Visualisering</h1>
@@ -49,7 +44,7 @@
 
 
                     <%
-                        
+
                         int length = drawingMeasures.getLength();
                         int width = drawingMeasures.getWidth();
                         int height = drawingMeasures.getHeight();
@@ -67,7 +62,6 @@
                         <br/>
                         <input type="submit" class="btn btn-primary" value="Send forespørgsel på denne carport">
                     </form>
-
 
                     <%= RenderDrawings.drawFromAbove(drawingMeasures)%>
 
