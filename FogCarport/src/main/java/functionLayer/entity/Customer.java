@@ -22,8 +22,23 @@ public class Customer {
         this.role = role;
     }
 
-   
-
+    public Customer(int ID, String email, String name, String lastname, String phoneNumber, String role) {
+        this.ID = ID;
+        this.email = email;
+        this.name = name;
+        this.lastname = lastname;
+        this.phoneNumber = phoneNumber;
+        this.role = role;
+    }
+    
+    public Customer(String email, String password, String name, String lastname, String phoneNumber) {
+        this.email = email;
+        this.password = password;
+        this.name = name;
+        this.lastname = lastname;
+        this.phoneNumber = phoneNumber;
+    }
+    
     public int getID() {
         return ID;
     }
@@ -54,7 +69,13 @@ public class Customer {
     public String getRole() {
         return role;
     }
+
+    public void setID(int ID) {
+        this.ID = ID;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
  
- 
-    
 }

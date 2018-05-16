@@ -12,13 +12,29 @@
             <form class="form-inline my-2 my-lg-0" action="FrontController" method="post">
                 <input type="hidden" name="command" value="navbar">
                 <input type="hidden" name="login" value="login">
-                <button class="btn btn-outline-info" type="submit">Login</button>
+                <button class="btn btn-outline-info" type="submit">Login/Register</button>
             </form>
             <%}
-        else {%>
+            else {
+                String profile;
+                if (request.getSession().getAttribute("employee") != null) {
+                    profile = "employee";
+                }
+                else {
+                    profile = "customer";
+                }
+            %>
+            <div class="d-flex flex-row">
+                <div class="p-2">
+                    <form action="FrontController" method="post">
+                        <input type="hidden" name="command" value="navbar">
+                        <input type="hidden" name="profile" value="<%= profile%>">
+                        <input type="image" src="profileLogo.png" width="60" height="60" alt="Profile">
+                    </form>
+                </div>
+            </div>
             <form class="form-inline my-2 my-lg-0" action="FrontController" method="post">
                 <input type="hidden" name="command" value="navbar">
-                <input type="hidden" name="index">
                 <input type="hidden" name="logout">
                 <button class="btn btn-outline-info" type="submit">Logout</button>
             </form>

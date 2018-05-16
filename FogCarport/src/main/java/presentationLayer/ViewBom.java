@@ -47,6 +47,11 @@ public class ViewBom extends Command {
         request.setAttribute("angle", angle);
         request.setAttribute("shedLength", shedLength);
         request.setAttribute("shedWidth", shedWidth);
+        
+        String orderPlaced = request.getParameter("orderPlaced");
+        if(orderPlaced != null){
+            request.setAttribute("orderPlaced", orderPlaced);
+        }
 
         if (shedWidth != 0 && shedLength != 0) {
             CarportCalculator shedCalculator = new ShedCalculator(shedLength, shedWidth);

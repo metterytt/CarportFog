@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,7 +36,8 @@ public class Mapper {
             LineItem product = new LineItem(productID, name, uom, pricePerUnit);
             return product;
 
-        } catch (SQLException e) {
+        }
+        catch (SQLException e) {
             throw new CarportException("Error fetching product.", "index");
         }
     }
@@ -54,7 +56,8 @@ public class Mapper {
             ps.setInt(4, shedLength);
             ps.setInt(5, shedWidth);
             ps.execute();
-        } catch (SQLException ex) {
+        }
+        catch (SQLException ex) {
             throw new CarportException("Error adding calculation", "index");
         }
     }
@@ -73,10 +76,12 @@ public class Mapper {
                 int userID = rs.getInt("userID");
                 String role = rs.getString("role");
                 return new Employee(username, password, role, userID);
-            } else {
+            }
+            else {
                 throw new CarportException("No user found.. Invalid input", "login");
             }
-        } catch (SQLException ex) {
+        }
+        catch (SQLException ex) {
             throw new CarportException("something went wrong trying to login", "login");
         }
     }
@@ -86,7 +91,7 @@ public class Mapper {
             dbc.setDataSource(new DataSourceFog().getDataSource());
             dbc.open();
             Connection con = dbc.getConnector();
-            String sql = "select * from customer where username=? and password=?";
+            String sql = "select * from customers where username=? and password=?";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, email);
             ps.setString(2, password);
@@ -98,10 +103,12 @@ public class Mapper {
                 String phonenumber = rs.getString("phonenumber");
                 String role = rs.getString("role");
                 return new Customer(ID, email, password, name, lastname, phonenumber, role);
-            } else {
+            }
+            else {
                 throw new CarportException("No user found.. Invalid input", "login");
             }
-        } catch (SQLException ex) {
+        }
+        catch (SQLException ex) {
             throw new CarportException("something went wrong trying to login", "login");
         }
     }
@@ -117,22 +124,33 @@ public class Mapper {
             ps.setString(2, password);
             ps.setString(3, role);
             ps.executeUpdate();
-        } catch (SQLException ex) {
+        }
+        catch (SQLException ex) {
             throw new CarportException("Noget gik galt, prøv igen!", "registeremployee");
         }
     }
 
-    public static void registerCustomer(String username, String password) throws CarportException {
+    public static void registerCustomer(Customer customer) throws CarportException {
         try {
             dbc.setDataSource(new DataSourceFog().getDataSource());
             dbc.open();
             Connection con = dbc.getConnector();
-            String sql = "insert into customer values (null, ?, ?)";
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, username);
-            ps.setString(2, password);
+            String sql = "insert into customers (username, password, firstname, lastname, phonenumber) values (?, ?, ?, ?, ?)";
+            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setString(1, customer.getEmail());
+            ps.setString(2, customer.getPassword());
+            ps.setString(3, customer.getName());
+            ps.setString(4, customer.getLastname());
+            ps.setString(5, customer.getPassword());
             ps.executeUpdate();
-        } catch (SQLException ex) {
+            ResultSet gk = ps.getGeneratedKeys();
+            gk.next();
+            int id = gk.getInt(1);
+            String role = gk.getString(7);
+            customer.setID(id);
+            customer.setRole(role);
+        }
+        catch (SQLException ex) {
             throw new CarportException("Noget gik galt, prøv igen!", "registercustomer");
         }
     }
@@ -155,7 +173,8 @@ public class Mapper {
                 CustomerCalculation custCalc = new CustomerCalculation(ccID, length, width, angle, shedLength, shedWidth);
                 custCalcs.add(custCalc);
             }
-        } catch (SQLException ex) {
+        }
+        catch (SQLException ex) {
             throw new CarportException("Error fetching calculations", "employee");
         }
         return custCalcs;
@@ -179,7 +198,8 @@ public class Mapper {
             ps.setInt(7, price);
             ps.setInt(8, 1); // dette er en dummy!
             ps.execute();
-        } catch (SQLException ex) {
+        }
+        catch (SQLException ex) {
             throw new CarportException("Error adding calculation", "index");
         }
     }
@@ -206,7 +226,8 @@ public class Mapper {
                 Order order = new Order(orderID, customer, length, width, angle, shedLength, shedWidth, price, empID, placed);
                 openRequests.add(order);
             }
-        } catch (SQLException ex) {
+        }
+        catch (SQLException ex) {
             throw new CarportException("Error fetching requests", "employee");
         }
         return openRequests;
@@ -222,7 +243,8 @@ public class Mapper {
             ps.setInt(1, orderID);
             ps.executeUpdate();
 
-        } catch (SQLException e) {
+        }
+        catch (SQLException e) {
             throw new CarportException("Error setting sent status.", "employee");
         }
     }
@@ -249,7 +271,8 @@ public class Mapper {
                 Order order = new Order(orderID, customer, length, width, angle, shedLength, shedWidth, price, empID, placed);
                 orders.add(order);
             }
-        } catch (SQLException ex) {
+        }
+        catch (SQLException ex) {
             throw new CarportException("Error fetching orders", "employee");
         }
         return orders;
@@ -265,7 +288,8 @@ public class Mapper {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, userID);
             ps.executeUpdate();
-        } catch (SQLException ex) {
+        }
+        catch (SQLException ex) {
             throw new CarportException("Error - Cannot delete user", "employee");
         }
     }
@@ -288,7 +312,8 @@ public class Mapper {
                 res.add(emp);
             }
             return res;
-        } catch (SQLException ex) {
+        }
+        catch (SQLException ex) {
             throw new CarportException("Error - Cannot fetch all employees", "employee");
         }
     }
@@ -308,29 +333,34 @@ public class Mapper {
             ps.setInt(6, price);
             ps.setInt(7, orderID);
             ps.executeUpdate();
-        } catch (SQLException e) {
+        }
+        catch (SQLException e) {
             throw new CarportException("Error updating order", "employee");
         }
     }
+
     public static Customer getCustomer(int customerID) throws CarportException {
         try {
             dbc.setDataSource(new DataSourceFog().getDataSource());
             dbc.open();
             Connection con = dbc.getConnector();
-            String sql = "select * from customer where customerID=?";
+            String sql = "select * from customers where customerID=?";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, customerID);
             ResultSet rs = ps.executeQuery();
-            rs.next(); 
+            if (rs.next()) {
                 String email = rs.getString("username");
-                String password = rs.getString("password");
                 String name = rs.getString("firstname");
                 String lastname = rs.getString("lastname");
                 String phonenumber = rs.getString("phonenumber");
                 String role = rs.getString("role");
-                return new Customer(customerID, email, "", name, lastname, phonenumber, role);
-        } catch (SQLException ex) {
-            throw new CarportException("something went wrong trying to login", "login");
+                return new Customer(customerID, email, name, lastname, phonenumber, role);
+            }else{
+                throw new CarportException("Kunne ikke finde kunden", "ordermanagement");
+            }
+        }
+        catch (SQLException ex) {
+            throw new CarportException("Noget gik galt.. Prøv igen", "ordermanagement");
         }
     }
 

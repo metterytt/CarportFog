@@ -29,13 +29,9 @@
 
                     <h2 class="display-4">Velkommen <%= emp.getUsername()%> til medarbejdersiden.</h2>
                     <br>
-                    <%if(request.getAttribute("message") != null){ %>
-                    <div class="p-2 bg-success text-black col-md-7 text-center">${message}</div><br>
+                    <%if(request.getAttribute("complete") != null){ %>
+                    <div class="p-2 bg-success text-black col-md-7 text-center">${complete}</div><br>
                     <%}%>
-                    <% if (request.getAttribute("complete") != null) {
-                    %>
-                    <p> EDIT WAS MADE </p>
-                    <%} %>
                     <% if (emp.getRole().equals("IT")) { %>
                     <% if (request.getAttribute("allEmp") == null) { %>
                     <form action="FrontController" method="post">
@@ -68,22 +64,19 @@
                         <input type="submit" class="btn btn-primary" value="Slet bruger">
                     </form>
                     <%}%>
-                    <form action="FrontController" method="post">
+                    <br><form action="FrontController" method="post">
                         <input type="hidden" name="command" value="registeremployee">
-                        <br/>
                         <input type="submit" class="btn btn-primary" value="Registrer ny medarbejder">
                     </form>
                     <%}%>
-                    <form action="FrontController" method="post">
+                    <br><form action="FrontController" method="post">
                         <input type="hidden" name="command" value="allcalculations">
-                        <br/>
                         <input type="submit" class="btn btn-primary" value="Se alle indtastede beregninger">
                     </form>
 
-                    <form action="FrontController" method="post">
+                    <br><form action="FrontController" method="post">
                         <input type="hidden" name="command" value="allrequests">
                         <input type="hidden" name="showrequests">
-                            <br>
                         <input type="submit" class="btn btn-primary" value="Se alle åbne forespørgsler">
                     </form>
                 </div>

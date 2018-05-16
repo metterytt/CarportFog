@@ -28,25 +28,25 @@
 
                     ${error}
                     ${complete}
-                    <form action="FrontController" method="POST">
-                        <div class="form-group">
+                    <div class="form-group">
+                        <form action="FrontController" method="POST">
                             <input class="form-control" type="hidden" name="command" value="registeremployee">
                             <input class="form-control" type="hidden" name="registeremp">
                             <label for="username">Email:</label>
-                            <input class="form-control" type="email" name="username" placeholder="Email:">
+                            <input class="form-control" type="email" name="username" placeholder="Email">
                             <br>
                             <label for="password1">Password:</label>
-                            <input class="form-control" type="password" name="password1" placeholder="Password:">
+                            <input class="form-control" type="password" name="password1" placeholder="Password">
                             <br>
                             <label for="password2">Password:</label>
-                            <input class="form-control" type="password" name="password2" placeholder="Password:">
+                            <input class="form-control" type="password" name="password2" placeholder="Password">
                             <br>
                             <input type="radio" name="empRole" value="IT">IT
                             <input type="radio" name="empRole" value="salesman">Sælger
                             <br><br>
-                            <input class="btn btn-primary" type="submit" value="Submit">
-                        </div>
-                    </form>
+                            <input class="btn btn-primary" type="submit" value="Opret profil">
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

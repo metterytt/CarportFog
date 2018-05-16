@@ -70,7 +70,7 @@ public class EditRequest extends Command{
         
         StorageFacade.editRequest(orderID, length, width, angle, shedLength, shedWidth, price);
     
-        request.setAttribute("message", "Opdatering til ordre:" + orderID + " er hermed lavet.");
+        request.setAttribute("complete", "Opdatering til ordre:" + orderID + " er hermed lavet.");
     
         return "employee";
     

@@ -52,8 +52,8 @@ public class MapperTest {
      */
     @Test
     public void testLogin() throws Exception {
-    Employee emp = new Employee("lars", "per", "salesman", 2);
-    Employee test = Mapper.login("lars", "per");
+    Employee emp = new Employee("rah@cph.dk", "ralle", "salesman", 8);
+    Employee test = Mapper.login("rah@cph.dk", "ralle");
     assertEquals(emp.getUserID(), test.getUserID());
     assertEquals(emp.getRole(), test.getRole());
     }
