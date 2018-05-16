@@ -1,14 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package functionLayer;
 
-/**
- *
- * @author mette
- */
 public class DrawingMeasures {
 
     private int length;
@@ -17,7 +8,6 @@ public class DrawingMeasures {
     private int shedLength = 0;
     private int shedWidth = 0;
     private int height = 210;
-//    private String shedPos = "left";
     private double rafterGap;
     private int rafterQty;
     private int posts;
@@ -29,9 +19,6 @@ public class DrawingMeasures {
         this.angle = angle;
         this.shedLength = shedLength;
         this.shedWidth = shedWidth;
-//        if (shedPos != null) {
-//            this.shedPos = shedPos;
-//        }
         rafterQty = calcRafterQty();
         rafterGap = calcRafterGap();
         posts = calcPosts();
@@ -61,14 +48,6 @@ public class DrawingMeasures {
     public void setPosts(int posts) {
         this.posts = posts;
     }
-
-//    public String getShedPos() {
-//        return shedPos;
-//    }
-//
-//    public void setShedPos(String shedPos) {
-//        this.shedPos = shedPos;
-//    }
 
     public int getLength() {
         return length;

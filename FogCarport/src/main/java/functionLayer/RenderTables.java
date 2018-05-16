@@ -10,7 +10,7 @@ public class RenderTables {
 
 //    private static DecimalFormat totalformatter = new DecimalFormat("###,##0.00");
     public static String getOpenRequestsTable(List<Order> openRequests) {
-        if (openRequests == null) {
+        if (openRequests == null || openRequests.isEmpty()) {
             return "---Ingen forespørgsler i øjeblikket---";
         }
         StringBuilder sb = new StringBuilder();
@@ -35,7 +35,7 @@ public class RenderTables {
             sb.append("<td style=\"text-align:right\">").append(formatter.format(o.getPrice())).append("</td>");
             sb.append("<td>").append(o.getEmpID()).append("</td>");
 
-            // anden form
+            // her formen
             sb.append("<th>");
             sb.append("<form action=\"FrontController\" method=\"post\">");
             sb.append("<input type=\"hidden\" name=\"command\" value=\"viewbom\">");
@@ -58,7 +58,7 @@ public class RenderTables {
     }
 
     public static String getOrdersTable(List<Order> orders) {
-        if (orders == null) {
+        if (orders == null || orders.isEmpty()) {
             return "---Ingen ordrer i systemet---";
         }
         StringBuilder sb = new StringBuilder();
@@ -104,7 +104,7 @@ public class RenderTables {
         return sb.toString();
     }
 
-    public static String getListOfProducts(List<LineItem> bom, int orderID, int length, int width, int angle, int shedLength, int shedWidth, boolean isNotShed) {
+    public static String getListOfProducts(List<LineItem> bom) {
         if (bom == null) {
             return "---Ingenting på styklisten---";
         }

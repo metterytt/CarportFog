@@ -1,8 +1,5 @@
 <%@page import="functionLayer.RenderDrawings"%>
 <%@page import="functionLayer.DrawingMeasures"%>
-<%@page import="java.util.ArrayList"%>
-<%@page import="functionLayer.entity.LineItem"%>
-<%@page import="functionLayer.BOM"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <% DrawingMeasures drawingMeasures = (DrawingMeasures) request.getSession().getAttribute("drawingmeasures");
 %>
@@ -22,7 +19,6 @@
             <div class="row">
                 <div class="col-md-6">
 
-
                     <br><h1>Visualisering</h1>
 
                     <p> ${message} </p>
@@ -34,13 +30,9 @@
                         <input type="hidden" name="login" value="login">
                         <input type="submit" class="btn btn-primary" value="Login">
                     </form>
+
                     <br>
                     <%} %>
-
-
-                    <%
-                        String shedPos = (String) request.getAttribute("shedPos");
-                    %>
 
                     <div class="tab">
                         <button class="btn btn-primary" class="tablinks" onclick="openTable(event, 'fromTop')" id="defaultOpen">Vis carporten fra oven</button>
@@ -52,12 +44,11 @@
 
                     <form action="FrontController" method="post">
                         <input type="hidden" name="command" value="sendrequest">
-                        <input type="hidden" name="shedPos" value="<%= shedPos%>">
                         <br/>
                         <input type="submit" class="btn btn-primary" value="Send forespørgsel på denne carport">
                     </form>
-                    <br>
 
+                    <br>
                     <div id="fromTop" class="tabcontent">
                         <br>
                         <h3>Carport set fra oven</h3>
@@ -94,18 +85,6 @@
                         }
                         document.getElementById("defaultOpen").click();
                     </script>
-
-
-
-
-                    <%-- 
-                                        <%  if (shedLength != 0 && shedPos.equals("middle")) {
-                                                shedWidth = width - 22;
-                                                shedPos = "left";
-                                            }
-                                            if (shedLength != 0 && shedWidth != 0 && shedPos.equals("left")) {%>
-
-                    --%>
                 </div>
             </div>
         </div>
