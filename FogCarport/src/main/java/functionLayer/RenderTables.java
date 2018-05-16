@@ -7,9 +7,8 @@ import java.text.DecimalFormat;
 import java.util.List;
 
 public class RenderTables {
-    
-//    private static DecimalFormat totalformatter = new DecimalFormat("###,##0.00");
 
+//    private static DecimalFormat totalformatter = new DecimalFormat("###,##0.00");
     public static String getOpenRequestsTable(List<Order> openRequests) {
         if (openRequests == null) {
             return "---Ingen forespørgsler i øjeblikket---";
@@ -35,7 +34,7 @@ public class RenderTables {
             sb.append("<td style=\"text-align:right\">").append(o.getShedWidth()).append("</td>");
             sb.append("<td style=\"text-align:right\">").append(formatter.format(o.getPrice())).append("</td>");
             sb.append("<td>").append(o.getEmpID()).append("</td>");
-            
+
             // anden form
             sb.append("<th>");
             sb.append("<form action=\"FrontController\" method=\"post\">");
@@ -51,7 +50,7 @@ public class RenderTables {
             sb.append("<input type=\"hidden\" name=\"empID\" value=\"").append(o.getEmpID()).append("\"/>");
             sb.append("<input type=\"submit\" class=\"btn btn-primary\" value=\"Se stykliste/Rediger Ordre\"/>");
             sb.append("</form></th>");
-            
+
         }
         sb.append("</tbody>");
         sb.append("</table>\n");
@@ -132,7 +131,7 @@ public class RenderTables {
 //            sb.append("</form>");
 //          
 //        }
-        
+
         sb.append("<table class=\"table table-striped\">\n"
                 + "<thead><tr><th>Produktnavn</th><th>Brug</th><th style=\"text-align:right\">"
                 + "Antal</th><th style=\"text-align:right\">Enhed</th>"
@@ -153,7 +152,7 @@ public class RenderTables {
         sb.append("</table>\n");
         return sb.toString();
     }
-    
+
     public static String getAllCalculations(List<CustomerCalculation> custCalcs) {
         if (custCalcs == null) {
             return "---Ingen beregninger registreret---";
@@ -179,4 +178,54 @@ public class RenderTables {
         return sb.toString();
     }
 
+    public static String getCurrentCustomerRequests(List<Order> requests) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("<table class=\"table table-striped\">\n"
+                + "<thead><tr><th>ID</th><th>Længde</th><th>Bredde</th>"
+                + "<th>Tagvinkel</th><th>"
+                + "Skur længde</th><th>Skur bredde</th>");
+        sb.append("</tr></thead><tbody>\n");
+        for (Order r : requests) {
+            if (!r.isPlaced()) {
+                sb.append("<tr>");
+                sb.append("<td>").append(r.getOrderID()).append("</td>");
+                sb.append("<td>").append(r.getLength()).append("</td>");
+                sb.append("<td>").append(r.getWidth()).append("</td>");
+                sb.append("<td>").append(r.getAngle()).append("</td>");
+                sb.append("<td>").append(r.getShedLength()).append("</td>");
+                sb.append("<td>").append(r.getShedWidth()).append("</td>");
+                sb.append("</tr>");
+            }
+        }
+        sb.append("</tbody>");
+        sb.append("</table>\n");
+
+        return sb.toString();
+    }
+
+    public static String getCurrentCustomerOrders(List<Order> orders) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("<table class=\"table table-striped\">\n"
+                + "<thead><tr><th>ID</th><th>Længde</th><th>Bredde</th>"
+                + "<th>Tagvinkel</th><th>"
+                + "Skur længde</th><th>Skur bredde</th><th>Total pris</th>");
+        sb.append("</tr></thead><tbody>\n");
+        for (Order o : orders) {
+            if (o.isPlaced()) {
+                sb.append("<tr>");
+                sb.append("<td>").append(o.getOrderID()).append("</td>");
+                sb.append("<td>").append(o.getLength()).append("</td>");
+                sb.append("<td>").append(o.getWidth()).append("</td>");
+                sb.append("<td>").append(o.getAngle()).append("</td>");
+                sb.append("<td>").append(o.getShedLength()).append("</td>");
+                sb.append("<td>").append(o.getShedWidth()).append("</td>");
+                sb.append("<td>DKK ").append(o.getPrice()).append(",-</td>");
+                sb.append("</tr>");
+            }
+        }
+        sb.append("</tbody>");
+        sb.append("</table>\n");
+
+        return sb.toString();
+    }
 }

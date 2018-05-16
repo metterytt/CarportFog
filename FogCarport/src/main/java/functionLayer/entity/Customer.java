@@ -6,7 +6,7 @@ public class Customer {
  
  private int ID;
  private String email;
-  private String password;
+ private String password;
  private String name;
  private String lastname;
  private String phoneNumber;
@@ -39,18 +39,15 @@ public class Customer {
     public int getID() {
         return ID;
     }
-    
 
     public String getEmail() {
         return email;
     }
-
     
      public String getPassword() {
         return password;
     }
 
- 
     public String getName() {
         return name;
     }
@@ -63,11 +60,7 @@ public class Customer {
         return phoneNumber;
     }
 
-
-
     public void setID(int ID) {
         this.ID = ID;
     }
-
- 
 }

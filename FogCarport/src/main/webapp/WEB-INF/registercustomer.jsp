@@ -19,7 +19,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <h1 class="display-4">Opret profil</h1>
-                    ${error}
+                    <p class="text-danger">${error}</p>
                     <div class="form-group">
                         <form action="FrontController" method="POST">
                             <input type="hidden" name="command" value="registercustomer">

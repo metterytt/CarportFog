@@ -68,4 +68,12 @@ public class StorageFacade {
     public static List<Employee> getAllEmployees() throws CarportException {
         return Mapper.getAllEmployees();
     }
+    
+    public static Customer getCustomer(int customerID) throws CarportException {
+        return Mapper.getCustomer(customerID);
+    }
+    
+    public static List<Order> getCustomerOrders(int customerID) throws CarportException {
+        return Mapper.getCustomerOrders(customerID);
+    }
 }
