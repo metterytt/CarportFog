@@ -21,7 +21,7 @@ public class RenderTables {
                 + "<th style=\"text-align:right\">Tagvinkel</th><th style=\"text-align:right\">"
                 + "Skur længde</th><th style=\"text-align:right\">Skur bredde</th>"
                 + "<th style=\"text-align:right\">Pris</th>"
-                + "<th>Sælger</th><th>Ændre i ordre</th><th></th><th></th>");
+                + "<th>Ændre i ordre</th>");
         sb.append("</tr></thead><tbody>\n");
         for (Order o : openRequests) {
             sb.append("<tr>");
@@ -33,7 +33,7 @@ public class RenderTables {
             sb.append("<td style=\"text-align:right\">").append(o.getShedLength()).append("</td>");
             sb.append("<td style=\"text-align:right\">").append(o.getShedWidth()).append("</td>");
             sb.append("<td style=\"text-align:right\">").append(formatter.format(o.getPrice())).append("</td>");
-            sb.append("<td>").append(o.getEmpID()).append("</td>");
+//            sb.append("<td>").append(o.getEmpID()).append("</td>");
 
             // her formen
             sb.append("<th>");

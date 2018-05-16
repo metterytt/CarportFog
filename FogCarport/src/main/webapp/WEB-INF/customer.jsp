@@ -27,7 +27,7 @@
                     
                     <%if(request.getAttribute("complete") != null){ %>
                     <div class="p-2 bg-success text-black col-md-7 text-center">${complete}</div><br>
- <%}%>
+                    <%}%>
                     
                     <div class="card" style="width: 18rem;">
                         <ul class="list-group list-group-flush">

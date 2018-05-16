@@ -75,13 +75,13 @@
                     </table>
 
                     <br>
-                    <%= RenderTables.getListOfProducts(bom, orderID, length, width, angle, shedLength, shedWidth, true)%>
+                    <%= RenderTables.getListOfProducts(bom)%>
                     <h3>Den totale pris for carporten er: <%= formatter.format(carportBOM.totalPrice())%></h3>
                     <%
                         if (shedBOM != null) {
                             List<LineItem> shedBom = shedBOM.getListOfProducts();%>
                     <h2>Herunder er styklisten for skuret:</h2>
-                    <%= RenderTables.getListOfProducts(shedBom, orderID, length, width, angle, shedLength, shedWidth, false)%>
+                    <%= RenderTables.getListOfProducts(shedBom)%>
                     <h3>Den totale pris for skuret er: <%= formatter.format(shedBOM.totalPrice())%></h3>
                     <% }%>
                 </div>

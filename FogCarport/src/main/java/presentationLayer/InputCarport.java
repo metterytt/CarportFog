@@ -11,7 +11,6 @@ public class InputCarport extends Command {
 
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws CarportException {
-
         HttpSession session = request.getSession();
 
         int length = Integer.parseInt(request.getParameter("length"));
@@ -22,29 +21,16 @@ public class InputCarport extends Command {
         
         StorageFacade.addCustCalc(length, width, angle, shedLength, shedWidth);
 
-
-//        DrawingMeasures drawingMeasures = new DrawingMeasures(length, width, angle, shedLength, shedWidth);
-//        session.setAttribute("drawingmeasures", drawingMeasures);
-//        request.setAttribute("drawingmeasures", drawingMeasures);
-        
-//        String shedPos = request.getParameter("shedPos");
-//        if(shedPos.equals("middle") && shedLength != 0){
-//            shedWidth = width-30;
-//        }
-        
         if ((shedLength == 0 && shedWidth != 0) || (shedLength != 0 && shedWidth == 0)) {
             request.setAttribute("error", "Der skal vælges nummer for Højde og Bredde såfremt du ønsker et skur!");
             return "index";
         }else if((width - shedWidth <= 29) || length - shedLength <= 29){
            request.setAttribute("error", "Den går ikke du! Din carport skal minimum være 30cm bredere og min 30cm længere end dit skur");
             return "index";
-        }else {
-//            request.setAttribute("shedPos", shedPos);
         }
         
         DrawingMeasures drawingMeasures = new DrawingMeasures(length, width, angle, shedLength, shedWidth);
         session.setAttribute("drawingmeasures", drawingMeasures);
-        
 
         return "bom";
     }
