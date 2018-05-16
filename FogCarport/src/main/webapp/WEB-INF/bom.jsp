@@ -1,11 +1,8 @@
 <%@page import="functionLayer.RenderDrawings"%>
 <%@page import="functionLayer.DrawingMeasures"%>
-<%@page import="java.util.ArrayList"%>
-<%@page import="functionLayer.entity.LineItem"%>
-<%@page import="functionLayer.BOM"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <% DrawingMeasures drawingMeasures = (DrawingMeasures) request.getSession().getAttribute("drawingmeasures");
-%>
+   %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -49,22 +46,32 @@
                         <input type="submit" class="btn btn-primary" value="Send forespørgsel på denne carport">
                     </form>
 
+
                     <%= RenderDrawings.drawFromAbove(drawingMeasures)%>
 
                     <%= RenderDrawings.drawFromSide(drawingMeasures)%> 
 
                     <%= RenderDrawings.drawFromFront(drawingMeasures)%>
 
-                    <%-- 
-                                        <%  if (shedLength != 0 && shedPos.equals("middle")) {
-                                                shedWidth = width - 22;
-                                                shedPos = "left";
-                                            }
-                                            if (shedLength != 0 && shedWidth != 0 && shedPos.equals("left")) {%>
-
-                    --%>
                 </div>
             </div>
         </div>
+
+
+
+
+
+
+
+
+        <%-- 
+                            <%  if (shedLength != 0 && shedPos.equals("middle")) {
+                                    shedWidth = width - 22;
+                                    shedPos = "left";
+                                }
+                                if (shedLength != 0 && shedWidth != 0 && shedPos.equals("left")) {%>
+
+        --%>
+
     </body>
 </html>
