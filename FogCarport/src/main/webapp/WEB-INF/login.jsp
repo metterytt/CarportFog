@@ -62,7 +62,7 @@
                         <% String error = (String) request.getAttribute("error");
                             if (error != null) {%>
                         <p> <div class="p-2 bg-danger text-black col-md-7 text-center">${error}</div><br>          </p>
-                            <%}%> 
+                        <%}%> 
                         <div class="form-group">
                             <label for="username">Username:</label>
                             <input type="email" class="form-control" id="username" name="username" value="lars@lars.dk">

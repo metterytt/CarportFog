@@ -360,4 +360,32 @@ public class Mapper {
         }
     }
 
+    public static List<Order> getCustomerOrders(int customerID) throws CarportException {
+        try {
+            dbc.setDataSource(new DataSourceFog().getDataSource());
+            dbc.open();
+            Connection con = dbc.getConnector();
+            String sql = "select * from orders where customer=?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, customerID);
+            ResultSet rs = ps.executeQuery();
+            List<Order> orders = new ArrayList();
+            while (rs.next()) {
+                int orderID = rs.getInt(1);
+                int length = rs.getInt(3);
+                int width = rs.getInt(4);
+                int shedLength = rs.getInt(5);
+                int shedWidth = rs.getInt(6);
+                int angle = rs.getInt(7);
+                int price = rs.getInt(8);
+                Boolean placed = rs.getBoolean(10);
+                orders.add(new Order(orderID, length, width, angle, shedLength, shedWidth, price, placed));
+            }
+            return orders;
+        }
+        catch (SQLException ex) {
+            throw new CarportException("Noget gik galt.. Prøv igen", "customer");
+        }
+    }
+
 }
