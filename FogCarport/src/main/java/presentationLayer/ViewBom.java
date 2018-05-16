@@ -20,11 +20,13 @@ public class ViewBom extends Command {
        
         
         int orderID = Integer.parseInt(request.getParameter("orderID"));
+        int customerID = Integer.parseInt(request.getParameter("customerID"));
         int length = Integer.parseInt(request.getParameter("length"));
         int width = Integer.parseInt(request.getParameter("width"));
         int angle = Integer.parseInt(request.getParameter("angle"));
         int shedLength = Integer.parseInt(request.getParameter("shedlength"));
         int shedWidth = Integer.parseInt(request.getParameter("shedwidth"));
+        
         
         CarportCalculator carportCalculator;
         
@@ -37,7 +39,14 @@ public class ViewBom extends Command {
         BOM carportBom = carportCalculator.getBom();
         carportBom.setOrderID(Integer.parseInt(request.getParameter("orderID")));
         request.setAttribute("carportbom", carportBom);
-        request.setAttribute("orderid", orderID);
+        
+        request.setAttribute("orderID", orderID);
+        request.setAttribute("customerID", customerID);
+        request.setAttribute("length", length);
+        request.setAttribute("width", width);
+        request.setAttribute("angle", angle);
+        request.setAttribute("shedLength", shedLength);
+        request.setAttribute("shedWidth", shedWidth);
 
         if (shedWidth != 0 && shedLength != 0) {
             CarportCalculator shedCalculator = new ShedCalculator(shedLength, shedWidth);

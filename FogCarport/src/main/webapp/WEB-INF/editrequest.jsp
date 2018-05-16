@@ -22,9 +22,7 @@
         
         <form  action="FrontController" method="post">
          <input type="hidden" name="command" value="editrequest">
-        
                <input type="hidden" name="editfinished">
-
          <input type="hidden" name="orderID" value="<%=orderID%>">
          
             <label for="length">Længde i CM :</label><br>

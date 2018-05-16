@@ -30,12 +30,6 @@
                     <p> ${userDetailsNeeded} </p>
 
                     <form action="FrontController" method="post">
-                        <input type="hidden" name="command" value="sendrequest">
-                        <input type="number" name="phonenumber">
-                        <input type="submit" class="btn btn-primary" value="Send forespørgsel">
-                    </form>
-
-                    <form action="FrontController" method="post">
                         <input type="hidden" name="command" value="navbar">
                         <input type="hidden" name="login" value="login">
                         <input type="submit" class="btn btn-primary" value="Login">

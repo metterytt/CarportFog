@@ -29,6 +29,7 @@
 
                     <h2 class="display-4">Velkommen <%= emp.getUsername()%> til medarbejdersiden.</h2>
                     <br>
+                    ${message}
 
                     <% if (request.getAttribute("complete") != null) {
                     %>

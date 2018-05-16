@@ -20,7 +20,8 @@ public class SetOrdered extends Command {
         List<Order> orders = StorageFacade.getOrders();
         request.setAttribute("orders", orders);
 
-        return "allrequests";
+        request.setAttribute("message", "Ordre " + orderID + " er nu sat til afsendt!");
+        return "employee";
     }
 
 }

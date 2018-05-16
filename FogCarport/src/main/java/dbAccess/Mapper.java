@@ -312,5 +312,26 @@ public class Mapper {
             throw new CarportException("Error updating order", "employee");
         }
     }
+    public static Customer getCustomer(int customerID) throws CarportException {
+        try {
+            dbc.setDataSource(new DataSourceFog().getDataSource());
+            dbc.open();
+            Connection con = dbc.getConnector();
+            String sql = "select * from customer where customerID=?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, customerID);
+            ResultSet rs = ps.executeQuery();
+            rs.next(); 
+                String email = rs.getString("username");
+                String password = rs.getString("password");
+                String name = rs.getString("firstname");
+                String lastname = rs.getString("lastname");
+                String phonenumber = rs.getString("phonenumber");
+                String role = rs.getString("role");
+                return new Customer(customerID, email, "", name, lastname, phonenumber, role);
+        } catch (SQLException ex) {
+            throw new CarportException("something went wrong trying to login", "login");
+        }
+    }
 
 }

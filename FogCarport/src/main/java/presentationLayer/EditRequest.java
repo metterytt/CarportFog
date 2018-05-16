@@ -70,14 +70,13 @@ public class EditRequest extends Command{
         
         StorageFacade.editRequest(orderID, length, width, angle, shedLength, shedWidth, price);
     
-    request.setAttribute("error", "The edit was made!");
+        request.setAttribute("message", "Opdatering til ordre:!" + orderID + " er hermed lavet!");
     
-  return "employee";
+        return "employee";
     
     }    
-           request.setAttribute("error", "failed");
-
-    return "employee";
-    }
+        
+ return "employee";
     
+}
 }

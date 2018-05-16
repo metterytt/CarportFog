@@ -5,6 +5,28 @@
  */
 package functionLayer.Calculators;
 
+import functionLayer.CarportException;
+import org.junit.Test;
+import static org.junit.Assert.*;
+
+/**
+ *
+ * @author mette
+ */
+public class PitchedRoofCalculatorTest {
+    
+    public PitchedRoofCalculatorTest() {
+    }
+
+   
+
+
+    
+   
+    
+    
+    
+}
 //import functionLayer.CarportException;
 //import org.junit.Test;
 //import static org.junit.Assert.*;

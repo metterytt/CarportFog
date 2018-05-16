@@ -20,17 +20,19 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         <title>Order management</title>
+   
+    
+   
     </head>
     <body>
         <%@ include file="/WEB-INF/Include/Navbar.jspf" %>
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-        
+                    
         <div class="tab">
             <button class="btn btn-primary" class="tablinks" onclick="openTable(event, 'Requests')" id="defaultOpen">Vis åbne forespørgsler</button>
             <button class="btn btn-primary" class="tablinks" onclick="openTable(event, 'Orders')">Vis placerede ordrer</button>
-            
         </div>
 
         <div id="Requests" class="tabcontent">
@@ -44,9 +46,9 @@
             <h3>Ordrer</h3>
             <%= RenderTables.getOrdersTable(orders)%>
         </div>
-
+        
         <script>
-            function openTable(evt, name) {
+                 function openTable(evt, name) {
                 var i, tabcontent, tablinks;
                 tabcontent = document.getElementsByClassName("tabcontent");
                 for (i = 0; i < tabcontent.length; i++) {
