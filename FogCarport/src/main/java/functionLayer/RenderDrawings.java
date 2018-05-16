@@ -42,7 +42,7 @@ public class RenderDrawings {
             sb.append("<rect x=\"").append(dm.getWidth() - 15 - 11).append("\" y=\"").append(dm.getLength() * 0.9).append("\" height=\"15\" width=\"15\" stroke=\"black\" stroke-width=\"3\" fill=\"none\"/>");
 
             sb.append("<rect x=\"").append(dm.getWidth() - 15 - 11).append("\" y=\"").append(dm.getLength() / 2).append("\" height=\"15\" width=\"15\" stroke=\"black\" stroke-width=\"3\" fill=\"none\"/>");
-            sb.append("<rect x=\"15 - 4\" y=\"").append(dm.getLength() / 2).append("\" height=\"15\" width=\"15\" stroke=\"black\" stroke-width=\"3\" fill=\"none\"/>");
+            sb.append("<rect x=\"11\" y=\"").append(dm.getLength() / 2).append("\" height=\"15\" width=\"15\" stroke=\"black\" stroke-width=\"3\" fill=\"none\"/>");
         }
         sb.append("<text x=\"").append(dm.getWidth() / 2).append("\" y=\"").append(dm.getLength() + 20).append("\" fill=\"black\" text-anchor=\"middle\" >Bredde: ").append(dm.getWidth()).append(" </text>");
         sb.append("<text x=\"").append(dm.getWidth() + 20).append("\" y=\"").append(dm.getLength() / 2).append("\" fill=\"black\" text-anchor=\"middle\" writing-mode=\"tb\">Længde: ").append(dm.getLength()).append(" </text>");
