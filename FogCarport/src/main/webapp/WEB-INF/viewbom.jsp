@@ -87,6 +87,7 @@
                     <% }%>
 
                     <br><br><h3 class="display-4">Total pris: <%= totalPrice%></h3>
+                    <% if (request.getAttribute("orderPlaced") == null) {%>
                     <div class="form-group">
                         <form action="FrontController" method="post">
                             <input type="hidden" name="command" value="edittotalprice">
@@ -96,8 +97,9 @@
                             <br>
                             <input class="btn btn-primary" type="submit" value="Opdater pris">
                         </form>
-                    </div><br><br>
-
+                    </div>
+                    <%}%>
+                    <br><br>
                 </div>
             </div>
         </div>
