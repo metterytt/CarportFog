@@ -42,10 +42,12 @@
                         int angle = (int) request.getAttribute("angle");
                         int shedLength = (int) request.getAttribute("shedLength");
                         int shedWidth = (int) request.getAttribute("shedWidth");
+                        //Used for viewing/updating the total price
+                        int totalPrice = (int) request.getAttribute("totalprice");
                         //Used in the include file
                         Customer customer = StorageFacade.getCustomer(customerID);
                     %>
-                    <h3>Styklisteberegning for ordre/forespørgsel <%=carportBOM.getOrderID()%></h3>
+                    <h3 class="display-4">Styklisteberegning for ordre/forespørgsel <%=carportBOM.getOrderID()%></h3>
                     <h3>Mål: længde: <%=carportBOM.getLength()%>, bredde: <%=carportBOM.getWidth()%> og tagvinkel: <%=carportBOM.getAngle()%> grader</h3>
 
                     <table>
@@ -76,14 +78,26 @@
 
                     <br>
                     <%= RenderTables.getListOfProducts(bom)%>
-                    <h3>Den totale pris for carporten er: <%= formatter.format(carportBOM.totalPrice())%></h3>
-                    <%
-                        if (shedBOM != null) {
+                    <br><h3>Prisestimat for carport: <%= formatter.format(carportBOM.totalPrice())%></h3>
+                    <% if (shedBOM != null) {
                             List<LineItem> shedBom = shedBOM.getListOfProducts();%>
-                    <h2>Herunder er styklisten for skuret:</h2>
+                    <br><h2 class="display-4">Herunder er styklisten for skuret:</h2>
                     <%= RenderTables.getListOfProducts(shedBom)%>
-                    <h3>Den totale pris for skuret er: <%= formatter.format(shedBOM.totalPrice())%></h3>
+                    <br><h3>Prisestimat for skur: <%= formatter.format(shedBOM.totalPrice())%></h3>
                     <% }%>
+
+                    <br><br><h3 class="display-4">Total pris: <%= totalPrice%></h3>
+                    <div class="form-group">
+                        <form action="FrontController" method="post">
+                            <input type="hidden" name="command" value="edittotalprice">
+                            <input type="hidden" name="orderID" value="<%=carportBOM.getOrderID()%>">
+                            <label for="password1">Rediger totalpris nedenfor:</label>
+                            <input class="form-control col-md-2" type="number" name="totalprice" value="<%= totalPrice%>">
+                            <br>
+                            <input class="btn btn-primary" type="submit" value="Opdater pris">
+                        </form>
+                    </div><br><br>
+
                 </div>
             </div>
         </div>

@@ -13,6 +13,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Mapper {
 
@@ -388,4 +390,21 @@ public class Mapper {
         }
     }
 
+    public static void updateTotalPrice(int price, int orderID) throws CarportException {
+        try {
+            dbc.setDataSource(new DataSourceFog().getDataSource());
+            dbc.open();
+            Connection con = dbc.getConnector();
+            String sql = "update orders SET price = ? WHERE orderID = ?;";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, price);
+            ps.setInt(2, orderID);
+            ps.executeUpdate();
+        }
+        catch (SQLException ex) {
+            throw new CarportException("Noget gik galt, da du prøvede at opdatere totalprisen", "ordermanagement");
+//            Logger.getLogger(Mapper.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
 }

@@ -25,7 +25,7 @@ abstract class Command {
         commands.put("viewbom", new ViewBom());
         commands.put("customerview", new CustomerView());
         commands.put("editrequest", new EditRequest());
-        
+        commands.put("edittotalprice", new EditTotalPrice());
     }
 
     static Command from(HttpServletRequest request) {
