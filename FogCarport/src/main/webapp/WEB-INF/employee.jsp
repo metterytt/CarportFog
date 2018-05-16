@@ -29,8 +29,9 @@
 
                     <h2 class="display-4">Velkommen <%= emp.getUsername()%> til medarbejdersiden.</h2>
                     <br>
-                    ${message}
-
+                    <%if(request.getAttribute("message") != null){ %>
+                    <div class="p-2 bg-success text-black col-md-7 text-center">${message}</div><br>
+                    <%}%>
                     <% if (request.getAttribute("complete") != null) {
                     %>
                     <p> EDIT WAS MADE </p>
