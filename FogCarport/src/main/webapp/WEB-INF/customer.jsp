@@ -23,15 +23,11 @@
                 <div class="col-md-6">
          <h1>Hai customer! </h1>
          
-         <%if(request.getAttribute("complete") != null){ %>
-                    <div class="p-2 bg-success text-black col-md-7 text-center">${complete}</div><br>
-                    <%}%>
-       
-        
-        <form action="FrontController" method="post">
                     <h1 class="display-4">Kontaktinformationer:</h1>
                     <p class="text-success">  ${message} </p>
-                    <p class="text-success">  ${complete} </p>
+                    <%if(request.getAttribute("complete") != null){ %>
+                    <div class="p-2 bg-success text-black col-md-7 text-center">${complete}</div><br>
+                    <%}%>
                     
                     <p><b>Navn:</b> <%=customer.getName() %></p>
                     <p><b>Efternavn:</b> <%=customer.getLastname()%></p>
