@@ -64,7 +64,7 @@ public class MapperTest {
     @Test
     public void testLoginCustomer() throws Exception {
 
-Customer testCustomer = new Customer(1, "lars@lars.dk", "123", "lars", "per", "22464462", "customer");
+Customer testCustomer = new Customer(1, "lars@lars.dk", "123", "lars", "per", "22464462");
 Customer dbCustomer = Mapper.loginCustomer("lars@lars.dk", "123");
 assertEquals(dbCustomer.getEmail(), testCustomer.getEmail());
 assertTrue(dbCustomer.getID() == testCustomer.getID());

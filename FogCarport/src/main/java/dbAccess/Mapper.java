@@ -101,8 +101,7 @@ public class Mapper {
                 String name = rs.getString("firstname");
                 String lastname = rs.getString("lastname");
                 String phonenumber = rs.getString("phonenumber");
-                String role = rs.getString("role");
-                return new Customer(ID, email, password, name, lastname, phonenumber, role);
+                return new Customer(ID, email, password, name, lastname, phonenumber);
             }
             else {
                 throw new CarportException("No user found.. Invalid input", "login");
@@ -146,9 +145,7 @@ public class Mapper {
             ResultSet gk = ps.getGeneratedKeys();
             gk.next();
             int id = gk.getInt(1);
-            String role = gk.getString(7);
             customer.setID(id);
-            customer.setRole(role);
         }
         catch (SQLException ex) {
             throw new CarportException("Noget gik galt, prøv igen!", "registercustomer");
@@ -353,8 +350,7 @@ public class Mapper {
                 String name = rs.getString("firstname");
                 String lastname = rs.getString("lastname");
                 String phonenumber = rs.getString("phonenumber");
-                String role = rs.getString("role");
-                return new Customer(customerID, email, name, lastname, phonenumber, role);
+                return new Customer(customerID, email, name, lastname, phonenumber);
             }else{
                 throw new CarportException("Kunne ikke finde kunden", "ordermanagement");
             }

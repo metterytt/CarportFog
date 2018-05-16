@@ -10,25 +10,22 @@ public class Customer {
  private String name;
  private String lastname;
  private String phoneNumber;
- private String role;
 
-    public Customer(int ID, String email, String password, String name, String lastname, String phoneNumber, String role) {
+    public Customer(int ID, String email, String password, String name, String lastname, String phoneNumber) {
         this.ID = ID;
         this.email = email;
         this.password = password;
         this.name = name;
         this.lastname = lastname;
         this.phoneNumber = phoneNumber;
-        this.role = role;
     }
 
-    public Customer(int ID, String email, String name, String lastname, String phoneNumber, String role) {
+    public Customer(int ID, String email, String name, String lastname, String phoneNumber) {
         this.ID = ID;
         this.email = email;
         this.name = name;
         this.lastname = lastname;
         this.phoneNumber = phoneNumber;
-        this.role = role;
     }
     
     public Customer(String email, String password, String name, String lastname, String phoneNumber) {
@@ -66,16 +63,11 @@ public class Customer {
         return phoneNumber;
     }
 
-    public String getRole() {
-        return role;
-    }
+
 
     public void setID(int ID) {
         this.ID = ID;
     }
 
-    public void setRole(String role) {
-        this.role = role;
-    }
  
 }
