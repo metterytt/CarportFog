@@ -68,11 +68,12 @@ public class RenderDrawings {
 
         //Skur til venstre
         if (dm.getShedLength() != 0) {
-            sb.append("<rect x=\"11\" y=\"15\" height=\"").append(dm.getShedLength()).append("\" width=\"").append(dm.getShedWidth()).append("\" stroke=\"red\" stroke-width=\"2\" fill=\"none\" stroke-dasharray=\"10 10\"/>");
+            //skur i midten
+            sb.append("<rect x=\"11\" y=\"15\" height=\"").append(dm.getShedLength()).append("\" width=\"").append(dm.getShedWidth()+10).append("\" stroke=\"red\" stroke-width=\"2\" fill=\"none\" stroke-dasharray=\"10 10\"/>");
             //stolper til skur - venstre
             sb.append("<rect x=\"11\" y=\"15\" height=\"15\" width=\"15\" stroke=\"red\" stroke-width=\"3\" fill=\"none\"/>");
-            sb.append("<rect x=\"").append(dm.getShedWidth() - 4).append("\" y=\"").append(dm.getShedLength()).append("\" height=\"15\" width=\"15\" stroke=\"red\" stroke-width=\"3\" fill=\"none\"/>");
-            sb.append("<rect x=\"").append(dm.getShedWidth() - 4).append("\" y=\"15\" height=\"15\" width=\"15\" stroke=\"red\" stroke-width=\"3\" fill=\"none\"/>");
+            sb.append("<rect x=\"").append(dm.getShedWidth() + 6).append("\" y=\"").append(dm.getShedLength()).append("\" height=\"15\" width=\"15\" stroke=\"red\" stroke-width=\"3\" fill=\"none\"/>");
+            sb.append("<rect x=\"").append(dm.getShedWidth() + 6).append("\" y=\"15\" height=\"15\" width=\"15\" stroke=\"red\" stroke-width=\"3\" fill=\"none\"/>");
             sb.append("<rect x=\"11\" y=\"").append(dm.getShedLength()).append("\" height=\"15\" width=\"15\" stroke=\"red\" stroke-width=\"3\" fill=\"none\"/>");
 
         }
