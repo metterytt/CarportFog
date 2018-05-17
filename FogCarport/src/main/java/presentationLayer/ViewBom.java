@@ -27,7 +27,7 @@ public class ViewBom extends Command {
         
         //Used for viewing/updating the total price
         int totalPrice = Integer.parseInt(request.getParameter("price"));
-        request.setAttribute("totalprice", totalPrice);
+        session.setAttribute("totalprice", totalPrice);
         
         CarportCalculator carportCalculator;
 
@@ -61,13 +61,19 @@ public class ViewBom extends Command {
 ////            request.setAttribute("shedbom", shedBom);
 //        }
 
-        request.setAttribute("customerID", customerID);
+
 //        request.setAttribute("shedLength", shedLength);
 //        request.setAttribute("shedWidth", shedWidth);
 
 //        String orderPlaced = request.getParameter("orderPlaced");
 //        if (orderPlaced != null) {
 //            request.setAttribute("orderPlaced", orderPlaced);
+        session.setAttribute("customerID", customerID);
+       
+
+//        String orderPlaced = request.getParameter("orderPlaced");
+//        if (orderPlaced != null) {
+//           request.setAttribute("orderPlaced", orderPlaced); 
 //        }
 
         return "viewbom";

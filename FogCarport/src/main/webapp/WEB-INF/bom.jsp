@@ -17,7 +17,7 @@
 
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-12">
 
                     <br><h1>Visualisering</h1>
 

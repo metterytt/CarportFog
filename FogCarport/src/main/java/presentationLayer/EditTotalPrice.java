@@ -22,6 +22,7 @@ public class EditTotalPrice extends Command {
         int orderID = Integer.parseInt(request.getParameter("orderID"));
         int totalprice = Integer.parseInt(request.getParameter("totalprice"));
         StorageFacade.updateTotalPrice(totalprice, orderID);
-        return new AllRequests().execute(request, response);
+        request.getSession().setAttribute("totalprice", totalprice);
+        return "viewbom";
     }
 }
