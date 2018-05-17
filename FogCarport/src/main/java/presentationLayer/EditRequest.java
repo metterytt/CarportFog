@@ -64,17 +64,17 @@ public class EditRequest extends Command {
             if (shedBom != null) {
                 shedPrice = shedBom.totalPrice();
             }
-            int price = carportBom.totalPrice() + shedPrice;
-
-            StorageFacade.editRequest(orderID, length, width, angle, shedLength, shedWidth, price);
-
-            request.setAttribute("complete", "Opdatering til ordre:" + orderID + " er hermed lavet.");
-
-            return "employee";
+         int price = carportBom.totalPrice() + shedPrice;
+        
+        StorageFacade.editRequest(orderID, length, width, angle, shedLength, shedWidth, price);
+    
+        request.setAttribute("complete", "Opdatering til ordre: " + orderID + "'s mål er hermed lavet.");
+        
+        return new AllRequests().execute(request, response);
 
         }
 
-        return "employee";
-
-    }
+        return new AllRequests().execute(request, response);
+    
+}
 }
