@@ -306,7 +306,7 @@ public class Mapper {
             dbc.setDataSource(new DataSourceFog().getDataSource());
             dbc.open();
             Connection con = dbc.getConnector();
-            String sql = "update orders SET length = ? , width = ?, roof_angle= ?, shed_length= ?, shed_width= ?, price= ?  WHERE orderID= ?;";
+            String sql = "update orders SET length = ? , width = ?, roof_angle= ?, shed_length= ?, shed_width= ?, price= ?  WHERE orderID= ?";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, length);
             ps.setInt(2, width);
