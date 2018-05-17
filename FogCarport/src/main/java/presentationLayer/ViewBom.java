@@ -14,7 +14,6 @@ public class ViewBom extends Command {
 
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws CarportException {
-        //ny 1
         HttpSession session = request.getSession();
 
         int orderID = Integer.parseInt(request.getParameter("orderID"));
@@ -32,40 +31,42 @@ public class ViewBom extends Command {
         CarportCalculator carportCalculator;
 
         if (angle == 0) {
-            carportCalculator = new FlatRoofCalculator(length, width);
+            carportCalculator = new FlatRoofCalculator(length, width, shedLength, shedWidth);
         } else {
-            carportCalculator = new PitchedRoofCalculator(length, width, angle);
+            carportCalculator = new PitchedRoofCalculator(length, width, angle, shedLength, shedWidth);
         }
         BOM carportBom = carportCalculator.getBom();
+        
         carportBom.setOrderID(Integer.parseInt(request.getParameter("orderID")));
         carportBom.setAngle(angle);
         carportBom.setLength(length);
         carportBom.setWidth(width);
-        //ny 2
+        carportBom.setShedLength(shedLength);
+        carportBom.setShedWidth(shedWidth);
         carportBom.setOrderID(orderID);
         session.setAttribute("carportbom", carportBom);
-        session.removeAttribute("shedbom"); // vi vil ikke have den gamle shedbom liggende hvis vi skal have en ny beregning som ikke har skur
+//        session.removeAttribute("shedbom"); // vi vil ikke have den gamle shedbom liggende hvis vi skal have en ny beregning som ikke har skur
 //        request.setAttribute("carportbom", carportBom);
 
-        if (shedWidth != 0 && shedLength != 0) {
-            CarportCalculator shedCalculator = new ShedCalculator(shedLength, shedWidth);
-            BOM shedBom = shedCalculator.getBom();
-            //ny 2
-            shedBom.setOrderID(orderID);
-            shedBom.setShedLength(shedLength);
-            shedBom.setShedWidth(shedWidth);
-            session.setAttribute("shedbom", shedBom);
-//            request.setAttribute("shedbom", shedBom);
-        }
+//        if (shedWidth != 0 && shedLength != 0) {
+//            CarportCalculator shedCalculator = new ShedCalculator(shedLength, shedWidth);
+//            BOM shedBom = shedCalculator.getBom();
+//            //ny 2
+//            shedBom.setOrderID(orderID);
+//            shedBom.setShedLength(shedLength);
+//            shedBom.setShedWidth(shedWidth);
+//            session.setAttribute("shedbom", shedBom);
+////            request.setAttribute("shedbom", shedBom);
+//        }
 
         request.setAttribute("customerID", customerID);
-        request.setAttribute("shedLength", shedLength);
-        request.setAttribute("shedWidth", shedWidth);
+//        request.setAttribute("shedLength", shedLength);
+//        request.setAttribute("shedWidth", shedWidth);
 
-        String orderPlaced = request.getParameter("orderPlaced");
-        if (orderPlaced != null) {
-            request.setAttribute("orderPlaced", orderPlaced);
-        }
+//        String orderPlaced = request.getParameter("orderPlaced");
+//        if (orderPlaced != null) {
+//            request.setAttribute("orderPlaced", orderPlaced);
+//        }
 
         return "viewbom";
     }

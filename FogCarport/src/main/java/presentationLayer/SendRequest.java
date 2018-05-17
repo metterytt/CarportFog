@@ -34,21 +34,21 @@ public class SendRequest extends Command {
         BOM shedBom = null;
 
         if (angle == 0) {
-            carportCalculator = new FlatRoofCalculator(length, width);
+            carportCalculator = new FlatRoofCalculator(length, width, shedLength, shedWidth);
         } else {
-            carportCalculator = new PitchedRoofCalculator(length, width, angle);
+            carportCalculator = new PitchedRoofCalculator(length, width, angle, shedLength, shedWidth);
         }
         carportBom = carportCalculator.getBom();
 
-        if (shedWidth != 0 && shedLength != 0) {
-            CarportCalculator shedCalculator = new ShedCalculator(shedLength, shedWidth);
-            shedBom = shedCalculator.getBom();
-        }
-        int shedPrice = 0;
-        if (shedBom != null) {
-            shedPrice = shedBom.totalPrice();
-        }
-        int price = carportBom.totalPrice() + shedPrice;
+//        if (shedWidth != 0 && shedLength != 0) {
+//            CarportCalculator shedCalculator = new ShedCalculator(shedLength, shedWidth);
+//            shedBom = shedCalculator.getBom();
+//        }
+//        int shedPrice = 0;
+//        if (shedBom != null) {
+//            shedPrice = shedBom.totalPrice();
+//        }
+        int price = carportBom.totalPrice();// + shedPrice;
         Customer customer = (Customer) request.getSession().getAttribute("customer");
         int customerID = customer.getID();
         StorageFacade.addRequest(customerID, length, width, angle, shedLength, shedWidth, price);

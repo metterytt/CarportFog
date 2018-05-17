@@ -21,16 +21,22 @@ import functionLayer.BOM;
 import functionLayer.CarportException;
 import functionLayer.StorageFacade;
 import functionLayer.entity.LineItem;
+import java.util.List;
 
 public class FlatRoofCalculator implements CarportCalculator {
 
     private final int length;
     private final int width;
+    private final int angle = 0;
+    private int shedLength;
+    private int shedWidth;
     private BOM bom = new BOM();
 
-    public FlatRoofCalculator(int length, int width) throws CarportException {
+    public FlatRoofCalculator(int length, int width, int shedLength, int shedWidth) throws CarportException {
         this.length = length;
         this.width = width;
+        this.shedLength = shedLength;
+        this.shedWidth = shedWidth;
         bom = calculateBOM();
     }
 
@@ -114,6 +120,15 @@ public class FlatRoofCalculator implements CarportCalculator {
         squareBrackets.setQuantity(posts.getQuantity() * 3);
         squareBrackets.setUseInContext("Til montering af rem på stolper");
         bom.addToBOM(squareBrackets);
+        
+        if (shedLength != 0){ 
+            CarportCalculator shedCalculator = new ShedCalculator(shedLength, shedWidth);
+            BOM shedBom = shedCalculator.getBom();
+            List<LineItem> shedList = shedBom.getListOfProducts();
+            for (LineItem li : shedList){
+                bom.addToBOM(li);
+            }
+        }
 
         return bom;
     }
