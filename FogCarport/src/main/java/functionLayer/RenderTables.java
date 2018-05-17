@@ -104,34 +104,12 @@ public class RenderTables {
         return sb.toString();
     }
 
-    public static String getListOfProducts(List<LineItem> bom, int orderID, int length, int width, int angle, int shedLength, int shedWidth, boolean isNotShed) {
+    public static String getListOfProducts(List<LineItem> bom, int orderID, int length, int width, int angle, int shedLength, int shedWidth) {
         if (bom == null) {
             return "---Ingenting på styklisten---";
         }
         StringBuilder sb = new StringBuilder();
-//        if(isNotShed){
-//        
-//            sb.append("\n<form action=\"FrontController\" method=\"post\">\n"
-//                    + "<input type=\"hidden\" name=\"command\" value=\"editrequest\">\n"
-//                    + "<input type=\"hidden\" name=\"parseInfo\"/>");
-//            sb.append("<input type=\"hidden\" name=\"orderID\" value=\"").append(orderID).append("\"/>");
-//            sb.append("<input type=\"hidden\" name=\"length\" value=\"").append(length).append("\"/>");
-//            sb.append("<input type=\"hidden\" name=\"width\" value=\"").append(width).append("\"/>");
-//            sb.append("<input type=\"hidden\" name=\"angle\" value=\"").append(angle).append("\"/>");
-//            sb.append("<input type=\"hidden\" name=\"shedlength\" value=\"").append(shedLength).append("\"/>");
-//            sb.append("<input type=\"hidden\" name=\"shedwidth\" value=\"").append(shedWidth).append("\"/>");
-//            sb.append("<input type=\"submit\" class=\"btn btn-primary\" value=\"Ændre i bestillingen\"/>");
-//            sb.append("</form>");
-//            
-//            
-//            sb.append("<form action=\"FrontController\" method=\"post\">");
-//            sb.append("<input type=\"hidden\" name=\"command\" value=\"setordered\">");
-//            sb.append("<input type=\"hidden\" name=\"orderID\" value=\"").append(orderID).append("\"/>");
-//            sb.append("<input type=\"submit\" class=\"btn btn-primary\" value=\"Sæt til bestilt\"/>");
-//            sb.append("</form>");
-//          
-//        }
-        
+
         sb.append("<table class=\"table table-striped\">\n"
                 + "<thead><tr><th>Produktnavn</th><th>Brug</th><th style=\"text-align:right\">"
                 + "Antal</th><th style=\"text-align:right\">Enhed</th>"
