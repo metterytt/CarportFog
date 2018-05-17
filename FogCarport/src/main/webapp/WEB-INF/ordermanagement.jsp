@@ -35,8 +35,12 @@
             <button class="btn btn-primary" class="tablinks" onclick="openTable(event, 'Orders')">Vis placerede ordrer</button>
         </div>
 
+                    <%if(request.getAttribute("complete") != null){ %>
+                    <br> 
+                    <div class="p-2 bg-success text-black col-md-4 text-center">${complete}</div><br>
+                    <%}%>
+                    
         <div id="Requests" class="tabcontent">
-            <br>
             <h3>Forespørgsler</h3>
             <%= RenderTables.getOpenRequestsTable(openRequests)%>
         </div>

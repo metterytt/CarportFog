@@ -77,6 +77,7 @@
                         </table>
 
                     <br>
+
                     <h2>Carport:</h2>
                     <%= RenderTables.getListOfProducts(bom)%>
                     <br><h3>Prisestimat for carport: <%= formatter.format(carportBOM.totalPrice())%></h3>
@@ -84,6 +85,7 @@
                             List<LineItem> shedBom = shedBOM.getListOfProducts();%>
                     <br><h2 class="display-4">Herunder er styklisten for skuret:</h2>
                     <%= RenderTables.getListOfProducts(shedBom)%>
+
                     <br><h3>Prisestimat for skur: <%= formatter.format(shedBOM.totalPrice())%></h3>
                     <% }%>
            --%>

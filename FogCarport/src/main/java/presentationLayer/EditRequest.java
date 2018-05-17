@@ -68,13 +68,9 @@ public class EditRequest extends Command {
 
             StorageFacade.editRequest(orderID, length, width, angle, shedLength, shedWidth, price);
 
-            request.setAttribute("complete", "Opdatering til ordre:" + orderID + " er hermed lavet.");
-
-            return "employee";
+            request.setAttribute("complete", "Opdatering til ordre: " + orderID + "'s mål er hermed lavet.");
 
         }
-
-        return "employee";
-
+        return new AllRequests().execute(request, response);
     }
 }

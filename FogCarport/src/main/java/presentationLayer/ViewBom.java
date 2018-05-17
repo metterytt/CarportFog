@@ -14,6 +14,7 @@ public class ViewBom extends Command {
 
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws CarportException {
+
         HttpSession session = request.getSession();
 
         int orderID = Integer.parseInt(request.getParameter("orderID"));
@@ -46,6 +47,7 @@ public class ViewBom extends Command {
         carportBom.setOrderID(orderID);
         session.setAttribute("carportbom", carportBom);
 //        session.removeAttribute("shedbom"); // vi vil ikke have den gamle shedbom liggende hvis vi skal have en ny beregning som ikke har skur
+        
 //        request.setAttribute("carportbom", carportBom);
 
 //        if (shedWidth != 0 && shedLength != 0) {
