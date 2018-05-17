@@ -83,7 +83,7 @@
                     <h2>Herunder er styklisten for skuret:</h2>
                     <%= RenderTables.getListOfProducts(shedBom)%>
                     <h3>Den totale pris for skuret er: <%= formatter.format(shedBOM.totalPrice())%></h3>
-                    <% }%>
+                    <%}%>
                 </div>
             </div>
         </div>
