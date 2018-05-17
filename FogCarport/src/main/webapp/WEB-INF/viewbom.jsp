@@ -16,13 +16,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <% DecimalFormat formatter = new DecimalFormat("###,##0.00"); %>
 <% BOM carportBOM = (BOM) session.getAttribute("carportbom"); %>
-<% BOM shedBOM = (BOM) session.getAttribute("shedbom"); 
- int shedLength = 0;
-    int shedWidth = 0;    
-if(shedBOM != null){
-   shedLength = shedBOM.getLength();
-   shedWidth = shedBOM.getWidth();
-    }%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -38,6 +32,9 @@ if(shedBOM != null){
                 <div class="col-md-12">
 
                     <%
+
+                        //int shedLength = (int) request.getAttribute("shedLength");
+                        //int shedWidth = (int) request.getAttribute("shedWidth");
                         int customerID = (int) request.getSession().getAttribute("customerID");
                         //Used for viewing/updating the total price
                         int totalPrice = (int) request.getSession().getAttribute("totalprice");
@@ -47,7 +44,10 @@ if(shedBOM != null){
 
                     <h3 class="display-4">Styklisteberegning for ordre/forespørgsel <%=carportBOM.getOrderID()%></h3>
                     <h3>Mål: længde: <%=carportBOM.getLength()%>, bredde: <%=carportBOM.getWidth()%> og tagvinkel: <%=carportBOM.getAngle()%> grader
-                        <h3> - Skur længde: <%=shedBOM.getShedLength()%>, skur bredde: <%=shedBOM.getShedWidth()%></h3>
+          <%--          <% if (shedBOM != null) {%>    har også ændret nedenunder: shed-> carport    --%>
+                        <h3> - Skur længde: <%=carportBOM.getShedLength()%>, skur bredde: <%=carportBOM.getShedWidth()%></h3>
+          <%--          <%}%>       --%>
+
                         <table>
                             <thead>
                                 <tr>
@@ -59,17 +59,20 @@ if(shedBOM != null){
                                             <input type="hidden" name="length" value="<%= carportBOM.getLength()%>">
                                             <input type="hidden" name="width" value="<%= carportBOM.getWidth()%>">
                                             <input type="hidden" name="angle" value="<%= carportBOM.getAngle()%>">
-                                            <input type="hidden" name="shedlength" value="<%= shedLength%>">
-                                            <input type="hidden" name="shedwidth" value="<%= shedWidth%>">
+                                            <input type="hidden" name="shedlength" value="<%= carportBOM.getShedLength()%>">
+                                            <input type="hidden" name="shedwidth" value="<%= carportBOM.getShedWidth()%>">
                                             <input type="submit" class="btn btn-primary" value="Ændre i bestillingen">
                                         </form>   
                                     </th>
+                               <%--     <% if (request.getAttribute("orderPlaced") == null) {%>   --%>
+
                                     <th> 
                                         <form action="FrontController" method="post">
                                             <input type="hidden" name="command" value="setordered">
                                             <input type="hidden" name="orderID" value="<%=carportBOM.getOrderID()%>">
                                             <input type="submit" class="btn btn-primary" value="Sæt til bestilt">
                                         </form> </th>
+                                  <%--      <%}%>   --%>
                                     <th> <%@ include file="/WEB-INF/jspf/UserInfo.jspf" %>  </th>
                                 </tr>
                             </thead>
@@ -83,17 +86,19 @@ if(shedBOM != null){
                     <%= RenderTables.getListOfProducts(carportBOM.getListOfProducts())%>
                     
                     <br><h3>Prisestimat for carport: <%= formatter.format(carportBOM.totalPrice())%></h3>
+           <%--         <% if (shedBOM != null) {
                     
                     
-                    <% if (shedBOM != null) {
                             List<LineItem> shedBom = shedBOM.getListOfProducts();%>
                     <br><h2 class="display-4">Herunder er styklisten for skuret:</h2>
                     <%= RenderTables.getListOfProducts(shedBom)%>
 
                     <br><h3>Prisestimat for skur: <%= formatter.format(shedBOM.totalPrice())%></h3>
                     <% }%>
-
+           --%>
+           
                     <br><br><h3 class="display-4">Total pris: <%= totalPrice%></h3>
+       <%--             <% if (request.getAttribute("orderPlaced") == null) {%>    --%>
                     <div class="form-group">
                         <form action="FrontController" method="post">
                             <input type="hidden" name="command" value="edittotalprice">
@@ -104,6 +109,7 @@ if(shedBOM != null){
                             <input class="btn btn-primary" type="submit" value="Opdater pris">
                         </form>
                     </div>
+         <%--           <%}%>  --%>
                     <br><br>
 
                 </div>

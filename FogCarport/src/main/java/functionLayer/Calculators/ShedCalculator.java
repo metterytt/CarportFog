@@ -30,42 +30,42 @@ public class ShedCalculator implements CarportCalculator {
 
         LineItem lath = StorageFacade.getProduct(16);
         lath.setQuantity(4.20); // altid samme mængde, til Z på dør
-        lath.setUseInContext("Til Z på bagside af dør");
+        lath.setUseInContext("Skur: Til Z på bagside af dør");
         bom.addToBOM(lath);
 
         LineItem reglar = StorageFacade.getProduct(17);
         reglar.setQuantity(calcReglar(shedLength, shedWidth));
-        reglar.setUseInContext("Løsholter til skur");
+        reglar.setUseInContext("Skur: Løsholter til skur");
         bom.addToBOM(reglar);
 
         LineItem cladding = StorageFacade.getProduct(6);
         cladding.setQuantity(calcCladding(shedLength, shedWidth));
-        cladding.setUseInContext("Til beklædning af skur 1 på 2");
+        cladding.setUseInContext("Skur: Til beklædning af skur 1 på 2");
         bom.addToBOM(cladding);
 
         LineItem shedScrews = StorageFacade.getProduct(27);
         shedScrews.setQuantity(calcShedScrews(shedLength, shedWidth));
-        shedScrews.setUseInContext("Til montering af yderste beklædning");
+        shedScrews.setUseInContext("Skur: Til montering af yderste beklædning");
         bom.addToBOM(shedScrews);
 
         LineItem smallShedScrews = StorageFacade.getProduct(28);
         smallShedScrews.setQuantity(calcSmallShedScrews(shedLength, shedWidth));
-        smallShedScrews.setUseInContext("Til montering af inderste beklædning");
+        smallShedScrews.setUseInContext("Skur: Til montering af inderste beklædning");
         bom.addToBOM(smallShedScrews);
 
         LineItem doorKnob = StorageFacade.getProduct(29);
         doorKnob.setQuantity(1); // altid 1
-        doorKnob.setUseInContext("Til lås på dør i skur");
+        doorKnob.setUseInContext("Skur: Til lås på dør i skur");
         bom.addToBOM(doorKnob);
 
         LineItem tHinge = StorageFacade.getProduct(30);
         tHinge.setQuantity(2); // altid 2
-        tHinge.setUseInContext("Til skurdør");
+        tHinge.setUseInContext("Skur: Til skurdør");
         bom.addToBOM(tHinge);
 
         LineItem angleBrackets = StorageFacade.getProduct(31);
         angleBrackets.setQuantity(20); // altid 20
-        angleBrackets.setUseInContext("Til montering af løsholter i skur");
+        angleBrackets.setUseInContext("Skur: Til montering af løsholter i skur");
         bom.addToBOM(angleBrackets);
 
         return bom;

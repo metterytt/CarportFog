@@ -14,7 +14,6 @@ public class UpdateQuantityBom extends Command {
     String execute(HttpServletRequest request, HttpServletResponse response) throws CarportException {
         HttpSession session = request.getSession();
         BOM carportBOM = (BOM) session.getAttribute("carportbom");
-        BOM shedBOM = (BOM) session.getAttribute("shedbom");
        
         double edit = Double.parseDouble(request.getParameter("editNumber"));
         
@@ -25,14 +24,8 @@ public class UpdateQuantityBom extends Command {
                 li.setQuantity(edit);
             }
         }
-        for (LineItem li : shedBOM.getListOfProducts()) {
-            if(li.getProductID() == productid){
-                li.setQuantity(edit);
-            }
-        }
         
         session.setAttribute("carportbom", carportBOM);
-        session.setAttribute("shedbom", shedBOM);
         
         request.setAttribute("complete", "Opdatering lavet til antal!");
 
