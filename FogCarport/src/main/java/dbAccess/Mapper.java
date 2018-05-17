@@ -10,8 +10,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Mapper {
 
@@ -86,7 +89,7 @@ public class Mapper {
             dbc.setDataSource(new DataSourceFog().getDataSource());
             dbc.open();
             Connection con = dbc.getConnector();
-            String sql = "select * from customer where username=? and password=?";
+            String sql = "select * from customers where username=? and password=?";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, email);
             ps.setString(2, password);
@@ -96,8 +99,7 @@ public class Mapper {
                 String name = rs.getString("firstname");
                 String lastname = rs.getString("lastname");
                 String phonenumber = rs.getString("phonenumber");
-                String role = rs.getString("role");
-                return new Customer(ID, email, password, name, lastname, phonenumber, role);
+                return new Customer(ID, email, password, name, lastname, phonenumber);
             } else {
                 throw new CarportException("No user found.. Invalid input", "login");
             }
@@ -122,16 +124,23 @@ public class Mapper {
         }
     }
 
-    public static void registerCustomer(String username, String password) throws CarportException {
+    public static void registerCustomer(Customer customer) throws CarportException {
         try {
             dbc.setDataSource(new DataSourceFog().getDataSource());
             dbc.open();
             Connection con = dbc.getConnector();
-            String sql = "insert into customer values (null, ?, ?)";
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, username);
-            ps.setString(2, password);
+            String sql = "insert into customers (username, password, firstname, lastname, phonenumber) values (?, ?, ?, ?, ?)";
+            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setString(1, customer.getEmail());
+            ps.setString(2, customer.getPassword());
+            ps.setString(3, customer.getName());
+            ps.setString(4, customer.getLastname());
+            ps.setString(5, customer.getPassword());
             ps.executeUpdate();
+            ResultSet gk = ps.getGeneratedKeys();
+            gk.next();
+            int id = gk.getInt(1);
+            customer.setID(id);
         } catch (SQLException ex) {
             throw new CarportException("Noget gik galt, prøv igen!", "registercustomer");
         }
@@ -212,21 +221,20 @@ public class Mapper {
         return openRequests;
     }
 
-    public static void setOrdered(int orderID) throws CarportException {
-        try {
-            dbc.setDataSource(new DataSourceFog().getDataSource());
-            dbc.open();
-            Connection con = dbc.getConnector();
-            String sql = "UPDATE `carport`.`orders` SET `order_placed`='1' WHERE `orderID`=?;";
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, orderID);
-            ps.executeUpdate();
-
-        } catch (SQLException e) {
-            throw new CarportException("Error setting sent status.", "employee");
-        }
-    }
-
+//    public static void setOrdered(int orderID) throws CarportException {
+//        try {
+//            dbc.setDataSource(new DataSourceFog().getDataSource());
+//            dbc.open();
+//            Connection con = dbc.getConnector();
+//            String sql = "UPDATE `carport`.`orders` SET `order_placed`='1' WHERE `orderID`=?;";
+//            PreparedStatement ps = con.prepareStatement(sql);
+//            ps.setInt(1, orderID);
+//            ps.executeUpdate();
+//
+//        } catch (SQLException e) {
+//            throw new CarportException("Error setting sent status.", "employee");
+//        }
+//    }
     public static List<Order> getOrders() throws CarportException {
         ArrayList<Order> orders = new ArrayList<>();
         try {
@@ -312,26 +320,131 @@ public class Mapper {
             throw new CarportException("Error updating order", "employee");
         }
     }
+
     public static Customer getCustomer(int customerID) throws CarportException {
         try {
             dbc.setDataSource(new DataSourceFog().getDataSource());
             dbc.open();
             Connection con = dbc.getConnector();
-            String sql = "select * from customer where customerID=?";
+            String sql = "select * from customers where customerID=?";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, customerID);
             ResultSet rs = ps.executeQuery();
-            rs.next(); 
+            if (rs.next()) {
                 String email = rs.getString("username");
-                String password = rs.getString("password");
                 String name = rs.getString("firstname");
                 String lastname = rs.getString("lastname");
                 String phonenumber = rs.getString("phonenumber");
-                String role = rs.getString("role");
-                return new Customer(customerID, email, "", name, lastname, phonenumber, role);
+                return new Customer(customerID, email, name, lastname, phonenumber);
+            } else {
+                throw new CarportException("Kunne ikke finde kunden", "ordermanagement");
+            }
         } catch (SQLException ex) {
-            throw new CarportException("something went wrong trying to login", "login");
+            throw new CarportException("Noget gik galt.. Prøv igen", "ordermanagement");
         }
     }
 
+    public static List<Order> getCustomerOrders(int customerID) throws CarportException {
+        try {
+            dbc.setDataSource(new DataSourceFog().getDataSource());
+            dbc.open();
+            Connection con = dbc.getConnector();
+            String sql = "select * from orders where customer=?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, customerID);
+            ResultSet rs = ps.executeQuery();
+            List<Order> orders = new ArrayList();
+            while (rs.next()) {
+                int orderID = rs.getInt(1);
+                int length = rs.getInt(3);
+                int width = rs.getInt(4);
+                int shedLength = rs.getInt(5);
+                int shedWidth = rs.getInt(6);
+                int angle = rs.getInt(7);
+                int price = rs.getInt(8);
+                Boolean placed = rs.getBoolean(10);
+                orders.add(new Order(orderID, length, width, angle, shedLength, shedWidth, price, placed));
+            }
+            return orders;
+        } catch (SQLException ex) {
+            throw new CarportException("Noget gik galt.. Prøv igen", "customer");
+        }
+    }
+    
+    // sætter ordren til bestilt og gemmer bom i lineitems tabel
+    public static void addBomToOrder(List<LineItem> listToBeSaved, int orderID) throws CarportException {
+        try {
+            dbc.setDataSource(new DataSourceFog().getDataSource());
+            dbc.open();
+            Connection con = dbc.getConnector();
+            con.setAutoCommit(false);
+            String setOrdered = "UPDATE `carport`.`orders` SET `order_placed`='1' WHERE `orderID`=?;";
+            String addLineItem = "INSERT INTO lineitems (orderID, products_productID, use_in, uom, price, quantity)"
+                    + " values (?, ?, ?, ?, ?, ?)";
+            for (LineItem li : listToBeSaved) {
+                PreparedStatement psSet = con.prepareStatement(setOrdered);
+                PreparedStatement psAdd = con.prepareStatement(addLineItem);
+
+                psSet.setInt(1, orderID);
+                psAdd.setInt(1, orderID);
+                psAdd.setInt(2, li.getProductID());
+                psAdd.setString(3, (li.getUseInContext() == null) ? "" : li.getUseInContext());
+                psAdd.setString(4, li.getUom());
+                psAdd.setDouble(5, li.getPricePerUnit());
+                psAdd.setDouble(6, li.getQuantity());
+                psAdd.executeUpdate();
+                psSet.executeUpdate();
+            }
+            con.commit();
+            con.setAutoCommit(true);
+        } catch (SQLException ex) {
+            throw new CarportException("Fejl ved lagring af stykliste", "employee");
+        }
+    }
+    
+    public static List<LineItem> getFinalBom (int orderID) throws CarportException {
+        try {
+            dbc.setDataSource(new DataSourceFog().getDataSource());
+            dbc.open();
+            Connection con = dbc.getConnector();
+            String sql = "select lineitems.products_productID, lineitems.quantity, products.name, products.uom, products.price"
+                    + " from lineitems inner join products on lineitems.products_productID = products.productID where lineitems.orderID=?;";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, orderID);
+            ResultSet rs = ps.executeQuery();
+            List<LineItem> finalBom = new ArrayList();
+            while (rs.next()) {
+                int productID = rs.getInt(1);
+                double quantity = rs.getDouble(2);
+                String name = rs.getString(3);
+                String uom = rs.getString(4);
+                int pricePerUnit = rs.getInt(5);
+                LineItem li = new LineItem(productID, name, uom, pricePerUnit);
+                
+                li.setQuantity(quantity);
+                finalBom.add(li);
+            }
+            return finalBom;
+        } catch (SQLException ex) {
+            throw new CarportException("Noget gik galt.. Prøv igen", "customer");
+        }
+    }
+
+    public static void updateTotalPrice(int price, int orderID) throws CarportException {
+        try {
+            dbc.setDataSource(new DataSourceFog().getDataSource());
+            dbc.open();
+            Connection con = dbc.getConnector();
+            String sql = "update orders SET price = ? WHERE orderID = ?;";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, price);
+            ps.setInt(2, orderID);
+            ps.executeUpdate();
+        }
+        catch (SQLException ex) {
+            throw new CarportException("Noget gik galt, da du prøvede at opdatere totalprisen", "ordermanagement");
+//            Logger.getLogger(Mapper.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
 }

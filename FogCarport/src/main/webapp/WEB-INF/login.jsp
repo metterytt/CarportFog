@@ -51,19 +51,18 @@
                             <label for="password">Password:</label>
                             <input type="password" class="form-control" id="Password" name="password" value="test">
                         </div>
-                        <br>
                         <input type="submit" class="btn btn-primary" value="Login"/><br>
                     </form>
                     <%}
-                else { %>
+                    else { %>
                     <h1 class="display-4">Login as Customer</h1>
                     <form action="FrontController" method="post">
                         <input type="hidden" name="command" value="login">
                         <input type="hidden" name="loginCustomer">
                         <% String error = (String) request.getAttribute("error");
                             if (error != null) {%>
-                        <p> <%=error%>
-                            <%}%> </p>
+                        <p> <div class="p-2 bg-danger text-black col-md-7 text-center">${error}</div><br>          </p>
+                        <%}%> 
                         <div class="form-group">
                             <label for="username">Username:</label>
                             <input type="email" class="form-control" id="username" name="username" value="lars@lars.dk">
@@ -72,10 +71,12 @@
                             <label for="password">Password:</label>
                             <input type="password" class="form-control" id="Password" name="password" value="123">
                         </div>
-                        <br>
-                        
-                       
-                    <input type="submit" class="btn btn-primary" value="Login"/><br>
+                        <input type="submit" class="btn btn-primary" value="Login"/>
+                    </form>
+                    <br>
+                    <form action="FrontController" method="post">
+                        <input type="hidden" name="command" value="registercustomer">
+                        <input type="submit" class="btn btn-primary" value="Opret profil"/>
                     </form>
 
                     <%}%>

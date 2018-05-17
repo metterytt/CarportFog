@@ -1,14 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package functionLayer;
 
-/**
- *
- * @author mette
- */
 public class DrawingMeasures {
 
     private int length;
@@ -17,10 +8,10 @@ public class DrawingMeasures {
     private int shedLength = 0;
     private int shedWidth = 0;
     private int height = 210;
-//    private String shedPos = "left";
     private double rafterGap;
     private int rafterQty;
     private int posts;
+    private double gableHeight;
 
     public DrawingMeasures(int length, int width, int angle, int shedLength, int shedWidth) {
         this.length = length;
@@ -28,12 +19,10 @@ public class DrawingMeasures {
         this.angle = angle;
         this.shedLength = shedLength;
         this.shedWidth = shedWidth;
-//        if (shedPos != null) {
-//            this.shedPos = shedPos;
-//        }
         rafterQty = calcRafterQty();
         rafterGap = calcRafterGap();
         posts = calcPosts();
+        if (angle != 0) gableHeight = calcGableHeight(angle);
     }
 
     public double getRafterGap() {
@@ -59,14 +48,6 @@ public class DrawingMeasures {
     public void setPosts(int posts) {
         this.posts = posts;
     }
-
-//    public String getShedPos() {
-//        return shedPos;
-//    }
-//
-//    public void setShedPos(String shedPos) {
-//        this.shedPos = shedPos;
-//    }
 
     public int getLength() {
         return length;
@@ -116,6 +97,14 @@ public class DrawingMeasures {
         this.height = height;
     }
 
+    public double getGableHeight() {
+        return gableHeight;
+    }
+
+    public void setGableHeight(double gableHeight) {
+        this.gableHeight = gableHeight;
+    }
+    
     private double calcRafterGap() {
         return (length - 15) / (rafterQty - 1);
     }
@@ -137,6 +126,11 @@ public class DrawingMeasures {
         } else {
             return 6;
         }
+    }
+
+    private double calcGableHeight(int angle) {
+        double calcAngle = Math.toRadians(angle);
+        return (width / 2) * Math.tan(calcAngle);
     }
 
 }

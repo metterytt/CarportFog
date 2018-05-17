@@ -30,10 +30,10 @@
             <div class="row">
                 <div class="col-md-6">
                     <h1 class="display-4">Velkommen til Carport beregner.</h1>
-                    
+
                     <h4>${message}</h4>
                     <br>
-                    
+
                     <p>Her kan du indtaste de ønskede mål på din carport.</p>
                     <div class="form-group">
 
@@ -97,38 +97,20 @@
                                     <% shedwidthInput += 30;
                                         }%>
                                 </select>
-
-
-
-                                <p> Højre eller venstre siddende skur? </p>
-                                <p> Midten = Hele carportens bredde </p>
-                                <input type="radio" name="shedPos" value="right">Højre
-                                <input type="radio" name="shedPos" value="middle" checked>Midten
-                                <input type="radio" name="shedPos" value="left">Venstre
                             </div>
-                            <br>
-                            <input type="submit" class="btn btn-primary" value="Beregn carport">
+
+                            <br> 
+                            <input type="submit" class="btn btn-primary" value="Beregn carport">  
                         </form>
 
+                        <% String error = (String) request.getAttribute("error");
+                                if (error != null) {%>
+                        <p> Error! </p>
+                        <p> <%=error%>
+                            <%}%> </p>
+
                     </div>
-
-                    <% String error = (String) request.getAttribute("error");
-                        if (error != null) {%>
-                    <p> Error! </p>
-                    <p> <%=error%>
-                        <%}%> </p>
-
                 </div>
-<%--
-                <%if (request.getAttribute("drawingmeasures") != null) {%>
-                <div class="col-md-6">
-
-                    <%@ include file="/WEB-INF/Include/bom.jspf" %> 
-
-                </div>
-                <%}%>
---%>
             </div>
-        </div>
     </body>
 </html>

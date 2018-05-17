@@ -26,6 +26,17 @@ public class Order {
         this.placed = placed;
     }
 
+    public Order(int OrderID, int length, int width, int angle, int shedLength, int shedWidth, int price, boolean placed) {
+        this.orderID = OrderID;
+        this.length = length;
+        this.width = width;
+        this.angle = angle;
+        this.shedLength = shedLength;
+        this.shedWidth = shedWidth;
+        this.price = price;
+        this.placed = placed;
+    }
+    
     public int getOrderID() {
         return orderID;
     }

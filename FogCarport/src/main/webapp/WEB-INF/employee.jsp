@@ -16,7 +16,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-        <title>JSP Page</title>
+        <title>Profile page</title>
     </head>
     <body>
         <%@ include file="/WEB-INF/Include/Navbar.jspf" %>
@@ -29,12 +29,9 @@
 
                     <h2 class="display-4">Velkommen <%= emp.getUsername()%> til medarbejdersiden.</h2>
                     <br>
-                    ${message}
-
-                    <% if (request.getAttribute("complete") != null) {
-                    %>
-                    <p> EDIT WAS MADE </p>
-                    <%} %>
+                    <%if(request.getAttribute("complete") != null){ %>
+                    <div class="p-2 bg-success text-black col-md-7 text-center">${complete}</div><br>
+                    <%}%>
                     <% if (emp.getRole().equals("IT")) { %>
                     <% if (request.getAttribute("allEmp") == null) { %>
                     <form action="FrontController" method="post">
@@ -62,27 +59,25 @@
 
                         <% String error = (String) request.getAttribute("error");
                             if (error != null) {%>
-                        <p> <%=error%>
+                        <p class="text-danger"> <%=error%>
                             <%}%> </p>
+
                         <input type="submit" class="btn btn-primary" value="Slet bruger">
                     </form>
                     <%}%>
-                    <form action="FrontController" method="post">
+                    <br><form action="FrontController" method="post">
                         <input type="hidden" name="command" value="registeremployee">
-                        <br/>
                         <input type="submit" class="btn btn-primary" value="Registrer ny medarbejder">
                     </form>
                     <%}%>
-                    <form action="FrontController" method="post">
+                    <br><form action="FrontController" method="post">
                         <input type="hidden" name="command" value="allcalculations">
-                        <br/>
                         <input type="submit" class="btn btn-primary" value="Se alle indtastede beregninger">
                     </form>
 
-                    <form action="FrontController" method="post">
+                    <br><form action="FrontController" method="post">
                         <input type="hidden" name="command" value="allrequests">
                         <input type="hidden" name="showrequests">
-                            <br>
                         <input type="submit" class="btn btn-primary" value="Se alle åbne forespørgsler">
                     </form>
                 </div>
