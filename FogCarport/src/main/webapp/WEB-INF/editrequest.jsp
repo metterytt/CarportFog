@@ -1,4 +1,5 @@
 
+<%@page import="functionLayer.BOM"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -11,12 +12,13 @@
     <body>
         <%@ include file="/WEB-INF/Include/Navbar.jspf" %>
         <%
-            int orderID = (int) request.getAttribute("orderid");
-            int carlength = (int) request.getAttribute("length");
-            int carwidth = (int) request.getAttribute("width");
-            int angle = (int) request.getAttribute("angle");
-            int shedLength = (int) request.getAttribute("shedlength");
-            int shedWidth = (int) request.getAttribute("shedwidth");%>
+            BOM carportBOM = (BOM) session.getAttribute("carportbom");
+            int orderID = carportBOM.getOrderID();
+            int carlength = carportBOM.getLength();
+            int carwidth = carportBOM.getWidth();
+            int angle = carportBOM.getAngle();
+            int shedLength = carportBOM.getShedLength();
+            int shedWidth = carportBOM.getShedWidth();  %>
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-6">

@@ -41,13 +41,10 @@ public class EditRequest extends Command {
             int length = Integer.parseInt(request.getParameter("length"));
             int width = Integer.parseInt(request.getParameter("width"));
             int angle = Integer.parseInt(request.getParameter("angle"));
-            if (request.getParameter("shedlength") != null) {
-                shedLength = Integer.parseInt(request.getParameter("shedlength"));
-                shedWidth = Integer.parseInt(request.getParameter("shedwidth"));
-            }
+               shedLength = Integer.parseInt(request.getParameter("shedlength"));
+               shedWidth = Integer.parseInt(request.getParameter("shedwidth"));
             CarportCalculator carportCalculator;
             BOM carportBom;
-            BOM shedBom = null;
 
             if (angle == 0) {
                 carportCalculator = new FlatRoofCalculator(length, width, shedLength, shedWidth);
@@ -56,14 +53,6 @@ public class EditRequest extends Command {
             }
             carportBom = carportCalculator.getBom();
 
-//            if (shedWidth != 0 && shedLength != 0) {
-//                CarportCalculator shedCalculator = new ShedCalculator(shedLength, shedWidth);
-//                shedBom = shedCalculator.getBom();
-//            }
-//            int shedPrice = 0;
-//            if (shedBom != null) {
-//                shedPrice = shedBom.totalPrice();
-//            }
             int price = carportBom.totalPrice();// + shedPrice;
 
             StorageFacade.editRequest(orderID, length, width, angle, shedLength, shedWidth, price);
