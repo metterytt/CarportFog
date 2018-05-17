@@ -27,6 +27,9 @@ public class ViewBom extends Command {
         int shedLength = Integer.parseInt(request.getParameter("shedlength"));
         int shedWidth = Integer.parseInt(request.getParameter("shedwidth"));
         
+        //Used for viewing/updating the total price
+        int totalPrice = Integer.parseInt(request.getParameter("price"));
+        request.setAttribute("totalprice", totalPrice);
         
         CarportCalculator carportCalculator;
         

@@ -76,4 +76,8 @@ public class StorageFacade {
     public static List<Order> getCustomerOrders(int customerID) throws CarportException {
         return Mapper.getCustomerOrders(customerID);
     }
+    
+    public static void updateTotalPrice(int price, int orderID) throws CarportException {
+        Mapper.updateTotalPrice(price, orderID);
+    }
 }
