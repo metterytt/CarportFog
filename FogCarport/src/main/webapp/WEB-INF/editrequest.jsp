@@ -82,7 +82,6 @@
                         <br>
                         <br>
 
-                        <%if (shedLength != 0) {%>
                         <label for="shedlength">Længde i CM :</label><br>
                         <select class="custom-select" name="shedlength">
                             <option selected="selected"> <%=shedLength%> </option>
@@ -111,7 +110,6 @@
                                     shedwidthForSalesman += 30;
                                 }%>
                         </select>
-                        <%}%>
                         <input type="submit" class="btn btn-primary" value="Edit Order!"/><br><br>
                     </form>
                 </div>

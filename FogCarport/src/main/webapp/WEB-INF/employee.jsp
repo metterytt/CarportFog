@@ -29,6 +29,10 @@
 
                     <h2 class="display-4">Velkommen <%= emp.getUsername()%> til medarbejdersiden.</h2>
                     <br>
+                   
+                    <% if(request.getAttribute("error") != null){ %>
+                    <div class="p-2 bg-danger text-black col-md-7 text-center">${error}</div><br>
+                    <%}%>
                     <% if(request.getAttribute("complete") != null){ %>
                     <div class="p-2 bg-success text-black col-md-7 text-center">${complete}</div><br>
                     <%}%>
