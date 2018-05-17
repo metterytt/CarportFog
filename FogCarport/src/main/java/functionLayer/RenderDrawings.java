@@ -17,7 +17,7 @@ public class RenderDrawings {
         }
         int startingLength = dm.getLength() - 10;
         StringBuilder sb = new StringBuilder();
-        sb.append("<svg height=\"100%\" viewbox=\"0 0 ").append(dm.getWidth() + 150).append(" ").append(dm.getLength() + 60).append("\">");
+        sb.append("<svg class=\"col-md-6\" height=\"100%\" viewbox=\"0 0 ").append(dm.getWidth() + 150).append(" ").append(dm.getLength() + 60).append("\">");
         // remme
 
         sb.append("<line x1=\"").append(dm.getWidth() - 15).append("\" y1=\"0\" x2=\"").append(dm.getWidth() - 15).append("\" y2=\"").append(dm.getLength()).append("\" stroke=\"black\" stroke-width=\"12\" stroke-opacity = \"0.5\"/>");
@@ -89,7 +89,7 @@ public class RenderDrawings {
             return "---Ingen tegning---";
         }
         StringBuilder sb = new StringBuilder();
-        sb.append("<svg height=\"100%\" viewbox=\"0 -100 ").append(dm.getWidth() * 2.8).append(" ").append(dm.getLength()).append("\">");
+        sb.append("<svg height=\"100%\" viewbox=\"0 -100 ").append(dm.getWidth() * 2.8).append(" ").append(dm.getLength() * 1.2).append("\">");
 
         // stiplet linie til jorden
         sb.append("<line x1=\"0\" y1=\"").append(dm.getHeight() + 10).append("\" x2=\"").append(dm.getLength() * 1.30).append("\" y2=\"").append(dm.getHeight() + 10).append("\" stroke=\"black\" stroke-width=\"2\" stroke-dasharray=\"5 5\"/>");
@@ -203,7 +203,7 @@ public class RenderDrawings {
         }
         StringBuilder sb = new StringBuilder();
 
-        sb.append("<svg height=\"100%\" viewbox=\"0 -160 ").append(dm.getWidth() + 150).append(" ").append(dm.getLength() + 60).append("\">");
+        sb.append("<svg class=\"col-md-6\" height=\"100%\" viewbox=\"0 -160 ").append(dm.getWidth() + 150).append(" ").append(dm.getLength() + 60).append("\">");
 
         //stolper
         sb.append("<rect x=\"30\" y=\"0\" width=\"10\" height=\"").append(dm.getHeight()).append("\" fill=\"snow\" stroke=\"black\" stroke-width=\"1\"/>");
