@@ -374,29 +374,30 @@ public class Mapper {
     // sætter ordren til bestilt og gemmer bom i lineitems tabel
     public static void addBomToOrder(List<LineItem> listToBeSaved, int orderID) throws CarportException {
         try {
+           
             dbc.setDataSource(new DataSourceFog().getDataSource());
             dbc.open();
             Connection con = dbc.getConnector();
-            con.setAutoCommit(false);
-            String setOrdered = "UPDATE `carport`.`orders` SET `order_placed`='1' WHERE `orderID`=?;";
-            String addLineItem = "INSERT INTO lineitems (orderID, products_productID, use_in, uom, price, quantity)"
-                    + " values (?, ?, ?, ?, ?, ?)";
+//            con.setAutoCommit(false);
+            
+//            String setOrdered = "UPDATE `carport`.`orders` SET `order_placed`='1' WHERE `orderID`=?";
+//            PreparedStatement psUpdate = con.prepareStatement(setOrdered);
+//            
+//            psUpdate.setInt(1, orderID);
+//            psUpdate.executeUpdate();
+            
+            String addLineItem = "INSERT INTO lineitems (orderID, products_productID, use_in, uom, price, quantity) values (?, ?, ?, ?, ?, ?)";
+            PreparedStatement insert = con.prepareStatement(addLineItem);
             for (LineItem li : listToBeSaved) {
-                PreparedStatement psSet = con.prepareStatement(setOrdered);
-                PreparedStatement psAdd = con.prepareStatement(addLineItem);
-
-                psSet.setInt(1, orderID);
-                psAdd.setInt(1, orderID);
-                psAdd.setInt(2, li.getProductID());
-                psAdd.setString(3, (li.getUseInContext() == null) ? "" : li.getUseInContext());
-                psAdd.setString(4, li.getUom());
-                psAdd.setDouble(5, li.getPricePerUnit());
-                psAdd.setDouble(6, li.getQuantity());
-                psAdd.executeUpdate();
-                psSet.executeUpdate();
+                insert.setInt(1, orderID);
+                insert.setInt(2, li.getProductID());
+                insert.setString(3, li.getUseInContext());
+                insert.setString(4, li.getUom());
+                insert.setDouble(5, li.getPricePerUnit());
+                insert.setDouble(6, li.getQuantity());
+                insert.executeUpdate();
             }
-            con.commit();
-            con.setAutoCommit(true);
+            dbc.close();
         } catch (SQLException ex) {
             throw new CarportException("Fejl ved lagring af stykliste", "employee");
         }
