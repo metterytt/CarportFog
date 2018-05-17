@@ -34,11 +34,7 @@
                 <div class="col-md-12">
 
                     <%
-                        int orderID = (int) request.getAttribute("orderID");
                         int customerID = (int) request.getAttribute("customerID");
-                        int length = (int) request.getAttribute("length");
-                        int width = (int) request.getAttribute("width");
-                        int angle = (int) request.getAttribute("angle");
                         int shedLength = (int) request.getAttribute("shedLength");
                         int shedWidth = (int) request.getAttribute("shedWidth");
                         //Used for viewing/updating the total price

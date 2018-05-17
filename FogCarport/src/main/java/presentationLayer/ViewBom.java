@@ -58,11 +58,7 @@ public class ViewBom extends Command {
 //            request.setAttribute("shedbom", shedBom);
         }
 
-        request.setAttribute("orderID", orderID);
         request.setAttribute("customerID", customerID);
-        request.setAttribute("length", length);
-        request.setAttribute("width", width);
-        request.setAttribute("angle", angle);
         request.setAttribute("shedLength", shedLength);
         request.setAttribute("shedWidth", shedWidth);
 
