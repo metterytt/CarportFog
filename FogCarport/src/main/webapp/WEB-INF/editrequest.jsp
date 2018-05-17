@@ -34,12 +34,12 @@
 
                             <%
                                 int length = 270;
-                                for (int idx = 1; idx <= 18; idx++) {
-                    if (length != carlength) {%> 
+                                for (int i = 1; i <= 18; i++) {
+                                    if (length != carlength) {%> 
                             <option> <%=length%> </option> 
                             <%}
-                    length += 30;
-                }%>
+                                    length += 30;
+                                }%>
                         </select>
 
                         <label for="length">Bredde i CM:</label><br>
@@ -47,12 +47,12 @@
                             <option selected="selected"> <%=carwidth%> </option>
                             <%
                                 int width = 270;
-                                for (int idx = 1; idx <= 17; idx++) {
-                    if (carwidth != width) {%> 
+                                for (int i = 1; i <= 17; i++) {
+                                    if (carwidth != width) {%> 
                             <option> <%=width%> </option> 
                             <%}
-                    width += 30;
-                }%>
+                                    width += 30;
+                                }%>
                         </select>
 
                         <br> <label for="angle">Hvis tagrejsning ønskes, indtast vinkel på tag:</label>
@@ -61,22 +61,20 @@
 
                             <%
                                 int angleForSalesman = 0;
-                                for (int idx = 1; idx <= 10; idx++) {
-                                    if (idx == 1 && angle != 0) {
+                                for (int i = 1; i <= 10; i++) {
+                                    if (i == 1 && angle != 0) {
                             %> <option value="0">Ingen tagrejsning</option>     
-                            <%}
-                            else if (idx == 1 && angle == 0) {
-                                ++idx;
-                            }
-                            else if (angleForSalesman != angle) {%>
+                            <%} else if (i == 1 && angle == 0) {
+                                ++i;
+                            } else if (angleForSalesman != angle) {%>
 
                             <option value="<%=angleForSalesman%>"> <%=angleForSalesman%>°</option>
                             <%
 
                                     }
                                     angleForSalesman += 10;
-                    ++idx;
-                }%>
+                                    ++i;
+                                }%>
                         </select>
 
                         <br>
@@ -90,8 +88,8 @@
 
                             <%
                                 int shedlengthForSalesman = 210;
-                                for (int idx = 1; idx <= 18; idx++) {
-                    if (shedLength != shedlengthForSalesman) {%> 
+                                for (int i = 1; i <= 18; i++) {
+                                    if (shedLength != shedlengthForSalesman) {%> 
                             <option> <%=shedlengthForSalesman%> </option> 
                             <%}
                                     shedlengthForSalesman += 30;
@@ -104,8 +102,8 @@
                             <option> 0 </option>
                             <%
                                 int shedwidthForSalesman = 150;
-                                for (int idx = 1; idx <= 19; idx++) {
-                    if (shedwidthForSalesman != shedWidth) {%> 
+                                for (int i = 1; i <= 19; i++) {
+                                    if (shedwidthForSalesman != shedWidth) {%> 
                             <option> <%=shedwidthForSalesman%> </option> 
                             <% }
                                     shedwidthForSalesman += 30;
