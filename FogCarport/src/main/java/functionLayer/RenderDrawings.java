@@ -89,7 +89,7 @@ public class RenderDrawings {
         }
         StringBuilder sb = new StringBuilder();
 //        sb.append("<svg width=\"1000\" height=\"1000\" viewbox=\"0 -100 ").append(dm.getWidth() * 3).append(" ").append(dm.getLength() * 2).append("\">"); 
-        sb.append("<svg height=\"100%\" viewbox=\"0 -100 ").append(dm.getWidth() * 2.5).append(" ").append(dm.getLength()).append("\">");
+        sb.append("<svg height=\"100%\" viewbox=\"0 -100 ").append(dm.getWidth() * 2.8).append(" ").append(dm.getLength()).append("\">");
 
         // stiplet linie til jorden
         sb.append("<line x1=\"0\" y1=\"").append(dm.getHeight() + 10).append("\" x2=\"").append(dm.getLength() * 1.30).append("\" y2=\"").append(dm.getHeight() + 10).append("\" stroke=\"black\" stroke-width=\"2\" stroke-dasharray=\"5 5\"/>");
@@ -138,10 +138,12 @@ public class RenderDrawings {
             if (dm.getShedLength() != 0) {
                 if (dm.getLength() < 600) {
 //                    sb.append("<polygon points=\"").append(dm.getLength() - dm.getShedLength() - 40).append(",24 ").append(dm.getLength() - 40).append(",29 ").append(dm.getLength() - 40).append(",").append(dm.getHeight() + 10).append(" ").append(dm.getLength() - dm.getShedLength() - 40).append(",").append(dm.getHeight() + 10).append("\"");
-                    sb.append("<polygon points=\"").append((dm.getLength() * 0.85) - dm.getShedLength()).append(",24 ").append(dm.getLength() - 40).append(",29 ").append(dm.getLength() - 40).append(",").append(dm.getHeight() + 10).append(" ").append((dm.getLength() * 0.85) - dm.getShedLength()).append(",").append(dm.getHeight() + 10).append("\"");
+//                    sb.append("<polygon points=\"").append((dm.getLength() * 0.85) - dm.getShedLength()).append(",24 ").append(dm.getLength() - 40).append(",29 ").append(dm.getLength() - 40).append(",").append(dm.getHeight() + 10).append(" ").append((dm.getLength() * 0.85) - dm.getShedLength()).append(",").append(dm.getHeight() + 10).append("\"");
+                    sb.append("<polygon points=\"").append((dm.getLength() * 0.85)).append(",29 ").append(dm.getLength() * 0.85 - dm.getShedLength()).append(",24 ").append(dm.getLength() * 0.85 - dm.getShedLength()).append(",").append(dm.getHeight() + 10).append(" ").append((dm.getLength() * 0.85)).append(",").append(dm.getHeight() + 10).append("\"");
                 } else {
 //                    sb.append("<polygon points=\"").append(dm.getLength() - dm.getShedLength() - 40).append(",24 ").append(dm.getLength() - 40).append(",26 ").append(dm.getLength() - 40).append(",").append(dm.getHeight() + 10).append(" ").append(dm.getLength() - dm.getShedLength() - 40).append(",").append(dm.getHeight() + 10).append("\"");
-                    sb.append("<polygon points=\"").append((dm.getLength() * 0.85) - dm.getShedLength()).append(",24 ").append(dm.getLength() - 40).append(",26 ").append(dm.getLength() - 40).append(",").append(dm.getHeight() + 10).append(" ").append((dm.getLength() * 0.85) - dm.getShedLength()).append(",").append(dm.getHeight() + 10).append("\"");
+//                    sb.append("<polygon points=\"").append((dm.getLength() * 0.85) - dm.getShedLength()).append(",24 ").append(dm.getLength() - 40).append(",26 ").append(dm.getLength() - 40).append(",").append(dm.getHeight() + 10).append(" ").append((dm.getLength() * 0.85) - dm.getShedLength()).append(",").append(dm.getHeight() + 10).append("\"");
+                    sb.append("<polygon points=\"").append((dm.getLength() * 0.85)).append(",25 ").append(dm.getLength() * 0.85 - dm.getShedLength()).append(",22 ").append(dm.getLength() * 0.85 - dm.getShedLength()).append(",").append(dm.getHeight() + 10).append(" ").append((dm.getLength() * 0.85)).append(",").append(dm.getHeight() + 10).append("\"");
                 }
                 sb.append("fill=\"url(#patternSkur)\" stroke=\"black\"/>");
             }
@@ -190,7 +192,7 @@ public class RenderDrawings {
             sb.append("<rect x=\"31\" y=\"-60 \"width=\"").append(dm.getLength() - 42).append("\" height=\"61\"");
             sb.append("fill=\"url(#pattern)\"stroke=\"none\"stroke-width=\"2px\" />");
             if (dm.getShedLength() != 0) {
-                sb.append("<polygon points=\"").append(dm.getLength() - dm.getShedLength() - 40).append(",22 ").append(dm.getLength() - 40).append(",22 ").append(dm.getLength() - 40).append(",").append(dm.getHeight() + 10).append(" ").append(dm.getLength() - dm.getShedLength() - 40).append(",").append(dm.getHeight() + 10).append("\"");
+                    sb.append("<polygon points=\"").append((dm.getLength() * 0.85)).append(",22 ").append(dm.getLength() * 0.85 - dm.getShedLength()).append(",22 ").append(dm.getLength() * 0.85 - dm.getShedLength()).append(",").append(dm.getHeight() + 10).append(" ").append((dm.getLength() * 0.85)).append(",").append(dm.getHeight() + 10).append("\"");
                 sb.append("fill=\"url(#patternSkur)\" stroke=\"black\"/>");
             }
             sb.append("</svg>");
