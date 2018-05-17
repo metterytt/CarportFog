@@ -3,6 +3,7 @@ package functionLayer;
 import functionLayer.entity.CustomerCalculation;
 import functionLayer.entity.LineItem;
 import functionLayer.entity.Order;
+import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.util.List;
 
@@ -103,7 +104,6 @@ public class RenderTables {
         return sb.toString();
     }
 
-
     public static String getListOfProducts(List<LineItem> bom) {
         if (bom == null) {
             return "---Ingenting på styklisten---";
@@ -117,10 +117,20 @@ public class RenderTables {
         sb.append("</tr></thead><tbody>\n");
         DecimalFormat formatter = new DecimalFormat("###,##0.00");
         for (LineItem li : bom) {
+           
+           double quantity = li.getQuantity();
+           
             sb.append("<tr>");
             sb.append("<td>").append(li.getName()).append("</td>");
             sb.append("<td>").append(li.getUseInContext()).append("</td>");
-            sb.append("<td style=\"text-align:right\">").append(formatter.format(li.getQuantity())).append("</td>");
+            sb.append("<td>");
+            sb.append("<form action=\"FrontController\" method=\"post\">");
+            sb.append("<input type=\"hidden\" name=\"command\" value=\"updateQuantityBom\">");
+            sb.append("<input type=\"number\" name=\"editNumber\" value=\"").append(quantity).append("\">");
+            sb.append("<input type=\"hidden\" name=\"editName\" value=\"").append(li.getName()).append("\">");
+            sb.append("<input type=\"submit\" class=\"btn btn-primary\" value=\"Opdater Antal\">");
+            sb.append("</form>");
+            sb.append("</td>");
             sb.append("<td style=\"text-align:right\">").append(li.getUom()).append("</td>");
             sb.append("<td style=\"text-align:right\">").append(formatter.format(li.getPricePerUnit())).append("</td>");
             sb.append("<td style=\"text-align:right\">").append(formatter.format(li.getPricePerUnit() * li.getQuantity())).append("</td>");
@@ -206,14 +216,12 @@ public class RenderTables {
 
         return sb.toString();
     }
-    
-    
-    public static String getFinalBom (List<LineItem> finalBom){
-        if (finalBom == null ||finalBom.isEmpty()) {
+
+    public static String getFinalBom(List<LineItem> finalBom) {
+        if (finalBom == null || finalBom.isEmpty()) {
             return "---Ingenting på styklisten---";
         }
         StringBuilder sb = new StringBuilder();
-
 
         sb.append("<table class=\"table table-striped\">\n"
                 + "<thead><tr><th>Produktnavn</th><th style=\"text-align:right\">"
@@ -232,9 +240,7 @@ public class RenderTables {
         sb.append("</tbody>");
         sb.append("</table>\n");
         return sb.toString();
-        
-        
+
     }
-    
-    
+
 }
