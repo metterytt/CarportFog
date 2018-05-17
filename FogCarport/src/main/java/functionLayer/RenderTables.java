@@ -127,7 +127,7 @@ public class RenderTables {
             sb.append("<form action=\"FrontController\" method=\"post\">");
             sb.append("<input type=\"hidden\" name=\"command\" value=\"updateQuantityBom\">");
             sb.append("<input type=\"number\" name=\"editNumber\" value=\"").append(quantity).append("\">");
-            sb.append("<input type=\"hidden\" name=\"editName\" value=\"").append(li.getName()).append("\">");
+            sb.append("<input type=\"hidden\" name=\"productID\" value=\"").append(li.getProductID()).append("\">");
             sb.append("<input type=\"submit\" class=\"btn btn-primary\" value=\"Opdater Antal\">");
             sb.append("</form>");
             sb.append("</td>");
