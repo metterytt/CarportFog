@@ -85,7 +85,7 @@ public class RenderTables {
             // så formen
             sb.append("<th>");
             sb.append("<form action=\"FrontController\" method=\"post\">");
-            sb.append("<input type=\"hidden\" name=\"command\" value=\"viewbom\">");
+            sb.append("<input type=\"hidden\" name=\"command\" value=\"viewfinalbom\">");
             sb.append("<input type=\"hidden\" name=\"orderID\" value=\"").append(o.getOrderID()).append("\"/>");
             sb.append("<input type=\"hidden\" name=\"customerID\" value=\"").append(o.getCustomer()).append("\"/>");
             sb.append("<input type=\"hidden\" name=\"length\" value=\"").append(o.getLength()).append("\"/>");
@@ -228,4 +228,35 @@ public class RenderTables {
 
         return sb.toString();
     }
+    
+    
+    public static String getFinalBom (List<LineItem> finalBom){
+        if (finalBom == null ||finalBom.isEmpty()) {
+            return "---Ingenting på styklisten---";
+        }
+        StringBuilder sb = new StringBuilder();
+
+
+        sb.append("<table class=\"table table-striped\">\n"
+                + "<thead><tr><th>Produktnavn</th><th style=\"text-align:right\">"
+                + "Antal</th><th style=\"text-align:right\">Enhed</th>"
+                + "<th style=\"text-align:right\">Pris</th>");
+        sb.append("</tr></thead><tbody>\n");
+        DecimalFormat formatter = new DecimalFormat("###,##0.00");
+        for (LineItem li : finalBom) {
+            sb.append("<tr>");
+            sb.append("<td>").append(li.getName()).append("</td>");
+            sb.append("<td style=\"text-align:right\">").append(formatter.format(li.getQuantity())).append("</td>");
+            sb.append("<td style=\"text-align:right\">").append(li.getUom()).append("</td>");
+            sb.append("<td style=\"text-align:right\">").append(formatter.format(li.getPricePerUnit())).append("</td>");
+            sb.append("</tr>\n");
+        }
+        sb.append("</tbody>");
+        sb.append("</table>\n");
+        return sb.toString();
+        
+        
+    }
+    
+    
 }

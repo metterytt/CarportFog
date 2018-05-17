@@ -48,9 +48,9 @@ public class StorageFacade {
         return Mapper.getOpenRequests();
     }
 
-    public static void setOrdered(int orderID) throws CarportException {
-        Mapper.setOrdered(orderID);
-    }
+//    public static void setOrdered(int orderID) throws CarportException {
+//        Mapper.setOrdered(orderID);
+//    }
 
     public static List<Order> getOrders() throws CarportException {
         return Mapper.getOrders();
@@ -79,5 +79,13 @@ public class StorageFacade {
     
     public static void updateTotalPrice(int price, int orderID) throws CarportException {
         Mapper.updateTotalPrice(price, orderID);
+    }
+    
+    public static void addBomToOrder(List<LineItem> listToBeSaved, int orderID) throws CarportException {
+        Mapper.addBomToOrder(listToBeSaved, orderID);
+    }
+    
+    public static List<LineItem> getFinalBom(int orderID) throws CarportException{
+        return Mapper.getFinalBom(orderID);
     }
 }
