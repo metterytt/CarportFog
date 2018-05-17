@@ -63,9 +63,11 @@ public class RenderDrawings {
         sb.append("<line x1=\"5\" y1=\"").append(dm.getLength()).append("\" x2=\"5\" y2=\"0\" stroke-width=\"4\" stroke=\"black\"/>");
 
         //hulbånd
-        sb.append("<line x1=\"20\"").append("\" y1=\"").append(dm.getRafterGap() + 10).append("\" x2=\"").append(dm.getWidth() - 20).append("\" y2=\"").append((dm.getLength() - 10) - dm.getRafterGap()).append("\" stroke=\"black\" stroke-dasharray=\"5 5\"/>");
-        sb.append("<line x1=\"20\"").append("\" y1=\"").append((dm.getLength() - 10) - dm.getRafterGap()).append("\" x2=\"").append(dm.getWidth() - 20).append("\" y2=\"").append(dm.getRafterGap() + 10).append("\" stroke=\"black\" stroke-dasharray=\"5 5\"/>");
-
+        if (dm.getAngle() == 0) {
+            sb.append("<line x1=\"20\"").append("\" y1=\"").append(dm.getRafterGap() + 10).append("\" x2=\"").append(dm.getWidth() - 20).append("\" y2=\"").append((dm.getLength() - 10) - dm.getRafterGap()).append("\" stroke=\"black\" stroke-dasharray=\"5 5\"/>");
+            sb.append("<line x1=\"20\"").append("\" y1=\"").append((dm.getLength() - 10) - dm.getRafterGap()).append("\" x2=\"").append(dm.getWidth() - 20).append("\" y2=\"").append(dm.getRafterGap() + 10).append("\" stroke=\"black\" stroke-dasharray=\"5 5\"/>");
+        }
+        
         //Skur til venstre
         if (dm.getShedLength() != 0) {
             //skur i midten
@@ -186,7 +188,7 @@ public class RenderDrawings {
             sb.append("<rect x=\"31\" y=\"-60 \"width=\"").append(dm.getLength() - 42).append("\" height=\"61\"");
             sb.append("fill=\"url(#pattern)\"stroke=\"none\"stroke-width=\"2px\" />");
             if (dm.getShedLength() != 0) {
-                    sb.append("<polygon points=\"").append((dm.getLength() * 0.85)).append(",22 ").append(dm.getLength() * 0.85 - dm.getShedLength()).append(",22 ").append(dm.getLength() * 0.85 - dm.getShedLength()).append(",").append(dm.getHeight() + 10).append(" ").append((dm.getLength() * 0.85)).append(",").append(dm.getHeight() + 10).append("\"");
+                sb.append("<polygon points=\"").append((dm.getLength() * 0.85)).append(",22 ").append(dm.getLength() * 0.85 - dm.getShedLength()).append(",22 ").append(dm.getLength() * 0.85 - dm.getShedLength()).append(",").append(dm.getHeight() + 10).append(" ").append((dm.getLength() * 0.85)).append(",").append(dm.getHeight() + 10).append("\"");
                 sb.append("fill=\"url(#patternSkur)\" stroke=\"black\"/>");
             }
             sb.append("</svg>");
