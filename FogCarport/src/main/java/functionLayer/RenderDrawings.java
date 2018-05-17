@@ -18,7 +18,6 @@ public class RenderDrawings {
         int startingLength = dm.getLength() - 10;
         StringBuilder sb = new StringBuilder();
         sb.append("<svg height=\"100%\" viewbox=\"0 0 ").append(dm.getWidth() + 150).append(" ").append(dm.getLength() + 60).append("\">");
-//        sb.append("<svg height=\"500\" width=\"500\" viewbox=\"0 0 ").append(dm.getWidth() + 150).append(" ").append(dm.getLength() + 60).append("\">");
         // remme
 
         sb.append("<line x1=\"").append(dm.getWidth() - 15).append("\" y1=\"0\" x2=\"").append(dm.getWidth() - 15).append("\" y2=\"").append(dm.getLength()).append("\" stroke=\"black\" stroke-width=\"12\" stroke-opacity = \"0.5\"/>");
@@ -88,7 +87,6 @@ public class RenderDrawings {
             return "---Ingen tegning---";
         }
         StringBuilder sb = new StringBuilder();
-//        sb.append("<svg width=\"1000\" height=\"1000\" viewbox=\"0 -100 ").append(dm.getWidth() * 3).append(" ").append(dm.getLength() * 2).append("\">"); 
         sb.append("<svg height=\"100%\" viewbox=\"0 -100 ").append(dm.getWidth() * 2.8).append(" ").append(dm.getLength()).append("\">");
 
         // stiplet linie til jorden
@@ -137,12 +135,8 @@ public class RenderDrawings {
 
             if (dm.getShedLength() != 0) {
                 if (dm.getLength() < 600) {
-//                    sb.append("<polygon points=\"").append(dm.getLength() - dm.getShedLength() - 40).append(",24 ").append(dm.getLength() - 40).append(",29 ").append(dm.getLength() - 40).append(",").append(dm.getHeight() + 10).append(" ").append(dm.getLength() - dm.getShedLength() - 40).append(",").append(dm.getHeight() + 10).append("\"");
-//                    sb.append("<polygon points=\"").append((dm.getLength() * 0.85) - dm.getShedLength()).append(",24 ").append(dm.getLength() - 40).append(",29 ").append(dm.getLength() - 40).append(",").append(dm.getHeight() + 10).append(" ").append((dm.getLength() * 0.85) - dm.getShedLength()).append(",").append(dm.getHeight() + 10).append("\"");
                     sb.append("<polygon points=\"").append((dm.getLength() * 0.85)).append(",29 ").append(dm.getLength() * 0.85 - dm.getShedLength()).append(",24 ").append(dm.getLength() * 0.85 - dm.getShedLength()).append(",").append(dm.getHeight() + 10).append(" ").append((dm.getLength() * 0.85)).append(",").append(dm.getHeight() + 10).append("\"");
                 } else {
-//                    sb.append("<polygon points=\"").append(dm.getLength() - dm.getShedLength() - 40).append(",24 ").append(dm.getLength() - 40).append(",26 ").append(dm.getLength() - 40).append(",").append(dm.getHeight() + 10).append(" ").append(dm.getLength() - dm.getShedLength() - 40).append(",").append(dm.getHeight() + 10).append("\"");
-//                    sb.append("<polygon points=\"").append((dm.getLength() * 0.85) - dm.getShedLength()).append(",24 ").append(dm.getLength() - 40).append(",26 ").append(dm.getLength() - 40).append(",").append(dm.getHeight() + 10).append(" ").append((dm.getLength() * 0.85) - dm.getShedLength()).append(",").append(dm.getHeight() + 10).append("\"");
                     sb.append("<polygon points=\"").append((dm.getLength() * 0.85)).append(",25 ").append(dm.getLength() * 0.85 - dm.getShedLength()).append(",22 ").append(dm.getLength() * 0.85 - dm.getShedLength()).append(",").append(dm.getHeight() + 10).append(" ").append((dm.getLength() * 0.85)).append(",").append(dm.getHeight() + 10).append("\"");
                 }
                 sb.append("fill=\"url(#patternSkur)\" stroke=\"black\"/>");
@@ -207,7 +201,6 @@ public class RenderDrawings {
         }
         StringBuilder sb = new StringBuilder();
 
-//        sb.append("<svg width=\"1000\" height=\"1000\" viewbox=\"-200 -200 ").append(dm.getWidth() * 3).append(" ").append(dm.getLength() * 2).append("\">");
         sb.append("<svg height=\"100%\" viewbox=\"0 -160 ").append(dm.getWidth() + 150).append(" ").append(dm.getLength() + 60).append("\">");
 
         //stolper
