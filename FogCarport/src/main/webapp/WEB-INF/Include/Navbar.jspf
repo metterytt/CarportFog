@@ -29,7 +29,7 @@
                     <form action="FrontController" method="post">
                         <input type="hidden" name="command" value="navbar">
                         <input type="hidden" name="profile" value="<%= profile%>">
-                        <input type="image" src="profileLogo.png" width="60" height="60" alt="Profile">
+                        <input type="image" src="profileLogoWhite.png" width="60" height="60" alt="Profile">
                     </form>
                 </div>
             </div>
