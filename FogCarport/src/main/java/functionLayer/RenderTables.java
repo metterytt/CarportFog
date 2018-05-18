@@ -66,7 +66,8 @@ public class RenderTables {
                 + "<th style=\"text-align:right\">Tagvinkel</th><th style=\"text-align:right\">"
                 + "Skur længde</th><th style=\"text-align:right\">Skur bredde</th>"
                 + "<th style=\"text-align:right\">Pris</th>"
-                + "<th>Sælger</th><th></th>");
+                + "<th>Sælger</th><th></th>"
+                + "<th>Status</th><th></th>");
         sb.append("</tr></thead><tbody>\n");
         for (Order o : orders) {
             sb.append("<tr>");
@@ -95,6 +96,11 @@ public class RenderTables {
             sb.append("<input type=\"hidden\" name=\"orderPlaced\"/>");
             sb.append("<input type=\"submit\" class=\"btn btn-primary\" value=\"Se stykliste\"/>");
             sb.append("</form></th>");
+        if(o.isPlaced() == 1){
+        sb.append("<td> Ikke betalt </td>");
+        }else{
+        sb.append("<td> Betalt! </td>");
+        }
         }
         sb.append("</tbody>");
         sb.append("</table>\n");
@@ -171,13 +177,14 @@ public class RenderTables {
                 + "Skur længde</th><th>Skur bredde</th>");
         sb.append("</tr></thead><tbody>\n");
         for (Order r : requests) {
-            if (!r.isPlaced()) {
+            if (r.isPlaced() == 0) {
                 sb.append("<tr>");
                 sb.append("<td>").append(r.getOrderID()).append("</td>");
                 sb.append("<td>").append(r.getLength()).append("</td>");
                 sb.append("<td>").append(r.getWidth()).append("</td>");
                 sb.append("<td>").append(r.getAngle()).append("</td>");
                 sb.append("<td>").append(r.getShedLength()).append("</td>");
+                sb.append("<td>").append(r.getShedWidth()).append("</td>");
                 sb.append("<td>").append(r.getShedWidth()).append("</td>");
                 sb.append("</tr>");
             }
@@ -199,7 +206,7 @@ public class RenderTables {
                 + "Skur længde</th><th>Skur bredde</th><th>Total pris</th>");
         sb.append("</tr></thead><tbody>\n");
         for (Order o : orders) {
-            if (o.isPlaced()) {
+            if ((o.isPlaced() == 1) || (o.isPlaced() == 2)) {
                 sb.append("<tr>");
                 sb.append("<td>").append(o.getOrderID()).append("</td>");
                 sb.append("<td>").append(o.getLength()).append("</td>");
@@ -208,6 +215,18 @@ public class RenderTables {
                 sb.append("<td>").append(o.getShedLength()).append("</td>");
                 sb.append("<td>").append(o.getShedWidth()).append("</td>");
                 sb.append("<td>DKK ").append(o.getPrice()).append(",-</td>");
+                if(o.isPlaced() == 1){
+                sb.append("<td>");
+                sb.append("<form action=\"FrontController\" method=\"post\">");
+                sb.append("<input type=\"hidden\" name=\"command\" value=\"payfororder\">");
+                sb.append("<input type=\"hidden\" name=\"orderID\" value=\"").append(o.getOrderID()).append("\">");
+                sb.append("<input type=\"submit\" class=\"btn btn-primary\" value=\"Betal\">");
+                sb.append("</form>");
+                sb.append("</td>");
+                }
+                if(o.isPlaced() == 2){
+                sb.append("<td> Vis Stykliste </td>"); 
+                }
                 sb.append("</tr>");
             }
         }

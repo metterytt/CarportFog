@@ -211,7 +211,7 @@ public class Mapper {
                 int shedWidth = rs.getInt("shed_width");
                 int price = rs.getInt("price");
                 int empID = rs.getInt("employees_userID");
-                boolean placed = rs.getBoolean("order_placed");
+                int placed = rs.getInt("order_placed");
                 Order order = new Order(orderID, customer, length, width, angle, shedLength, shedWidth, price, empID, placed);
                 openRequests.add(order);
             }
@@ -241,7 +241,7 @@ public class Mapper {
             dbc.setDataSource(new DataSourceFog().getDataSource());
             dbc.open();
 
-            String sql = "select * from orders where order_placed=1";
+            String sql = "select * from orders where order_placed=1 or order_placed=2";
             ResultSet rs = dbc.query(sql);
             while (rs.next()) {
                 int orderID = rs.getInt("orderID");
@@ -253,7 +253,7 @@ public class Mapper {
                 int shedWidth = rs.getInt("shed_width");
                 int price = rs.getInt("price");
                 int empID = rs.getInt("employees_userID");
-                boolean placed = rs.getBoolean("order_placed");
+                int placed = rs.getInt("order_placed");
                 Order order = new Order(orderID, customer, length, width, angle, shedLength, shedWidth, price, empID, placed);
                 orders.add(order);
             }
@@ -362,7 +362,7 @@ public class Mapper {
                 int shedWidth = rs.getInt(6);
                 int angle = rs.getInt(7);
                 int price = rs.getInt(8);
-                Boolean placed = rs.getBoolean(10);
+                int placed = rs.getInt(10);
                 orders.add(new Order(orderID, length, width, angle, shedLength, shedWidth, price, placed));
             }
             return orders;
@@ -411,25 +411,6 @@ public class Mapper {
         }
     }
 
-//              String addLineItem = "INSERT INTO lineitems (orderID, products_productID, use_in, uom, price, quantity)"
-////                    + " values (?, ?, ?, ?, ?, ?)";
-////            for (LineItem li : listToBeSaved) {
-////                
-////                PreparedStatement psAdd = con.prepareStatement(addLineItem);
-////
-////                
-////                psAdd.setInt(1, orderID);
-////                psAdd.setInt(2, li.getProductID());
-////                psAdd.setString(3, (li.getUseInContext() == null) ? "" : li.getUseInContext());
-////                psAdd.setString(4, li.getUom());
-////                psAdd.setDouble(5, li.getPricePerUnit());
-////                psAdd.setDouble(6, li.getQuantity());
-////                psAdd.executeUpdate();
-////                
-////            }
-//            
-////            con.commit();
-////            con.setAutoCommit(true);
     public static List<LineItem> getFinalBom(int orderID) throws CarportException {
         try {
             dbc.setDataSource(new DataSourceFog().getDataSource());
@@ -489,6 +470,23 @@ public class Mapper {
             return price;
         } catch (SQLException ex) {
             throw new CarportException("Noget gik galt.. Prøv igen", "index");
+        }
+    }
+    
+    public static void PayForOrder(int orderID) throws CarportException {
+
+        dbc.setDataSource(new DataSourceFog().getDataSource());
+        Connection con = dbc.getConnector();
+
+        try {
+            dbc.open();
+            String setOrdered = "UPDATE orders SET order_placed=2 WHERE orderID=?";
+            PreparedStatement psSet = con.prepareStatement(setOrdered);
+            psSet.setInt(1, orderID);
+            psSet.executeUpdate();
+        
+        } catch (SQLException ex) {
+            throw new CarportException("Fejl ved betaling!", "customer");
         }
     }
 
