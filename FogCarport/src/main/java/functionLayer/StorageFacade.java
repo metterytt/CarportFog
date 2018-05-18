@@ -92,4 +92,8 @@ public class StorageFacade {
     public static int getOrderTotalPrice(int orderID) throws CarportException {
         return Mapper.getOrderTotalPrice(orderID);
     }
+public static void PayForOrder(int orderID) throws CarportException {
+     Mapper.PayForOrder(orderID);
+}
+
 }

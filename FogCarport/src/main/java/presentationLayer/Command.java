@@ -29,7 +29,7 @@ abstract class Command {
         commands.put("viewfinalbom", new ViewFinalBom());
         commands.put("updateQuantityBom", new UpdateQuantityBom());
          commands.put("backtoorders", new BackToOrders());
-        
+        commands.put("payfororder", new PayForOrder());
     }
 
     static Command from(HttpServletRequest request) {

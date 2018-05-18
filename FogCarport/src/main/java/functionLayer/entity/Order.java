@@ -11,9 +11,9 @@ public class Order {
     private int shedWidth;
     private int price;
     private int empID;
-    private boolean placed;
+    private int placed;
 
-    public Order(int orderID, int customer, int length, int width, int angle, int shedLength, int shedWidth, int price, int empID, boolean placed) {
+    public Order(int orderID, int customer, int length, int width, int angle, int shedLength, int shedWidth, int price, int empID, int placed) {
         this.orderID = orderID;
         this.customer = customer;
         this.length = length;
@@ -26,7 +26,7 @@ public class Order {
         this.placed = placed;
     }
 
-    public Order(int OrderID, int length, int width, int angle, int shedLength, int shedWidth, int price, boolean placed) {
+    public Order(int OrderID, int length, int width, int angle, int shedLength, int shedWidth, int price, int placed) {
         this.orderID = OrderID;
         this.length = length;
         this.width = width;
@@ -109,12 +109,14 @@ public class Order {
         this.empID = empID;
     }
 
-    public boolean isPlaced() {
+    public int isPlaced() {
         return placed;
     }
 
-    public void setPlaced(boolean placed) {
+    public void setPlaced(int placed) {
         this.placed = placed;
     }
+
+   
     
 }
