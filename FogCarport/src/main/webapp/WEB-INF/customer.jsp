@@ -42,6 +42,15 @@
                         <input type="hidden" name="command" value="customerview">
                         <input type="submit" class="btn btn-primary" value="Ordreoversigt">
                     </form>
+                    <%if(request.getAttribute("backtodrawing") != null){ %>
+                    <br>
+                    <form action="FrontController" method="post">
+                        <input type="hidden" name="command" value="sendrequest">
+                        <input type="hidden" name="backToDrawing">
+                        <input type="submit" class="btn btn-primary" value="Tilbage til tegning">
+                    </form>
+                    
+                    <%}%>
                 </div>
             </div>
         </div>

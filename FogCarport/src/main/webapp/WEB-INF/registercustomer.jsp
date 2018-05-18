@@ -25,22 +25,22 @@
                             <input type="hidden" name="command" value="registercustomer">
                             <input type="hidden" name="registercus">
                             <label for="firstname">Fornavn:</label>
-                            <input class="form-control" type="text" name="firstname">
+                            <input class="form-control col-md-6" type="text" name="firstname">
                             <br>
                             <label for="surname">Efternavn:</label>
-                            <input class="form-control" type="text" name="lastname">
+                            <input class="form-control col-md-6" type="text" name="lastname">
                             <br>
                             <label for="username">Mobilnummer:</label>
-                            <input class="form-control" type="number" name="mobilenumber">
+                            <input class="form-control col-md-6" type="number" name="mobilenumber">
                             <br>
                             <label for="username">Brugernavn:</label>
-                            <input class="form-control" type="email" name="username" placeholder="eksempel@eksempel.dk">
+                            <input class="form-control col-md-6" type="email" name="username" placeholder="eksempel@eksempel.dk">
                             <br>
                             <label for="password1">Kodeord:</label>
-                            <input class="form-control" type="password" name="password1" placeholder="Eksempel123">
+                            <input class="form-control col-md-6" type="password" name="password1">
                             <br>
                             <label for="password2">Gentag Kodeord:</label>
-                            <input class="form-control" type="password" name="password2" placeholder="Eksempel123">
+                            <input class="form-control col-md-6" type="password" name="password2">
                             <br>
                             <input class="btn btn-primary" type="submit" value="Opret profil">
                         </form>
