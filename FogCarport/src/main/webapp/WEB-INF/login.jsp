@@ -45,11 +45,11 @@
                             <%}%> </p>
                         <div class="form-group">
                             <label for="username">Username:</label>
-                            <input type="email" class="form-control" id="username" name="username" value="test@test.dk">
+                            <input type="email" class="form-control col-md-3" id="username" name="username" value="test@test.dk">
                         </div>
                         <div class="form-group">
                             <label for="password">Password:</label>
-                            <input type="password" class="form-control" id="Password" name="password" value="test">
+                            <input type="password" class="form-control col-md-3" id="Password" name="password" value="test">
                         </div>
                         <input type="submit" class="btn btn-primary" value="Login"/><br>
                     </form>
@@ -65,11 +65,11 @@
                         <%}%> 
                         <div class="form-group">
                             <label for="username">Username:</label>
-                            <input type="email" class="form-control" id="username" name="username" value="lars@lars.dk">
+                            <input type="email" class="form-control col-md-3" id="username" name="username" value="lars@lars.dk">
                         </div>
                         <div class="form-group">
                             <label for="password">Password:</label>
-                            <input type="password" class="form-control" id="Password" name="password" value="123">
+                            <input type="password" class="form-control col-md-3" id="Password" name="password" value="123">
                         </div>
                         <input type="submit" class="btn btn-primary" value="Login"/>
                     </form>
