@@ -54,7 +54,7 @@ public class EditRequest extends Command {
             }
             carportBom = carportCalculator.getBom();
 
-            int price = carportBom.totalPrice();// + shedPrice;
+            int price = carportBom.totalPrice();
 
             StorageFacade.editRequest(orderID, length, width, angle, shedLength, shedWidth, price);
 

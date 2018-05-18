@@ -244,7 +244,7 @@ public class RenderTables {
             sb.append("</tr>\n");
         }
          sb.append("<tr>");
-            sb.append("<td> PRIS: ").append(totalprice).append("</td>)");
+            sb.append("<td> PRIS: ").append(totalprice).append("</td>");
                  sb.append("</tr>\n");
         sb.append("</tbody>");
         sb.append("</table>\n");
