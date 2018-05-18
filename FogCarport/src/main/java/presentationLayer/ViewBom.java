@@ -14,7 +14,6 @@ public class ViewBom extends Command {
 
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws CarportException {
-
         HttpSession session = request.getSession();
 
         int orderID = Integer.parseInt(request.getParameter("orderID"));
@@ -24,11 +23,11 @@ public class ViewBom extends Command {
         int angle = Integer.parseInt(request.getParameter("angle"));
         int shedLength = Integer.parseInt(request.getParameter("shedlength"));
         int shedWidth = Integer.parseInt(request.getParameter("shedwidth"));
-        
+
         //Used for viewing/updating the total price
         int totalPrice = Integer.parseInt(request.getParameter("price"));
         session.setAttribute("totalprice", totalPrice);
-        
+
         CarportCalculator carportCalculator;
 
         if (angle == 0) {
@@ -37,44 +36,10 @@ public class ViewBom extends Command {
             carportCalculator = new PitchedRoofCalculator(length, width, angle, shedLength, shedWidth);
         }
         BOM carportBom = carportCalculator.getBom();
-        
-//        carportBom.setOrderID(Integer.parseInt(request.getParameter("orderID")));
-//        carportBom.setAngle(angle);
-//        carportBom.setLength(length);
-//        carportBom.setWidth(width);
-//        carportBom.setShedLength(shedLength);
-//        carportBom.setShedWidth(shedWidth);
+
         carportBom.setOrderID(orderID);
         session.setAttribute("carportbom", carportBom);
-//        session.removeAttribute("shedbom"); // vi vil ikke have den gamle shedbom liggende hvis vi skal have en ny beregning som ikke har skur
-        
-//        request.setAttribute("carportbom", carportBom);
-
-//        if (shedWidth != 0 && shedLength != 0) {
-//            CarportCalculator shedCalculator = new ShedCalculator(shedLength, shedWidth);
-//            BOM shedBom = shedCalculator.getBom();
-//            //ny 2
-//            shedBom.setOrderID(orderID);
-//            shedBom.setShedLength(shedLength);
-//            shedBom.setShedWidth(shedWidth);
-//            session.setAttribute("shedbom", shedBom);
-////            request.setAttribute("shedbom", shedBom);
-//        }
-
-
-//        request.setAttribute("shedLength", shedLength);
-//        request.setAttribute("shedWidth", shedWidth);
-
-//        String orderPlaced = request.getParameter("orderPlaced");
-//        if (orderPlaced != null) {
-//            request.setAttribute("orderPlaced", orderPlaced);
         session.setAttribute("customerID", customerID);
-       
-
-//        String orderPlaced = request.getParameter("orderPlaced");
-//        if (orderPlaced != null) {
-//           request.setAttribute("orderPlaced", orderPlaced); 
-//        }
 
         return "viewbom";
     }
