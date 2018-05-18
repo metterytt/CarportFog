@@ -96,11 +96,11 @@ public class RenderTables {
             sb.append("<input type=\"hidden\" name=\"orderPlaced\"/>");
             sb.append("<input type=\"submit\" class=\"btn btn-primary\" value=\"Se stykliste\"/>");
             sb.append("</form></th>");
-        if(o.isPlaced() == 1){
-        sb.append("<td> Ikke betalt </td>");
-        }else{
-        sb.append("<td> Betalt! </td>");
-        }
+            if (o.isPlaced() == 1) {
+                sb.append("<td> Ikke betalt </td>");
+            } else {
+                sb.append("<td> Betalt! </td>");
+            }
         }
         sb.append("</tbody>");
         sb.append("</table>\n");
@@ -215,17 +215,17 @@ public class RenderTables {
                 sb.append("<td>").append(o.getShedLength()).append("</td>");
                 sb.append("<td>").append(o.getShedWidth()).append("</td>");
                 sb.append("<td>DKK ").append(o.getPrice()).append(",-</td>");
-                if(o.isPlaced() == 1){
-                sb.append("<td>");
-                sb.append("<form action=\"FrontController\" method=\"post\">");
-                sb.append("<input type=\"hidden\" name=\"command\" value=\"payfororder\">");
-                sb.append("<input type=\"hidden\" name=\"orderID\" value=\"").append(o.getOrderID()).append("\">");
-                sb.append("<input type=\"submit\" class=\"btn btn-primary\" value=\"Betal\">");
-                sb.append("</form>");
-                sb.append("</td>");
+                if (o.isPlaced() == 1) {
+                    sb.append("<td>");
+                    sb.append("<form action=\"FrontController\" method=\"post\">");
+                    sb.append("<input type=\"hidden\" name=\"command\" value=\"payfororder\">");
+                    sb.append("<input type=\"hidden\" name=\"orderID\" value=\"").append(o.getOrderID()).append("\">");
+                    sb.append("<input type=\"submit\" class=\"btn btn-primary\" value=\"Betal\">");
+                    sb.append("</form>");
+                    sb.append("</td>");
                 }
-                if(o.isPlaced() == 2){
-                sb.append("<td> Vis Stykliste </td>"); 
+                if (o.isPlaced() == 2) {
+                    sb.append("<td> Vis Stykliste </td>");
                 }
                 sb.append("</tr>");
             }
