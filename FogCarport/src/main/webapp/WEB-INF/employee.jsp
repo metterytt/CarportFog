@@ -5,10 +5,8 @@
 
 <%@page import="java.util.List"%>
 <%@page import="functionLayer.entity.Employee"%>
-<%@page import="functionLayer.entity.LineItem"%>
 <%@page import="functionLayer.BOM"%>
 <%@page import="functionLayer.entity.CustomerCalculation"%>
-<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -24,16 +22,15 @@
             <div class="row">
                 <div class="col-md-6">
 
-
                     <% Employee emp = (Employee) request.getSession().getAttribute("employee");%>
 
                     <h2 class="display-4">Velkommen <%= emp.getUsername()%> til medarbejdersiden.</h2>
                     <br>
-                   
-                    <% if(request.getAttribute("error") != null){ %>
+
+                    <% if (request.getAttribute("error") != null) { %>
                     <div class="p-2 bg-danger text-black col-md-7 text-center">${error}</div><br>
                     <%}%>
-                    <% if(request.getAttribute("complete") != null){ %>
+                    <% if (request.getAttribute("complete") != null) { %>
                     <div class="p-2 bg-success text-black col-md-7 text-center">${complete}</div><br>
                     <%}%>
                     <% if (emp.getRole().equals("IT")) { %>
@@ -43,9 +40,7 @@
                         <input type="hidden" name="administrer" value="administrer">
                         <input type="submit" class="btn btn-primary" value="Administrer brugere">
                     </form>
-                    <%}
-
-                    else {%>
+                    <%} else {%>
                     <form action="FrontController" method="post">
                         <input type="hidden" name="command" value="deleteemployee">
                         <% List<Employee> emps = (List<Employee>) request.getAttribute("allEmp"); %>
@@ -57,7 +52,6 @@
                             %><option value="<%=e.getUserID()%>"><%=e.getUsername()%></option><%
                                     }
                                 }
-
                             %>
                         </select>
 

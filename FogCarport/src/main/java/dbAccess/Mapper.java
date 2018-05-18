@@ -435,7 +435,7 @@ public class Mapper {
             dbc.setDataSource(new DataSourceFog().getDataSource());
             dbc.open();
             Connection con = dbc.getConnector();
-            String sql = "select lineitems.products_productID, lineitems.quantity, products.name, products.uom, products.price"
+            String sql = "select lineitems.products_productID, lineitems.use_in, lineitems.quantity, products.name, products.uom, products.price"
                     + " from lineitems inner join products on lineitems.products_productID = products.productID where lineitems.orderID=?;";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, orderID);
@@ -443,12 +443,13 @@ public class Mapper {
             List<LineItem> finalBom = new ArrayList();
             while (rs.next()) {
                 int productID = rs.getInt(1);
-                double quantity = rs.getDouble(2);
-                String name = rs.getString(3);
-                String uom = rs.getString(4);
-                int pricePerUnit = rs.getInt(5);
+                String useInContext = rs.getString(2);
+                double quantity = rs.getDouble(3);
+                String name = rs.getString(4);
+                String uom = rs.getString(5);
+                int pricePerUnit = rs.getInt(6);
                 LineItem li = new LineItem(productID, name, uom, pricePerUnit);
-
+                li.setUseInContext(useInContext);
                 li.setQuantity(quantity);
                 finalBom.add(li);
             }
