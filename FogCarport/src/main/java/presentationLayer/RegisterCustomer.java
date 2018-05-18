@@ -37,6 +37,10 @@ public class RegisterCustomer extends Command {
                 StorageFacade.registerCustomer(customer);
                 request.getSession().setAttribute("customer", customer);
                 request.setAttribute("complete", "Din profil er nu blevet oprettet");
+
+                if(request.getSession().getAttribute("drawingmeasures") != null){
+                request.setAttribute("backtodrawing", "backtodrawing");
+                }
                 return "customer";
             }
         }

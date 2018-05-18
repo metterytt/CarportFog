@@ -16,10 +16,15 @@ public class SendRequest extends Command {
 
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws CarportException {
-        if (request.getSession().getAttribute("customer") == null) {
-            request.setAttribute("userDetailsNeeded", "Vi har brug for at identificere dig. Log venglist ind, for at sende din forespørgsel med det samme.");
+        if(request.getParameter("drawAgain") != null){
+            request.getSession().removeAttribute("drawingmeasures");
+            return "index";
+        }
+        if(request.getParameter("backToDrawing") != null){
             return "bom";
         }
+        
+//        
 
         DrawingMeasures drawingMeasures = (DrawingMeasures) request.getSession().getAttribute("drawingmeasures");
 
@@ -54,6 +59,7 @@ public class SendRequest extends Command {
         StorageFacade.addRequest(customerID, length, width, angle, shedLength, shedWidth, price);
 
         request.setAttribute("message", "Din forespørgsel er nu i systemet, og du vil snart blive kontaktet. \n Du kan se dine forespørgsler under 'Ordreoversigt' ");
+       request.getSession().removeAttribute("drawingmeasures");
         return "customer";
     }
 

@@ -45,7 +45,6 @@ public class Login extends Command {
             request.getSession().setAttribute("customer", customer);
 
             if(request.getSession().getAttribute("drawingmeasures") != null){
-                request.setAttribute("message", "Du er nu logget ind og kan sende forespørgslen på tegningen her");
                 return "bom";
             }
             
