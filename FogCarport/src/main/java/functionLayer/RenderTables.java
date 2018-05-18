@@ -156,6 +156,9 @@ public class RenderTables {
     }
 
     public static String getCurrentCustomerRequests(List<Order> requests) {
+        if (requests == null) {
+            return "---Der opstod en fejl ved indlæsningen af forespørgslerne---";
+        }
         StringBuilder sb = new StringBuilder();
         sb.append("<table class=\"table table-striped\">\n"
                 + "<thead><tr><th>ID</th><th>Længde</th><th>Bredde</th>"
@@ -181,6 +184,9 @@ public class RenderTables {
     }
 
     public static String getCurrentCustomerOrders(List<Order> orders) {
+        if (orders == null) {
+            return "---Der opstod en fejl ved indlæsningen af ordrerne---";
+        }
         StringBuilder sb = new StringBuilder();
         sb.append("<table class=\"table table-striped\">\n"
                 + "<thead><tr><th>ID</th><th>Længde</th><th>Bredde</th>"
