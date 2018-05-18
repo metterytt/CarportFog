@@ -126,7 +126,7 @@ public class RenderTables {
             sb.append("<td>");
             sb.append("<form action=\"FrontController\" method=\"post\">");
             sb.append("<input type=\"hidden\" name=\"command\" value=\"updateQuantityBom\">");
-            sb.append("<input type=\"number\" name=\"editNumber\" value=\"").append(quantity).append("\">");
+            sb.append("<input type=\"number\" step=\"any\" name=\"editNumber\" value=\"").append(quantity).append("\">");
             sb.append("<input type=\"hidden\" name=\"productID\" value=\"").append(li.getProductID()).append("\">");
             sb.append("<input type=\"submit\" class=\"btn btn-primary\" value=\"Opdater Antal\">");
             sb.append("</form>");
@@ -217,7 +217,7 @@ public class RenderTables {
         return sb.toString();
     }
 
-    public static String getFinalBom(List<LineItem> finalBom) {
+    public static String getFinalBom(List<LineItem> finalBom, int totalprice) {
         if (finalBom == null || finalBom.isEmpty()) {
             return "---Ingenting på styklisten---";
         }
@@ -225,8 +225,8 @@ public class RenderTables {
 
         sb.append("<table class=\"table table-striped\">\n"
                 + "<thead><tr><th>Produktnavn</th><th style=\"text-align:right\">"
-                + "Antal</th><th style=\"text-align:right\">Enhed</th>"
-                + "<th style=\"text-align:right\">Pris</th>");
+                + "Antal</th><th style=\"text-align:right\">Enhed</th>");
+//                + "<th style=\"text-align:right\">Pris</th>");
         sb.append("</tr></thead><tbody>\n");
         DecimalFormat formatter = new DecimalFormat("###,##0.00");
         for (LineItem li : finalBom) {
@@ -234,9 +234,12 @@ public class RenderTables {
             sb.append("<td>").append(li.getName()).append("</td>");
             sb.append("<td style=\"text-align:right\">").append(formatter.format(li.getQuantity())).append("</td>");
             sb.append("<td style=\"text-align:right\">").append(li.getUom()).append("</td>");
-            sb.append("<td style=\"text-align:right\">").append(formatter.format(li.getPricePerUnit())).append("</td>");
+//            sb.append("<td style=\"text-align:right\">").append(formatter.format(li.getPricePerUnit())).append("</td>");
             sb.append("</tr>\n");
         }
+         sb.append("<tr>");
+            sb.append("<td> PRIS: ").append(totalprice).append("</td>)");
+                 sb.append("</tr>\n");
         sb.append("</tbody>");
         sb.append("</table>\n");
         return sb.toString();
