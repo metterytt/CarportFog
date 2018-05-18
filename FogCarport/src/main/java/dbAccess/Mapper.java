@@ -241,7 +241,7 @@ public class Mapper {
             dbc.setDataSource(new DataSourceFog().getDataSource());
             dbc.open();
 
-            String sql = "select * from orders where order_placed=1";
+            String sql = "select * from orders where order_placed=1 or order_placed=2";
             ResultSet rs = dbc.query(sql);
             while (rs.next()) {
                 int orderID = rs.getInt("orderID");
