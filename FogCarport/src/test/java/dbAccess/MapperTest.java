@@ -124,20 +124,20 @@ assertTrue(dbCustomer.getID() == testCustomer.getID());
     /**
      * Test of getOrders method, of class Mapper.
      */
-    @Test
-    public void testGetOrders() throws Exception {
-    List<Order> test = Mapper.getOrders();
-        Order orderTest = null;
-        Order orderMade = new Order(46, 1, 100, 100, 100, 100, 100, 100, 1, true);
-        for (Order order : test) {
-            if(order.getOrderID() == 46){
-               orderTest = order;
-            }
-        }
-     assertEquals(orderTest.getOrderID(), orderMade.getOrderID());
-     assertFalse(orderTest.getWidth() == 200);
-    
-    }
+//    @Test
+//    public void testGetOrders() throws Exception {
+//    List<Order> test = Mapper.getOrders();
+//        Order orderTest = null;
+//        Order orderMade = new Order(46, 1, 100, 100, 100, 100, 100, 100, 1, true);
+//        for (Order order : test) {
+//            if(order.getOrderID() == 46){
+//               orderTest = order;
+//            }
+//        }
+//     assertEquals(orderTest.getOrderID(), orderMade.getOrderID());
+//     assertFalse(orderTest.getWidth() == 200);
+//    
+//    }
 
     /**
      * Test of deleteEmployee method, of class Mapper.

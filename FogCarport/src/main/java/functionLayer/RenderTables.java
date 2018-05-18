@@ -111,27 +111,32 @@ public class RenderTables {
         StringBuilder sb = new StringBuilder();
 
         sb.append("<table class=\"table table-striped\">\n"
-                + "<thead><tr><th>Produktnavn</th><th>Brug</th><th style=\"text-align:right\">"
-                + "Antal</th><th style=\"text-align:right\">Enhed</th>"
+                + "<thead><tr><th>Produktnavn</th><th>Brug</th>"
+                + "<th style=\"text-align:right\">Enhed</th><th>Antal</th>"
                 + "<th style=\"text-align:right\">Pris</th><th style=\"text-align:right\">Ialt kr.</th>");
         sb.append("</tr></thead><tbody>\n");
-        DecimalFormat formatter = new DecimalFormat("###,##0.00");
+        DecimalFormat formatter = new DecimalFormat("#0.00");
         for (LineItem li : bom) {
            
            double quantity = li.getQuantity();
+           String _quantity = formatter.format(quantity);
+           _quantity = _quantity.replace(',', '.');
+           quantity = Double.parseDouble(_quantity);
            
             sb.append("<tr>");
             sb.append("<td>").append(li.getName()).append("</td>");
             sb.append("<td>").append(li.getUseInContext()).append("</td>");
+            sb.append("<td style=\"text-align:right\">").append(li.getUom()).append("</td>");
             sb.append("<td>");
-            sb.append("<form action=\"FrontController\" method=\"post\">");
+            sb.append("<form class=\"form-inline\" action=\"FrontController\" method=\"post\">");
             sb.append("<input type=\"hidden\" name=\"command\" value=\"updateQuantityBom\">");
-            sb.append("<input type=\"number\" step=\"any\" name=\"editNumber\" value=\"").append(quantity).append("\">");
+            sb.append("<div class=\"form-group\">");
+            sb.append("<input class=\"form-control col-md-6\" type=\"number\" step=\"any\" name=\"editNumber\" value=\"").append(quantity).append("\">");
             sb.append("<input type=\"hidden\" name=\"productID\" value=\"").append(li.getProductID()).append("\">");
-            sb.append("<input type=\"submit\" class=\"btn btn-primary\" value=\"Opdater Antal\">");
+            sb.append("&nbsp <input type=\"submit\" class=\"btn btn-primary\" value=\"Opdater Antal\">");
+            sb.append("</div>");
             sb.append("</form>");
             sb.append("</td>");
-            sb.append("<td style=\"text-align:right\">").append(li.getUom()).append("</td>");
             sb.append("<td style=\"text-align:right\">").append(formatter.format(li.getPricePerUnit())).append("</td>");
             sb.append("<td style=\"text-align:right\">").append(formatter.format(li.getPricePerUnit() * li.getQuantity())).append("</td>");
             sb.append("</tr>\n");
