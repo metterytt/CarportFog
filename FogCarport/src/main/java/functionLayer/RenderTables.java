@@ -3,13 +3,11 @@ package functionLayer;
 import functionLayer.entity.CustomerCalculation;
 import functionLayer.entity.LineItem;
 import functionLayer.entity.Order;
-import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.util.List;
 
 public class RenderTables {
 
-//    private static DecimalFormat totalformatter = new DecimalFormat("###,##0.00");
     public static String getOpenRequestsTable(List<Order> openRequests) {
         if (openRequests == null || openRequests.isEmpty()) {
             return "---Ingen forespørgsler i øjeblikket---";
@@ -50,7 +48,6 @@ public class RenderTables {
             sb.append("<input type=\"hidden\" name=\"empID\" value=\"").append(o.getEmpID()).append("\"/>");
             sb.append("<input type=\"submit\" class=\"btn btn-primary\" value=\"Se stykliste/Rediger Ordre\"/>");
             sb.append("</form></th>");
-
         }
         sb.append("</tbody>");
         sb.append("</table>\n");
@@ -105,7 +102,7 @@ public class RenderTables {
     }
 
     public static String getListOfProducts(List<LineItem> bom) {
-        if (bom == null) {
+        if (bom == null || bom.isEmpty()) {
             return "---Ingenting på styklisten---";
         }
         StringBuilder sb = new StringBuilder();
@@ -117,16 +114,13 @@ public class RenderTables {
         sb.append("</tr></thead><tbody>\n");
         DecimalFormat formatter = new DecimalFormat("###,##0.00");
         for (LineItem li : bom) {
-           
-           double quantity = li.getQuantity();
-           
             sb.append("<tr>");
             sb.append("<td>").append(li.getName()).append("</td>");
             sb.append("<td>").append(li.getUseInContext()).append("</td>");
             sb.append("<td>");
             sb.append("<form action=\"FrontController\" method=\"post\">");
             sb.append("<input type=\"hidden\" name=\"command\" value=\"updateQuantityBom\">");
-            sb.append("<input type=\"number\" step=\"any\" name=\"editNumber\" value=\"").append(quantity).append("\">");
+            sb.append("<input type=\"number\" step=\"any\" name=\"editNumber\" value=\"").append(li.getQuantity()).append("\">");
             sb.append("<input type=\"hidden\" name=\"productID\" value=\"").append(li.getProductID()).append("\">");
             sb.append("<input type=\"submit\" class=\"btn btn-primary\" value=\"Opdater Antal\">");
             sb.append("</form>");
@@ -142,7 +136,7 @@ public class RenderTables {
     }
 
     public static String getAllCalculations(List<CustomerCalculation> custCalcs) {
-        if (custCalcs == null) {
+        if (custCalcs == null || custCalcs.isEmpty()) {
             return "---Ingen beregninger registreret---";
         }
         StringBuilder sb = new StringBuilder();
@@ -167,7 +161,7 @@ public class RenderTables {
     }
 
     public static String getCurrentCustomerRequests(List<Order> requests) {
-        if (requests == null) {
+        if (requests == null || requests.isEmpty()) {
             return "---Der opstod en fejl ved indlæsningen af forespørgslerne---";
         }
         StringBuilder sb = new StringBuilder();
@@ -195,7 +189,7 @@ public class RenderTables {
     }
 
     public static String getCurrentCustomerOrders(List<Order> orders) {
-        if (orders == null) {
+        if (orders == null || orders.isEmpty()) {
             return "---Der opstod en fejl ved indlæsningen af ordrerne---";
         }
         StringBuilder sb = new StringBuilder();
@@ -219,7 +213,6 @@ public class RenderTables {
         }
         sb.append("</tbody>");
         sb.append("</table>\n");
-
         return sb.toString();
     }
 
@@ -230,26 +223,24 @@ public class RenderTables {
         StringBuilder sb = new StringBuilder();
 
         sb.append("<table class=\"table table-striped\">\n"
-                + "<thead><tr><th>Produktnavn</th><th style=\"text-align:right\">"
+                + "<thead><tr><th>Produktnavn</th><th>Brug</th><th style=\"text-align:right\">"
                 + "Antal</th><th style=\"text-align:right\">Enhed</th>");
-//                + "<th style=\"text-align:right\">Pris</th>");
         sb.append("</tr></thead><tbody>\n");
         DecimalFormat formatter = new DecimalFormat("###,##0.00");
         for (LineItem li : finalBom) {
             sb.append("<tr>");
             sb.append("<td>").append(li.getName()).append("</td>");
+            sb.append("<td>").append(li.getUseInContext()).append("</td>");
             sb.append("<td style=\"text-align:right\">").append(formatter.format(li.getQuantity())).append("</td>");
             sb.append("<td style=\"text-align:right\">").append(li.getUom()).append("</td>");
-//            sb.append("<td style=\"text-align:right\">").append(formatter.format(li.getPricePerUnit())).append("</td>");
             sb.append("</tr>\n");
         }
-         sb.append("<tr>");
-            sb.append("<td> PRIS: ").append(totalprice).append("</td>)");
-                 sb.append("</tr>\n");
+        sb.append("<tr>");
+        sb.append("<td> PRIS: ").append(totalprice).append("</td>");
+        sb.append("</tr>\n");
         sb.append("</tbody>");
         sb.append("</table>\n");
         return sb.toString();
-
     }
 
 }

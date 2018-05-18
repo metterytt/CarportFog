@@ -18,12 +18,11 @@
             int carwidth = carportBOM.getWidth();
             int angle = carportBOM.getAngle();
             int shedLength = carportBOM.getShedLength();
-            int shedWidth = carportBOM.getShedWidth();  %>
+            int shedWidth = carportBOM.getShedWidth();%>
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-6">
                     <h1 class="display-4"> Edit request for OrderID : <%= orderID%> </h1>
-
 
                     <form  action="FrontController" method="post">
                         <input type="hidden" name="command" value="editrequest">
@@ -72,7 +71,6 @@
 
                             <option value="<%=angleForSalesman%>"> <%=angleForSalesman%>°</option>
                             <%
-
                                     }
                                     angleForSalesman += 10;
                                     ++i;
@@ -81,7 +79,6 @@
 
                         <br>
                         <br>
-
 
                         <label for="shedlength">Længde i CM :</label><br>
                         <select class="custom-select" name="shedlength">
@@ -111,7 +108,7 @@
                                     shedwidthForSalesman += 30;
                                 }%>
                         </select>
-              
+
                         <input type="submit" class="btn btn-primary" value="Edit Order!"/><br><br>
                     </form>
                 </div>
