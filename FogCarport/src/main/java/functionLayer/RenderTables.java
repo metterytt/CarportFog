@@ -122,7 +122,7 @@ public class RenderTables {
             sb.append("<input type=\"hidden\" name=\"command\" value=\"updateQuantityBom\">");
             sb.append("<input type=\"number\" step=\"any\" name=\"editNumber\" value=\"").append(li.getQuantity()).append("\">");
             sb.append("<input type=\"hidden\" name=\"productID\" value=\"").append(li.getProductID()).append("\">");
-            sb.append("<input type=\"submit\" class=\"btn btn-primary\" value=\"Opdater Antal\">");
+            sb.append("&nbsp<input type=\"submit\" class=\"btn btn-primary\" value=\"Opdater Antal\">");
             sb.append("</form>");
             sb.append("</td>");
             sb.append("<td style=\"text-align:right\">").append(li.getUom()).append("</td>");
