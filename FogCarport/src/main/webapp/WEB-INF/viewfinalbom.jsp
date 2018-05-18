@@ -19,11 +19,12 @@
     </head>
     <body>
         <%@ include file="/WEB-INF/Include/Navbar.jspf" %>
+        <% int price = (int) request.getAttribute("totalprice"); %>
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
 
-                    <%= RenderTables.getFinalBom(finalBom)%>
+                    <%= RenderTables.getFinalBom(finalBom, price)%>
                     
 
                 </div>

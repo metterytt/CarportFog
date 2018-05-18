@@ -68,6 +68,13 @@
 
                                     <%--      <%}%>   --%>
                                     <th> <%@ include file="/WEB-INF/jspf/UserInfo.jspf" %>  </th>
+                                <th>
+                                        <form action="FrontController" method="post">
+                                            <input type="hidden" name="command" value="backtoorders">
+                                            <input type="submit" class="btn btn-primary" value="Tilbage til ordre">
+                                        </form>   
+                                    </th>
+                                
                                 </tr>
                             </thead>
                         </table>

@@ -373,11 +373,13 @@ public class Mapper {
     
     // sætter ordren til bestilt og gemmer bom i lineitems tabel
     public static void addBomToOrder(List<LineItem> listToBeSaved, int orderID) throws CarportException {
-        try {
-            dbc.setDataSource(new DataSourceFog().getDataSource());
-            dbc.open();
+            
+        dbc.setDataSource(new DataSourceFog().getDataSource());
             Connection con = dbc.getConnector();
-            con.setAutoCommit(false);
+            
+            try {
+             dbc.open();
+             con.setAutoCommit(false);
             String setOrdered = "UPDATE orders SET order_placed=1 WHERE orderID=?";
             PreparedStatement psSet = con.prepareStatement(setOrdered);
             psSet.setInt(1, orderID);
@@ -392,13 +394,19 @@ public class Mapper {
                 psAdd.setString(4, li.getUom());
                 psAdd.setDouble(5, li.getPricePerUnit());
                 psAdd.setDouble(6, li.getQuantity());
-                psAdd.executeUpdate();
+                psAdd.addBatch();
             }
-            
-            con.commit();
-            con.setAutoCommit(true);
+            psAdd.executeBatch();
+           
         } catch (SQLException ex) {
             throw new CarportException("Fejl ved lagring af stykliste", "employee");
+        }finally{
+                try{
+           con.commit();
+            con.setAutoCommit(true); 
+                }catch(SQLException e){
+                    
+                }
         }
     }
     
@@ -469,5 +477,24 @@ public class Mapper {
 //            Logger.getLogger(Mapper.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+        
+        public static int getOrderTotalPrice(int orderID) throws CarportException {
+        try {
+            dbc.setDataSource(new DataSourceFog().getDataSource());
+            dbc.open();
+            Connection con = dbc.getConnector();
+            String sql = "select price from orders where orderID=?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, orderID);
+            ResultSet rs = ps.executeQuery();
+            rs.next();
+           int price = rs.getInt("price");
+           return price; 
+        } catch (SQLException ex) {
+            throw new CarportException("Noget gik galt.. Prøv igen", "index");
+        }
+    }
+        
+    }
     
-}
+

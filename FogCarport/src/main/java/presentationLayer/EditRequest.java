@@ -9,6 +9,7 @@ import functionLayer.CarportException;
 import functionLayer.StorageFacade;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 public class EditRequest extends Command {
 
@@ -60,6 +61,10 @@ public class EditRequest extends Command {
             request.setAttribute("complete", "Opdatering til ordre: " + orderID + "'s mål er hermed lavet.");
 
         }
+         HttpSession session = request.getSession();
+         session.removeAttribute("carportbom");
+         session.removeAttribute("customerID");
+         session.removeAttribute("totalprice");
         return new AllRequests().execute(request, response);
     }
 }

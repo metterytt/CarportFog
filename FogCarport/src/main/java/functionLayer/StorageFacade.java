@@ -88,4 +88,8 @@ public class StorageFacade {
     public static List<LineItem> getFinalBom(int orderID) throws CarportException{
         return Mapper.getFinalBom(orderID);
     }
+    
+    public static int getOrderTotalPrice(int orderID) throws CarportException {
+        return Mapper.getOrderTotalPrice(orderID);
+    }
 }
