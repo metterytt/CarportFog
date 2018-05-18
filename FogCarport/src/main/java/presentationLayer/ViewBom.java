@@ -38,12 +38,12 @@ public class ViewBom extends Command {
         }
         BOM carportBom = carportCalculator.getBom();
         
-        carportBom.setOrderID(Integer.parseInt(request.getParameter("orderID")));
-        carportBom.setAngle(angle);
-        carportBom.setLength(length);
-        carportBom.setWidth(width);
-        carportBom.setShedLength(shedLength);
-        carportBom.setShedWidth(shedWidth);
+//        carportBom.setOrderID(Integer.parseInt(request.getParameter("orderID")));
+//        carportBom.setAngle(angle);
+//        carportBom.setLength(length);
+//        carportBom.setWidth(width);
+//        carportBom.setShedLength(shedLength);
+//        carportBom.setShedWidth(shedWidth);
         carportBom.setOrderID(orderID);
         session.setAttribute("carportbom", carportBom);
 //        session.removeAttribute("shedbom"); // vi vil ikke have den gamle shedbom liggende hvis vi skal have en ny beregning som ikke har skur

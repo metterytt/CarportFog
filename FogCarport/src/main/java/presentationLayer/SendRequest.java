@@ -31,7 +31,7 @@ public class SendRequest extends Command {
 
         CarportCalculator carportCalculator;
         BOM carportBom;
-        BOM shedBom = null;
+//        BOM shedBom = null;
 
         if (angle == 0) {
             carportCalculator = new FlatRoofCalculator(length, width, shedLength, shedWidth);

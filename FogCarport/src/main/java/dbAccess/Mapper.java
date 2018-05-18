@@ -381,20 +381,22 @@ public class Mapper {
             String setOrdered = "UPDATE `carport`.`orders` SET `order_placed`='1' WHERE `orderID`=?;";
             String addLineItem = "INSERT INTO lineitems (orderID, products_productID, use_in, uom, price, quantity)"
                     + " values (?, ?, ?, ?, ?, ?)";
+            PreparedStatement psSet = con.prepareStatement(setOrdered);
+            psSet.setInt(1, orderID);
             for (LineItem li : listToBeSaved) {
-                PreparedStatement psSet = con.prepareStatement(setOrdered);
+                
                 PreparedStatement psAdd = con.prepareStatement(addLineItem);
-
-                psSet.setInt(1, orderID);
+                
                 psAdd.setInt(1, orderID);
                 psAdd.setInt(2, li.getProductID());
-                psAdd.setString(3, (li.getUseInContext() == null) ? "" : li.getUseInContext());
+                psAdd.setString(3, li.getUseInContext());
                 psAdd.setString(4, li.getUom());
                 psAdd.setDouble(5, li.getPricePerUnit());
                 psAdd.setDouble(6, li.getQuantity());
                 psAdd.executeUpdate();
-                psSet.executeUpdate();
+                
             }
+            psSet.executeUpdate();
             con.commit();
             con.setAutoCommit(true);
         } catch (SQLException ex) {

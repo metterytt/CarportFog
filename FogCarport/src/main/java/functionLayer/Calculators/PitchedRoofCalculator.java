@@ -29,6 +29,8 @@ public class PitchedRoofCalculator implements CarportCalculator {
         bom.setLength(length);
         bom.setWidth(width);
         bom.setAngle(angle);
+        bom.setShedLength(shedLength);
+        bom.setShedWidth(shedWidth);
 
         LineItem fasciaBoards = StorageFacade.getProduct(18);
         fasciaBoards.setQuantity(calcFasciaBoards());

@@ -82,10 +82,9 @@
                         <br>
                         <br>
 
-<<<<<<< HEAD
+
              <%--           <%if (shedLength != 0) {%>   --%>
-=======
->>>>>>> ada0e25f60f152b806e27c6a24377f509de598db
+
                         <label for="shedlength">Længde i CM :</label><br>
                         <select class="custom-select" name="shedlength">
                             <option selected="selected"> <%=shedLength%> </option>
