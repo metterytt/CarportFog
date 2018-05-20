@@ -99,6 +99,12 @@
                                             <% shedwidthInput += 30;
                                                 }%>
                                         </select>
+<!--                                        <br>
+
+                                        <input type="radio" name="shedPos" value="left"> Venstre
+                                        <input type="radio" name="shedPos" value="middle"> Midten
+                                        <input type="radio" name="shedPos" value="right"> Højre-->
+                                            
                                     </div>
                                     <br> 
                                     <input type="submit" class="btn btn-primary" value="Beregn carport">  
