@@ -22,10 +22,10 @@ public class InputCarport extends Command {
         StorageFacade.addCustCalc(length, width, angle, shedLength, shedWidth);
 
         if ((shedLength == 0 && shedWidth != 0) || (shedLength != 0 && shedWidth == 0)) {
-            request.setAttribute("error", "Der skal vælges nummer for Højde og Bredde såfremt du ønsker et skur!");
+            request.setAttribute("error", "Der skal vælges mål for både højde og bredde såfremt du ønsker et skur.");
             return "index";
         }else if((width - shedWidth <= 29) || length - shedLength <= 29){
-           request.setAttribute("error", "Den går ikke du! Din carport skal minimum være 30cm bredere og min 30cm længere end dit skur");
+           request.setAttribute("error", "Din carport skal være mindst 30 cm bredere samt mindst 30 cm længere end dit skur.");
             return "index";
         }
         

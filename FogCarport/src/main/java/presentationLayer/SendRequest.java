@@ -4,7 +4,6 @@ import functionLayer.BOM;
 import functionLayer.Calculators.CarportCalculator;
 import functionLayer.Calculators.FlatRoofCalculator;
 import functionLayer.Calculators.PitchedRoofCalculator;
-import functionLayer.Calculators.ShedCalculator;
 import functionLayer.CarportException;
 import functionLayer.DrawingMeasures;
 import functionLayer.StorageFacade;
@@ -16,18 +15,15 @@ public class SendRequest extends Command {
 
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws CarportException {
-        if(request.getParameter("drawAgain") != null){
+        if (request.getParameter("drawAgain") != null) {
             request.getSession().removeAttribute("drawingmeasures");
             return "index";
         }
-        if(request.getParameter("backToDrawing") != null){
+        if (request.getParameter("backToDrawing") != null) {
             return "bom";
         }
         
-//        
-
         DrawingMeasures drawingMeasures = (DrawingMeasures) request.getSession().getAttribute("drawingmeasures");
-
         int length = drawingMeasures.getLength();
         int width = drawingMeasures.getWidth();
         int angle = drawingMeasures.getAngle();
@@ -35,31 +31,20 @@ public class SendRequest extends Command {
         int shedWidth = drawingMeasures.getShedWidth();
 
         CarportCalculator carportCalculator;
-        BOM carportBom;
-//        BOM shedBom = null;
-
         if (angle == 0) {
             carportCalculator = new FlatRoofCalculator(length, width, shedLength, shedWidth);
         } else {
             carportCalculator = new PitchedRoofCalculator(length, width, angle, shedLength, shedWidth);
         }
-        carportBom = carportCalculator.getBom();
+        BOM carportBom = carportCalculator.getBom();
 
-//        if (shedWidth != 0 && shedLength != 0) {
-//            CarportCalculator shedCalculator = new ShedCalculator(shedLength, shedWidth);
-//            shedBom = shedCalculator.getBom();
-//        }
-//        int shedPrice = 0;
-//        if (shedBom != null) {
-//            shedPrice = shedBom.totalPrice();
-//        }
-        int price = carportBom.totalPrice();// + shedPrice;
+        int price = carportBom.totalPrice();
         Customer customer = (Customer) request.getSession().getAttribute("customer");
         int customerID = customer.getID();
         StorageFacade.addRequest(customerID, length, width, angle, shedLength, shedWidth, price);
 
         request.setAttribute("message", "Din forespørgsel er nu i systemet, og du vil snart blive kontaktet. \n Du kan se dine forespørgsler under 'Ordreoversigt' ");
-       request.getSession().removeAttribute("drawingmeasures");
+        request.getSession().removeAttribute("drawingmeasures");
         return "customer";
     }
 

@@ -13,7 +13,7 @@ public class DataSourceFog {
         dataSource.setPassword("FOG99carport");
         dataSource.setDatabaseName("carport");
     }
-
+    
     public MysqlDataSource getDataSource() {
         return dataSource;
     }

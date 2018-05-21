@@ -13,10 +13,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
-public class Mapper {
+public class OrderMapper {
 
     private static DBConnector dbc = new DBConnector();
 
@@ -62,89 +60,89 @@ public class Mapper {
         }
     }
 
-    public static Employee login(String username, String password) throws CarportException {
-        try {
-            dbc.setDataSource(new DataSourceFog().getDataSource());
-            dbc.open();
-            Connection con = dbc.getConnector();
-            String sql = "select * from employees where username=? and password=?";
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, username);
-            ps.setString(2, password);
-            ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
-                int userID = rs.getInt("userID");
-                String role = rs.getString("role");
-                return new Employee(username, password, role, userID);
-            } else {
-                throw new CarportException("No user found.. Invalid input", "login");
-            }
-        } catch (SQLException ex) {
-            throw new CarportException("something went wrong trying to login", "login");
-        }
-    }
-
-    public static Customer loginCustomer(String email, String password) throws CarportException {
-        try {
-            dbc.setDataSource(new DataSourceFog().getDataSource());
-            dbc.open();
-            Connection con = dbc.getConnector();
-            String sql = "select * from customers where username=? and password=?";
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, email);
-            ps.setString(2, password);
-            ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
-                int ID = rs.getInt("customerID");
-                String name = rs.getString("firstname");
-                String lastname = rs.getString("lastname");
-                String phonenumber = rs.getString("phonenumber");
-                return new Customer(ID, email, password, name, lastname, phonenumber);
-            } else {
-                throw new CarportException("No user found.. Invalid input", "login");
-            }
-        } catch (SQLException ex) {
-            throw new CarportException("something went wrong trying to login", "login");
-        }
-    }
-
-    public static void registerEmp(String username, String password, String role) throws CarportException {
-        try {
-            dbc.setDataSource(new DataSourceFog().getDataSource());
-            dbc.open();
-            Connection con = dbc.getConnector();
-            String sql = "insert into employees values (null, ?, ?, ?)";
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, username);
-            ps.setString(2, password);
-            ps.setString(3, role);
-            ps.executeUpdate();
-        } catch (SQLException ex) {
-            throw new CarportException("Noget gik galt, prøv igen!", "registeremployee");
-        }
-    }
-
-    public static void registerCustomer(Customer customer) throws CarportException {
-        try {
-            dbc.setDataSource(new DataSourceFog().getDataSource());
-            dbc.open();
-            Connection con = dbc.getConnector();
-            String sql = "insert into customers (username, password, firstname, lastname, phonenumber) values (?, ?, ?, ?, ?)";
-            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setString(1, customer.getEmail());
-            ps.setString(2, customer.getPassword());
-            ps.setString(3, customer.getName());
-            ps.setString(4, customer.getLastname());
-            ps.setString(5, customer.getPassword());
-            ps.executeUpdate();
-            ResultSet gk = ps.getGeneratedKeys();
-            gk.next();
-            int id = gk.getInt(1);
-            customer.setID(id);
-        } catch (SQLException ex) {
-            throw new CarportException("Noget gik galt, prøv igen!", "registercustomer");
-        }
-    }
+//    public static Employee login(String username, String password) throws CarportException {
+//        try {
+//            dbc.setDataSource(new DataSourceFog().getDataSource());
+//            dbc.open();
+//            Connection con = dbc.getConnector();
+//            String sql = "select * from employees where username=? and password=?";
+//            PreparedStatement ps = con.prepareStatement(sql);
+//            ps.setString(1, username);
+//            ps.setString(2, password);
+//            ResultSet rs = ps.executeQuery();
+//            if (rs.next()) {
+//                int userID = rs.getInt("userID");
+//                String role = rs.getString("role");
+//                return new Employee(username, password, role, userID);
+//            } else {
+//                throw new CarportException("No user found.. Invalid input", "login");
+//            }
+//        } catch (SQLException ex) {
+//            throw new CarportException("something went wrong trying to login", "login");
+//        }
+//    }
+//
+//    public static Customer loginCustomer(String email, String password) throws CarportException {
+//        try {
+//            dbc.setDataSource(new DataSourceFog().getDataSource());
+//            dbc.open();
+//            Connection con = dbc.getConnector();
+//            String sql = "select * from customers where username=? and password=?";
+//            PreparedStatement ps = con.prepareStatement(sql);
+//            ps.setString(1, email);
+//            ps.setString(2, password);
+//            ResultSet rs = ps.executeQuery();
+//            if (rs.next()) {
+//                int ID = rs.getInt("customerID");
+//                String name = rs.getString("firstname");
+//                String lastname = rs.getString("lastname");
+//                String phonenumber = rs.getString("phonenumber");
+//                return new Customer(ID, email, password, name, lastname, phonenumber);
+//            } else {
+//                throw new CarportException("No user found.. Invalid input", "login");
+//            }
+//        } catch (SQLException ex) {
+//            throw new CarportException("something went wrong trying to login", "login");
+//        }
+//    }
+//
+//    public static void registerEmp(String username, String password, String role) throws CarportException {
+//        try {
+//            dbc.setDataSource(new DataSourceFog().getDataSource());
+//            dbc.open();
+//            Connection con = dbc.getConnector();
+//            String sql = "insert into employees values (null, ?, ?, ?)";
+//            PreparedStatement ps = con.prepareStatement(sql);
+//            ps.setString(1, username);
+//            ps.setString(2, password);
+//            ps.setString(3, role);
+//            ps.executeUpdate();
+//        } catch (SQLException ex) {
+//            throw new CarportException("Noget gik galt, prøv igen!", "registeremployee");
+//        }
+//    }
+//
+//    public static void registerCustomer(Customer customer) throws CarportException {
+//        try {
+//            dbc.setDataSource(new DataSourceFog().getDataSource());
+//            dbc.open();
+//            Connection con = dbc.getConnector();
+//            String sql = "insert into customers (username, password, firstname, lastname, phonenumber) values (?, ?, ?, ?, ?)";
+//            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+//            ps.setString(1, customer.getEmail());
+//            ps.setString(2, customer.getPassword());
+//            ps.setString(3, customer.getName());
+//            ps.setString(4, customer.getLastname());
+//            ps.setString(5, customer.getPassword());
+//            ps.executeUpdate();
+//            ResultSet gk = ps.getGeneratedKeys();
+//            gk.next();
+//            int id = gk.getInt(1);
+//            customer.setID(id);
+//        } catch (SQLException ex) {
+//            throw new CarportException("Noget gik galt, prøv igen!", "registercustomer");
+//        }
+//    }
 
     public static ArrayList<CustomerCalculation> getCustCalcs() throws CarportException {
         ArrayList<CustomerCalculation> custCalcs = new ArrayList<>();
@@ -221,20 +219,6 @@ public class Mapper {
         return openRequests;
     }
 
-//    public static void setOrdered(int orderID) throws CarportException {
-//        try {
-//            dbc.setDataSource(new DataSourceFog().getDataSource());
-//            dbc.open();
-//            Connection con = dbc.getConnector();
-//            String sql = "UPDATE `carport`.`orders` SET `order_placed`='1' WHERE `orderID`=?;";
-//            PreparedStatement ps = con.prepareStatement(sql);
-//            ps.setInt(1, orderID);
-//            ps.executeUpdate();
-//
-//        } catch (SQLException e) {
-//            throw new CarportException("Error setting sent status.", "employee");
-//        }
-//    }
     public static List<Order> getOrders() throws CarportException {
         ArrayList<Order> orders = new ArrayList<>();
         try {
@@ -263,43 +247,43 @@ public class Mapper {
         return orders;
     }
 
-    public static void deleteEmployee(int userID) throws CarportException {
-
-        try {
-            dbc.setDataSource(new DataSourceFog().getDataSource());
-            dbc.open();
-            Connection con = dbc.getConnector();
-            String sql = "delete from employees where userID=?";
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, userID);
-            ps.executeUpdate();
-        } catch (SQLException ex) {
-            throw new CarportException("Error - Cannot delete user", "employee");
-        }
-    }
-
-    public static List<Employee> getAllEmployees() throws CarportException {
-        List<Employee> res = new ArrayList<>();
-        try {
-            dbc.setDataSource(new DataSourceFog().getDataSource());
-            dbc.open();
-
-            String sql = "select * from employees";
-            ResultSet rs = dbc.query(sql);
-
-            while (rs.next()) {
-                int userID = rs.getInt(1);
-                String username = rs.getString(2);
-                String password = rs.getString(3);
-                String role = rs.getString(4);
-                Employee emp = new Employee(username, password, role, userID);
-                res.add(emp);
-            }
-            return res;
-        } catch (SQLException ex) {
-            throw new CarportException("Error - Cannot fetch all employees", "employee");
-        }
-    }
+//    public static void deleteEmployee(int userID) throws CarportException {
+//
+//        try {
+//            dbc.setDataSource(new DataSourceFog().getDataSource());
+//            dbc.open();
+//            Connection con = dbc.getConnector();
+//            String sql = "delete from employees where userID=?";
+//            PreparedStatement ps = con.prepareStatement(sql);
+//            ps.setInt(1, userID);
+//            ps.executeUpdate();
+//        } catch (SQLException ex) {
+//            throw new CarportException("Error - Cannot delete user", "employee");
+//        }
+//    }
+//
+//    public static List<Employee> getAllEmployees() throws CarportException {
+//        List<Employee> res = new ArrayList<>();
+//        try {
+//            dbc.setDataSource(new DataSourceFog().getDataSource());
+//            dbc.open();
+//
+//            String sql = "select * from employees";
+//            ResultSet rs = dbc.query(sql);
+//
+//            while (rs.next()) {
+//                int userID = rs.getInt(1);
+//                String username = rs.getString(2);
+//                String password = rs.getString(3);
+//                String role = rs.getString(4);
+//                Employee emp = new Employee(username, password, role, userID);
+//                res.add(emp);
+//            }
+//            return res;
+//        } catch (SQLException ex) {
+//            throw new CarportException("Error - Cannot fetch all employees", "employee");
+//        }
+//    }
 
     public static void editRequest(int orderID, int length, int width, int angle, int shedLength, int shedWidth, int price) throws CarportException {
         try {
@@ -321,28 +305,28 @@ public class Mapper {
         }
     }
 
-    public static Customer getCustomer(int customerID) throws CarportException {
-        try {
-            dbc.setDataSource(new DataSourceFog().getDataSource());
-            dbc.open();
-            Connection con = dbc.getConnector();
-            String sql = "select * from customers where customerID=?";
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, customerID);
-            ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
-                String email = rs.getString("username");
-                String name = rs.getString("firstname");
-                String lastname = rs.getString("lastname");
-                String phonenumber = rs.getString("phonenumber");
-                return new Customer(customerID, email, name, lastname, phonenumber);
-            } else {
-                throw new CarportException("Kunne ikke finde kunden", "ordermanagement");
-            }
-        } catch (SQLException ex) {
-            throw new CarportException("Noget gik galt.. Prøv igen", "ordermanagement");
-        }
-    }
+//    public static Customer getCustomer(int customerID) throws CarportException {
+//        try {
+//            dbc.setDataSource(new DataSourceFog().getDataSource());
+//            dbc.open();
+//            Connection con = dbc.getConnector();
+//            String sql = "select * from customers where customerID=?";
+//            PreparedStatement ps = con.prepareStatement(sql);
+//            ps.setInt(1, customerID);
+//            ResultSet rs = ps.executeQuery();
+//            if (rs.next()) {
+//                String email = rs.getString("username");
+//                String name = rs.getString("firstname");
+//                String lastname = rs.getString("lastname");
+//                String phonenumber = rs.getString("phonenumber");
+//                return new Customer(customerID, email, name, lastname, phonenumber);
+//            } else {
+//                throw new CarportException("Kunne ikke finde kunden", "ordermanagement");
+//            }
+//        } catch (SQLException ex) {
+//            throw new CarportException("Noget gik galt.. Prøv igen", "ordermanagement");
+//        }
+//    }
 
     public static List<Order> getCustomerOrders(int customerID) throws CarportException {
         try {
@@ -373,10 +357,8 @@ public class Mapper {
 
     // sætter ordren til bestilt og gemmer bom i lineitems tabel
     public static void addBomToOrder(List<LineItem> listToBeSaved, int orderID) throws CarportException {
-
         dbc.setDataSource(new DataSourceFog().getDataSource());
         Connection con = dbc.getConnector();
-
         try {
             dbc.open();
             con.setAutoCommit(false);
@@ -386,6 +368,7 @@ public class Mapper {
             PreparedStatement psSet = con.prepareStatement(setOrdered);
             PreparedStatement psAdd = con.prepareStatement(addLineItem);
             psSet.setInt(1, orderID);
+            psSet.executeUpdate();
             for (LineItem li : listToBeSaved) {
                 psAdd.setInt(1, orderID);
                 psAdd.setInt(2, li.getProductID());
@@ -394,42 +377,14 @@ public class Mapper {
                 psAdd.setDouble(5, li.getPricePerUnit());
                 psAdd.setDouble(6, li.getQuantity());
                 psAdd.executeUpdate();
-
             }
-            psSet.executeUpdate();
             con.commit();
             con.setAutoCommit(true);
         } catch (SQLException ex) {
             throw new CarportException("Fejl ved lagring af stykliste", "employee");
-        } finally {
-            try {
-                con.commit();
-                con.setAutoCommit(true);
-            } catch (SQLException e) {
-
-            }
         }
     }
 
-//              String addLineItem = "INSERT INTO lineitems (orderID, products_productID, use_in, uom, price, quantity)"
-////                    + " values (?, ?, ?, ?, ?, ?)";
-////            for (LineItem li : listToBeSaved) {
-////                
-////                PreparedStatement psAdd = con.prepareStatement(addLineItem);
-////
-////                
-////                psAdd.setInt(1, orderID);
-////                psAdd.setInt(2, li.getProductID());
-////                psAdd.setString(3, (li.getUseInContext() == null) ? "" : li.getUseInContext());
-////                psAdd.setString(4, li.getUom());
-////                psAdd.setDouble(5, li.getPricePerUnit());
-////                psAdd.setDouble(6, li.getQuantity());
-////                psAdd.executeUpdate();
-////                
-////            }
-//            
-////            con.commit();
-////            con.setAutoCommit(true);
     public static List<LineItem> getFinalBom(int orderID) throws CarportException {
         try {
             dbc.setDataSource(new DataSourceFog().getDataSource());
@@ -471,7 +426,7 @@ public class Mapper {
             ps.executeUpdate();
         } catch (SQLException ex) {
             throw new CarportException("Noget gik galt, da du prøvede at opdatere totalprisen", "ordermanagement");
-//            Logger.getLogger(Mapper.class.getName()).log(Level.SEVERE, null, ex);
+//            Logger.getLogger(OrderMapper.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
