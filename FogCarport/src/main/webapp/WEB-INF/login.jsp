@@ -23,19 +23,19 @@
                     <form action="FrontController" method="post">
                         <input type="hidden" name="command" value="login">
                         <input type="hidden" name="showEmpLogin">
-                        <input type="submit" class="btn btn-primary" value="Login as Employee"/><br>
+                        <input type="submit" class="btn btn-primary" value="Login som Medarbejder"/><br>
                     </form>
                     <%}
                     else { %>
                     <form action="FrontController" method="post">
                         <input type="hidden" name="command" value="login">
                         <input type="hidden" name="showCustomerLogin">
-                        <input type="submit" class="btn btn-primary" value="Login as Customer"/><br>
+                        <input type="submit" class="btn btn-primary" value="Login Som kunde"/><br>
                     </form>
                     <%}%>
                     <hr class="my-4">
                     <% if (request.getAttribute("empLogin") != null) {%>
-                    <h1 class="display-4">Login as Employee</h1>
+                    <h1 class="display-4">Login som Medarbejder</h1>
                     <form action="FrontController" method="post">
                         <input type="hidden" name="command" value="login">
                         <input type="hidden" name="loginEmp">
@@ -44,7 +44,7 @@
                         <p> <%=error%>
                             <%}%> </p>
                         <div class="form-group">
-                            <label for="username">Username:</label>
+                            <label for="username">Brugernavn:</label>
                             <input type="email" class="form-control col-md-3" id="username" name="username" value="test@test.dk">
                         </div>
                         <div class="form-group">
@@ -55,7 +55,7 @@
                     </form>
                     <%}
                     else { %>
-                    <h1 class="display-4">Login as Customer</h1>
+                    <h1 class="display-4">Login som Kunde</h1>
                     <form action="FrontController" method="post">
                         <input type="hidden" name="command" value="login">
                         <input type="hidden" name="loginCustomer">
@@ -64,7 +64,7 @@
                         <p> <div class="p-2 bg-danger text-black col-md-7 text-center">${error}</div><br>          </p>
                         <%}%> 
                         <div class="form-group">
-                            <label for="username">Username:</label>
+                            <label for="username">Brugernavn:</label>
                             <input type="email" class="form-control col-md-3" id="username" name="username" value="lars@lars.dk">
                         </div>
                         <div class="form-group">
