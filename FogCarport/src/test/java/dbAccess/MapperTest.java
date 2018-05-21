@@ -6,13 +6,10 @@
  */
 package dbAccess;
 
-import static dbAccess.Mapper.login;
 import functionLayer.entity.Customer;
 import functionLayer.entity.CustomerCalculation;
 import functionLayer.entity.Employee;
 import functionLayer.entity.LineItem;
-import functionLayer.entity.Order;
-import java.util.ArrayList;
 import java.util.List;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -22,10 +19,9 @@ import static org.junit.Assert.*;
  * @author Jesper
  */
 public class MapperTest {
-    
-    public MapperTest() {
-    }
 
+    
+    
     /**
      * Test of getProduct method, of class Mapper.
      */

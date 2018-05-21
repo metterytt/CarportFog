@@ -15,8 +15,7 @@ public class ViewFinalBom extends Command {
         List<LineItem> finalBom = StorageFacade.getFinalBom(orderID);
         
         int totalprice = StorageFacade.getOrderTotalPrice(orderID);
-        // check lige op på om det er godt med session
-        request.getSession().setAttribute("finalbom", finalBom);
+        request.setAttribute("finalbom", finalBom);
         request.setAttribute("totalprice", totalprice);
         return "viewfinalbom";
     }

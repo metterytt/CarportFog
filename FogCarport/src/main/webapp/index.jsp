@@ -77,6 +77,10 @@
                                     <br>
 
                                     <div id="myDIV" style="display:none;">
+                                        <br>
+                                         <%@ include file="/WEB-INF/jspf/ShedInfo.jspf" %>
+                                         <br>
+                                        
                                         <br><label for="shedlength">Længde i CM :</label><br>
                                         <select class="custom-select col-md-2" name="shedlength" value="0">
                                             <option> 0 </option>

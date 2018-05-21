@@ -9,7 +9,10 @@ import functionLayer.CarportException;
 import functionLayer.StorageFacade;
 import functionLayer.entity.Customer;
 import functionLayer.entity.Employee;
+import java.io.IOException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -41,9 +44,13 @@ public class Login extends Command {
 
             String username = request.getParameter("username");
             String password = request.getParameter("password");
-            Customer customer = StorageFacade.loginCustomer(username, password);
+            Customer customer;
+            try {
+                customer = StorageFacade.loginCustomer(username, password);
             request.getSession().setAttribute("customer", customer);
-
+            } catch (IOException ex) {
+                //DO something here?
+            }
             if(request.getSession().getAttribute("drawingmeasures") != null){
                 return "bom";
             }

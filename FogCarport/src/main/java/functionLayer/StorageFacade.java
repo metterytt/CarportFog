@@ -7,6 +7,7 @@ import functionLayer.entity.CustomerCalculation;
 import functionLayer.entity.Employee;
 import functionLayer.entity.LineItem;
 import functionLayer.entity.Order;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,7 +25,7 @@ public class StorageFacade {
         return Mapper.login(username, password);
     }
     
-    public static Customer loginCustomer(String username, String password) throws CarportException{
+    public static Customer loginCustomer(String username, String password) throws CarportException, IOException{
         return Mapper.loginCustomer(username, password);
     }
 

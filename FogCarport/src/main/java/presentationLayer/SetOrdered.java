@@ -24,7 +24,7 @@ public class SetOrdered extends Command {
         int orderID = carportBOM.getOrderID();
         StorageFacade.addBomToOrder(listToBeSaved, orderID);
 
-        request.setAttribute("complete", "Ordre " + orderID + " er nu sat til afsendt!");
+        request.setAttribute("complete", "Ordre " + orderID + " er nu sat til ordre, og kunden kan nu betale.");
         HttpSession session = request.getSession();
         session.removeAttribute("carportbom");
         session.removeAttribute("customerID");

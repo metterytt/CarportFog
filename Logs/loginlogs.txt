@@ -1,0 +1,18 @@
+maj 21, 2018 11:55:10 AM dbAccess.Mapper loginCustomer
+SEVERE: lars@lars.dk Logged in
+maj 21, 2018 11:58:32 AM dbAccess.Mapper loginCustomer
+SEVERE: lars@lars.dk Logged in
+maj 21, 2018 12:31:37 PM dbAccess.Mapper loginCustomer
+SEVERE: lars@lars.dk Logged in
+maj 21, 2018 12:38:25 PM dbAccess.Mapper loginCustomer
+SEVERE: lars@lars.dk Logged in
+maj 21, 2018 12:41:26 PM dbAccess.Mapper loginCustomer
+SEVERE: lars@lars.dk Logged in
+maj 21, 2018 12:41:58 PM dbAccess.Mapper loginCustomer
+SEVERE: lars@lars.dk Logged in
+maj 21, 2018 1:16:48 PM dbAccess.Mapper loginCustomer
+SEVERE: lars@lars.dk Logged in
+maj 21, 2018 2:00:52 PM dbAccess.Mapper loginCustomer
+SEVERE: lars@lars.dk Logged in
+maj 21, 2018 5:21:32 PM dbAccess.Mapper loginCustomer
+SEVERE: lars@lars.dk Logged in

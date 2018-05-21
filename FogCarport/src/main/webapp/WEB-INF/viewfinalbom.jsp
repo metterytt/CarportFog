@@ -8,7 +8,7 @@
 <%@page import="functionLayer.entity.LineItem"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<% List<LineItem> finalBom = (List<LineItem>) session.getAttribute("finalbom"); %>
+<% List<LineItem> finalBom = (List<LineItem>) request.getAttribute("finalbom"); %>
 <!DOCTYPE html>
 <html>
     <head>

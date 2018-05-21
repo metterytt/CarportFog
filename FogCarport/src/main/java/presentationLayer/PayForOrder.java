@@ -18,6 +18,7 @@ public class PayForOrder extends Command{
 
         int orderID = Integer.parseInt(request.getParameter("orderID"));
         StorageFacade.PayForOrder(orderID);
+        request.setAttribute("complete", "Betalingen er gennemført, se stykliste for ordre: " + orderID + " Under dine Ordre!");
         
         return new CustomerView().execute(request, response);
     }
