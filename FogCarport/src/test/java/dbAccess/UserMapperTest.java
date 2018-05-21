@@ -24,10 +24,10 @@ import static org.junit.Assert.*;
 public class UserMapperTest {
 
     private static Connection testConnection;
-    private static String USER = "foguser";
-    private static String USERPW = "FOG99carport";
-    private static String DBNAME = "carportTest";
-    private static String HOST = "159.89.99.43";
+    private static final String USER = "foguser";
+    private static final String USERPW = "FOG99carport";
+    private static final String DBNAME = "carportTest";
+    private static final String HOST = "159.89.99.43";
 
     @Before
     public void setUp() {

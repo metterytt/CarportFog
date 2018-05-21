@@ -1,6 +1,5 @@
 package dbAccess;
 
-import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
 import functionLayer.CarportException;
 import functionLayer.entity.Customer;
 import functionLayer.entity.Employee;
@@ -11,8 +10,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -20,13 +17,8 @@ import java.util.logging.Logger;
  */
 public class UserMapper {
 
-    private static DBConnector dbc = new DBConnector();
-
     public static Employee login(String username, String password) throws CarportException {
         try {
-//            dbc.setDataSource(new DataSourceFog().getDataSource());
-//            dbc.open();
-//            Connection con = dbc.getConnector();
             Connection con = Connector.connection();
             String sql = "select * from employees where username=? and password=?";
             PreparedStatement ps = con.prepareStatement(sql);
@@ -76,7 +68,6 @@ public class UserMapper {
         List<Employee> res = new ArrayList<>();
         try {
             Connection con = Connector.connection();
-
             String sql = "select * from employees";
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
@@ -98,7 +89,6 @@ public class UserMapper {
     public static Customer loginCustomer(String email, String password) throws CarportException {
         try {
             Connection con = Connector.connection();
-
             String sql = "select * from customers where username=? and password=?";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, email);
