@@ -78,9 +78,9 @@
 
                                     <div id="myDIV" style="display:none;">
                                         <br>
-                                         <%@ include file="/WEB-INF/jspf/ShedInfo.jspf" %>
-                                         <br>
-                                        
+                                        <%@ include file="/WEB-INF/jspf/ShedInfo.jspf" %>
+                                        <br>
+
                                         <br><label for="shedlength">Længde i CM :</label><br>
                                         <select class="custom-select col-md-2" name="shedlength" value="0">
                                             <option> 0 </option>
@@ -103,12 +103,12 @@
                                             <% shedwidthInput += 30;
                                                 }%>
                                         </select>
-<!--                                        <br>
+                                        <!--                                        <br>
+                                        
+                                                                                <input type="radio" name="shedPos" value="left"> Venstre
+                                                                                <input type="radio" name="shedPos" value="middle"> Midten
+                                                                                <input type="radio" name="shedPos" value="right"> Højre-->
 
-                                        <input type="radio" name="shedPos" value="left"> Venstre
-                                        <input type="radio" name="shedPos" value="middle"> Midten
-                                        <input type="radio" name="shedPos" value="right"> Højre-->
-                                            
                                     </div>
                                     <br> 
                                     <input type="submit" class="btn btn-primary" value="Beregn carport">  
@@ -124,5 +124,6 @@
                     </div>
                 </div>
             </div>
+        </div>
     </body>
 </html>

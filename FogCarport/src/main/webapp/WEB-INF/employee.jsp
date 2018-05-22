@@ -67,6 +67,10 @@
                         <input type="hidden" name="command" value="registeremployee">
                         <input type="submit" class="btn btn-primary" value="Registrer ny medarbejder">
                     </form>
+                    <br><form action="FrontController" method="post">
+                        <input type="hidden" name="command" value="logreader">
+                        <input type="submit" class="btn btn-primary" value="Logging">
+                    </form>
                     <%}%>
                     <br><form action="FrontController" method="post">
                         <input type="hidden" name="command" value="allcalculations">
