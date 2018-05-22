@@ -1,0 +1,4 @@
+maj 22, 2018 12:16:53 PM dbAccess.CarportLog <init>
+SEVERE: No user found.. Invalid input
+maj 22, 2018 12:17:04 PM dbAccess.CarportLog <init>
+SEVERE: No user found.. Invalid input

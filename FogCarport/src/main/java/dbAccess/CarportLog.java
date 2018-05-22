@@ -8,6 +8,7 @@ package dbAccess;
 import java.io.File;
 import java.io.IOException;
 import java.util.logging.FileHandler;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 
@@ -20,19 +21,23 @@ public class CarportLog {
    public Logger logger;
    FileHandler fh;
    
-   public CarportLog(String file_name){
+   private String file = "/Users/Jesper/Desktop/gitProjects/Carport/CarportFog/Logs/ExceptionLogs.txt";
+   
+   public CarportLog(String message){
        try{
-       File f = new File(file_name);
+       File f = new File(file);
        if(!f.exists()){
            f.createNewFile();
        }
        
-       fh = new FileHandler(file_name, true);
-       logger = Logger.getLogger("test");
+       fh = new FileHandler(file, true);
+       
+       logger = Logger.getLogger(CarportLog.class.getName());
        logger.addHandler(fh);
        SimpleFormatter formatter = new SimpleFormatter();
        fh.setFormatter(formatter);
-       
+       logger.log(Level.SEVERE, message);
+       fh.close();
        
        }catch(SecurityException | IOException e){
            e.printStackTrace();
