@@ -21,7 +21,8 @@ public class CarportLog {
    public Logger logger;
    FileHandler fh;
    
-   private String file = "/Users/Jesper/Desktop/gitProjects/Carport/CarportFog/Logs/ExceptionLogs.txt";
+   private String file = "/Users/rasmus/Desktop/carportlogging";
+//   private String file = "/var/carportlogging/ExceptionLogs.txt";
    
    public CarportLog(String message){
        try{
