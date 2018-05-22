@@ -27,7 +27,7 @@ public class FrontController extends HttpServlet {
         } catch (CarportException ex) {
             request.setAttribute("error", ex.getMessage());
            
-           new CarportLog(ex.getMessage());
+           new CarportLog(ex.getMessage(), "/Carport/CarportFog/Logs/ExceptionLogs.txt");
 
             //log her
             

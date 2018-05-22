@@ -1,0 +1,4 @@
+maj 22, 2018 2:50:07 PM dbAccess.CarportLog <init>
+SEVERE: Customer lars@lars.dk Logged in
+maj 22, 2018 2:50:46 PM dbAccess.CarportLog <init>
+SEVERE: Customer lars@lars.dk222 Entered wrong inputs

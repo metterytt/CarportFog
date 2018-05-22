@@ -21,9 +21,9 @@ public class CarportLog {
    public Logger logger;
    FileHandler fh;
    
-   private String file = "/Users/Jesper/Desktop/gitProjects/Carport/CarportFog/Logs/ExceptionLogs.txt";
+   private String file = "/Carport/CarportFog/Logs/ExceptionLogs.txt";
    
-   public CarportLog(String message){
+   public CarportLog(String message, String file){
        try{
        File f = new File(file);
        if(!f.exists()){

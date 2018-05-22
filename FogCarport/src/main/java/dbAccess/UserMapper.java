@@ -28,8 +28,10 @@ public class UserMapper {
             if (rs.next()) {
                 int userID = rs.getInt("userID");
                 String role = rs.getString("role");
+                new CarportLog("Customer " + username + " Logged in succesfully", "/Carport/CarportFog/Logs/LoginEmp.txt");
                 return new Employee(username, password, role, userID);
             } else {
+                new CarportLog("Customer " +username + " Entered wrong inputs", "/Carport/CarportFog/Logs/LoginEmp.txt");
                 throw new CarportException("No user found.. Invalid input", "login");
             }
         } catch (SQLException | ClassNotFoundException ex) {
@@ -99,8 +101,10 @@ public class UserMapper {
                 String name = rs.getString("firstname");
                 String lastname = rs.getString("lastname");
                 String phonenumber = rs.getString("phonenumber");
+                new CarportLog("Customer " + email + " Logged in", "/Carport/CarportFog/Logs/LoginCustomer.txt");
                 return new Customer(ID, email, password, name, lastname, phonenumber);
             } else {
+                new CarportLog("Customer " + email + " Entered wrong inputs", "Carport/CarportFog/Logs/LoginCustomer.txt");
                 throw new CarportException("No user found.. Invalid input", "login");
             }
         } catch (SQLException | ClassNotFoundException ex) {

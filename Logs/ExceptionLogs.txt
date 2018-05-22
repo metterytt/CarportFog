@@ -1,4 +1,8 @@
-maj 22, 2018 12:16:53 PM dbAccess.CarportLog <init>
+maj 22, 2018 2:46:39 PM dbAccess.CarportLog <init>
+SEVERE: Customer logged in succesfully
+maj 22, 2018 2:46:56 PM dbAccess.CarportLog <init>
+SEVERE: Customer test@test.dk Logged in succesfully
+maj 22, 2018 2:47:09 PM dbAccess.CarportLog <init>
 SEVERE: No user found.. Invalid input
-maj 22, 2018 12:17:04 PM dbAccess.CarportLog <init>
+maj 22, 2018 2:50:46 PM dbAccess.CarportLog <init>
 SEVERE: No user found.. Invalid input

@@ -1,0 +1,2 @@
+maj 22, 2018 2:58:29 PM dbAccess.CarportLog <init>
+SEVERE: Customer test@test.dk Logged in succesfully
