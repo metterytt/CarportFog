@@ -18,48 +18,58 @@
     </head>
     <body>
         <%@ include file="/WEB-INF/Include/Navbar.jspf" %>
+        <%List<String> exceptionLoggingList = (List<String>) request.getAttribute("exceptionLoggingList");%>
+        <%List<String> customerLoginLoggingList = (List<String>) request.getAttribute("customerLoginLoggingList");%>
         <div class="container-fluid">
             <div class="row">
-                <% if(request.getAttribute("logginglistCustomer") != null){
-                    List<String> list = (List<String>) request.getAttribute("logginglistCustomer");
-                    %>
                 <div class="col-md-6">
-                    <h1 class="display-4">Liste over Logins for Kunder</h1>
 
-                    <% for (String str : list) {%> 
-                    <p><%=str%></p> 
-                    <%}%>
+                    <div class="tab">
+                        <button class="btn btn-primary" class="tablinks" onclick="openTable(event, 'CustomerLoginExceptionLogs')" id="defaultOpen">Vis logs for fejlede logins</button>
+                        <button class="btn btn-primary" class="tablinks" onclick="openTable(event, 'CustomerLoginLogs')">Vis logs for kundelogins</button>
                     </div>
-                    <% }%>
-                    
-                     <% if(request.getAttribute("logginglist") != null){
-                    List<String> list = (List<String>) request.getAttribute("logginglist");
-                    %>
-                <div class="col-md-6">
-                    <h1 class="display-4">Liste over Logins for Kunder</h1>
 
-                    <% for (String str : list) {%> 
-                    <p><%=str%></p> 
+
+                    <%if (request.getAttribute("error") != null) { %>
+                    <br> 
+                    <div class="p-2 bg-danger text-black col-md-4 text-center">${error}</div><br>
                     <%}%>
+
+                    <div id="CustomerLoginExceptionLogs" class="tabcontent">
+                        <br>
+                        <h1 class="display-4">Liste over fejlede logins for kunder</h1>
+                        <% for (String str : exceptionLoggingList) {%> 
+                        <p><%=str%></p> 
+                        <%}%>
                     </div>
-                    <% }%>
-                    
-                    <form action="FrontController" method="post">
-                        <input type="hidden" name="command" value="logreader">
-                        <input type="hidden" name="showCustomerLog">
-                        <input type="submit" class="btn btn-primary" value="Vis logs for kunderlogin">
-                    </form>
-                    
-                    </form>
-                    <br><form action="FrontController" method="post">
-                        <input type="hidden" name="command" value="logreader">
-                        <input type="hidden" name="showExceptionLogs">
-                        <input type="submit" class="btn btn-primary" value="Vis logs for expcetions">
-                    </form>
-                    
-                    
+
+                    <div id="CustomerLoginLogs" class="tabcontent">
+                        <br>
+                        <h1 class="display-4">Liste over logins for kunder</h1>
+                        <% for (String str : customerLoginLoggingList) {%> 
+                        <p><%=str%></p> 
+                        <%}%>
+                    </div>
                 </div>
-            
+            </div>
         </div>
+
+        <script>
+            function openTable(evt, name) {
+                var i, tabcontent, tablinks;
+                tabcontent = document.getElementsByClassName("tabcontent");
+                for (i = 0; i < tabcontent.length; i++) {
+                    tabcontent[i].style.display = "none";
+                }
+                tablinks = document.getElementsByClassName("tablinks");
+                for (i = 0; i < tablinks.length; i++) {
+                    tablinks[i].className = tablinks[i].className.replace(" active", "");
+                }
+                document.getElementById(name).style.display = "block";
+                evt.currentTarget.className += " active";
+            }
+            document.getElementById("defaultOpen").click();
+        </script>
+
     </body>
 </html>

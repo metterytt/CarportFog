@@ -16,34 +16,18 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class LogReader extends Command {
 
-
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws CarportException {
-        
-        //load site here
-        if(request.getParameter("load") != null){
-            return "logging";
-            
-        }
-        
-         if(request.getParameter("showExceptionLogs") != null){
-        //if param != null
-        LoggingReader lr = new LoggingReader("/var/carportlogging/ExceptionLogs.txt");
+
+        LoggingReader lr = new LoggingReader("ExceptionLogs");
         lr.readLog();
-        request.setAttribute("logginglist", lr.getList());
-         return "logging"; 
-         }
-       
-            
-      if(request.getParameter("showCustomerLog") != null){
-        //if param != null
-        LoggingReader lrCustomer = new LoggingReader("/var/carportlogging/LoginCustomer.txt");
+        request.setAttribute("exceptionLoggingList", lr.getList());
+
+        LoggingReader lrCustomer = new LoggingReader("LoginCustomer");
         lrCustomer.readLog();
-        request.setAttribute("logginglistCustomer", lrCustomer.getList());
-            return "logging";
-              }
-        
+        request.setAttribute("customerLoginLoggingList", lrCustomer.getList());
+
         return "logging";
     }
-    
+
 }

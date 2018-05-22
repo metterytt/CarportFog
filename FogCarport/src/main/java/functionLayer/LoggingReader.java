@@ -23,9 +23,9 @@ public class LoggingReader {
 
     public LoggingReader(String filename) {
 //        file = new File("/var/carportlogging/ExceptionLogs.txt");
-            file = new File(filename);
+        file = new File("/var/carportlogging/" + filename + ".txt");
 //        this.file = new File("/Users/rasmu/Desktop/carportlogging/ExceptionLogs.txt");
-        this.list = new ArrayList();
+        list = new ArrayList();
     }
 
     public List<String> getList() {
