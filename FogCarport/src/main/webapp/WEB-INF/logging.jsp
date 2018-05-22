@@ -6,6 +6,8 @@
 
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%List<String> exceptionLoggingList = (List<String>) request.getAttribute("exceptionLoggingList");%>
+<%List<String> customerLoginLoggingList = (List<String>) request.getAttribute("customerLoginLoggingList");%>
 
 
 <!DOCTYPE html>
@@ -18,8 +20,6 @@
     </head>
     <body>
         <%@ include file="/WEB-INF/Include/Navbar.jspf" %>
-        <%List<String> exceptionLoggingList = (List<String>) request.getAttribute("exceptionLoggingList");%>
-        <%List<String> customerLoginLoggingList = (List<String>) request.getAttribute("customerLoginLoggingList");%>
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-6">
