@@ -21,17 +21,17 @@ public class CarportLog {
    public Logger logger;
    FileHandler fh;
    
-   private String file = "/var/carportlogging/ExceptionLogs.txt";
+//   private String file = "/var/carportlogging/ExceptionLogs.txt";
 //   private String file = "/Users/rasmu/Desktop/carportlogging/ExceptionLogs.txt";
    
-   public CarportLog(String message){
+   public CarportLog(String message, String filename){
        try{
-       File f = new File(file);
+       File f = new File(filename);
        if(!f.exists()){
            f.createNewFile();
        }
        
-       fh = new FileHandler(file, true);
+       fh = new FileHandler(filename, true);
        
        logger = Logger.getLogger(CarportLog.class.getName());
        logger.addHandler(fh);

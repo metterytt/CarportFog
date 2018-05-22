@@ -99,8 +99,10 @@ public class UserMapper {
                 String name = rs.getString("firstname");
                 String lastname = rs.getString("lastname");
                 String phonenumber = rs.getString("phonenumber");
+                new CarportLog("User " + email  +" Logged in", "/var/carportlogging/LoginCustomer.txt");
                 return new Customer(ID, email, password, name, lastname, phonenumber);
             } else {
+                new CarportLog("User " + email  +" entered wrong info", "/var/carportlogging/LoginCustomer.txt");
                 throw new CarportException("No user found.. Invalid input", "login");
             }
         } catch (SQLException | ClassNotFoundException ex) {

@@ -6,8 +6,8 @@
 
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<% List<String> list = (List<String>) request.getAttribute("logginglist");
-   %>
+
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -20,14 +20,46 @@
         <%@ include file="/WEB-INF/Include/Navbar.jspf" %>
         <div class="container-fluid">
             <div class="row">
+                <% if(request.getAttribute("logginglistCustomer") != null){
+                    List<String> list = (List<String>) request.getAttribute("logginglistCustomer");
+                    %>
                 <div class="col-md-6">
-                    <h1 class="display-4">Logging overview of failed logins</h1>
+                    <h1 class="display-4">Liste over Logins for Kunder</h1>
 
                     <% for (String str : list) {%> 
                     <p><%=str%></p> 
                     <%}%>
+                    </div>
+                    <% }%>
+                    
+                     <% if(request.getAttribute("logginglist") != null){
+                    List<String> list = (List<String>) request.getAttribute("logginglist");
+                    %>
+                <div class="col-md-6">
+                    <h1 class="display-4">Liste over Logins for Kunder</h1>
+
+                    <% for (String str : list) {%> 
+                    <p><%=str%></p> 
+                    <%}%>
+                    </div>
+                    <% }%>
+                    
+                    <form action="FrontController" method="post">
+                        <input type="hidden" name="command" value="logreader">
+                        <input type="hidden" name="showCustomerLog">
+                        <input type="submit" class="btn btn-primary" value="Vis logs for kunderlogin">
+                    </form>
+                    
+                    </form>
+                    <br><form action="FrontController" method="post">
+                        <input type="hidden" name="command" value="logreader">
+                        <input type="hidden" name="showExceptionLogs">
+                        <input type="submit" class="btn btn-primary" value="Vis logs for expcetions">
+                    </form>
+                    
+                    
                 </div>
-            </div>
+            
         </div>
     </body>
 </html>

@@ -69,6 +69,7 @@
                     </form>
                     <br><form action="FrontController" method="post">
                         <input type="hidden" name="command" value="logreader">
+                        <input type="hidden" name="load">
                         <input type="submit" class="btn btn-primary" value="Logging">
                     </form>
                     <%}%>
