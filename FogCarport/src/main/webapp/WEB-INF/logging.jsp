@@ -36,7 +36,7 @@
                     List<String> list = (List<String>) request.getAttribute("logginglist");
                     %>
                 <div class="col-md-6">
-                    <h1 class="display-4">Liste over Logins for Kunder</h1>
+                    <h1 class="display-4">Liste over all exceptions</h1>
 
                     <% for (String str : list) {%> 
                     <p><%=str%></p> 
