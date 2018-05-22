@@ -1,7 +1,10 @@
 package presentationLayer;
 
+import com.mysql.jdbc.log.Log;
+import dbAccess.CarportLog;
 import functionLayer.CarportException;
 import java.io.IOException;
+import java.util.logging.Level;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -23,6 +26,12 @@ public class FrontController extends HttpServlet {
             }
         } catch (CarportException ex) {
             request.setAttribute("error", ex.getMessage());
+           
+            CarportLog log = new CarportLog("/Users/Jesper/Desktop/gitProjects/Carport/CarportFog/Logs/loginlogs.txt");
+            log.logger.log(Level.SEVERE, "hej", "hej");
+
+            //log her
+            
             if (ex.getPage().equals("index")) {
                 request.getRequestDispatcher("index.jsp").forward(request, response);
             } else {

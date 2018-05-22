@@ -15,6 +15,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Mapper {
     
@@ -100,19 +101,8 @@ public class Mapper {
                 String name = rs.getString("firstname");
                 String lastname = rs.getString("lastname");
                 String phonenumber = rs.getString("phonenumber");
-                
-                Logging.initLogin();
-                String message = email + " Logged in";
-                Logging.getLogger().log(Level.SEVERE, message, "");
-                
-                
                 return new Customer(ID, email, password, name, lastname, phonenumber);
             } else {
-                Logging.initLogin();
-                String message = email + " Denied Logged in";
-                 Logging.initLogin();
-                 Logging.getLogger().log(Level.SEVERE, message, "");
-                
                 throw new CarportException("No user found.. Invalid input", "login");
             }
         } catch (SQLException ex) {
