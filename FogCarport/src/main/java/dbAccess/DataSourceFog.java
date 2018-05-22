@@ -1,9 +1,6 @@
 package dbAccess;
 
 import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
-import java.util.ArrayList;
-import java.util.List;
-import javax.enterprise.inject.New;
 
 public class DataSourceFog {
 
@@ -16,7 +13,6 @@ public class DataSourceFog {
         dataSource.setPassword("FOG99carport");
         dataSource.setDatabaseName("carport");
     }
-    
     
     public MysqlDataSource getDataSource() {
         return dataSource;

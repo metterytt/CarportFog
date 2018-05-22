@@ -4,15 +4,15 @@ public class LineItem {
 
     private int productID;
     private String name;
-    private String description;
+    private String description; // overflødig
     private String uom;
-    private String uomForDisplay;
+    private String uomForDisplay; // overflødig
     private double pricePerUnit;
-    private String extraInfo;
+    private String extraInfo; // overflødig
     private double quantity;
     private String useInContext;
-    private double qtyForDisplay;
-    private int length;
+    private double qtyForDisplay; // overflødig
+    private int length; // overflødig
 
     public LineItem(int productID, String name, String uom, int pricePerUnit) {
         this.productID = productID;
