@@ -176,7 +176,7 @@ public class RenderTables {
 
     public static String getCurrentCustomerRequests(List<Order> requests) {
         if (requests == null || requests.isEmpty()) {
-            return "---Der opstod en fejl ved indlæsningen af forespørgslerne---";
+            return "---Ingen forespørgsler i øjeblikket---";
         }
         StringBuilder sb = new StringBuilder();
         sb.append("<table class=\"table table-striped\">\n"
@@ -204,7 +204,7 @@ public class RenderTables {
 
     public static String getCurrentCustomerOrders(List<Order> orders) {
         if (orders == null || orders.isEmpty()) {
-            return "---Der opstod en fejl ved indlæsningen af ordrerne---";
+            return "---Ingen ordrer i øjeblikket---";
         }
         StringBuilder sb = new StringBuilder();
         sb.append("<table class=\"table table-striped\">\n"
