@@ -1,16 +1,13 @@
 package dbAccess;
 
 import functionLayer.CarportException;
-import functionLayer.entity.Customer;
 import functionLayer.entity.CustomerCalculation;
-import functionLayer.entity.Employee;
 import functionLayer.entity.LineItem;
 import functionLayer.entity.Order;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
