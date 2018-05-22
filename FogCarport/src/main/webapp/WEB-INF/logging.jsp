@@ -29,7 +29,6 @@
                         <button class="btn btn-primary" class="tablinks" onclick="openTable(event, 'CustomerLoginLogs')">Vis logs for kundelogins</button>
                     </div>
 
-
                     <%if (request.getAttribute("error") != null) { %>
                     <br> 
                     <div class="p-2 bg-danger text-black col-md-4 text-center">${error}</div><br>
