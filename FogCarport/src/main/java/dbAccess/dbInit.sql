@@ -2,9 +2,9 @@ INSERT INTO `carport`.`products` (`name`, `uom`, `price`) VALUES ('Bræt 25x200 
 INSERT INTO `carport`.`products` (`name`, `uom`, `price`) VALUES ('Bræt 25x125 trykimp.', 'm', '3195');
 INSERT INTO `carport`.`products` (`name`, `uom`, `price`) VALUES ('Lægte 38x73 ubeh.', 'm', '1395');
 INSERT INTO `carport`.`products` (`name`, `uom`, `price`) VALUES ('Spærtræ 45x195 ubeh.', 'm', '4395');
-INSERT INTO `carport`.`products` (`name`, description, `uom`, `price`) VALUES ('Stolpe 97x97 trykimp.', '300cm', 'stk.', '32700');
+INSERT INTO `carport`.`products` (`name`, `uom`, `price`) VALUES ('Stolpe 97x97 trykimp.', 'stk.', '32700');
 INSERT INTO `carport`.`products` (`name`, `uom`, `price`) VALUES ('Bræt 19x100 trykimp.', 'm', '795');
-INSERT INTO `carport`.`products` (`name`, description, `uom`, `price`) VALUES ('Tagplader Plastmo blåtonet', '109x600', 'stk.', '33000');
+INSERT INTO `carport`.`products` (`name`, `uom`, `price`) VALUES ('Tagplader Plastmo blåtonet', 'stk.', '33000');
 INSERT INTO `carport`.`products` (`name`, `uom`, `price`) VALUES ('Plastmo bundskruer', 'stk.', '250');
 INSERT INTO `carport`.`products` (`name`, `uom`, `price`) VALUES ('Hulbånd, 1x20mm', 'm', '2100');
 INSERT INTO `carport`.`products` (`name`, `uom`, `price`) VALUES ('Universalbeslag 190mm højre', 'stk.', '4400');

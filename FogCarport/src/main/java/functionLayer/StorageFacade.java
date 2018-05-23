@@ -18,7 +18,6 @@ public class StorageFacade {
     }
 
     public static void addCustCalc(int length, int width, int angle, int shedLength, int shedWidth) throws CarportException {
-
         OrderMapper.addCustCalc(length, width, angle, shedLength, shedWidth);
     }
 
@@ -50,8 +49,8 @@ public class StorageFacade {
         OrderMapper.updateTotalPrice(price, orderID);
     }
 
-    public static void addBomToOrder(List<LineItem> listToBeSaved, int orderID) throws CarportException {
-        OrderMapper.addBomToOrder(listToBeSaved, orderID);
+    public static void addBomToOrder(List<LineItem> listToBeSaved, int orderID, int empID) throws CarportException {
+        OrderMapper.addBomToOrder(listToBeSaved, orderID, empID);
     }
 
     public static List<LineItem> getFinalBom(int orderID) throws CarportException {

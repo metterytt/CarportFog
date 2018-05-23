@@ -3,6 +3,7 @@ package presentationLayer;
 import functionLayer.BOM;
 import functionLayer.CarportException;
 import functionLayer.StorageFacade;
+import functionLayer.entity.Employee;
 import functionLayer.entity.LineItem;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
@@ -22,7 +23,9 @@ public class SetOrdered extends Command {
         List<LineItem> listToBeSaved = carportBOM.getListOfProducts();
 
         int orderID = carportBOM.getOrderID();
-        StorageFacade.addBomToOrder(listToBeSaved, orderID);
+        Employee emp = (Employee) request.getSession().getAttribute("employee");
+        int empID = emp.getUserID();
+        StorageFacade.addBomToOrder(listToBeSaved, orderID, empID);
 
         request.setAttribute("complete", "Ordre " + orderID + " er nu sat til ordre, og kunden kan nu betale.");
         HttpSession session = request.getSession();
