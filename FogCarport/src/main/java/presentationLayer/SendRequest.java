@@ -20,7 +20,7 @@ public class SendRequest extends Command {
             return "index";
         }
         if (request.getParameter("backToDrawing") != null) {
-            return "bom";
+            return "drawings";
         }
         
         DrawingMeasures drawingMeasures = (DrawingMeasures) request.getSession().getAttribute("drawingmeasures");
