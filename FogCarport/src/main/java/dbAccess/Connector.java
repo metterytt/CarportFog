@@ -15,8 +15,8 @@ import java.sql.SQLException;
  */
 public class Connector {
 
-//    private static final String URL = "jdbc:mysql://159.89.99.43:3306/carport?autoReconnect=true";
-    private static final String URL = "jdbc:mysql://159.89.99.43:3306/carport";
+    private static final String URL = "jdbc:mysql://159.89.99.43:3306/carport?autoReconnect=true";
+//    private static final String URL = "jdbc:mysql://159.89.99.43:3306/carport";
     private static final String USERNAME = "foguser";
     private static final String PASSWORD = "FOG99carport";
     private static Connection singleton;

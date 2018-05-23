@@ -43,7 +43,7 @@ public class PitchedRoofCalculator implements CarportCalculator {
         bom.addToBOM(rafterSetAndPlates);
 
         LineItem posts = StorageFacade.getProduct(5);
-        posts.setQuantity(calcPosts(length));
+        posts.setQuantity(calcPosts());
         posts.setUseInContext("Nedgraves 90cm i jord");
         bom.addToBOM(posts);
 
@@ -53,80 +53,80 @@ public class PitchedRoofCalculator implements CarportCalculator {
         bom.addToBOM(waterBoardsAndGablesCladding);
 
         LineItem molding = StorageFacade.getProduct(20); // molding = træliste
-        molding.setQuantity(calcMolding(length));
+        molding.setQuantity(calcMolding());
         molding.setUseInContext("Monteres ovenpå tagfodslægte");
         bom.addToBOM(molding);
 
         LineItem roofLaths = StorageFacade.getProduct(3);
-        roofLaths.setQuantity(calcRoofLaths(length, width, angle));
+        roofLaths.setQuantity(calcRoofLaths());
         roofLaths.setUseInContext("Monteres på spær, inkl. toplægte");
         bom.addToBOM(roofLaths);
 
         LineItem roofTiles = StorageFacade.getProduct(21);
-        roofTiles.setQuantity(calcRoofTiles(length, width, angle));
+        roofTiles.setQuantity(calcRoofTiles());
         roofTiles.setUseInContext("Monteres på taglægter");
         bom.addToBOM(roofTiles);
 
         LineItem roofTopTiles = StorageFacade.getProduct(22);
-        roofTopTiles.setQuantity(calcRoofTopTiles(length));
+        roofTopTiles.setQuantity(calcRoofTopTiles());
         roofTopTiles.setUseInContext("Monteres på toplægte");
         bom.addToBOM(roofTopTiles);
 
         LineItem topLathHolder = StorageFacade.getProduct(23);
-        topLathHolder.setQuantity(calcTopLathHolder(length));
+        topLathHolder.setQuantity(calcTopLathHolder());
         topLathHolder.setUseInContext("Monteres på toppen af hvert spær");
         bom.addToBOM(topLathHolder);
 
         LineItem roofTopTileBrackets = StorageFacade.getProduct(24);
-        roofTopTileBrackets.setQuantity(calcRoofTopTileBrackets(length));
+        roofTopTileBrackets.setQuantity(calcRoofTopTileBrackets());
         roofTopTileBrackets.setUseInContext("Til montering af rygsten");
         bom.addToBOM(roofTopTileBrackets);
 
         LineItem binders = StorageFacade.getProduct(25);
-        binders.setQuantity(calcBinders(length, width));
+        binders.setQuantity(calcBinders());
         binders.setUseInContext("Til montering af tagsten");
         bom.addToBOM(binders);
 
         LineItem uniBracketsRight = StorageFacade.getProduct(10);
-        uniBracketsRight.setQuantity(calcUniBrackets(length));
+        uniBracketsRight.setQuantity(calcUniBrackets());
         uniBracketsRight.setUseInContext("Til montering af spær på rem");
         bom.addToBOM(uniBracketsRight);
 
         LineItem uniBracketsLeft = StorageFacade.getProduct(11);
-        uniBracketsLeft.setQuantity(calcUniBrackets(length));
+        uniBracketsLeft.setQuantity(calcUniBrackets());
         uniBracketsLeft.setUseInContext("Til montering af spær på rem");
         bom.addToBOM(uniBracketsLeft);
 
         LineItem fasciaScrews = StorageFacade.getProduct(12);
-        fasciaScrews.setQuantity(calcFasciaScrews(length, width));
+        fasciaScrews.setQuantity(calcFasciaScrews());
         fasciaScrews.setUseInContext("Til montering af stern, vindskeder og vandbræt");
         bom.addToBOM(fasciaScrews);
 
         LineItem bracketScrews = StorageFacade.getProduct(13);
-        bracketScrews.setQuantity(calcBracketScrews(length));
+        bracketScrews.setQuantity(calcBracketScrews());
         bracketScrews.setUseInContext("Til montering af universalbeslag og toplægte");
         bom.addToBOM(bracketScrews);
 
         LineItem roofLathScrews = StorageFacade.getProduct(26);
-        roofLathScrews.setQuantity(calcRoofLathScrews(length, width, angle));
+        roofLathScrews.setQuantity(calcRoofLathScrews());
         roofLathScrews.setUseInContext("Til taglægter");
         bom.addToBOM(roofLathScrews);
 
         LineItem bolts = StorageFacade.getProduct(14);
-        bolts.setQuantity(calcBolts(length));
+        bolts.setQuantity(calcBolts());
         bolts.setUseInContext("Til montering af rem på stolper");
         bom.addToBOM(bolts);
 
         LineItem squareBrackets = StorageFacade.getProduct(15);
-        squareBrackets.setQuantity(calcSquareBrackets(length));
+        squareBrackets.setQuantity(calcSquareBrackets());
         squareBrackets.setUseInContext("Til montering af rem på stolper");
         bom.addToBOM(squareBrackets);
-        
-        if (shedLength != 0){ 
+
+        if (shedLength != 0) {
             CarportCalculator shedCalculator = new ShedCalculator(shedLength, shedWidth);
             BOM shedBom = shedCalculator.getBom();
             List<LineItem> shedList = shedBom.getListOfProducts();
-            for (LineItem li : shedList){
+            for (LineItem li : shedList) {
                 bom.addToBOM(li);
             }
         }
@@ -170,11 +170,11 @@ public class PitchedRoofCalculator implements CarportCalculator {
         return (waterBoards + gablesCladding) / 100;
     }
 
-    private double calcMolding(int length) {
-        return (2 * length) / 100;
+    private double calcMolding() {
+        return (double) (2 * length) / 100;
     }
 
-    private double calcRoofLaths(int length, int width, int angle) { // c er trekantens hypotenuse
+    private double calcRoofLaths() { // c er trekantens hypotenuse
         double calcAngle = Math.toRadians(angle);
         int c = (int) ((width / 2) / Math.cos(calcAngle));
         int rows = c / 35;
@@ -185,7 +185,7 @@ public class PitchedRoofCalculator implements CarportCalculator {
         return (2 * rows * length + topLath) / 100;
     }
 
-      int calcPosts(int length) {
+    int calcPosts() {
         if (length <= 480) {
             return 4;
         } else {
@@ -193,35 +193,35 @@ public class PitchedRoofCalculator implements CarportCalculator {
         }
     }
 
-    private int calcRoofTiles(int length, int width, int angle) { // 9 sten/m2. +10 er for buffer
+    private int calcRoofTiles() { // 9 sten/m2. +10 er for buffer
         double calcAngle = Math.toRadians(angle);
         double widthForCalc = (int) ((width / 2) / Math.cos(calcAngle));
         double roofArea = (widthForCalc * length) / 10000;
         return 2 * (9 * (int) roofArea) + 10;
     }
 
-    private int calcRoofTopTiles(int length) {
+    private int calcRoofTopTiles() {
         return length / 30;
     }
 
-    private int calcTopLathHolder(int length) { // samme som antal spær
+    private int calcTopLathHolder() { // samme som antal spær
         return length / 60 + 1;
     }
 
-    private int calcRoofTopTileBrackets(int length) {
+    private int calcRoofTopTileBrackets() {
         return length / 30;
     }
 
-    private int calcBinders(int length, int width) { // halvdelen af teglene + 30 for dem i siden
-        int roofTiles = calcRoofTiles(length, width, angle);
+    private int calcBinders() { // halvdelen af teglene + 30 for dem i siden
+        int roofTiles = calcRoofTiles();
         return roofTiles / 2 + 30;
     }
 
-    private int calcUniBrackets(int length) {
+    private int calcUniBrackets() {
         return length / 60 + 1;
     }
 
-    private int calcFasciaScrews(int length, int width) {
+    private int calcFasciaScrews() {
         // først skal vi have 4 skruer pr spær:
         int numberOfRafters = (length / 60);
         if (length % 60 == 0) {
@@ -242,12 +242,12 @@ public class PitchedRoofCalculator implements CarportCalculator {
         return screws + 2 * rows + 30; // 30 for buffer
     }
 
-    private int calcBracketScrews(int length) { // 9 pr. universalbeslag + 20 pr. toplægteholder ... 50 for buffer
+    private int calcBracketScrews() { // 9 pr. universalbeslag + 20 pr. toplægteholder ... 50 for buffer
         int numberOfScrews = ((((length / 60) + 1) * 2)) * 9 + (length / 60 + 1) * 20 + 50;
         return numberOfScrews;
     }
 
-    private int calcRoofLathScrews(int length, int width, int angle) {
+    private int calcRoofLathScrews() {
         double calcAngle = Math.toRadians(angle);
         int c = (int) ((width / 2) / Math.cos(calcAngle));
         int rows = c / 35;
@@ -258,11 +258,11 @@ public class PitchedRoofCalculator implements CarportCalculator {
         return (metersOfLaths / 60) * 2;
     }
 
-    private int calcBolts(int length) { // 2 stk. pr. stolpe
+    private int calcBolts() { // 2 stk. pr. stolpe
         return 2 * (2 * ((length / 300) + 1));
     }
 
-    private int calcSquareBrackets(int length) {
+    private int calcSquareBrackets() {
         return 2 * (2 * ((length / 300) + 2));
     }
 

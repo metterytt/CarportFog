@@ -1,5 +1,3 @@
-// Lægte = lath
-// Beklædning = cladding
 package functionLayer.Calculators;
 
 import functionLayer.BOM;
@@ -34,22 +32,27 @@ public class ShedCalculator implements CarportCalculator {
         bom.addToBOM(lath);
 
         LineItem reglar = StorageFacade.getProduct(17);
-        reglar.setQuantity(calcReglar(shedLength, shedWidth));
+        reglar.setQuantity(calcReglar());
         reglar.setUseInContext("Skur: Løsholter til skur");
         bom.addToBOM(reglar);
 
         LineItem cladding = StorageFacade.getProduct(6);
-        cladding.setQuantity(calcCladding(shedLength, shedWidth));
+        cladding.setQuantity(calcCladding());
         cladding.setUseInContext("Skur: Til beklædning af skur 1 på 2");
         bom.addToBOM(cladding);
+        
+        LineItem posts = StorageFacade.getProduct(5);
+        posts.setQuantity(3); // altid 3 ekstra stolper når skur
+        posts.setUseInContext("Skur: Ekstra stolper til skur");
+        bom.addToBOM(posts);
 
         LineItem shedScrews = StorageFacade.getProduct(27);
-        shedScrews.setQuantity(calcShedScrews(shedLength, shedWidth));
+        shedScrews.setQuantity(calcShedScrews());
         shedScrews.setUseInContext("Skur: Til montering af yderste beklædning");
         bom.addToBOM(shedScrews);
 
         LineItem smallShedScrews = StorageFacade.getProduct(28);
-        smallShedScrews.setQuantity(calcSmallShedScrews(shedLength, shedWidth));
+        smallShedScrews.setQuantity(calcSmallShedScrews());
         smallShedScrews.setUseInContext("Skur: Til montering af inderste beklædning");
         bom.addToBOM(smallShedScrews);
 
@@ -71,21 +74,21 @@ public class ShedCalculator implements CarportCalculator {
         return bom;
     }
 
-    private double calcReglar(int shedLength, int shedWidth) {
-        return (4 * shedLength + 4 * shedWidth) / 100;
+    private double calcReglar() {
+        return (double) (4 * shedLength + 4 * shedWidth) / 100;
     }
 
-    private double calcCladding(int shedLength, int shedWidth) { // pga overlap fylder hvert bræt 7,5 cm
+    private double calcCladding() { // pga overlap fylder hvert bræt 7,5 cm
         return (((((shedLength * 100) / 750) + ((shedWidth * 100) / 750)) * 210) * 2) / 100; //210 er standard højden.
     }
 
-    private int calcShedScrews(int shedLength, int shedWidth) { // 3 skruer pr. bræt, halvdelen af brædderne
+    private int calcShedScrews() { // 3 skruer pr. bræt, halvdelen af brædderne
         int numberOfBoards = (((shedLength * 100) / 750) + ((shedWidth * 100) / 750)) * 2;
         return numberOfBoards * 3;
 
     }
 
-    private int calcSmallShedScrews(int shedLength, int shedWidth) { // 6 skruer pr. bræt, halvdelen af brædderne
+    private int calcSmallShedScrews() { // 6 skruer pr. bræt, halvdelen af brædderne
         int numberOfBoards = (((shedLength * 100) / 750) + ((shedWidth * 100) / 750)) * 2;
         return numberOfBoards * 6;
     }
