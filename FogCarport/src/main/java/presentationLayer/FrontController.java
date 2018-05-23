@@ -1,10 +1,8 @@
 package presentationLayer;
 
-import com.mysql.jdbc.log.Log;
-import dbAccess.CarportLog;
+import functionLayer.CarportLog;
 import functionLayer.CarportException;
 import java.io.IOException;
-import java.util.logging.Level;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -27,7 +25,7 @@ public class FrontController extends HttpServlet {
         } catch (CarportException ex) {
             request.setAttribute("error", ex.getMessage());
            
-           new CarportLog(ex.getMessage(), "/Carport/CarportFog/Logs/ExceptionLogs.txt");
+            new CarportLog(ex.getMessage(), "ExceptionLogs");
 
             //log her
             

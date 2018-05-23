@@ -1,6 +1,7 @@
 package dbAccess;
 
 import functionLayer.CarportException;
+import functionLayer.CarportLog;
 import functionLayer.entity.Customer;
 import functionLayer.entity.Employee;
 import java.sql.Connection;
@@ -101,10 +102,10 @@ public class UserMapper {
                 String name = rs.getString("firstname");
                 String lastname = rs.getString("lastname");
                 String phonenumber = rs.getString("phonenumber");
-                new CarportLog("Customer " + email + " Logged in", "/Carport/CarportFog/Logs/LoginCustomer.txt");
+                new CarportLog("User " + email  +" Logged in", "LoginCustomer");
                 return new Customer(ID, email, password, name, lastname, phonenumber);
             } else {
-                new CarportLog("Customer " + email + " Entered wrong inputs", "Carport/CarportFog/Logs/LoginCustomer.txt");
+                new CarportLog("User " + email  +" entered wrong info", "LoginCustomer");
                 throw new CarportException("No user found.. Invalid input", "login");
             }
         } catch (SQLException | ClassNotFoundException ex) {
