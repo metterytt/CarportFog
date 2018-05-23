@@ -28,8 +28,20 @@
             <div class="row">
                 <div class="col-md-12">
                     <h3 class="display-4">Stykliste for ordre: <%= orderID%></h3>
-                    <br><h3>Totalpris: <%= price %></h3><br>
-                    <%@ include file="/WEB-INF/jspf/UserInfo.jspf" %>
+                    <br><h3>Totalpris: <%= price%></h3><br>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th> <%@ include file="/WEB-INF/jspf/UserInfo.jspf" %>  </th>
+                                <th>
+                                    <form action="FrontController" method="post">
+                                        <input type="hidden" name="command" value="allrequests">
+                                        <input type="submit" class="btn btn-primary" value="Tilbage til oversigt">
+                                    </form>   
+                                </th>
+                            </tr>
+                        </thead>
+                    </table>
                     <%= RenderTables.getFinalBom(finalBom)%>
                 </div>
             </div>
