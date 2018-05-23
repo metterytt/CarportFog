@@ -1,10 +1,8 @@
 package presentationLayer;
 
-import com.mysql.jdbc.log.Log;
-import dbAccess.CarportLog;
+import functionLayer.CarportLog;
 import functionLayer.CarportException;
 import java.io.IOException;
-import java.util.logging.Level;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;

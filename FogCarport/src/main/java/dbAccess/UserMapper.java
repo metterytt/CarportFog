@@ -1,6 +1,7 @@
 package dbAccess;
 
 import functionLayer.CarportException;
+import functionLayer.CarportLog;
 import functionLayer.entity.Customer;
 import functionLayer.entity.Employee;
 import java.sql.Connection;

@@ -25,7 +25,7 @@
                 <div class="col-md-6">
 
                     <div class="tab">
-                        <button class="btn btn-primary" class="tablinks" onclick="openTable(event, 'CustomerLoginExceptionLogs')" id="defaultOpen">Vis logs for fejlede logins</button>
+                        <button class="btn btn-primary" class="tablinks" onclick="openTable(event, 'ExceptionLogs')" id="defaultOpen">Vis logs for fejlede logins</button>
                         <button class="btn btn-primary" class="tablinks" onclick="openTable(event, 'CustomerLoginLogs')">Vis logs for kundelogins</button>
                     </div>
 
@@ -34,9 +34,9 @@
                     <div class="p-2 bg-danger text-black col-md-4 text-center">${error}</div><br>
                     <%}%>
 
-                    <div id="CustomerLoginExceptionLogs" class="tabcontent">
+                    <div id="ExceptionLogs" class="tabcontent">
                         <br>
-                        <h1 class="display-4">Liste over fejlede logins for kunder</h1>
+                        <h1 class="display-4">Liste over exceptions opstået på siden</h1>
                         <% for (String str : exceptionLoggingList) {%> 
                         <p><%=str%></p> 
                         <%}%>
@@ -44,7 +44,7 @@
 
                     <div id="CustomerLoginLogs" class="tabcontent">
                         <br>
-                        <h1 class="display-4">Liste over logins for kunder</h1>
+                        <h1 class="display-4">Liste over kundelogins</h1>
                         <% for (String str : customerLoginLoggingList) {%> 
                         <p><%=str%></p> 
                         <%}%>

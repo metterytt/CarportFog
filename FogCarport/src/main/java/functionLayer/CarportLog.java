@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dbAccess;
+package functionLayer;
 
+import dbAccess.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.logging.FileHandler;
@@ -30,7 +31,7 @@ public class CarportLog {
                 f.createNewFile();
             }
 
-            fh = new FileHandler(filename, true);
+            fh = new FileHandler(f.getPath(), true);
 
             logger = Logger.getLogger(CarportLog.class.getName());
             logger.addHandler(fh);
