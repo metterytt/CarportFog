@@ -4,11 +4,16 @@
     Author     : mette
 --%>
 
+<%@page import="functionLayer.entity.Customer"%>
 <%@page import="functionLayer.RenderTables"%>
 <%@page import="functionLayer.entity.LineItem"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<% List<LineItem> finalBom = (List<LineItem>) request.getAttribute("finalbom"); %>
+<% List<LineItem> finalBom = (List<LineItem>) request.getAttribute("finalbom");%>
+<% int price = (int) request.getAttribute("price"); %>
+<% int orderID = (int) request.getAttribute("orderID"); %>
+<%//Used in the include file
+    Customer customer = (Customer) request.getAttribute("customer");%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -19,14 +24,13 @@
     </head>
     <body>
         <%@ include file="/WEB-INF/Include/Navbar.jspf" %>
-        <% int price = (int) request.getAttribute("totalprice"); %>
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-
-                    <%= RenderTables.getFinalBom(finalBom, price)%>
-                    
-
+                    <h3 class="display-4">Stykliste for ordre: <%= orderID%></h3>
+                    <br><h3>Totalpris: <%= price %></h3><br>
+                    <%@ include file="/WEB-INF/jspf/UserInfo.jspf" %>
+                    <%= RenderTables.getFinalBom(finalBom)%>
                 </div>
             </div>
         </div>

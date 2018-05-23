@@ -63,7 +63,7 @@ public class EditRequest extends Command {
         }
          HttpSession session = request.getSession();
          session.removeAttribute("carportbom");
-         session.removeAttribute("customerID");
+         session.removeAttribute("customer");
          session.removeAttribute("totalprice");
         return new AllRequests().execute(request, response);
     }

@@ -6,6 +6,8 @@ import functionLayer.Calculators.FlatRoofCalculator;
 import functionLayer.Calculators.PitchedRoofCalculator;
 import functionLayer.Calculators.ShedCalculator;
 import functionLayer.CarportException;
+import functionLayer.StorageFacade;
+import functionLayer.entity.Customer;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -37,9 +39,11 @@ public class ViewBom extends Command {
         }
         BOM carportBom = carportCalculator.getBom();
 
+        Customer customer = StorageFacade.getCustomer(customerID);
+        
         carportBom.setOrderID(orderID);
         session.setAttribute("carportbom", carportBom);
-        session.setAttribute("customerID", customerID);
+        session.setAttribute("customer", customer);
 
         return "viewbom";
     }

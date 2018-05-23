@@ -86,13 +86,7 @@ public class RenderTables {
             sb.append("<input type=\"hidden\" name=\"command\" value=\"viewfinalbom\">");
             sb.append("<input type=\"hidden\" name=\"orderID\" value=\"").append(o.getOrderID()).append("\"/>");
             sb.append("<input type=\"hidden\" name=\"customerID\" value=\"").append(o.getCustomer()).append("\"/>");
-            sb.append("<input type=\"hidden\" name=\"length\" value=\"").append(o.getLength()).append("\"/>");
-            sb.append("<input type=\"hidden\" name=\"width\" value=\"").append(o.getWidth()).append("\"/>");
-            sb.append("<input type=\"hidden\" name=\"angle\" value=\"").append(o.getAngle()).append("\"/>");
-            sb.append("<input type=\"hidden\" name=\"shedlength\" value=\"").append(o.getShedLength()).append("\"/>");
-            sb.append("<input type=\"hidden\" name=\"shedwidth\" value=\"").append(o.getShedWidth()).append("\"/>");
             sb.append("<input type=\"hidden\" name=\"price\" value=\"").append(o.getPrice()).append("\"/>");
-            sb.append("<input type=\"hidden\" name=\"empID\" value=\"").append(o.getEmpID()).append("\"/>");
             sb.append("<input type=\"hidden\" name=\"orderPlaced\"/>");
             sb.append("<input type=\"submit\" class=\"btn btn-primary\" value=\"Se stykliste\"/>");
             sb.append("</form></th>");
@@ -256,7 +250,7 @@ public class RenderTables {
         return sb.toString();
     }
 
-    public static String getFinalBom(List<LineItem> finalBom, int totalprice) {
+    public static String getFinalBom(List<LineItem> finalBom) {
         if (finalBom == null || finalBom.isEmpty()) {
             return "---Ingenting på styklisten---";
         }
@@ -275,9 +269,6 @@ public class RenderTables {
             sb.append("<td style=\"text-align:right\">").append(li.getUom()).append("</td>");
             sb.append("</tr>\n");
         }
-        sb.append("<tr>");
-        sb.append("<td> PRIS: ").append(totalprice).append("</td>");
-        sb.append("</tr>\n");
         sb.append("</tbody>");
         sb.append("</table>\n");
         return sb.toString();

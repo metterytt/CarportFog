@@ -20,7 +20,7 @@ public class BackToOrders extends Command{
     String execute(HttpServletRequest request, HttpServletResponse response) throws CarportException {
     HttpSession session = request.getSession();
          session.removeAttribute("carportbom");
-         session.removeAttribute("customerID");
+         session.removeAttribute("customer");
          session.removeAttribute("totalprice");
          return new AllRequests().execute(request, response);
     }

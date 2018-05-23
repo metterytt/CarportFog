@@ -27,7 +27,7 @@ public class SetOrdered extends Command {
         request.setAttribute("complete", "Ordre " + orderID + " er nu sat til ordre, og kunden kan nu betale.");
         HttpSession session = request.getSession();
         session.removeAttribute("carportbom");
-        session.removeAttribute("customerID");
+        session.removeAttribute("customer");
         session.removeAttribute("totalprice");
 
         return "employee";

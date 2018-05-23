@@ -30,11 +30,10 @@
                 <div class="col-md-12">
 
                     <%
-                        int customerID = (int) request.getSession().getAttribute("customerID");
                         //Used for viewing/updating the total price
                         int totalPrice = (int) request.getSession().getAttribute("totalprice");
                         //Used in the include file
-                        Customer customer = StorageFacade.getCustomer(customerID);
+                        Customer customer = (Customer) request.getSession().getAttribute("customer");
                     %>
 
                     <h3 class="display-4">Styklisteberegning for ordre/forespørgsel <%=carportBOM.getOrderID()%></h3>
@@ -63,7 +62,7 @@
                                     <th>
                                         <form action="FrontController" method="post">
                                             <input type="hidden" name="command" value="backtoorders">
-                                            <input type="submit" class="btn btn-primary" value="Tilbage til ordre">
+                                            <input type="submit" class="btn btn-primary" value="Tilbage til oversigt">
                                         </form>   
                                     </th>
                                 </tr>

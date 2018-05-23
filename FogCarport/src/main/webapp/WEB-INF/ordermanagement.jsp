@@ -37,6 +37,7 @@
                     <%}%>
 
                     <div id="Requests" class="tabcontent">
+                        <br>
                         <h3>Forespørgsler</h3>
                         <%= RenderTables.getOpenRequestsTable(openRequests)%>
                     </div>
