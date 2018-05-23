@@ -42,6 +42,7 @@
                             </tr>
                         </thead>
                     </table>
+                    <br>
                     <%= RenderTables.getFinalBom(finalBom)%>
                 </div>
             </div>
