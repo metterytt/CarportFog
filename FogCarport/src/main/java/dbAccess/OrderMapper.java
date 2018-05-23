@@ -4,7 +4,6 @@ import functionLayer.CarportException;
 import functionLayer.entity.CustomerCalculation;
 import functionLayer.entity.LineItem;
 import functionLayer.entity.Order;
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -57,7 +56,6 @@ public class OrderMapper {
             throw new CarportException("Error adding calculation", "index");
         }
     }
-
 
     public static ArrayList<CustomerCalculation> getCustCalcs() throws CarportException {
         ArrayList<CustomerCalculation> custCalcs = new ArrayList<>();
@@ -169,43 +167,6 @@ public class OrderMapper {
         return orders;
     }
 
-//    public static void deleteEmployee(int userID) throws CarportException {
-//
-//        try {
-//            dbc.setDataSource(new DataSourceFog().getDataSource());
-//            dbc.open();
-//            Connection con = dbc.getConnector();
-//            String sql = "delete from employees where userID=?";
-//            PreparedStatement ps = con.prepareStatement(sql);
-//            ps.setInt(1, userID);
-//            ps.executeUpdate();
-//        } catch (SQLException ex) {
-//            throw new CarportException("Error - Cannot delete user", "employee");
-//        }
-//    }
-//
-//    public static List<Employee> getAllEmployees() throws CarportException {
-//        List<Employee> res = new ArrayList<>();
-//        try {
-//            dbc.setDataSource(new DataSourceFog().getDataSource());
-//            dbc.open();
-//
-//            String sql = "select * from employees";
-//            ResultSet rs = dbc.query(sql);
-//
-//            while (rs.next()) {
-//                int userID = rs.getInt(1);
-//                String username = rs.getString(2);
-//                String password = rs.getString(3);
-//                String role = rs.getString(4);
-//                Employee emp = new Employee(username, password, role, userID);
-//                res.add(emp);
-//            }
-//            return res;
-//        } catch (SQLException ex) {
-//            throw new CarportException("Error - Cannot fetch all employees", "employee");
-//        }
-//    }
     public static void editRequest(int orderID, int length, int width, int angle, int shedLength, int shedWidth, int price) throws CarportException {
         try {
 //            dbc.setDataSource(new DataSourceFog().getDataSource());
@@ -227,28 +188,6 @@ public class OrderMapper {
         }
     }
 
-//    public static Customer getCustomer(int customerID) throws CarportException {
-//        try {
-//            dbc.setDataSource(new DataSourceFog().getDataSource());
-//            dbc.open();
-//            Connection con = dbc.getConnector();
-//            String sql = "select * from customers where customerID=?";
-//            PreparedStatement ps = con.prepareStatement(sql);
-//            ps.setInt(1, customerID);
-//            ResultSet rs = ps.executeQuery();
-//            if (rs.next()) {
-//                String email = rs.getString("username");
-//                String name = rs.getString("firstname");
-//                String lastname = rs.getString("lastname");
-//                String phonenumber = rs.getString("phonenumber");
-//                return new Customer(customerID, email, name, lastname, phonenumber);
-//            } else {
-//                throw new CarportException("Kunne ikke finde kunden", "ordermanagement");
-//            }
-//        } catch (SQLException ex) {
-//            throw new CarportException("Noget gik galt.. Prøv igen", "ordermanagement");
-//        }
-//    }
     public static List<Order> getCustomerOrders(int customerID) throws CarportException {
         try {
 //            dbc.setDataSource(new DataSourceFog().getDataSource());
