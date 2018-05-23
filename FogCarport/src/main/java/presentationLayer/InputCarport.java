@@ -32,6 +32,6 @@ public class InputCarport extends Command {
         DrawingMeasures drawingMeasures = new DrawingMeasures(length, width, angle, shedLength, shedWidth);
         session.setAttribute("drawingmeasures", drawingMeasures);
 
-        return "bom";
+        return "drawings";
     }
 }

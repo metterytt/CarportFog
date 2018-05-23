@@ -3,7 +3,6 @@ package presentationLayer;
 import functionLayer.BOM;
 import functionLayer.CarportException;
 import functionLayer.entity.LineItem;
-import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;

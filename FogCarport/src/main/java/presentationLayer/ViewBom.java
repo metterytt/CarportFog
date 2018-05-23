@@ -4,7 +4,6 @@ import functionLayer.BOM;
 import functionLayer.Calculators.CarportCalculator;
 import functionLayer.Calculators.FlatRoofCalculator;
 import functionLayer.Calculators.PitchedRoofCalculator;
-import functionLayer.Calculators.ShedCalculator;
 import functionLayer.CarportException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
