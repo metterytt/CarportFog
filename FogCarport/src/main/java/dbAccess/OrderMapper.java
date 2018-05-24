@@ -226,7 +226,7 @@ public class OrderMapper {
             Connection con = Connector.connection();
             con.setAutoCommit(false);
             String setOrdered = "UPDATE orders SET order_placed=1, empID=? WHERE orderID=?";
-            String addLineItem = "INSERT INTO lineitems (orderID, products_productID, use_in, quantity)"
+            String addLineItem = "INSERT INTO lineitems (orderID, productID, use_in, quantity)"
                     + " values (?, ?, ?, ?)";
             PreparedStatement psSet = con.prepareStatement(setOrdered);
             PreparedStatement psAdd = con.prepareStatement(addLineItem);
@@ -253,8 +253,8 @@ public class OrderMapper {
 //            dbc.open();
 //            Connection con = dbc.getConnector();
             Connection con = Connector.connection();
-            String sql = "select lineitems.products_productID, lineitems.use_in, lineitems.quantity, products.name, products.uom, products.price"
-                    + " from lineitems inner join products on lineitems.products_productID = products.productID where lineitems.orderID=?;";
+            String sql = "select lineitems.productID, lineitems.use_in, lineitems.quantity, products.name, products.uom, products.price"
+                    + " from lineitems inner join products on lineitems.productID = products.productID where lineitems.orderID=?;";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, orderID);
             ResultSet rs = ps.executeQuery();

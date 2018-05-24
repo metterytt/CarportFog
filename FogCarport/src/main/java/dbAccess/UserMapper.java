@@ -27,7 +27,7 @@ public class UserMapper {
             ps.setString(2, password);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                int userID = rs.getInt("userID");
+                int userID = rs.getInt("empID");
                 String role = rs.getString("role");
                 return new Employee(username, password, role, userID);
             } else {
@@ -56,7 +56,7 @@ public class UserMapper {
 
         try {
             Connection con = Connector.connection();
-            String sql = "delete from employees where userID=?";
+            String sql = "delete from employees where empID=?";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, userID);
             ps.executeUpdate();

@@ -102,8 +102,8 @@ public class UserMapperTest {
 
     @Test
     public void testDeleteEmployee() throws CarportException {
-        int userID = 2;
-        UserMapper.deleteEmployee(userID);
+        int empID = 2;
+        UserMapper.deleteEmployee(empID);
         assertEquals(UserMapper.getAllEmployees().size(), 1);
     }
 
