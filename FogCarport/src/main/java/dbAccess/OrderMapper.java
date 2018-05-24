@@ -91,7 +91,7 @@ public class OrderMapper {
 //            Connection con = dbc.getConnector();
             Connection con = Connector.connection();
             String sql = "INSERT INTO orders (customer, length, width, roof_angle,"
-                    + " shed_length, shed_width, price, employees_userID) values (?, ?, ?, ?, ?, ?, ?, ?)";
+                    + " shed_length, shed_width, price, empID) values (?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, customerID);
             ps.setInt(2, length);
@@ -100,7 +100,7 @@ public class OrderMapper {
             ps.setInt(5, shedLength);
             ps.setInt(6, shedWidth);
             ps.setInt(7, price);
-            ps.setInt(8, 1); // dette er en dummy!
+            ps.setInt(8, 1); // empID bliver sat til 1 i udgangspunktet
             ps.execute();
         } catch (SQLException | ClassNotFoundException ex) {
             throw new CarportException("Error adding calculation", "index");
@@ -126,7 +126,7 @@ public class OrderMapper {
                 int shedLength = rs.getInt("shed_length");
                 int shedWidth = rs.getInt("shed_width");
                 int price = rs.getInt("price");
-                int empID = rs.getInt("employees_userID");
+                int empID = rs.getInt("empID");
                 int placed = rs.getInt("order_placed");
                 Order order = new Order(orderID, customer, length, width, angle, shedLength, shedWidth, price, empID, placed);
                 openRequests.add(order);
@@ -156,7 +156,7 @@ public class OrderMapper {
                 int shedLength = rs.getInt("shed_length");
                 int shedWidth = rs.getInt("shed_width");
                 int price = rs.getInt("price");
-                int empID = rs.getInt("employees_userID");
+                int empID = rs.getInt("empID");
                 int placed = rs.getInt("order_placed");
                 Order order = new Order(orderID, customer, length, width, angle, shedLength, shedWidth, price, empID, placed);
                 orders.add(order);
@@ -217,27 +217,26 @@ public class OrderMapper {
     }
 
     // sætter ordren til bestilt og gemmer bom i lineitems tabel
-    public static void addBomToOrder(List<LineItem> listToBeSaved, int orderID) throws CarportException {
+    public static void addBomToOrder(List<LineItem> listToBeSaved, int orderID, int empID) throws CarportException {
 //        dbc.setDataSource(new DataSourceFog().getDataSource());
 //        Connection con = dbc.getConnector();
         try {
 //            dbc.open();
             Connection con = Connector.connection();
             con.setAutoCommit(false);
-            String setOrdered = "UPDATE orders SET order_placed=1 WHERE orderID=?";
-            String addLineItem = "INSERT INTO lineitems (orderID, products_productID, use_in, uom, price, quantity)"
-                    + " values (?, ?, ?, ?, ?, ?)";
+            String setOrdered = "UPDATE orders SET order_placed=1, empID=? WHERE orderID=?";
+            String addLineItem = "INSERT INTO lineitems (orderID, products_productID, use_in, quantity)"
+                    + " values (?, ?, ?, ?)";
             PreparedStatement psSet = con.prepareStatement(setOrdered);
             PreparedStatement psAdd = con.prepareStatement(addLineItem);
-            psSet.setInt(1, orderID);
+            psSet.setInt(1, empID);
+            psSet.setInt(2, orderID);
             psSet.executeUpdate();
             for (LineItem li : listToBeSaved) {
                 psAdd.setInt(1, orderID);
                 psAdd.setInt(2, li.getProductID());
                 psAdd.setString(3, li.getUseInContext());
-                psAdd.setString(4, li.getUom());
-                psAdd.setDouble(5, li.getPricePerUnit());
-                psAdd.setDouble(6, li.getQuantity());
+                psAdd.setDouble(4, li.getQuantity());
                 psAdd.executeUpdate();
             }
             con.commit();

@@ -3,6 +3,7 @@
     Created on : 13-05-2018, 14:22:43
 --%>
 
+<%@page import="functionLayer.entity.Employee"%>
 <%@page import="functionLayer.StorageFacade"%>
 <%@page import="functionLayer.entity.Customer"%>
 <%@page import="functionLayer.entity.Order"%>
@@ -94,10 +95,11 @@
                                 <input class="btn btn-primary" type="submit" value="Opdater pris">
                             </form>
                         </div>
-
+             <%--           <% Employee emp = (Employee) session.getAttribute("employee");%>   --%>
                         <form action="FrontController" method="post">
                             <input type="hidden" name="command" value="setordered">
                             <input type="hidden" name="orderID" value="<%=carportBOM.getOrderID()%>">
+             <%--               <input type="hidden" name="empID" value="<%=emp.getUserID()%>">  --%>
                             <input type="submit" class="btn btn-primary" value="Færdiggør request!">
                         </form> 
 
