@@ -141,7 +141,7 @@ public class UserMapper {
             ps.setString(2, customer.getPassword());
             ps.setString(3, customer.getName());
             ps.setString(4, customer.getLastname());
-            ps.setString(5, customer.getPassword());
+            ps.setString(5, customer.getPhoneNumber());
             ps.executeUpdate();
             ResultSet gk = ps.getGeneratedKeys();
             gk.next();
