@@ -201,6 +201,7 @@ public class OrderMapper {
             List<Order> orders = new ArrayList();
             while (rs.next()) {
                 int orderID = rs.getInt(1);
+                int customer = rs.getInt(2);
                 int length = rs.getInt(3);
                 int width = rs.getInt(4);
                 int angle = rs.getInt(5);
@@ -208,7 +209,7 @@ public class OrderMapper {
                 int shedWidth = rs.getInt(7);
                 int price = rs.getInt(8);
                 int placed = rs.getInt(10);
-                orders.add(new Order(orderID, length, width, angle, shedLength, shedWidth, price, placed));
+                orders.add(new Order(orderID, customer, length, width, angle, shedLength, shedWidth, price, placed));
             }
             return orders;
         } catch (SQLException | ClassNotFoundException ex) {
