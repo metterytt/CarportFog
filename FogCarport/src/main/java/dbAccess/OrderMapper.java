@@ -203,9 +203,9 @@ public class OrderMapper {
                 int orderID = rs.getInt(1);
                 int length = rs.getInt(3);
                 int width = rs.getInt(4);
-                int shedLength = rs.getInt(5);
-                int shedWidth = rs.getInt(6);
-                int angle = rs.getInt(7);
+                int angle = rs.getInt(5);
+                int shedLength = rs.getInt(6);
+                int shedWidth = rs.getInt(7);
                 int price = rs.getInt(8);
                 int placed = rs.getInt(10);
                 orders.add(new Order(orderID, length, width, angle, shedLength, shedWidth, price, placed));
