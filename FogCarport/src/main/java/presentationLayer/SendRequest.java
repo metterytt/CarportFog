@@ -15,10 +15,12 @@ public class SendRequest extends Command {
 
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws CarportException {
+        // Removes Drawingmeasures object from session if customer decides to enter new measurements
         if (request.getParameter("drawAgain") != null) {
             request.getSession().removeAttribute("drawingmeasures");
             return "index";
         }
+        // This checks if newly registered customer has a Drawingmeausres object in the session
         if (request.getParameter("backToDrawing") != null) {
             return "drawings";
         }

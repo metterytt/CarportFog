@@ -19,8 +19,10 @@ public class InputCarport extends Command {
         int shedLength = Integer.parseInt(request.getParameter("shedlength"));
         int shedWidth = Integer.parseInt(request.getParameter("shedwidth"));
         
+        // adds customercalculation to database
         StorageFacade.addCustCalc(length, width, angle, shedLength, shedWidth);
-
+        
+        // sets error messages in case of erroneous input
         if ((shedLength == 0 && shedWidth != 0) || (shedLength != 0 && shedWidth == 0)) {
             request.setAttribute("error", "Der skal vælges mål for både højde og bredde såfremt du ønsker et skur.");
             return "index";
@@ -29,6 +31,7 @@ public class InputCarport extends Command {
             return "index";
         }
         
+        // if input ok, measures are used in DrawingMeasures object used for drawings. This is saved in session
         DrawingMeasures drawingMeasures = new DrawingMeasures(length, width, angle, shedLength, shedWidth);
         session.setAttribute("drawingmeasures", drawingMeasures);
 
