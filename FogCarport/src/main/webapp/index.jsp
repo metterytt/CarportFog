@@ -103,12 +103,6 @@
                                             <% shedwidthInput += 30;
                                                 }%>
                                         </select>
-                                        <!--                                        <br>
-                                        
-                                                                                <input type="radio" name="shedPos" value="left"> Venstre
-                                                                                <input type="radio" name="shedPos" value="middle"> Midten
-                                                                                <input type="radio" name="shedPos" value="right"> Højre-->
-
                                     </div>
                                     <br> 
                                     <input type="submit" class="btn btn-primary" value="Beregn carport">  
@@ -116,8 +110,10 @@
 
                                 <% String error = (String) request.getAttribute("error");
                                     if (error != null) {%>
-                                <p> Error! </p>
-                                <p> <%=error%> </p>
+                                <br><div class="alert alert-danger" role="alert">
+                                    <p>Fejl!</p>
+                                    <p><%=error%></p>
+                                </div>
                                 <%}%> 
                             </div>
                         </div>

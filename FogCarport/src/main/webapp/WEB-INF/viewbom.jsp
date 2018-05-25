@@ -100,7 +100,7 @@
                             <input type="hidden" name="command" value="setordered">
                             <input type="hidden" name="orderID" value="<%=carportBOM.getOrderID()%>">
              <%--               <input type="hidden" name="empID" value="<%=emp.getUserID()%>">  --%>
-                            <input type="submit" class="btn btn-primary" value="Færdiggør request!">
+                            <input type="submit" class="btn btn-primary" value="Færdiggør forespørgsel">
                         </form> 
 
                 </div>
