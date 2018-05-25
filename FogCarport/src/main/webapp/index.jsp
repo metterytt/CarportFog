@@ -1,8 +1,3 @@
-<%-- 
-    Document   : index
-    Created on : 23-04-2018, 19:49:32
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -73,11 +68,13 @@
 
                                     <br>
                                     <br>
+                                    <%-- Button to hide or show fields for shedmeasurements --%>
                                     <input type="button" class="btn btn-primary" onclick="myFunction()" value="Vis/gem skur"/>
                                     <br>
-
+                                    
                                     <div id="myDIV" style="display:none;">
                                         <br>
+                                        <%-- Button to show information about measures for shed --%>
                                         <%@ include file="/WEB-INF/jspf/ShedInfo.jspf" %>
                                         <br>
 

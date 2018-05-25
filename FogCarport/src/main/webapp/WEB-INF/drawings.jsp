@@ -25,10 +25,12 @@
                     <% if (request.getAttribute("userDetailsNeeded") != null) { %>
                     <p> ${userDetailsNeeded} </p>
                     <%}%>
+                    
+                    <%-- The customer must log in before request can be sent --%>
                     <% if(request.getSession().getAttribute("customer") == null){%>
                     
-                    <p> Ønsker du at sende Carporten skal du bare logge ind</p>
-                    <p> Ellers er du meget velkommen til at tegne en ny, indtil du er tilfreds med dine mål</p>
+                    <p> Ønsker du at sende en forespørgsel på tilbud om carporten, skal du bare logge ind.</p>
+                    <p> Du kan gå tilbage og indtaste nye mål, indtil du er tilfreds med tegningerne.</p>
                     <form action="FrontController" method="post">
                         <input type="hidden" name="command" value="sendrequest">
                         <input type="hidden" name="drawAgain">
@@ -42,7 +44,7 @@
                     </form>
                     <br>
                         
-                    
+                    <%-- When logged in, the customer can send the request --%>
                     <%}else{%>
                     <form action="FrontController" method="post">
                         <input type="hidden" name="command" value="sendrequest">

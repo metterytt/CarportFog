@@ -1,8 +1,3 @@
-<%-- 
-    Document   : allcalculations
-    Created on : 05-05-2018, 11:43:51
---%>
-
 <%@page import="functionLayer.RenderTables"%>
 <%@page import="java.util.List"%>
 <%@page import="functionLayer.entity.CustomerCalculation"%>
