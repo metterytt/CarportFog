@@ -90,7 +90,7 @@ public class OrderMapper {
 //            dbc.open();
 //            Connection con = dbc.getConnector();
             Connection con = Connector.connection();
-            String sql = "INSERT INTO orders (customer, length, width, roof_angle,"
+            String sql = "INSERT INTO orders (customerID, length, width, roof_angle,"
                     + " shed_length, shed_width, price, empID) values (?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, customerID);
@@ -119,7 +119,7 @@ public class OrderMapper {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 int orderID = rs.getInt("orderID");
-                int customer = rs.getInt("customer");
+                int customer = rs.getInt("customerID");
                 int length = rs.getInt("length");
                 int width = rs.getInt("width");
                 int angle = rs.getInt("roof_angle");
@@ -149,7 +149,7 @@ public class OrderMapper {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 int orderID = rs.getInt("orderID");
-                int customer = rs.getInt("customer");
+                int customer = rs.getInt("customerID");
                 int length = rs.getInt("length");
                 int width = rs.getInt("width");
                 int angle = rs.getInt("roof_angle");
@@ -194,7 +194,7 @@ public class OrderMapper {
 //            dbc.open();
 //            Connection con = dbc.getConnector();
             Connection con = Connector.connection();
-            String sql = "select * from orders where customer=?";
+            String sql = "select * from orders where customerID=?";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, customerID);
             ResultSet rs = ps.executeQuery();
