@@ -134,14 +134,14 @@ public class PitchedRoofCalculator implements CarportCalculator {
         return bom;
     }
 
-    private double calcFasciaBoards() { // c = b/cos V, og vi skal bruge 4 brædder
+     double calcFasciaBoards() { // c = b/cos V, og vi skal bruge 4 brædder
         double calcAngle = Math.toRadians(angle);
         double fasciaBoards = 4 * ((width / 2) / Math.cos(calcAngle));
         fasciaBoards = fasciaBoards + 2 * length;
         return fasciaBoards / 100;
     }
 
-    private double calcRafterSetAndPlates() {
+     double calcRafterSetAndPlates() {
         // først regner vi ud hvor mange spær
         int numberOfRafters = (length / 60);
         if (length % 60 == 0) {

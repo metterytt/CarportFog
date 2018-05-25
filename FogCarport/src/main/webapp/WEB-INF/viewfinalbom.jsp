@@ -32,6 +32,8 @@
                     <table>
                         <thead>
                             <tr>
+
+                                <% if (request.getSession().getAttribute("employee") != null) {%>
                                 <th> <%@ include file="/WEB-INF/jspf/UserInfo.jspf" %>  </th>
                                 <th>
                                     <form action="FrontController" method="post">
@@ -39,6 +41,15 @@
                                         <input type="submit" class="btn btn-primary" value="Tilbage til oversigt">
                                     </form>   
                                 </th>
+                                <%}
+                                else {%>
+                                <th>
+                                    <form action="FrontController" method="post">
+                                        <input type="hidden" name="command" value="customerview">
+                                        <input type="submit" class="btn btn-primary" value="Tilbage til oversigt">
+                                    </form> 
+                                </th>
+                                <%}%>
                             </tr>
                         </thead>
                     </table>
