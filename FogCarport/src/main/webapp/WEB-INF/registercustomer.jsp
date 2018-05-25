@@ -1,9 +1,3 @@
-<%-- 
-    Document   : registercustomer
-    Created on : 15-05-2018, 16:50:46
-    Author     : Rasmus
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

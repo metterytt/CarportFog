@@ -1,8 +1,3 @@
-<%-- 
-    Document   : employee
-    Created on : 04-05-2018, 11:13:39
---%>
-
 <%@page import="java.util.List"%>
 <%@page import="functionLayer.entity.Employee"%>
 <%@page import="functionLayer.BOM"%>
@@ -33,6 +28,7 @@
                     <% if (request.getAttribute("complete") != null) { %>
                     <div class="p-2 bg-success text-black col-md-7 text-center">${complete}</div><br>
                     <%}%>
+                    <%-- checks if the employee is in IT or in sales --%>
                     <% if (emp.getRole().equals("IT")) { %>
                     <% if (request.getAttribute("allEmp") == null) { %>
                     <form action="FrontController" method="post">
@@ -41,6 +37,7 @@
                         <input type="submit" class="btn btn-primary" value="Administrer brugere">
                     </form>
                     <%} else {%>
+                    <%-- delete employee --%>
                     <form action="FrontController" method="post">
                         <input type="hidden" name="command" value="deleteemployee">
                         <% List<Employee> emps = (List<Employee>) request.getAttribute("allEmp"); %>
@@ -63,21 +60,27 @@
                         <input type="submit" class="btn btn-primary" value="Slet bruger">
                     </form>
                     <%}%>
+                    <%-- Register new employee --%>
                     <br><form action="FrontController" method="post">
                         <input type="hidden" name="command" value="registeremployee">
                         <input type="submit" class="btn btn-primary" value="Registrer ny medarbejder">
                     </form>
+                    <%-- See logging--%>
                     <br><form action="FrontController" method="post">
                         <input type="hidden" name="command" value="logreader">
                         <input type="submit" class="btn btn-primary" value="Logging">
                     </form>
                     <%}%>
-                    <br><form action="FrontController" method="post">
+                    <br>
+                    <%-- See all calculations from customers --%>
+                    <form action="FrontController" method="post">
                         <input type="hidden" name="command" value="allcalculations">
                         <input type="submit" class="btn btn-primary" value="Se alle indtastede beregninger">
                     </form>
 
-                    <br><form action="FrontController" method="post">
+                    <br>
+                    <%-- See all requests --%>
+                    <form action="FrontController" method="post">
                         <input type="hidden" name="command" value="allrequests">
                         <input type="hidden" name="showrequests">
                         <input type="submit" class="btn btn-primary" value="Se alle åbne forespørgsler">

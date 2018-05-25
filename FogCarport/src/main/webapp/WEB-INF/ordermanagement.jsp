@@ -1,8 +1,3 @@
-<%-- 
-    Document   : ordermanagement
-    Created on : 13-05-2018, 11:40:00
---%>
-
 <%@page import="functionLayer.entity.LineItem"%>
 <%@page import="functionLayer.BOM"%>
 <%@page import="java.text.DecimalFormat"%>
@@ -33,21 +28,25 @@
 
                     <%if (request.getAttribute("complete") != null) { %>
                     <br> 
+                    <%-- Message which is send to the page, when one or several factors have been completed. --%>
                     <div class="p-2 bg-success text-black col-md-4 text-center">${complete}</div><br>
                     <%}%>
 
+                    <%-- Requests table --%>
                     <div id="Requests" class="tabcontent">
                         <br>
                         <h3>Forespørgsler</h3>
                         <%= RenderTables.getOpenRequestsTable(openRequests)%>
                     </div>
 
+                    <%-- Orders table --%>
                     <div id="Orders" class="tabcontent">
                         <br>
                         <h3>Ordrer</h3>
                         <%= RenderTables.getOrdersTable(orders)%>
                     </div>
 
+                    <%-- Javascript --%>
                     <script>
                         function openTable(evt, name) {
                             var i, tabcontent, tablinks;
