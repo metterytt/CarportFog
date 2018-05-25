@@ -1,3 +1,160 @@
+
+
+-- MySQL Workbench Forward Engineering
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
+
+-- -----------------------------------------------------
+-- Schema mydb
+-- -----------------------------------------------------
+-- -----------------------------------------------------
+-- Schema carport
+-- -----------------------------------------------------
+DROP SCHEMA IF EXISTS `carport` ;
+
+-- -----------------------------------------------------
+-- Schema carport
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `carport` DEFAULT CHARACTER SET latin1 ;
+USE `carport` ;
+
+-- -----------------------------------------------------
+-- Table `carport`.`customercalculations`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `carport`.`customercalculations` ;
+
+CREATE TABLE IF NOT EXISTS `carport`.`customercalculations` (
+  `customercalculations_id` INT(11) NOT NULL AUTO_INCREMENT,
+  `cp_length` INT(11) NOT NULL,
+  `cp_width` INT(11) NOT NULL,
+  `roof_angle` INT(11) NULL DEFAULT NULL,
+  `shed_length` INT(11) NULL DEFAULT NULL,
+  `shed_width` INT(11) NULL DEFAULT NULL,
+  PRIMARY KEY (`customercalculations_id`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 1
+DEFAULT CHARACTER SET = latin1;
+
+
+-- -----------------------------------------------------
+-- Table `carport`.`customers`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `carport`.`customers` ;
+
+CREATE TABLE IF NOT EXISTS `carport`.`customers` (
+  `customerID` INT(11) NOT NULL AUTO_INCREMENT,
+  `username` VARCHAR(45) NOT NULL,
+  `password` VARCHAR(45) NOT NULL,
+  `firstname` VARCHAR(45) NOT NULL,
+  `lastname` VARCHAR(45) NOT NULL,
+  `phonenumber` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`customerID`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 1
+DEFAULT CHARACTER SET = latin1;
+
+
+-- -----------------------------------------------------
+-- Table `carport`.`employees`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `carport`.`employees` ;
+
+CREATE TABLE IF NOT EXISTS `carport`.`employees` (
+  `empID` INT(11) NOT NULL AUTO_INCREMENT,
+  `username` VARCHAR(45) NOT NULL,
+  `password` VARCHAR(45) NOT NULL,
+  `role` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`empID`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 1
+DEFAULT CHARACTER SET = latin1;
+
+
+-- -----------------------------------------------------
+-- Table `carport`.`orders`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `carport`.`orders` ;
+
+CREATE TABLE IF NOT EXISTS `carport`.`orders` (
+  `orderID` INT(11) NOT NULL AUTO_INCREMENT,
+  `customerID` INT(11) NOT NULL,
+  `length` INT(11) NOT NULL,
+  `width` INT(11) NOT NULL,
+  `roof_angle` INT(11) NULL DEFAULT NULL,
+  `shed_length` INT(11) NULL DEFAULT NULL,
+  `shed_width` INT(11) NULL DEFAULT NULL,
+  `price` INT(11) NOT NULL,
+  `empID` INT(11) NOT NULL,
+  `order_placed` INT(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`orderID`),
+  INDEX `fk_orders_employees1_idx` (`empID` ASC),
+  INDEX `customerID_idx` (`customerID` ASC),
+  CONSTRAINT `customerID`
+    FOREIGN KEY (`customerID`)
+    REFERENCES `carport`.`customers` (`customerID`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT `empID`
+    FOREIGN KEY (`empID`)
+    REFERENCES `carport`.`employees` (`empID`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
+ENGINE = InnoDB
+AUTO_INCREMENT = 1
+DEFAULT CHARACTER SET = latin1;
+
+
+-- -----------------------------------------------------
+-- Table `carport`.`products`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `carport`.`products` ;
+
+CREATE TABLE IF NOT EXISTS `carport`.`products` (
+  `productID` INT(11) NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NOT NULL,
+  `uom` VARCHAR(45) NOT NULL,
+  `price` INT(11) NOT NULL,
+  PRIMARY KEY (`productID`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 1
+DEFAULT CHARACTER SET = latin1;
+
+
+-- -----------------------------------------------------
+-- Table `carport`.`lineitems`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `carport`.`lineitems` ;
+
+CREATE TABLE IF NOT EXISTS `carport`.`lineitems` (
+  `lineitemsID` INT(11) NOT NULL AUTO_INCREMENT,
+  `orderID` INT(11) NOT NULL,
+  `productID` INT(11) NOT NULL,
+  `use_in` VARCHAR(200) NULL DEFAULT NULL,
+  `quantity` DOUBLE NOT NULL,
+  PRIMARY KEY (`lineitemsID`),
+  INDEX `fk_lineitems_orders_idx` (`orderID` ASC),
+  INDEX `fk_lineitems_products1_idx` (`productID` ASC),
+  CONSTRAINT `fk_lineitems_orders`
+    FOREIGN KEY (`orderID`)
+    REFERENCES `carport`.`orders` (`orderID`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT `fk_lineitems_products1`
+    FOREIGN KEY (`productID`)
+    REFERENCES `carport`.`products` (`productID`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
+ENGINE = InnoDB
+AUTO_INCREMENT = 1
+DEFAULT CHARACTER SET = latin1;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
 INSERT INTO `carport`.`products` (`name`, `uom`, `price`) VALUES ('Bræt 25x200 trykimp.', 'm', '5495');
 INSERT INTO `carport`.`products` (`name`, `uom`, `price`) VALUES ('Bræt 25x125 trykimp.', 'm', '3195');
 INSERT INTO `carport`.`products` (`name`, `uom`, `price`) VALUES ('Lægte 38x73 ubeh.', 'm', '1395');
@@ -29,4 +186,3 @@ INSERT INTO `carport`.`products` (`name`, `uom`, `price`) VALUES ('Skruer, 4,5x5
 INSERT INTO `carport`.`products` (`name`, `uom`, `price`) VALUES ('Stalddørsgreb 50x75', 'sæt', '21900');
 INSERT INTO `carport`.`products` (`name`, `uom`, `price`) VALUES ('T-hængsel 390mm', 'stk.', '10900');
 INSERT INTO `carport`.`products` (`name`, `uom`, `price`) VALUES ('Vinkelbeslag 35', 'stk.', '595');
-
