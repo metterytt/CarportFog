@@ -18,6 +18,7 @@
                 <div class="col-md-6">
                     <h3>Her er de tidligere foretagne beregninger:</h3>
                     <br>
+                    <%-- List of all calculations --%>
                     <%= RenderTables.getAllCalculations(custCalcs)%>
                 </div>
                 

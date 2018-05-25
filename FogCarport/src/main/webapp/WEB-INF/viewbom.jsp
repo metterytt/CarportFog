@@ -1,8 +1,3 @@
-<%-- 
-    Document   : viewbom
-    Created on : 13-05-2018, 14:22:43
---%>
-
 <%@page import="functionLayer.entity.Employee"%>
 <%@page import="functionLayer.StorageFacade"%>
 <%@page import="functionLayer.entity.Customer"%>
@@ -45,6 +40,7 @@
                             <thead>
                                 <tr>
                                     <th>
+                                        <%-- Prints the entered measurements from customer--%>
                                         <form action="FrontController" method="post">
                                             <input type="hidden" name="command" value="editrequest">
                                             <input type="hidden" name="parseInfo">
@@ -58,6 +54,7 @@
                                         </form>   
                                     </th>
 
+                                    <%-- Include file for customer information --%>
                                     <th> <%@ include file="/WEB-INF/jspf/UserInfo.jspf" %>  </th>
 
                                     <th>
@@ -78,6 +75,7 @@
 
                         <h2>Carport:</h2>
 
+                        <%-- List of all products in request --%>
                         <%= RenderTables.getListOfProducts(carportBOM.getListOfProducts())%>
 
                         <br>
@@ -86,6 +84,7 @@
                         <br>
                         <h3 class="display-4">Total pris: <%= totalPrice%></h3>
                         <div class="form-group">
+                            <%-- Edit total price --%>
                             <form action="FrontController" method="post">
                                 <input type="hidden" name="command" value="edittotalprice">
                                 <input type="hidden" name="orderID" value="<%=carportBOM.getOrderID()%>">
@@ -95,14 +94,12 @@
                                 <input class="btn btn-primary" type="submit" value="Opdater pris">
                             </form>
                         </div>
-             <%--           <% Employee emp = (Employee) session.getAttribute("employee");%>   --%>
+                        <%-- Finish request --%>
                         <form action="FrontController" method="post">
                             <input type="hidden" name="command" value="setordered">
                             <input type="hidden" name="orderID" value="<%=carportBOM.getOrderID()%>">
-             <%--               <input type="hidden" name="empID" value="<%=emp.getUserID()%>">  --%>
                             <input type="submit" class="btn btn-primary" value="Færdiggør forespørgsel">
                         </form> 
-
                 </div>
             </div>
         </div>

@@ -1,9 +1,3 @@
-<%-- 
-    Document   : logging
-    Created on : 22-05-2018, 19:17:22
-    Author     : Rasmus
---%>
-
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%List<String> exceptionLoggingList = (List<String>) request.getAttribute("exceptionLoggingList");%>
@@ -34,6 +28,7 @@
                     <div class="p-2 bg-danger text-black col-md-4 text-center">${error}</div><br>
                     <%}%>
 
+                    <%-- List of exception logs --%>
                     <div id="ExceptionLogs" class="tabcontent">
                         <br>
                         <h1 class="display-4">Liste over exceptions opstået på siden</h1>
@@ -42,6 +37,7 @@
                         <%}%>
                     </div>
 
+                    <%-- List of customer login logs --%>
                     <div id="CustomerLoginLogs" class="tabcontent">
                         <br>
                         <h1 class="display-4">Liste over kundelogins</h1>
@@ -53,6 +49,7 @@
             </div>
         </div>
 
+        <%-- Javascript --%>
         <script>
             function openTable(evt, name) {
                 var i, tabcontent, tablinks;

@@ -1,9 +1,3 @@
-<%-- 
-    Document   : viewfinalbom
-    Created on : 17-05-2018, 08:44:24
-    Author     : mette
---%>
-
 <%@page import="functionLayer.entity.Customer"%>
 <%@page import="functionLayer.RenderTables"%>
 <%@page import="functionLayer.entity.LineItem"%>
@@ -34,6 +28,7 @@
                             <tr>
 
                                 <% if (request.getSession().getAttribute("employee") != null) {%>
+                                <%-- Include file for customer information --%>
                                 <th> <%@ include file="/WEB-INF/jspf/UserInfo.jspf" %>  </th>
                                 <th>
                                     <form action="FrontController" method="post">
@@ -41,8 +36,7 @@
                                         <input type="submit" class="btn btn-primary" value="Tilbage til oversigt">
                                     </form>   
                                 </th>
-                                <%}
-                                else {%>
+                                <%} else {%>
                                 <th>
                                     <form action="FrontController" method="post">
                                         <input type="hidden" name="command" value="customerview">
@@ -54,6 +48,7 @@
                         </thead>
                     </table>
                     <br>
+                    <%-- Prints the BOM (bill of materials) --%>
                     <%= RenderTables.getFinalBom(finalBom)%>
                 </div>
             </div>

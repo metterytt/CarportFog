@@ -1,9 +1,3 @@
-<%-- 
-    Document   : login
-    Created on : 04-05-2018, 11:54:57
-    Author     : Rasmus
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -19,14 +13,15 @@
             <div class="row">
                 <div class="col-md-12">
 
+                    <%-- Login button for employees --%>
                     <%if (request.getAttribute("empLogin") == null) { %>
                     <form action="FrontController" method="post">
                         <input type="hidden" name="command" value="login">
                         <input type="hidden" name="showEmpLogin">
                         <input type="submit" class="btn btn-primary" value="Login som Medarbejder"/><br>
                     </form>
-                    <%}
-                    else { %>
+                    <%} else { %>
+                    <%-- Login button for customers --%>
                     <form action="FrontController" method="post">
                         <input type="hidden" name="command" value="login">
                         <input type="hidden" name="showCustomerLogin">
@@ -36,6 +31,7 @@
                     <hr class="my-4">
                     <% if (request.getAttribute("empLogin") != null) {%>
                     <h1 class="display-4">Login som Medarbejder</h1>
+                    <%-- Login form for employees --%>
                     <form action="FrontController" method="post">
                         <input type="hidden" name="command" value="login">
                         <input type="hidden" name="loginEmp">
@@ -53,9 +49,9 @@
                         </div>
                         <input type="submit" class="btn btn-primary" value="Login"/><br>
                     </form>
-                    <%}
-                    else { %>
+                    <%} else { %>
                     <h1 class="display-4">Login som Kunde</h1>
+                    <%-- Login form for customers --%>
                     <form action="FrontController" method="post">
                         <input type="hidden" name="command" value="login">
                         <input type="hidden" name="loginCustomer">
@@ -78,10 +74,8 @@
                         <input type="hidden" name="command" value="registercustomer">
                         <input type="submit" class="btn btn-primary" value="Opret profil"/>
                     </form>
-
                     <%}%>
                 </div>
-
             </div>
         </div>
     </body>
