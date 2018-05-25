@@ -1,9 +1,3 @@
-<%-- 
-    Document   : customerview
-    Created on : 15-05-2018, 20:27:24
-    Author     : Rasmus
---%>
-
 <%@page import="functionLayer.entity.Order"%>
 <%@page import="java.util.List"%>
 <%@page import="functionLayer.RenderTables"%>
@@ -23,6 +17,7 @@
             <div class="row">
                 <div class="col-md-12">
                     
+                    <%-- Message which is send to the page, when one or several factors have been completed. --%>
                     <%if(request.getAttribute("complete") != null){ %>
                     <div class="p-2 bg-success text-black col-md-7 text-center">${complete}</div><br>
                     <%}%>
@@ -46,6 +41,7 @@
                         <%= RenderTables.getCurrentCustomerOrders(orders) %>
                     </div>
 
+                    <%-- Javascript --%>
                     <script>
                         function openTable(evt, name) {
                             var i, tabcontent, tablinks;
