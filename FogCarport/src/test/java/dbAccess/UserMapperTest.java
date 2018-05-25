@@ -73,6 +73,25 @@ public class UserMapperTest {
         Customer customer = UserMapper.loginCustomer("anna@anna.com", "larsPW");
     }
 
+    @Test(expected = SQLException.class)
+    public void testLoginCustomer04() throws CarportException, SQLException {
+        Connection con = DriverManager.getConnection("xx", "xx", "xx");
+        // Make mappers use test 
+        Connector.setConnection(con);
+        UserMapper.loginCustomer("anna@anna.com", "annaPW");
+    }
+
+    @Test(expected = ClassNotFoundException.class)
+    public void testLoginCustomer05() throws CarportException, SQLException, ClassNotFoundException {
+        String url = String.format("jdbc:mysql://%s:3306/%s", HOST, DBNAME);
+        Class.forName("com.mysql.cj.jdbc.Driver"); // cj for at fremkalde ClassNotFound
+
+        Connection testcon = DriverManager.getConnection(url, USER, USERPW);
+        // Make mappers use test 
+        Connector.setConnection(testcon);
+        UserMapper.loginCustomer("anna@anna.com", "annaPW");
+    }
+
     @Test
     public void testLoginCustomer03() throws CarportException {
         Customer customer = UserMapper.loginCustomer("lars@lars.dk", "larsPW");
