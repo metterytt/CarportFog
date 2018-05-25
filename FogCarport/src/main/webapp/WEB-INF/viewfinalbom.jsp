@@ -32,7 +32,6 @@
                     <table>
                         <thead>
                             <tr>
-
                                 <% if (request.getSession().getAttribute("employee") != null) {%>
                                 <th> <%@ include file="/WEB-INF/jspf/UserInfo.jspf" %>  </th>
                                 <th>

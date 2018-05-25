@@ -53,7 +53,8 @@ public class UserMapperTest {
                 stmt.execute("create table employees like employeesTest");
                 stmt.execute("insert into employees select * from employeesTest");
             }
-        } catch (SQLException | ClassNotFoundException ex) {
+        }
+        catch (SQLException | ClassNotFoundException ex) {
             testConnection = null;
             System.out.println("Could not open connection to database: " + ex.getMessage());
         }
@@ -81,25 +82,22 @@ public class UserMapperTest {
         assertEquals("12345678", customer.getPhoneNumber());
     }
 
-    @Test(expected = SQLException.class)
+    @Test(expected = CarportException.class)
     public void testLoginCustomer04() throws CarportException, SQLException {
-        Connection con = DriverManager.getConnection("xx", "xx", "xx");
-        // Make mappers use test 
-        Connector.setConnection(con);
+        testConnection.close();
         UserMapper.loginCustomer("anna@anna.com", "annaPW");
     }
 
-    @Test(expected = ClassNotFoundException.class)
-    public void testLoginCustomer05() throws CarportException, SQLException, ClassNotFoundException {
-        String url = String.format("jdbc:mysql://%s:3306/%s", HOST, DBNAME);
-        Class.forName("com.mysql.cj.jdbc.Driver"); // cj for at fremkalde ClassNotFound
-
-        Connection testcon = DriverManager.getConnection(url, USER, USERPW);
-        // Make mappers use test 
-        Connector.setConnection(testcon);
-        UserMapper.loginCustomer("anna@anna.com", "annaPW");
-    }
-
+//    @Test(expected = ClassNotFoundException.class)
+//    public void testLoginCustomer05() throws CarportException, SQLException, ClassNotFoundException {
+//        String url = String.format("jdbc:mysql://%s:3306/%s", HOST, DBNAME);
+//        Class.forName("com.mysql.cj.jdbc.Driver"); // cj for at fremkalde ClassNotFound
+//
+//        Connection testcon = DriverManager.getConnection(url, USER, USERPW);
+//        // Make mappers use testConnection
+//        Connector.setConnection(testcon);
+//        UserMapper.loginCustomer("anna@anna.com", "annaPW");
+//    }
     @Test
     public void testRegisterCustomer() throws CarportException {
         Customer customer = new Customer("lotte@lotte.dk", "lottePW", "lotte", "jensen", "45674567");
@@ -120,6 +118,12 @@ public class UserMapperTest {
         UserMapper.registerEmp("kirsten@kirsten.dk", "kirsten", "IT");
         assertEquals(UserMapper.getAllEmployees().size(), 3);
     }
+    
+    @Test
+    public void testGetAllEmployees() throws CarportException, ClassNotFoundException, SQLException {
+        List<Employee> result = UserMapper.getAllEmployees();
+        assertEquals(result.size(), 2);
+    }
 
     @Test
     public void testDeleteEmployee() throws CarportException {
@@ -128,11 +132,6 @@ public class UserMapperTest {
         assertEquals(UserMapper.getAllEmployees().size(), 1);
     }
 
-    @Test
-    public void testGetAllEmployees() throws CarportException {
-        List<Employee> result = UserMapper.getAllEmployees();
-        assertEquals(result.size(), 2);
-    }
 
     @Test
     public void testLoginEmp() throws CarportException {
