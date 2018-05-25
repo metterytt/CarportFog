@@ -2,7 +2,8 @@
 <%@page import="java.util.List"%>
 <%@page import="functionLayer.RenderTables"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<% List<Order> orders = (List<Order>)request.getAttribute("orders"); %>
+<% List<Order> orders = (List<Order>) request.getAttribute("orders");
+   %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -16,9 +17,9 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    
+
                     <%-- Message which is send to the page, when one or several factors have been completed. --%>
-                    <%if(request.getAttribute("complete") != null){ %>
+                    <%if (request.getAttribute("complete") != null) { %>
                     <div class="p-2 bg-success text-black col-md-7 text-center">${complete}</div><br>
                     <%}%>
 
@@ -26,19 +27,19 @@
                         <button class="btn btn-primary" class="tablinks" onclick="openTable(event, 'Requests')" id="defaultOpen">Vis åbne forespørgsler</button>
                         <button class="btn btn-primary" class="tablinks" onclick="openTable(event, 'Orders')">Vis placerede ordrer</button>
                     </div>
-                    
+
                     <p class="text-danger">${error}</p>
 
                     <div id="Requests" class="tabcontent">
                         <br>
                         <h3>Forespørgsler</h3>
-                        <%= RenderTables.getCurrentCustomerRequests(orders) %>
+                        <%= RenderTables.getCurrentCustomerRequests(orders)%>
                     </div>
 
                     <div id="Orders" class="tabcontent">
                         <br>
                         <h3>Ordrer</h3>
-                        <%= RenderTables.getCurrentCustomerOrders(orders) %>
+                        <%= RenderTables.getCurrentCustomerOrders(orders)%>
                     </div>
 
                     <%-- Javascript --%>

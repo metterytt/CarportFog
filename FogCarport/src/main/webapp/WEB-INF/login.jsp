@@ -13,6 +13,7 @@
             <div class="row">
                 <div class="col-md-12">
 
+                    <%-- Login button for employees --%>
                     <%if (request.getAttribute("empLogin") == null) { %>
                     <form action="FrontController" method="post">
                         <input type="hidden" name="command" value="login">
@@ -20,6 +21,8 @@
                         <input type="submit" class="btn btn-primary" value="Login som Medarbejder"/><br>
                     </form>
                     <%} else { %>
+
+                    <%-- Login button for customers --%>
                     <form action="FrontController" method="post">
                         <input type="hidden" name="command" value="login">
                         <input type="hidden" name="showCustomerLogin">
@@ -29,6 +32,7 @@
                     <hr class="my-4">
                     <% if (request.getAttribute("empLogin") != null) {%>
                     <h1 class="display-4">Login som Medarbejder</h1>
+                    <%-- Login form for employees --%>
                     <form action="FrontController" method="post">
                         <input type="hidden" name="command" value="login">
                         <input type="hidden" name="loginEmp">
@@ -48,6 +52,7 @@
                     </form>
                     <%} else { %>
                     <h1 class="display-4">Login som Kunde</h1>
+                    <%-- Login form for customers --%>
                     <form action="FrontController" method="post">
                         <input type="hidden" name="command" value="login">
                         <input type="hidden" name="loginCustomer">
@@ -70,10 +75,8 @@
                         <input type="hidden" name="command" value="registercustomer">
                         <input type="submit" class="btn btn-primary" value="Opret profil"/>
                     </form>
-
                     <%}%>
                 </div>
-
             </div>
         </div>
     </body>

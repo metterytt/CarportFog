@@ -15,14 +15,14 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-6">
-         
+
                     <h1 class="display-4">Kontaktinformationer:</h1>
                     <p class="text-success">  ${message} </p>
-                    
-                    <%if(request.getAttribute("complete") != null){ %>
+
+                    <%if (request.getAttribute("complete") != null) { %>
                     <div class="p-2 bg-success text-black col-md-7 text-center">${complete}</div><br>
                     <%}%>
-                    
+
                     <%-- List of user information when logged in as customer --%>
                     <div class="card" style="width: 18rem;">
                         <ul class="list-group list-group-flush">
@@ -37,16 +37,16 @@
                         <input type="hidden" name="command" value="customerview">
                         <input type="submit" class="btn btn-primary" value="Ordreoversigt">
                     </form>
-                    
+
                     <%-- checks if a drawing has been made, so the user can go back without losing the entered measurements --%> 
-                    <%if(request.getAttribute("backtodrawing") != null){ %>
+                    <%if (request.getAttribute("backtodrawing") != null) { %>
                     <br>
                     <form action="FrontController" method="post">
                         <input type="hidden" name="command" value="sendrequest">
                         <input type="hidden" name="backToDrawing">
                         <input type="submit" class="btn btn-primary" value="Tilbage til tegning">
                     </form>
-                    
+
                     <%}%>
                 </div>
             </div>
