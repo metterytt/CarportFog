@@ -20,11 +20,13 @@ public class SendRequest extends Command {
             request.getSession().removeAttribute("drawingmeasures");
             return "index";
         }
-        // This checks if newly registered customer has a Drawingmeausres object in the session
+        
+        // This checks if newly registered customer has a Drawingmeasures object in the session
         if (request.getParameter("backToDrawing") != null) {
             return "drawings";
         }
         
+        // Gets measurements from DrawingMeasures object for use in the CarportCalculator
         DrawingMeasures drawingMeasures = (DrawingMeasures) request.getSession().getAttribute("drawingmeasures");
         int length = drawingMeasures.getLength();
         int width = drawingMeasures.getWidth();
@@ -32,6 +34,7 @@ public class SendRequest extends Command {
         int shedLength = drawingMeasures.getShedLength();
         int shedWidth = drawingMeasures.getShedWidth();
 
+        // Creates CarportCalculator and gets the BOM from the calculator
         CarportCalculator carportCalculator;
         if (angle == 0) {
             carportCalculator = new FlatRoofCalculator(length, width, shedLength, shedWidth);
@@ -40,12 +43,14 @@ public class SendRequest extends Command {
         }
         BOM carportBom = carportCalculator.getBom();
 
+        // Gets the remaining parameters and places the request
         int price = carportBom.totalPrice();
         Customer customer = (Customer) request.getSession().getAttribute("customer");
         int customerID = customer.getID();
         StorageFacade.addRequest(customerID, length, width, angle, shedLength, shedWidth, price);
 
-        request.setAttribute("message", "Din forespørgsel er nu i systemet, og du vil snart blive kontaktet. \n Du kan se dine forespørgsler under 'Ordreoversigt' ");
+        request.setAttribute("message", "Din forespørgsel er nu i systemet, og du vil snart blive kontaktet."
+                + " \n Du kan se dine forespørgsler under 'Ordreoversigt' ");
         request.getSession().removeAttribute("drawingmeasures");
         return "customer";
     }

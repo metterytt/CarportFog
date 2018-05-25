@@ -1,9 +1,3 @@
-<%-- 
-    Document   : login
-    Created on : 04-05-2018, 11:54:57
-    Author     : Rasmus
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -25,8 +19,7 @@
                         <input type="hidden" name="showEmpLogin">
                         <input type="submit" class="btn btn-primary" value="Login som Medarbejder"/><br>
                     </form>
-                    <%}
-                    else { %>
+                    <%} else { %>
                     <form action="FrontController" method="post">
                         <input type="hidden" name="command" value="login">
                         <input type="hidden" name="showCustomerLogin">
@@ -53,8 +46,7 @@
                         </div>
                         <input type="submit" class="btn btn-primary" value="Login"/><br>
                     </form>
-                    <%}
-                    else { %>
+                    <%} else { %>
                     <h1 class="display-4">Login som Kunde</h1>
                     <form action="FrontController" method="post">
                         <input type="hidden" name="command" value="login">

@@ -25,27 +25,27 @@
                     <% if (request.getAttribute("userDetailsNeeded") != null) { %>
                     <p> ${userDetailsNeeded} </p>
                     <%}%>
-                    
+
                     <%-- The customer must log in before request can be sent --%>
-                    <% if(request.getSession().getAttribute("customer") == null){%>
-                    
+                    <% if (request.getSession().getAttribute("customer") == null) {%>
+
                     <p> Ønsker du at sende en forespørgsel på tilbud om carporten, skal du bare logge ind.</p>
                     <p> Du kan gå tilbage og indtaste nye mål, indtil du er tilfreds med tegningerne.</p>
                     <form action="FrontController" method="post">
                         <input type="hidden" name="command" value="sendrequest">
-                        <input type="hidden" name="drawAgain">
+                        <input type="hidden" name="drawAgain"> 
                         <input type="submit" class="btn btn-primary" value="Tegn ny carport">
                         <br>
                     </form> <br>
-                        <form action="FrontController" method="post">
+                    <form action="FrontController" method="post">
                         <input type="hidden" name="command" value="navbar">
                         <input type="hidden" name="login" value="login">
                         <input type="submit" class="btn btn-primary" value="Login">
                     </form>
                     <br>
-                        
+
                     <%-- When logged in, the customer can send the request --%>
-                    <%}else{%>
+                    <%} else {%>
                     <form action="FrontController" method="post">
                         <input type="hidden" name="command" value="sendrequest">
                         <br/>
@@ -58,7 +58,7 @@
                         <input type="submit" class="btn btn-primary" value="Tegn ny carport">
                     </form>
                     <br>
-                   <%}%>
+                    <%}%>
 
                     <div class="tab">
                         <button class="btn btn-primary" class="tablinks" onclick="openTable(event, 'fromTop')" id="defaultOpen">Vis carporten fra oven</button>
@@ -67,8 +67,6 @@
                         <button class="btn btn-primary" class="tablinks" onclick="openTable(event, 'fromFront')">Vis carporten fra fronten</button>
                         <%}%>
                     </div>
-
-                    
 
                     <br>
                     <div id="fromTop" class="tabcontent">
