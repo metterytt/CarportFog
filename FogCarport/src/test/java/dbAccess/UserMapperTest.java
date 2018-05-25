@@ -98,6 +98,7 @@ public class UserMapperTest {
 //        Connector.setConnection(testcon);
 //        UserMapper.loginCustomer("anna@anna.com", "annaPW");
 //    }
+    
     @Test
     public void testRegisterCustomer() throws CarportException {
         Customer customer = new Customer("lotte@lotte.dk", "lottePW", "lotte", "jensen", "45674567");
@@ -119,7 +120,7 @@ public class UserMapperTest {
         assertEquals(UserMapper.getAllEmployees().size(), 3);
     }
     
-    @Test
+    @Test 
     public void testGetAllEmployees() throws CarportException, ClassNotFoundException, SQLException {
         List<Employee> result = UserMapper.getAllEmployees();
         assertEquals(result.size(), 2);
@@ -131,7 +132,6 @@ public class UserMapperTest {
         UserMapper.deleteEmployee(empID);
         assertEquals(UserMapper.getAllEmployees().size(), 1);
     }
-
 
     @Test
     public void testLoginEmp() throws CarportException {
