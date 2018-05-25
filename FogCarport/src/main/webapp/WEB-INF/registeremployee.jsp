@@ -1,9 +1,3 @@
-<%-- 
-    Document   : RegisterEmployee
-    Created on : 04-05-2018, 13:08:37
-    Author     : Jesper
---%>
-
 <%@page import="functionLayer.entity.Employee"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -29,6 +23,7 @@
                     <p class="text-danger">${error}</p>
                     <p class="text-success">${complete}</p> 
                     <div class="form-group">
+                        <%-- form to register new employee --%>
                         <form action="FrontController" method="POST">
                             <input class="form-control" type="hidden" name="command" value="registeremployee">
                             <input class="form-control" type="hidden" name="registeremp">
