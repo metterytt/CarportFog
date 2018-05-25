@@ -1,9 +1,3 @@
-<%-- 
-    Document   : customer
-    Created on : 12-05-2018, 20:04:06
-    Author     : Jesper
---%>
-
 <%@page import="functionLayer.entity.Customer"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -29,6 +23,7 @@
                     <div class="p-2 bg-success text-black col-md-7 text-center">${complete}</div><br>
                     <%}%>
                     
+                    <%-- List of user information when logged in as customer --%>
                     <div class="card" style="width: 18rem;">
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item"><b>Navn:</b> <%=customer.getName()%></li>
@@ -42,6 +37,8 @@
                         <input type="hidden" name="command" value="customerview">
                         <input type="submit" class="btn btn-primary" value="Ordreoversigt">
                     </form>
+                    
+                    <%-- checks if a drawing has been made, so the user can go back without losing the entered measurements --%> 
                     <%if(request.getAttribute("backtodrawing") != null){ %>
                     <br>
                     <form action="FrontController" method="post">
