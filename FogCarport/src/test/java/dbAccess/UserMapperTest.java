@@ -54,9 +54,16 @@ public class UserMapperTest {
     }
 
     @Test
+    public void testClass(){
+        UserMapper m = new UserMapper();
+    }
+    
+    @Test
     public void testLoginCustomer01() throws CarportException {
         Customer customer = UserMapper.loginCustomer("lars@lars.dk", "larsPW");
         assertTrue(customer != null);
+        
+        
     }
 
     @Test(expected = CarportException.class)
@@ -79,6 +86,7 @@ public class UserMapperTest {
             testConnection = null;
             throw new CarportException(ex.getMessage(), "page");
         }
+        
     }
 
     @Test
@@ -87,6 +95,19 @@ public class UserMapperTest {
         UserMapper.registerCustomer(customer);
         assertEquals("45674567", customer.getPhoneNumber());
     }
+     @Test(expected = CarportException.class)
+    public void testRegisterCustomer02() throws CarportException {
+        try {
+            testConnection.close();
+            Customer customer = new Customer("lotte@lotte.dk", "lottePW", "lotte", "jensen", "45674567");
+        UserMapper.registerCustomer(customer);
+        } catch (CarportException | SQLException ex) {
+            testConnection = null;
+            throw new CarportException(ex.getMessage(), "page");
+        }
+        
+    }
+    
 
     @Test
     public void testGetCustomer() throws CarportException {
@@ -94,6 +115,25 @@ public class UserMapperTest {
         Customer customer = UserMapper.getCustomer(customerID);
         assertEquals("12345678", customer.getPhoneNumber());
     }
+    
+    @Test(expected = CarportException.class)
+    public void testGetCustomer02() throws CarportException {
+        int customerID = 400;
+        Customer customer = UserMapper.getCustomer(customerID);
+    }
+    @Test(expected = CarportException.class)
+    public void testGetCustomer03() throws CarportException {
+        try {
+            testConnection.close();
+            int customerID = 1;
+        Customer customer = UserMapper.getCustomer(customerID);
+        } catch (CarportException | SQLException ex) {
+            testConnection = null;
+            throw new CarportException(ex.getMessage(), "page");
+        }
+        
+    }
+    
 
     @Test
     public void testRegisterEmp() throws CarportException {
@@ -101,11 +141,37 @@ public class UserMapperTest {
         UserMapper.registerEmp("kirsten@kirsten.dk", "kirsten", "IT");
         assertEquals(UserMapper.getAllEmployees().size(), 3);
     }
+    
+     @Test(expected = CarportException.class)
+    public void testRegisterEmp02() throws CarportException {
+        try {
+            testConnection.close();
+            UserMapper.registerEmp("kirsten@kirsten.dk", "kirsten", "IT");
+        } catch (CarportException | SQLException ex) {
+            testConnection = null;
+            throw new CarportException(ex.getMessage(), "page");
+        }
+        
+    }
+    
+    
 
     @Test
     public void testGetAllEmployees() throws CarportException {
         List<Employee> result = UserMapper.getAllEmployees();
         assertEquals(result.size(), 2);
+    }
+    
+     @Test(expected = CarportException.class)
+    public void testGetAllEmployees02() throws CarportException {
+        try {
+            testConnection.close();
+              List<Employee> result = UserMapper.getAllEmployees();
+        } catch (CarportException | SQLException ex) {
+            testConnection = null;
+            throw new CarportException(ex.getMessage(), "page");
+        }
+        
     }
 
     @Test
@@ -113,6 +179,19 @@ public class UserMapperTest {
         int empID = 2;
         UserMapper.deleteEmployee(empID);
         assertEquals(UserMapper.getAllEmployees().size(), 1);
+    }
+    
+     @Test(expected = CarportException.class)
+    public void testDeleteEmployee02() throws CarportException {
+        try {
+            testConnection.close();
+            int empID = 2;
+                UserMapper.deleteEmployee(empID);
+        } catch (CarportException | SQLException ex) {
+            testConnection = null;
+            throw new CarportException(ex.getMessage(), "page");
+        }
+        
     }
 
     @Test
@@ -124,6 +203,18 @@ public class UserMapperTest {
     @Test(expected = CarportException.class)
     public void testLoginEmp02() throws CarportException {
         Employee e = UserMapper.login("testemp@testemp.dk", "testPW2");
+    }
+    
+     @Test(expected = CarportException.class)
+    public void testLoginEmp03() throws CarportException {
+        try {
+            testConnection.close();
+            Employee e = UserMapper.login("testemp@testemp.dk", "testPW");
+        } catch (CarportException | SQLException ex) {
+            testConnection = null;
+            throw new CarportException(ex.getMessage(), "page");
+        }
+        
     }
 
 }
