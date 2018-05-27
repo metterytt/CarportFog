@@ -13,8 +13,6 @@ public class ViewFinalBom extends Command {
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws CarportException {
         
-//        return "index";
-        
         int orderID = Integer.parseInt(request.getParameter("orderID"));
         int price = Integer.parseInt(request.getParameter("price"));
         int customerID = Integer.parseInt(request.getParameter("customerID"));

@@ -4,7 +4,6 @@ import functionLayer.BOM;
 import functionLayer.Calculators.CarportCalculator;
 import functionLayer.Calculators.FlatRoofCalculator;
 import functionLayer.Calculators.PitchedRoofCalculator;
-import functionLayer.Calculators.ShedCalculator;
 import functionLayer.CarportException;
 import functionLayer.StorageFacade;
 import javax.servlet.http.HttpServletRequest;
@@ -16,7 +15,6 @@ public class EditRequest extends Command {
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws CarportException {
 
-        // CAN MAYBE HAVE ALL INTS HERE, ALWAYS? THINK ABOUT IT 
         if (request.getParameter("parseInfo") != null) {
             int orderID = Integer.parseInt(request.getParameter("orderID"));
             int length = Integer.parseInt(request.getParameter("length"));
