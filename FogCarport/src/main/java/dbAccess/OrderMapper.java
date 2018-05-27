@@ -334,8 +334,10 @@ public class OrderMapper {
             Connection con = Connector.connection();
             String sql = "select * from orders where orderID=?";
             PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, orderID);
             ResultSet rs = ps.executeQuery();
-            int customer = rs.getInt("customerID");
+            rs.next();
+            int customer = rs.getInt(2);
             int length = rs.getInt("length");
             int width = rs.getInt("width");
             int angle = rs.getInt("roof_angle");

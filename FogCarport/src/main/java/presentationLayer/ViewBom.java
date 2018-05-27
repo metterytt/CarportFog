@@ -31,7 +31,7 @@ public class ViewBom extends Command {
         //Used for viewing/updating the total price
         session.setAttribute("totalprice", order.getPrice());
 //        int totalPrice = Integer.parseInt(request.getParameter("price"));
-        
+//        
 //        session.setAttribute("totalprice", totalPrice);
 
         CarportCalculator carportCalculator;
