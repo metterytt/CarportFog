@@ -38,14 +38,14 @@ public class RenderTables {
             sb.append("<form action=\"FrontController\" method=\"post\">");
             sb.append("<input type=\"hidden\" name=\"command\" value=\"viewbom\">");
             sb.append("<input type=\"hidden\" name=\"orderID\" value=\"").append(o.getOrderID()).append("\"/>");
-            sb.append("<input type=\"hidden\" name=\"customerID\" value=\"").append(o.getCustomer()).append("\"/>");
-            sb.append("<input type=\"hidden\" name=\"length\" value=\"").append(o.getLength()).append("\"/>");
-            sb.append("<input type=\"hidden\" name=\"width\" value=\"").append(o.getWidth()).append("\"/>");
-            sb.append("<input type=\"hidden\" name=\"angle\" value=\"").append(o.getAngle()).append("\"/>");
-            sb.append("<input type=\"hidden\" name=\"shedlength\" value=\"").append(o.getShedLength()).append("\"/>");
-            sb.append("<input type=\"hidden\" name=\"shedwidth\" value=\"").append(o.getShedWidth()).append("\"/>");
-            sb.append("<input type=\"hidden\" name=\"price\" value=\"").append(o.getPrice()).append("\"/>");
-            sb.append("<input type=\"hidden\" name=\"empID\" value=\"").append(o.getEmpID()).append("\"/>");
+//            sb.append("<input type=\"hidden\" name=\"customerID\" value=\"").append(o.getCustomer()).append("\"/>");
+//            sb.append("<input type=\"hidden\" name=\"length\" value=\"").append(o.getLength()).append("\"/>");
+//            sb.append("<input type=\"hidden\" name=\"width\" value=\"").append(o.getWidth()).append("\"/>");
+//            sb.append("<input type=\"hidden\" name=\"angle\" value=\"").append(o.getAngle()).append("\"/>");
+//            sb.append("<input type=\"hidden\" name=\"shedlength\" value=\"").append(o.getShedLength()).append("\"/>");
+//            sb.append("<input type=\"hidden\" name=\"shedwidth\" value=\"").append(o.getShedWidth()).append("\"/>");
+//            sb.append("<input type=\"hidden\" name=\"price\" value=\"").append(o.getPrice()).append("\"/>");
+//            sb.append("<input type=\"hidden\" name=\"empID\" value=\"").append(o.getEmpID()).append("\"/>");
             sb.append("<input type=\"submit\" class=\"btn btn-primary\" value=\"Se stykliste/Rediger Ordre\"/>");
             sb.append("</form></th>");
         }

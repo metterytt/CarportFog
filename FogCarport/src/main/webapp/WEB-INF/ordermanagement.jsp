@@ -28,7 +28,7 @@
 
                     <%if (request.getAttribute("complete") != null) { %>
                     <br> 
-                    <%-- Message which is send to the page, when one or several factors have been completed. --%>
+                    <%-- Message which is sent to the page, when one or several factors have been completed. --%>
                     <div class="p-2 bg-success text-black col-md-4 text-center">${complete}</div><br>
                     <%}%>
 

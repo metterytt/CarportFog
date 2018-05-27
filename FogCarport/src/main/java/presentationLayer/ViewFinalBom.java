@@ -20,9 +20,6 @@ public class ViewFinalBom extends Command {
         List<LineItem> finalBom = StorageFacade.getFinalBom(orderID);
         Customer customer = StorageFacade.getCustomer(customerID);
         
-//       --------------------------- Nedenstående metode skal muligvis slettes -------------------- #################################
-//        int totalprice = StorageFacade.getOrderTotalPrice(orderID);
-
         request.setAttribute("customer", customer);
         request.setAttribute("finalbom", finalBom);
         request.setAttribute("orderID", orderID);

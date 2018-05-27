@@ -208,8 +208,9 @@ public class OrderMapper {
                 int shedLength = rs.getInt(6);
                 int shedWidth = rs.getInt(7);
                 int price = rs.getInt(8);
+                int empID = rs.getInt(9);
                 int placed = rs.getInt(10);
-                orders.add(new Order(orderID, customer, length, width, angle, shedLength, shedWidth, price, placed));
+                orders.add(new Order(orderID, customer, length, width, angle, shedLength, shedWidth, price, empID, placed));
             }
             return orders;
         } catch (SQLException | ClassNotFoundException ex) {
@@ -294,24 +295,23 @@ public class OrderMapper {
         }
     }
 
-    public static int getOrderTotalPrice(int orderID) throws CarportException {
-        try {
-//            dbc.setDataSource(new DataSourceFog().getDataSource());
-//            dbc.open();
-//            Connection con = dbc.getConnector();
-            Connection con = Connector.connection();
-            String sql = "select price from orders where orderID=?";
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, orderID);
-            ResultSet rs = ps.executeQuery();
-            rs.next();
-            int price = rs.getInt("price");
-            return price;
-        } catch (SQLException | ClassNotFoundException ex) {
-            throw new CarportException("Noget gik galt.. Prøv igen", "index");
-        }
-    }
-
+//    public static int getOrderTotalPrice(int orderID) throws CarportException {
+//        try {
+////            dbc.setDataSource(new DataSourceFog().getDataSource());
+////            dbc.open();
+////            Connection con = dbc.getConnector();
+//            Connection con = Connector.connection();
+//            String sql = "select price from orders where orderID=?";
+//            PreparedStatement ps = con.prepareStatement(sql);
+//            ps.setInt(1, orderID);
+//            ResultSet rs = ps.executeQuery();
+//            rs.next();
+//            int price = rs.getInt("price");
+//            return price;
+//        } catch (SQLException | ClassNotFoundException ex) {
+//            throw new CarportException("Noget gik galt.. Prøv igen", "index");
+//        }
+//    }
     public static void PayForOrder(int orderID) throws CarportException {
 
 //        dbc.setDataSource(new DataSourceFog().getDataSource());
@@ -326,6 +326,29 @@ public class OrderMapper {
 
         } catch (SQLException | ClassNotFoundException ex) {
             throw new CarportException("Fejl ved betaling!", "customer");
+        }
+    }
+
+    public static Order getOrder(int orderID) throws CarportException {
+        try {
+            Connection con = Connector.connection();
+            String sql = "select * from orders where orderID=?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            int customer = rs.getInt("customerID");
+            int length = rs.getInt("length");
+            int width = rs.getInt("width");
+            int angle = rs.getInt("roof_angle");
+            int shedLength = rs.getInt("shed_length");
+            int shedWidth = rs.getInt("shed_width");
+            int price = rs.getInt("price");
+            int empID = rs.getInt("empID");
+            int placed = rs.getInt("order_placed");
+            Order order = new Order(orderID, customer, length, width, angle, shedLength, shedWidth, price, empID, placed);
+            return order;
+
+        } catch (SQLException | ClassNotFoundException ex) {
+            throw new CarportException("Fejl ved hentning af ordre", "employee");
         }
     }
 

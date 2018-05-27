@@ -28,15 +28,19 @@
                     <% if (request.getAttribute("complete") != null) { %>
                     <div class="p-2 bg-success text-black col-md-7 text-center">${complete}</div><br>
                     <%}%>
+                    
                     <%-- checks if the employee is in IT or in sales --%>
                     <% if (emp.getRole().equals("IT")) { %>
                     <% if (request.getAttribute("allEmp") == null) { %>
+                    
                     <form action="FrontController" method="post">
                         <input type="hidden" name="command" value="deleteemployee">
                         <input type="hidden" name="administrer" value="administrer">
                         <input type="submit" class="btn btn-primary" value="Administrer brugere">
                     </form>
+                    
                     <%} else {%>
+                    
                     <%-- delete employee --%>
                     <form action="FrontController" method="post">
                         <input type="hidden" name="command" value="deleteemployee">
@@ -51,14 +55,13 @@
                                 }
                             %>
                         </select>
-
                         <% String error = (String) request.getAttribute("error");
                             if (error != null) {%>
                         <p class="text-danger"> <%=error%>
                             <%}%> </p>
-
                         <input type="submit" class="btn btn-primary" value="Slet bruger">
                     </form>
+                        
                     <%}%>
                     <%-- Register new employee --%>
                     <br><form action="FrontController" method="post">
@@ -83,7 +86,7 @@
                     <form action="FrontController" method="post">
                         <input type="hidden" name="command" value="allrequests">
                         <input type="hidden" name="showrequests">
-                        <input type="submit" class="btn btn-primary" value="Se alle åbne forespørgsler">
+                        <input type="submit" class="btn btn-primary" value="Se alle forespørgsler og ordrer">
                     </form>
                 </div>
             </div>
