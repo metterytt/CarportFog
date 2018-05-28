@@ -6,7 +6,6 @@ import java.util.ArrayList;
 public class BOM {
 
     private ArrayList<LineItem> listOfProducts = new ArrayList<>();
-    // BOM får nu målene, så de kan kan hentes ud fra at BOM er i sessionen
     private int length;
     private int width;
     private int angle;
@@ -22,7 +21,7 @@ public class BOM {
         return listOfProducts;
     }
 
-    public int totalPrice() { 
+    public int totalPrice() {
         int totalPrice = 0;
         for (LineItem lineItem : listOfProducts) {
             totalPrice += lineItem.getPricePerUnit() * lineItem.getQuantity();
@@ -77,5 +76,5 @@ public class BOM {
     public void setOrderID(int orderID) {
         this.orderID = orderID;
     }
-    
+
 }

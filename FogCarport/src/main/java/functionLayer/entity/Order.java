@@ -26,18 +26,6 @@ public class Order {
         this.placed = placed;
     }
 
-//    public Order(int OrderID, int customer, int length, int width, int angle, int shedLength, int shedWidth, int price, int placed) {
-//        this.orderID = OrderID;
-//        this.customer = customer;
-//        this.length = length;
-//        this.width = width;
-//        this.angle = angle;
-//        this.shedLength = shedLength;
-//        this.shedWidth = shedWidth;
-//        this.price = price;
-//        this.placed = placed;
-//    }
-    
     public int getOrderID() {
         return orderID;
     }

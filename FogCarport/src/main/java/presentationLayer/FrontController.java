@@ -27,7 +27,6 @@ public class FrontController extends HttpServlet {
 
             new CarportLog(ex.getMessage(), "ExceptionLogs");
 
-            //log her
             if (ex.getPage().equals("index")) {
                 request.getRequestDispatcher("index.jsp").forward(request, response);
             } else {
