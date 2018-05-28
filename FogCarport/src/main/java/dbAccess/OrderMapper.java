@@ -108,7 +108,7 @@ public class OrderMapper {
     }
 
     public static List<Order> getOpenRequests() throws CarportException {
-        ArrayList<Order> openRequests = new ArrayList<>();
+        List<Order> openRequests = new ArrayList<>();
         try {
 //            dbc.setDataSource(new DataSourceFog().getDataSource());
 //            dbc.open();
@@ -138,7 +138,7 @@ public class OrderMapper {
     }
 
     public static List<Order> getOrders() throws CarportException {
-        ArrayList<Order> orders = new ArrayList<>();
+        List<Order> orders = new ArrayList<>();
         try {
 
 //            dbc.setDataSource(new DataSourceFog().getDataSource());

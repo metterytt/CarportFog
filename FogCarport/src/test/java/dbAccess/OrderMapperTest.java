@@ -300,9 +300,11 @@ public class OrderMapperTest {
      */
     @Test
     public void testUpdateTotalPrice() throws Exception {
-    int price = OrderMapper.getOrderTotalPrice(3);
-    OrderMapper.updateTotalPrice(200, 3);
-    int comparePrice = OrderMapper.getOrderTotalPrice(3);
+    Order o = OrderMapper.getOrder(2);
+    int price = o.getPrice();
+    OrderMapper.updateTotalPrice(200, 2);
+    Order compareOrder = OrderMapper.getOrder(2);
+    int comparePrice = compareOrder.getPrice();
     assertFalse(price == comparePrice);
     }
     
@@ -317,31 +319,32 @@ public class OrderMapperTest {
         }
         
     }
-     @Test(expected = CarportException.class)
-    public void testGetTotalPriceSQL() throws CarportException {
+    @Test(expected = CarportException.class)
+    public void testGetOrderSQL() throws CarportException {
         try {
             testConnection.close();
-            int price = OrderMapper.getOrderTotalPrice(3);
+             Order o = OrderMapper.getOrder(2);
         } catch (CarportException | SQLException ex) {
             testConnection = null;
             throw new CarportException(ex.getMessage(), "page");
         }
         
     }
-
-   
     /**
      * Test of PayForOrder method, of class OrderMapper.
      */
     @Test
     public void testPayForOrder() throws Exception {
-    List<Order> list = OrderMapper.getCustomerOrders(1);
-        int orderplaced = list.get(2).isPlaced();
-    OrderMapper.PayForOrder(list.get(2).getOrderID());
-    list = list = OrderMapper.getCustomerOrders(1);
-    int orderplacedCompare = list.get(2).isPlaced();
-    
-    assertTrue(orderplaced != orderplacedCompare);
+        
+    Order o = OrderMapper.getOrder(3);    
+    int orderplaced = o.isPlaced();
+    OrderMapper.PayForOrder(3);
+    Order compareOrder = OrderMapper.getOrder(3);
+    int orderplacedCompare = compareOrder.isPlaced();
+  
+//    assertEquals(orderplaced == orderplacedCompare);
+    assertFalse(orderplaced == orderplacedCompare);
+//    assertTrue();
     
     
     }
