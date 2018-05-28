@@ -134,7 +134,7 @@ public class PitchedRoofCalculator implements CarportCalculator {
         return bom;
     }
 
-     double calcFasciaBoards() { // c = b/cos V, og vi skal bruge 4 brædder
+     double calcFasciaBoards() { // c = b/cos V, and we need 4 boards
         double calcAngle = Math.toRadians(angle);
         double fasciaBoards = 4 * ((width / 2) / Math.cos(calcAngle));
         fasciaBoards = fasciaBoards + 2 * length;
@@ -142,22 +142,22 @@ public class PitchedRoofCalculator implements CarportCalculator {
     }
 
      double calcRafterSetAndPlates() {
-        // først regner vi ud hvor mange spær
+        // first we calculate how many rafters
         int numberOfRafters = (length / 60);
         if (length % 60 == 0) {
             numberOfRafters++;
         } else {
             numberOfRafters += 2;
         }
-        //så længden af træ til hver
+        // then the length of wood for each
         double calcAngle = Math.toRadians(angle);
-        double lengthOfRafters = 2 * ((width / 2) / Math.cos(calcAngle)); // 2 * skrå tagside
-        lengthOfRafters += width; // bredden skal med
+        double lengthOfRafters = 2 * ((width / 2) / Math.cos(calcAngle)); // 2 * tilted roofside
+        lengthOfRafters += width; // adding width
 
-        double gableHeight = (width / 2) * Math.tan(calcAngle); // og endelig højden
+        double gableHeight = (width / 2) * Math.tan(calcAngle); // finally the height
         lengthOfRafters += gableHeight;
         double totalWoodRafters = lengthOfRafters * numberOfRafters;
-        // vi lægger remmene til og returnerer
+        // we add the the plates and return
         return (totalWoodRafters + 2 * length) / 100;
 
     }
@@ -174,14 +174,14 @@ public class PitchedRoofCalculator implements CarportCalculator {
         return (double) (2 * length) / 100;
     }
 
-    private double calcRoofLaths() { // c er trekantens hypotenuse
+    private double calcRoofLaths() { // c is the triangle's hypotenuse
         double calcAngle = Math.toRadians(angle);
         int c = (int) ((width / 2) / Math.cos(calcAngle));
         int rows = c / 35;
         if (c % 35 > 3) {
             rows++;
         }
-        double topLath = length; // toplægten, svarer til længden
+        double topLath = length; // toplath, same as length
         return (2 * rows * length + topLath) / 100;
     }
 
@@ -193,7 +193,7 @@ public class PitchedRoofCalculator implements CarportCalculator {
         }
     }
 
-    private int calcRoofTiles() { // 9 sten/m2. +10 er for buffer
+    private int calcRoofTiles() { // 9 tiles/m2. +10 for buffer
         double calcAngle = Math.toRadians(angle);
         double widthForCalc = (int) ((width / 2) / Math.cos(calcAngle));
         double roofArea = (widthForCalc * length) / 10000;
@@ -204,7 +204,7 @@ public class PitchedRoofCalculator implements CarportCalculator {
         return length / 30;
     }
 
-    private int calcTopLathHolder() { // samme som antal spær
+    private int calcTopLathHolder() { // same as number of rafters
         return length / 60 + 1;
     }
 
@@ -212,7 +212,7 @@ public class PitchedRoofCalculator implements CarportCalculator {
         return length / 30;
     }
 
-    private int calcBinders() { // halvdelen af teglene + 30 for dem i siden
+    private int calcBinders() { // half of the tiles + 30 for the ones on the side
         int roofTiles = calcRoofTiles();
         return roofTiles / 2 + 30;
     }
@@ -222,7 +222,7 @@ public class PitchedRoofCalculator implements CarportCalculator {
     }
 
     private int calcFasciaScrews() {
-        // først skal vi have 4 skruer pr spær:
+        // first we need 4 screws pr. rafter:
         int numberOfRafters = (length / 60);
         if (length % 60 == 0) {
             numberOfRafters++;
@@ -231,7 +231,7 @@ public class PitchedRoofCalculator implements CarportCalculator {
         }
         int screws = 4 * numberOfRafters;
 
-        //så 2 pr. taglægte (1 for vindskede og en for vandbræt)
+        // the 2 pr. rooflath (1 for fascia and 1 for waterboard)
         double calcAngle = Math.toRadians(angle);
         int c = (int) ((width / 2) / Math.cos(calcAngle));
         int rows = c / 35;
@@ -242,7 +242,7 @@ public class PitchedRoofCalculator implements CarportCalculator {
         return screws + 2 * rows + 30; // 30 for buffer
     }
 
-    private int calcBracketScrews() { // 9 pr. universalbeslag + 20 pr. toplægteholder ... 50 for buffer
+    private int calcBracketScrews() { // 9 pr. universalbracket + 20 pr. toplathholder ... 50 for buffer
         int numberOfScrews = ((((length / 60) + 1) * 2)) * 9 + (length / 60 + 1) * 20 + 50;
         return numberOfScrews;
     }
@@ -258,7 +258,7 @@ public class PitchedRoofCalculator implements CarportCalculator {
         return (metersOfLaths / 60) * 2;
     }
 
-    private int calcBolts() { // 2 stk. pr. stolpe
+    private int calcBolts() { // 2 pr. post
         return 2 * (2 * ((length / 300) + 1));
     }
 
