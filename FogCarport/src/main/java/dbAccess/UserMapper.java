@@ -12,10 +12,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author mette
- */
 public class UserMapper {
 
     public static Employee login(String username, String password) throws CarportException {
@@ -100,10 +96,10 @@ public class UserMapper {
                 String name = rs.getString("firstname");
                 String lastname = rs.getString("lastname");
                 String phonenumber = rs.getString("phonenumber");
-                new CarportLog("User " + email  +" Logged in", "LoginCustomer");
+                new CarportLog("User " + email + " Logged in", "LoginCustomer");
                 return new Customer(ID, email, password, name, lastname, phonenumber);
             } else {
-                new CarportLog("User " + email  +" entered wrong info", "LoginCustomer");
+                new CarportLog("User " + email + " entered wrong info", "LoginCustomer");
                 throw new CarportException("No user found.. Invalid input", "login");
             }
         } catch (SQLException | ClassNotFoundException ex) {

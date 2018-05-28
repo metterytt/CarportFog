@@ -67,5 +67,13 @@
             document.getElementById("defaultOpen").click();
         </script>
 
+        <div class="col-md-6">
+            <form action="FrontController" method="post">
+                <input type="hidden" name="command" value="backtoemp">
+                <br/>
+                <input type="submit" class="btn btn-primary" value="Tilbage til medarbejderside">
+            </form>
+        </div>
+
     </body>
 </html>

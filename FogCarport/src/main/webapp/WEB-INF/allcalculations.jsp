@@ -21,7 +21,7 @@
                     <%-- List of all calculations --%>
                     <%= RenderTables.getAllCalculations(custCalcs)%>
                 </div>
-                
+
                 <div class="col-md-6">
                     <form action="FrontController" method="post">
                         <input type="hidden" name="command" value="backtoemp">

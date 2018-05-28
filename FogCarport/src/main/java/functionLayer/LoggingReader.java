@@ -13,9 +13,7 @@ public class LoggingReader {
     private Scanner scan;
 
     public LoggingReader(String filename) {
-//        file = new File("/var/carportlogging/ExceptionLogs.txt");
         file = new File("/var/carportlogging/" + filename + ".txt");
-//        this.file = new File("/Users/rasmu/Desktop/carportlogging/ExceptionLogs.txt");
         list = new ArrayList();
     }
 
