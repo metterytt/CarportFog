@@ -295,23 +295,7 @@ public class OrderMapper {
         }
     }
 
-//    public static int getOrderTotalPrice(int orderID) throws CarportException {
-//        try {
-////            dbc.setDataSource(new DataSourceFog().getDataSource());
-////            dbc.open();
-////            Connection con = dbc.getConnector();
-//            Connection con = Connector.connection();
-//            String sql = "select price from orders where orderID=?";
-//            PreparedStatement ps = con.prepareStatement(sql);
-//            ps.setInt(1, orderID);
-//            ResultSet rs = ps.executeQuery();
-//            rs.next();
-//            int price = rs.getInt("price");
-//            return price;
-//        } catch (SQLException | ClassNotFoundException ex) {
-//            throw new CarportException("Noget gik galt.. Prøv igen", "index");
-//        }
-//    }
+
     public static void PayForOrder(int orderID) throws CarportException {
 
 //        dbc.setDataSource(new DataSourceFog().getDataSource());
