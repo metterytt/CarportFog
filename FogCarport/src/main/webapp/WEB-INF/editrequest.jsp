@@ -12,12 +12,12 @@
         <%@ include file="/WEB-INF/Include/Navbar.jspf" %>
         <%
             BOM carportBOM = (BOM) session.getAttribute("carportbom");
-            int orderID = carportBOM.getOrderID();
+            int orderID = carportBOM.getOrderID(); 
             int carlength = carportBOM.getLength();
             int carwidth = carportBOM.getWidth();
             int angle = carportBOM.getAngle();
             int shedLength = carportBOM.getShedLength();
-            int shedWidth = carportBOM.getShedWidth();%>
+            int shedWidth = carportBOM.getShedWidth();%> 
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-6">
@@ -42,7 +42,7 @@
                                 }%>
                         </select>
 
-                        <label for="length">Bredde i CM:</label><br>
+                        <label for="width">Bredde i CM:</label><br>
                         <select class="custom-select" name="width">
                             <option selected="selected"> <%=carwidth%> </option>
                             <%
@@ -56,7 +56,7 @@
                         </select>
 
                         <br> <label for="angle">Hvis tagrejsning ønskes, indtast vinkel på tag:</label>
-                        <select class="custom-select" name="angle" value="<%=angle%>">
+                        <select class="custom-select" name="angle">
                             <option selected="selected"> <%=angle%> </option>
 
                             <%

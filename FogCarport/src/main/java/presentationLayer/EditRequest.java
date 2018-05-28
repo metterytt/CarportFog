@@ -14,24 +14,9 @@ public class EditRequest extends Command {
 
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws CarportException {
-
         if (request.getParameter("parseInfo") != null) {
-            int orderID = Integer.parseInt(request.getParameter("orderID"));
-            int length = Integer.parseInt(request.getParameter("length"));
-            int width = Integer.parseInt(request.getParameter("width"));
-            int angle = Integer.parseInt(request.getParameter("angle"));
-            int shedLength = Integer.parseInt(request.getParameter("shedlength"));
-            int shedWidth = Integer.parseInt(request.getParameter("shedwidth"));
-
-            request.setAttribute("orderid", orderID);
-            request.setAttribute("length", length);
-            request.setAttribute("width", width);
-            request.setAttribute("angle", angle);
-            request.setAttribute("shedlength", shedLength);
-            request.setAttribute("shedwidth", shedWidth);
             return "editrequest";
         }
-
         if (request.getParameter("editfinished") != null) {
 
             int shedLength = 0;

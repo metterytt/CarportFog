@@ -44,12 +44,6 @@
                                         <form action="FrontController" method="post">
                                             <input type="hidden" name="command" value="editrequest">
                                             <input type="hidden" name="parseInfo">
-                                            <input type="hidden" name="orderID" value="<%= carportBOM.getOrderID()%>">
-                                            <input type="hidden" name="length" value="<%= carportBOM.getLength()%>">
-                                            <input type="hidden" name="width" value="<%= carportBOM.getWidth()%>">
-                                            <input type="hidden" name="angle" value="<%= carportBOM.getAngle()%>">
-                                            <input type="hidden" name="shedlength" value="<%= carportBOM.getShedLength()%>">
-                                            <input type="hidden" name="shedwidth" value="<%= carportBOM.getShedWidth()%>">
                                             <input type="submit" class="btn btn-primary" value="Ændre mål">
                                         </form>   
                                     </th>
