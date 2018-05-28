@@ -186,3 +186,5 @@ INSERT INTO `carport`.`products` (`name`, `uom`, `price`) VALUES ('Skruer, 4,5x5
 INSERT INTO `carport`.`products` (`name`, `uom`, `price`) VALUES ('Stalddørsgreb 50x75', 'sæt', '21900');
 INSERT INTO `carport`.`products` (`name`, `uom`, `price`) VALUES ('T-hængsel 390mm', 'stk.', '10900');
 INSERT INTO `carport`.`products` (`name`, `uom`, `price`) VALUES ('Vinkelbeslag 35', 'stk.', '595');
+
+INSERT INTO `carport`.`employees` (`username`, `password`, `role`) VALUES ('test@test.dk', 'test', 'IT');

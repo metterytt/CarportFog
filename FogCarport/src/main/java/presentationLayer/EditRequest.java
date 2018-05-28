@@ -40,8 +40,8 @@ public class EditRequest extends Command {
             int length = Integer.parseInt(request.getParameter("length"));
             int width = Integer.parseInt(request.getParameter("width"));
             int angle = Integer.parseInt(request.getParameter("angle"));
-               shedLength = Integer.parseInt(request.getParameter("shedlength"));
-               shedWidth = Integer.parseInt(request.getParameter("shedwidth"));
+            shedLength = Integer.parseInt(request.getParameter("shedlength"));
+            shedWidth = Integer.parseInt(request.getParameter("shedwidth"));
             CarportCalculator carportCalculator;
             BOM carportBom;
 
@@ -59,10 +59,10 @@ public class EditRequest extends Command {
             request.setAttribute("complete", "Opdatering til ordre: " + orderID + "'s mål er hermed lavet.");
 
         }
-         HttpSession session = request.getSession();
-         session.removeAttribute("carportbom");
-         session.removeAttribute("customer");
-         session.removeAttribute("totalprice");
+        HttpSession session = request.getSession();
+        session.removeAttribute("carportbom");
+        session.removeAttribute("customer");
+        session.removeAttribute("totalprice");
         return new AllRequests().execute(request, response);
     }
 }

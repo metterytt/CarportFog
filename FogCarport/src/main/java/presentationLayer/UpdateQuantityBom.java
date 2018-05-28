@@ -13,7 +13,7 @@ public class UpdateQuantityBom extends Command {
     String execute(HttpServletRequest request, HttpServletResponse response) throws CarportException {
         HttpSession session = request.getSession();
         BOM carportBOM = (BOM) session.getAttribute("carportbom");
-        
+
         double edit = Double.parseDouble(request.getParameter("editNumber"));
         int productid = Integer.parseInt(request.getParameter("productID"));
 

@@ -1,14 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package functionLayer;
 
-/**
- *
- * @author pernillelorup
- */
 public class RenderDrawings {
 
     public static String drawFromAbove(DrawingMeasures dm) {
@@ -67,7 +58,7 @@ public class RenderDrawings {
             sb.append("<line x1=\"20\"").append("\" y1=\"").append(dm.getRafterGap() + 10).append("\" x2=\"").append(dm.getWidth() - 20).append("\" y2=\"").append((dm.getLength() - 10) - dm.getRafterGap()).append("\" stroke=\"black\" stroke-dasharray=\"5 5\"/>");
             sb.append("<line x1=\"20\"").append("\" y1=\"").append((dm.getLength() - 10) - dm.getRafterGap()).append("\" x2=\"").append(dm.getWidth() - 20).append("\" y2=\"").append(dm.getRafterGap() + 10).append("\" stroke=\"black\" stroke-dasharray=\"5 5\"/>");
         }
-        
+
         //Skur til venstre
         if (dm.getShedLength() != 0) {
             //skur i midten

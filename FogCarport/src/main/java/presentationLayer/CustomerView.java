@@ -12,13 +12,13 @@ public class CustomerView extends Command {
 
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws CarportException {
-        
-        Customer customer = (Customer)request.getSession().getAttribute("customer");
+
+        Customer customer = (Customer) request.getSession().getAttribute("customer");
         int customerID = customer.getID();
         List<Order> orders = StorageFacade.getCustomerOrders(customerID);
         request.setAttribute("orders", orders);
-        
+
         return "customerview";
     }
-    
+
 }

@@ -15,22 +15,20 @@ public class Navbar extends Command {
         this.pages.add("login");
         this.pages.add("profile");
     }
-    
+
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws CarportException {
 
-        
-    if(request.getParameter("logout") != null){
-        if(request.getSession().getAttribute("employee") != null){
-        request.getSession().removeAttribute("employee");
-        return "index";
-    }
-        else{
-            request.getSession().removeAttribute("customer");
-                 return "index";
+        if (request.getParameter("logout") != null) {
+            if (request.getSession().getAttribute("employee") != null) {
+                request.getSession().removeAttribute("employee");
+                return "index";
+            } else {
+                request.getSession().removeAttribute("customer");
+                return "index";
+            }
         }
-    }
-        
+
         String page = null;
         for (String str : pages) {
             if (request.getParameter(str) != null) {
@@ -39,8 +37,7 @@ public class Navbar extends Command {
         }
         if (page != null) {
             return page;
-        }
-        else {
+        } else {
             throw new CarportException("Something went wrong, try reloading", "index");
         }
     }

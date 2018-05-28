@@ -16,8 +16,7 @@ public class DeleteEmployee extends Command {
             int empIdForDeletion = Integer.parseInt(request.getParameter("empIdForDeletion"));
             if (empIdForDeletion != 0) {
                 StorageFacade.deleteEmployee(empIdForDeletion);
-            }
-            else {
+            } else {
                 request.setAttribute("error", "Fejl - Vælg en bruger, hvis du ønsker at slette en profil.");
             }
         }

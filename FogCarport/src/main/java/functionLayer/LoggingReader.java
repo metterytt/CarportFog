@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package functionLayer;
 
 import java.io.File;
@@ -11,10 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-/**
- *
- * @author Rasmus
- */
 public class LoggingReader {
 
     private File file;
@@ -38,8 +29,7 @@ public class LoggingReader {
             while (scan.hasNextLine()) {
                 list.add(scan.nextLine());
             }
-        }
-        catch (FileNotFoundException e) {
+        } catch (FileNotFoundException e) {
             throw new CarportException("The logging file could not be located", "logging");
         }
     }

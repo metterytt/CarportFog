@@ -20,12 +20,12 @@ public class SendRequest extends Command {
             request.getSession().removeAttribute("drawingmeasures");
             return "index";
         }
-        
+
         // This checks if newly registered customer has a Drawingmeasures object in the session
         if (request.getParameter("backToDrawing") != null) {
             return "drawings";
         }
-        
+
         // Gets measurements from DrawingMeasures object for use in the CarportCalculator
         DrawingMeasures drawingMeasures = (DrawingMeasures) request.getSession().getAttribute("drawingmeasures");
         int length = drawingMeasures.getLength();
