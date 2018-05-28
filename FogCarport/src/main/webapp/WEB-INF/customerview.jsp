@@ -3,7 +3,7 @@
 <%@page import="functionLayer.RenderTables"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <% List<Order> orders = (List<Order>) request.getAttribute("orders");
-   %>
+%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -59,6 +59,13 @@
                         }
                         document.getElementById("defaultOpen").click();
                     </script>
+                </div>
+                <div class="col-md-12">
+                    <form action="FrontController" method="post">
+                        <input type="hidden" name="command" value="backtocust">
+                        <br/>
+                        <input type="submit" class="btn btn-primary" value="Tilbage til kundeside">
+                    </form>
                 </div>
             </div>
         </div>

@@ -31,6 +31,7 @@ abstract class Command {
         commands.put("backtoorders", new BackToOrders());
         commands.put("payfororder", new PayForOrder());
         commands.put("logreader", new LogReader());
+        commands.put("backtocust", new BackToCustomer());
     }
 
     static Command from(HttpServletRequest request) {
