@@ -7,7 +7,6 @@ import functionLayer.entity.CustomerCalculation;
 import functionLayer.entity.Employee;
 import functionLayer.entity.LineItem;
 import functionLayer.entity.Order;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -56,9 +55,9 @@ public class StorageFacade {
     public static List<LineItem> getFinalBom(int orderID) throws CarportException {
         return OrderMapper.getFinalBom(orderID);
     }
-
-    public static int getOrderTotalPrice(int orderID) throws CarportException {
-        return OrderMapper.getOrderTotalPrice(orderID);
+    
+    public static Order getOrder(int orderID) throws CarportException {
+        return OrderMapper.getOrder(orderID);
     }
 
     public static Employee login(String username, String password) throws CarportException {

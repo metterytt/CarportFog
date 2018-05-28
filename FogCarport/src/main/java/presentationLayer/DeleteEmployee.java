@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package presentationLayer;
 
 import functionLayer.CarportException;
@@ -12,10 +7,6 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author Rasmus
- */
 public class DeleteEmployee extends Command {
 
     @Override
@@ -25,8 +16,7 @@ public class DeleteEmployee extends Command {
             int empIdForDeletion = Integer.parseInt(request.getParameter("empIdForDeletion"));
             if (empIdForDeletion != 0) {
                 StorageFacade.deleteEmployee(empIdForDeletion);
-            }
-            else {
+            } else {
                 request.setAttribute("error", "Fejl - Vælg en bruger, hvis du ønsker at slette en profil.");
             }
         }

@@ -5,10 +5,6 @@ import functionLayer.CarportException;
 import functionLayer.StorageFacade;
 import functionLayer.entity.LineItem;
 
-/**
- *
- * @author pernillelorup
- */
 public class ShedCalculator implements CarportCalculator {
 
     private int shedLength;
@@ -40,7 +36,7 @@ public class ShedCalculator implements CarportCalculator {
         cladding.setQuantity(calcCladding());
         cladding.setUseInContext("Skur: Til beklædning af skur 1 på 2");
         bom.addToBOM(cladding);
-        
+
         LineItem posts = StorageFacade.getProduct(5);
         posts.setQuantity(3); // altid 3 ekstra stolper når skur
         posts.setUseInContext("Skur: Ekstra stolper til skur");
@@ -85,7 +81,6 @@ public class ShedCalculator implements CarportCalculator {
     private int calcShedScrews() { // 3 skruer pr. bræt, halvdelen af brædderne
         int numberOfBoards = (((shedLength * 100) / 750) + ((shedWidth * 100) / 750)) * 2;
         return numberOfBoards * 3;
-
     }
 
     private int calcSmallShedScrews() { // 6 skruer pr. bræt, halvdelen af brædderne

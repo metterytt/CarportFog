@@ -24,11 +24,10 @@ public class FrontController extends HttpServlet {
             }
         } catch (CarportException ex) {
             request.setAttribute("error", ex.getMessage());
-           
+
             new CarportLog(ex.getMessage(), "ExceptionLogs");
 
             //log her
-            
             if (ex.getPage().equals("index")) {
                 request.getRequestDispatcher("index.jsp").forward(request, response);
             } else {

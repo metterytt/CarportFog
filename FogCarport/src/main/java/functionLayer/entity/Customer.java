@@ -1,15 +1,13 @@
-
 package functionLayer.entity;
 
-
 public class Customer {
- 
- private int ID;
- private String email;
- private String password;
- private String name;
- private String lastname;
- private String phoneNumber;
+
+    private int ID;
+    private String email;
+    private String password;
+    private String name;
+    private String lastname;
+    private String phoneNumber;
 
     public Customer(int ID, String email, String password, String name, String lastname, String phoneNumber) {
         this.ID = ID;
@@ -27,7 +25,7 @@ public class Customer {
         this.lastname = lastname;
         this.phoneNumber = phoneNumber;
     }
-    
+
     public Customer(String email, String password, String name, String lastname, String phoneNumber) {
         this.email = email;
         this.password = password;
@@ -35,7 +33,7 @@ public class Customer {
         this.lastname = lastname;
         this.phoneNumber = phoneNumber;
     }
-    
+
     public int getID() {
         return ID;
     }
@@ -43,8 +41,8 @@ public class Customer {
     public String getEmail() {
         return email;
     }
-    
-     public String getPassword() {
+
+    public String getPassword() {
         return password;
     }
 

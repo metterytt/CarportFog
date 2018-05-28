@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package presentationLayer;
 
 import functionLayer.CarportException;
@@ -12,10 +7,6 @@ import functionLayer.entity.Employee;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author Rasmus
- */
 public class Login extends Command {
 
     @Override
@@ -24,7 +15,6 @@ public class Login extends Command {
         if (request.getParameter("showEmpLogin") != null) {
             request.setAttribute("empLogin", "empLogin");
             return "login";
-
         } else if (request.getParameter("showCustomerLogin") != null) {
             return "login";
         } else if (request.getParameter("loginEmp") != null) {
@@ -34,7 +24,6 @@ public class Login extends Command {
             request.getSession().setAttribute("employee", employee);
             return "employee";
         } else if (request.getParameter("loginCustomer") != null) {
-
             String username = request.getParameter("username");
             String password = request.getParameter("password");
             Customer customer;
@@ -43,7 +32,6 @@ public class Login extends Command {
             if (request.getSession().getAttribute("drawingmeasures") != null) {
                 return "drawings";
             }
-
             return "customer";
         }
         return "index";

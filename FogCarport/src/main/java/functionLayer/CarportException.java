@@ -1,6 +1,4 @@
-
 package functionLayer;
-
 
 public class CarportException extends Exception {
 
@@ -14,7 +12,5 @@ public class CarportException extends Exception {
     public String getPage() {
         return page;
     }
-    
-    
     
 }

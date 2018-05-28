@@ -13,19 +13,16 @@ public class UpdateQuantityBom extends Command {
     String execute(HttpServletRequest request, HttpServletResponse response) throws CarportException {
         HttpSession session = request.getSession();
         BOM carportBOM = (BOM) session.getAttribute("carportbom");
-       
+
         double edit = Double.parseDouble(request.getParameter("editNumber"));
-        
         int productid = Integer.parseInt(request.getParameter("productID"));
 
         for (LineItem li : carportBOM.getListOfProducts()) {
-            if(li.getProductID() == productid){
+            if (li.getProductID() == productid) {
                 li.setQuantity(edit);
             }
         }
-        
         session.setAttribute("carportbom", carportBOM);
-        
         request.setAttribute("complete", "Opdatering lavet til antal!");
 
         return "viewbom";

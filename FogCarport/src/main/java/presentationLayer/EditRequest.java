@@ -4,7 +4,6 @@ import functionLayer.BOM;
 import functionLayer.Calculators.CarportCalculator;
 import functionLayer.Calculators.FlatRoofCalculator;
 import functionLayer.Calculators.PitchedRoofCalculator;
-import functionLayer.Calculators.ShedCalculator;
 import functionLayer.CarportException;
 import functionLayer.StorageFacade;
 import javax.servlet.http.HttpServletRequest;
@@ -16,7 +15,6 @@ public class EditRequest extends Command {
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws CarportException {
 
-        // CAN MAYBE HAVE ALL INTS HERE, ALWAYS? THINK ABOUT IT 
         if (request.getParameter("parseInfo") != null) {
             int orderID = Integer.parseInt(request.getParameter("orderID"));
             int length = Integer.parseInt(request.getParameter("length"));
@@ -42,8 +40,8 @@ public class EditRequest extends Command {
             int length = Integer.parseInt(request.getParameter("length"));
             int width = Integer.parseInt(request.getParameter("width"));
             int angle = Integer.parseInt(request.getParameter("angle"));
-               shedLength = Integer.parseInt(request.getParameter("shedlength"));
-               shedWidth = Integer.parseInt(request.getParameter("shedwidth"));
+            shedLength = Integer.parseInt(request.getParameter("shedlength"));
+            shedWidth = Integer.parseInt(request.getParameter("shedwidth"));
             CarportCalculator carportCalculator;
             BOM carportBom;
 
@@ -61,10 +59,10 @@ public class EditRequest extends Command {
             request.setAttribute("complete", "Opdatering til ordre: " + orderID + "'s mål er hermed lavet.");
 
         }
-         HttpSession session = request.getSession();
-         session.removeAttribute("carportbom");
-         session.removeAttribute("customer");
-         session.removeAttribute("totalprice");
+        HttpSession session = request.getSession();
+        session.removeAttribute("carportbom");
+        session.removeAttribute("customer");
+        session.removeAttribute("totalprice");
         return new AllRequests().execute(request, response);
     }
 }

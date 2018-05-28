@@ -1,4 +1,4 @@
-    package functionLayer;
+package functionLayer;
 
 import functionLayer.entity.CustomerCalculation;
 import functionLayer.entity.LineItem;
@@ -38,14 +38,14 @@ public class RenderTables {
             sb.append("<form action=\"FrontController\" method=\"post\">");
             sb.append("<input type=\"hidden\" name=\"command\" value=\"viewbom\">");
             sb.append("<input type=\"hidden\" name=\"orderID\" value=\"").append(o.getOrderID()).append("\"/>");
-            sb.append("<input type=\"hidden\" name=\"customerID\" value=\"").append(o.getCustomer()).append("\"/>");
-            sb.append("<input type=\"hidden\" name=\"length\" value=\"").append(o.getLength()).append("\"/>");
-            sb.append("<input type=\"hidden\" name=\"width\" value=\"").append(o.getWidth()).append("\"/>");
-            sb.append("<input type=\"hidden\" name=\"angle\" value=\"").append(o.getAngle()).append("\"/>");
-            sb.append("<input type=\"hidden\" name=\"shedlength\" value=\"").append(o.getShedLength()).append("\"/>");
-            sb.append("<input type=\"hidden\" name=\"shedwidth\" value=\"").append(o.getShedWidth()).append("\"/>");
-            sb.append("<input type=\"hidden\" name=\"price\" value=\"").append(o.getPrice()).append("\"/>");
-            sb.append("<input type=\"hidden\" name=\"empID\" value=\"").append(o.getEmpID()).append("\"/>");
+//            sb.append("<input type=\"hidden\" name=\"customerID\" value=\"").append(o.getCustomer()).append("\"/>");
+//            sb.append("<input type=\"hidden\" name=\"length\" value=\"").append(o.getLength()).append("\"/>");
+//            sb.append("<input type=\"hidden\" name=\"width\" value=\"").append(o.getWidth()).append("\"/>");
+//            sb.append("<input type=\"hidden\" name=\"angle\" value=\"").append(o.getAngle()).append("\"/>");
+//            sb.append("<input type=\"hidden\" name=\"shedlength\" value=\"").append(o.getShedLength()).append("\"/>");
+//            sb.append("<input type=\"hidden\" name=\"shedwidth\" value=\"").append(o.getShedWidth()).append("\"/>");
+//            sb.append("<input type=\"hidden\" name=\"price\" value=\"").append(o.getPrice()).append("\"/>");
+//            sb.append("<input type=\"hidden\" name=\"empID\" value=\"").append(o.getEmpID()).append("\"/>");
             sb.append("<input type=\"submit\" class=\"btn btn-primary\" value=\"Se stykliste/Rediger Ordre\"/>");
             sb.append("</form></th>");
         }
@@ -114,12 +114,12 @@ public class RenderTables {
         sb.append("</tr></thead><tbody>\n");
         DecimalFormat formatter = new DecimalFormat("#0.00");
         for (LineItem li : bom) {
-           
-           double quantity = li.getQuantity();
-           String _quantity = formatter.format(quantity);
-           _quantity = _quantity.replace(',', '.');
-           quantity = Double.parseDouble(_quantity);
-           
+
+            double quantity = li.getQuantity();
+            String _quantity = formatter.format(quantity);
+            _quantity = _quantity.replace(',', '.');
+            quantity = Double.parseDouble(_quantity);
+
             sb.append("<tr>");
             sb.append("<td>").append(li.getName()).append("</td>");
             sb.append("<td>").append(li.getUseInContext()).append("</td>");
@@ -227,20 +227,20 @@ public class RenderTables {
                 }
                 if (o.isPlaced() == 2) {
                     sb.append("<th>");
-            sb.append("<form action=\"FrontController\" method=\"post\">");
-            sb.append("<input type=\"hidden\" name=\"command\" value=\"viewfinalbom\">");
-            sb.append("<input type=\"hidden\" name=\"orderID\" value=\"").append(o.getOrderID()).append("\"/>");
-            sb.append("<input type=\"hidden\" name=\"customerID\" value=\"").append(o.getCustomer()).append("\"/>");
-            sb.append("<input type=\"hidden\" name=\"length\" value=\"").append(o.getLength()).append("\"/>");
-            sb.append("<input type=\"hidden\" name=\"width\" value=\"").append(o.getWidth()).append("\"/>");
-            sb.append("<input type=\"hidden\" name=\"angle\" value=\"").append(o.getAngle()).append("\"/>");
-            sb.append("<input type=\"hidden\" name=\"shedlength\" value=\"").append(o.getShedLength()).append("\"/>");
-            sb.append("<input type=\"hidden\" name=\"shedwidth\" value=\"").append(o.getShedWidth()).append("\"/>");
-            sb.append("<input type=\"hidden\" name=\"price\" value=\"").append(o.getPrice()).append("\"/>");
-            sb.append("<input type=\"hidden\" name=\"empID\" value=\"").append(o.getEmpID()).append("\"/>");
-            sb.append("<input type=\"hidden\" name=\"orderPlaced\"/>");
-            sb.append("<input type=\"submit\" class=\"btn btn-primary\" value=\"Se stykliste\"/>");
-            sb.append("</form></th>");
+                    sb.append("<form action=\"FrontController\" method=\"post\">");
+                    sb.append("<input type=\"hidden\" name=\"command\" value=\"viewfinalbom\">");
+                    sb.append("<input type=\"hidden\" name=\"orderID\" value=\"").append(o.getOrderID()).append("\"/>");
+//            sb.append("<input type=\"hidden\" name=\"customerID\" value=\"").append(o.getCustomer()).append("\"/>");
+//            sb.append("<input type=\"hidden\" name=\"length\" value=\"").append(o.getLength()).append("\"/>");
+//            sb.append("<input type=\"hidden\" name=\"width\" value=\"").append(o.getWidth()).append("\"/>");
+//            sb.append("<input type=\"hidden\" name=\"angle\" value=\"").append(o.getAngle()).append("\"/>");
+//            sb.append("<input type=\"hidden\" name=\"shedlength\" value=\"").append(o.getShedLength()).append("\"/>");
+//            sb.append("<input type=\"hidden\" name=\"shedwidth\" value=\"").append(o.getShedWidth()).append("\"/>");
+//            sb.append("<input type=\"hidden\" name=\"price\" value=\"").append(o.getPrice()).append("\"/>");
+//            sb.append("<input type=\"hidden\" name=\"empID\" value=\"").append(o.getEmpID()).append("\"/>");
+//            sb.append("<input type=\"hidden\" name=\"orderPlaced\"/>");
+                    sb.append("<input type=\"submit\" class=\"btn btn-primary\" value=\"Se stykliste\"/>");
+                    sb.append("</form></th>");
                 }
                 sb.append("</tr>");
             }
