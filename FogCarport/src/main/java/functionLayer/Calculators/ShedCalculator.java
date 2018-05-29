@@ -5,6 +5,10 @@ import functionLayer.CarportException;
 import functionLayer.StorageFacade;
 import functionLayer.entity.LineItem;
 
+/**
+ * This calculator is used to calculate the whats needed for a shed.
+ * @author Snøvsen.
+ */
 public class ShedCalculator implements CarportCalculator {
 
     private int shedLength;
@@ -17,6 +21,11 @@ public class ShedCalculator implements CarportCalculator {
         bom = calculateBOM();
     }
 
+    /**
+     * Creates a BOM by calling the different methods in the class.
+     * @return a BOM (Bill of Material). Not null.
+     * @throws CarportException if something goes wrong trying to fetch products from the database.
+     */
     private BOM calculateBOM() throws CarportException {
         bom = new BOM();
         bom.setShedLength(shedLength);
@@ -70,19 +79,35 @@ public class ShedCalculator implements CarportCalculator {
         return bom;
     }
 
+    /**
+     * Calculates the reglar in meter.
+     * @return double type.
+     */
     private double calcReglar() {
         return (double) (4 * shedLength + 4 * shedWidth) / 100;
     }
 
+    /**
+     * Calculates the cladding in meter.
+     * @return double type.
+     */
     private double calcCladding() { // due to overlap every board takes up space of 7,5 cm
         return (((((shedLength * 100) / 750) + ((shedWidth * 100) / 750)) * 210) * 2) / 100; //210 is standard height
     }
 
+    /**
+     * Calculates the quantity of screws for the shed.
+     * @return int type.
+     */
     private int calcShedScrews() { // 3 screws pr. board, half of boards
         int numberOfBoards = (((shedLength * 100) / 750) + ((shedWidth * 100) / 750)) * 2;
         return numberOfBoards * 3;
     }
 
+    /**
+     * Calculates the quantity of small screws for the shed.
+     * @return int type.
+     */
     private int calcSmallShedScrews() { // 6 screws pr. board, half of boards
         int numberOfBoards = (((shedLength * 100) / 750) + ((shedWidth * 100) / 750)) * 2;
         return numberOfBoards * 6;

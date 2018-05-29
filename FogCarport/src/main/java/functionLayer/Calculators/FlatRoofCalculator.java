@@ -148,14 +148,27 @@ public class FlatRoofCalculator implements CarportCalculator {
         }
     }
 
+    /**
+     * Calculates the subfasciaboards in meters.
+     * @return double type.
+     */
     private double calcSubFasciaBoards() {
-        return (2 * length + 2 * width) / 100; // returns the number in meters
+        return (2 * length + 2 * width) / 100;
     }
 
+    /**
+     * Calculates the fasciaboards in meters.
+     * @return double type.
+     */
     private double calcFasciaBoards() {
-        return (2 * length + width) / 100; // returns the number in meters
+        return (2 * length + width) / 100;
     }
 
+    /**
+     * Calculates the plates and rafters in meters.
+     * The number 60 represents the maximum gap of the rafters when the carport is built.
+     * @return double type.
+     */
     private double calcPlatesAndRafters() {
         int numberOfRafters = (length / 60);
         if (length % 60 == 0) {
@@ -168,22 +181,45 @@ public class FlatRoofCalculator implements CarportCalculator {
         return platesAndRafters / 100;
     }
 
+    /**
+     * Calculates the waterboards in meters.
+     * @return double type.
+     */
     private double calcWaterBoards() {
-        return (double) (2 * length + width) / 100; // returns the number in meters
+        return (double) (2 * length + width) / 100;
     }
 
-    private double calcRoof() { // returns in m2
+    /**
+     * Calculates the roof measures in m2 by dividing with 10000.
+     * @return double type.
+     */
+    private double calcRoof() {
         return (double) (length * width) / 10000;
     }
 
-    private int calcRoofScrews() { //12 screws/m2, 50 for buffer
+    /**
+     * Calculates how many screws are needed for this carport.
+     * 12 screws divided by m2 and then 50 extra as buffer.
+     * @return int type.
+     */
+    private int calcRoofScrews() {
         return (int) ((length * width * 12) / 10000) + 50;
     }
 
-    private int calcMetalTape() { // calculates in meters, and rounds up
+    /**
+     * Calculates the metaltape in meters and rounds up.
+     * Math operates with a double, so there will be a roundup with int 1, as the final result should be an int.
+     * Example: double value 1.6 should result in int 2.
+     * @return int type
+     */
+    private int calcMetalTape() {
         return (int) (2 * (Math.sqrt(length * length + width * width))) / 100 + 1;
     }
 
+    /**
+     * Calculates the quantity of universal brackets.
+     * @return int type.
+     */
     private int calcUniBrackets() {
         int uniBrackets = ((int) length / 60);
         if (length % 60 == 0) {
@@ -194,12 +230,22 @@ public class FlatRoofCalculator implements CarportCalculator {
         return uniBrackets;
     }
 
-    private int calcFasciaScrews() { // 2 pr. 60 cm perimeter PLUS 4 pr 60 cm (perimeter minus width)
-        //(due to missing fasciaboard and waterboard at the back) ... 50 for buffer
+    /**
+     * Calculates quantity of faciascrews.
+     * Subfaciaboards need 2 screws pr. 60 cm perimeter and faciaboards need 4 pr. 60 cm. perimeter minus width.
+     * (due to missing faciaboard and waterboard at the back) .. 50 extra for buffer.
+     * @return int type
+     */
+    private int calcFasciaScrews() {
         return (int) (2 * ((2 * length + 2 * width) / 60) + (4 * (2 * length + width) / 60) + 50);
     }
 
-    private int calcBracketScrews() { // 9 pr. universalbracket + 2 * length/60 for metaltape... 50 for buffer
+    /**
+     * Calculates quantity of bracketscrews.
+     * 9 pr. universalbracket plus (2 * length/60 for metaltape) ... 50 extra for buffer.
+     * @return int type.
+     */
+    private int calcBracketScrews() {
         int uniBrackets = ((int) length / 60);
         if (length % 60 == 0) {
             uniBrackets++;

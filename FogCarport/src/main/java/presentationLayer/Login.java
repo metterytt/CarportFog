@@ -34,6 +34,6 @@ public class Login extends Command {
             }
             return "customer";
         }
-        return "index";
+        throw new CarportException("Noget gik galt..", "index");
     }
 }
