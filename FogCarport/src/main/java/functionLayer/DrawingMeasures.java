@@ -1,5 +1,9 @@
 package functionLayer;
 
+/**
+ * Used to draw images of the carport in RenderDrawings.java
+ * @author Snøvsen
+ */
 public class DrawingMeasures {
 
     private int length;

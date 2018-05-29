@@ -8,8 +8,8 @@ package functionLayer.Calculators;
 import functionLayer.BOM;
 
 /**
- *
- * @author mette
+ * Interface used in the calculator classes.
+ * @author Snøvsen
  */
 public interface CarportCalculator {
 

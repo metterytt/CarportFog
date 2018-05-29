@@ -10,8 +10,8 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 /**
- *
- * @author mette
+ * Used to connect to the database.
+ * @author Snøvsen
  */
 public class Connector {
 

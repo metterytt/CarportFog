@@ -23,6 +23,10 @@ import functionLayer.StorageFacade;
 import functionLayer.entity.LineItem;
 import java.util.List;
 
+/**
+ * This calculator is used to calculate a carport with a flat roof.
+ * @author Snøvsen
+ */
 public class FlatRoofCalculator implements CarportCalculator {
 
     private final int length;
@@ -40,6 +44,11 @@ public class FlatRoofCalculator implements CarportCalculator {
         bom = calculateBOM();
     }
 
+    /**
+     * Creates a BOM by calling the different methods in the class.
+     * @return a BOM (Bill of Material). Not null.
+     * @throws CarportException if something goes wrong trying to fetch products from the database.
+     */
     private BOM calculateBOM() throws CarportException {
         bom = new BOM();
         bom.setLength(length);
@@ -128,6 +137,10 @@ public class FlatRoofCalculator implements CarportCalculator {
         return bom;
     }
 
+    /**
+     * From the length the quantity of posts is determined.
+     * @return either int 4 or 6.
+     */
     private int calcPosts() {
         if (length <= 480) {
             return 4;

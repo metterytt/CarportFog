@@ -6,8 +6,8 @@
 package functionLayer.entity;
 
 /**
- *
- * @author Rasmus
+ * This entity is used to handle all Employee information.
+ * @author Snøvsen
  */
 public class Employee {
     private String username;

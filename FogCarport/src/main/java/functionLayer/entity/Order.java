@@ -1,5 +1,9 @@
 package functionLayer.entity;
 
+/**
+ * This entity is used to handle all orderinformation.
+ * @author Snøvsen
+ */
 public class Order {
     
     private int orderID;

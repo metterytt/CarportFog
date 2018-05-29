@@ -11,9 +11,21 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Gives access to the tables customercalculations, orders, lineitems and products.
+ * @author Snøvsen
+ */
 public class OrderMapper {
 
 //    private static DBConnector dbc = new DBConnector();
+    
+    /**
+     * Finds a LineItem in the products table in the database.
+     * The product/LineItem is used in the calculator classes.
+     * @param productID int type always 1 or higher and should match one of the existing productID's.
+     * @return a LineItem entity type with the given productID.
+     * @throws CarportException if something goes wrong trying to fetch the product from the products table.
+     */
     public static LineItem getProduct(int productID) throws CarportException {
         try {
 //            dbc.setDataSource(new DataSourceFog().getDataSource());
@@ -37,6 +49,16 @@ public class OrderMapper {
         }
     }
 
+    /**
+     * Inserts a calculation of a carport to the database.
+     * Every time someone make a calculation on the site, it will be inserted into the customercalculations table.
+     * @param length type int cannot be 0
+     * @param width type int cannot be 0
+     * @param angle type int can be 0 if no angle is wanted
+     * @param shedLength type int can be 0 if no shed is wanted
+     * @param shedWidth type int can be 0 if no shed is wanted
+     * @throws CarportException if something goes wrong trying ot insert the calculations into the database.
+     */
     public static void addCustCalc(int length, int width, int angle, int shedLength, int shedWidth) throws CarportException {
         try {
 //            dbc.setDataSource(new DataSourceFog().getDataSource());
@@ -57,6 +79,11 @@ public class OrderMapper {
         }
     }
 
+    /**
+     * Makes a list of all calculations from the customercalculations table.
+     * @return a list of calculations that has ever been made.
+     * @throws CarportException if something goes wrong trying to fetch all the calculations from the database.
+     */
     public static ArrayList<CustomerCalculation> getCustCalcs() throws CarportException {
         ArrayList<CustomerCalculation> custCalcs = new ArrayList<>();
         try {
@@ -83,6 +110,18 @@ public class OrderMapper {
         return custCalcs;
     }
 
+    /**
+     * Inserts an order request into the database.
+     * With the given parameters a new request is inserted into the orders table.
+     * @param customerID int type always 1 or higher, matching the customer currently logged in.
+     * @param length int type
+     * @param width int type
+     * @param angle int type
+     * @param shedLength int type
+     * @param shedWidth int type
+     * @param price int type. Total price estimate of the request.
+     * @throws CarportException if something goes wrong when inserting the request.
+     */
     public static void addRequest(int customerID, int length, int width, int angle, int shedLength, int shedWidth, int price) throws CarportException {
 
         try {
@@ -100,13 +139,19 @@ public class OrderMapper {
             ps.setInt(5, shedLength);
             ps.setInt(6, shedWidth);
             ps.setInt(7, price);
-            ps.setInt(8, 1); // empID bliver sat til 1 i udgangspunktet
+            ps.setInt(8, 1); // empID is set to 1 as default, and will be set to the ID of the salesman managing the specific request, when it is turned into an order.
             ps.execute();
         } catch (SQLException | ClassNotFoundException ex) {
             throw new CarportException("Error adding calculation", "index");
         }
     }
 
+    /**
+     * Gets a list of all requests from the database.
+     * All order requests from the database will be found with the boolean order_placed in the orders table.
+     * @return a list of all requests in the database, that is not placed yet.
+     * @throws CarportException if something goes wrong trying to fetch all requests from the database.
+     */
     public static List<Order> getOpenRequests() throws CarportException {
         ArrayList<Order> openRequests = new ArrayList<>();
         try {
@@ -137,6 +182,12 @@ public class OrderMapper {
         return openRequests;
     }
 
+    /**
+     * Gets a list of all orders from the database.
+     * All orders from the database will be found with the boolean order_placed in the orders table.
+     * @return a list of all orders in the database, that is a placed order.
+     * @throws CarportException if something goes wrong trying to fetch all orders from the database. 
+     */
     public static List<Order> getOrders() throws CarportException {
         ArrayList<Order> orders = new ArrayList<>();
         try {
@@ -167,6 +218,18 @@ public class OrderMapper {
         return orders;
     }
 
+    /**
+     * Updates an order from the database orders table.
+     * Finds a specific order with the unique orderID and updates it with the new paramaters in the database.
+     * @param orderID int type. Is unique to 1 order, and is always 1 or higher.
+     * @param length int type
+     * @param width int type
+     * @param angle int tyep
+     * @param shedLength int type
+     * @param shedWidth int type
+     * @param price int type
+     * @throws CarportException if something goes wrong trying to update the order.
+     */
     public static void editRequest(int orderID, int length, int width, int angle, int shedLength, int shedWidth, int price) throws CarportException {
         try {
 //            dbc.setDataSource(new DataSourceFog().getDataSource());
@@ -188,6 +251,12 @@ public class OrderMapper {
         }
     }
 
+    /**
+     * Gets a list of all orders/requests that a specific customer has placed.
+     * @param customerID int type that matches an existing customer.
+     * @return a list of orders/requests to be displayed in customerview.jsp
+     * @throws CarportException if something goes wrong trying to fetch all orders.
+     */
     public static List<Order> getCustomerOrders(int customerID) throws CarportException {
         try {
 //            dbc.setDataSource(new DataSourceFog().getDataSource());
@@ -217,7 +286,16 @@ public class OrderMapper {
         }
     }
 
-    // sætter ordren til bestilt og gemmer bom i lineitems tabel
+    /**
+     * Sets an order to placed and insets a bill of material to the database.
+     * When the request has been paid for, the boolean order_placed is changed to 1 on the given order, in the orders table.
+     * A salesman's ID will also be added to the order, to display which salesman has managed the order.
+     * Furthermore lineitems will be added to the lineitems table.
+     * @param listToBeSaved bill of material being added as lineitems in the database. Not null!
+     * @param orderID int type and matches an existing order request in the orders table.
+     * @param empID int type. Matches an existing employee from the employees table.
+     * @throws CarportException if something goes wrong trying to update orders table or inserting into the lineitems table.
+     */
     public static void addBomToOrder(List<LineItem> listToBeSaved, int orderID, int empID) throws CarportException {
 //        dbc.setDataSource(new DataSourceFog().getDataSource());
 //        Connection con = dbc.getConnector();
@@ -247,6 +325,12 @@ public class OrderMapper {
         }
     }
 
+    /**
+     * Makes a list of LineItems to display the final bill of material.
+     * @param orderID int type. Is unique to a single order in the database.
+     * @return a list of LineItems connected to an order.
+     * @throws CarportException if something goes wrong trying to fetch the lineitems or products.
+     */
     public static List<LineItem> getFinalBom(int orderID) throws CarportException {
         try {
 //            dbc.setDataSource(new DataSourceFog().getDataSource());
@@ -277,6 +361,12 @@ public class OrderMapper {
         }
     }
 
+    /**
+     * Update the total price of an order.
+     * @param price int type. Comes from an inputfrom.
+     * @param orderID int type. Matches an existing order. Always 1 or higher.
+     * @throws CarportException if something goes wrong trying to update the price in the orders table.
+     */
     public static void updateTotalPrice(int price, int orderID) throws CarportException {
         try {
 //            dbc.setDataSource(new DataSourceFog().getDataSource());
@@ -312,6 +402,12 @@ public class OrderMapper {
         }
     }
 
+    /**
+     * Updates the order to payed.
+     * With the parameter the order's order_placed is changed to 2, to show that it has been paid for.
+     * @param orderID type int. Matches an existing order.
+     * @throws CarportException if something goes wrong trying to update the order.
+     */
     public static void PayForOrder(int orderID) throws CarportException {
 
 //        dbc.setDataSource(new DataSourceFog().getDataSource());

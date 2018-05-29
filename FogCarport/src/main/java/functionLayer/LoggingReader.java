@@ -12,8 +12,8 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
- *
- * @author Rasmus
+ * Used to read the logginfiles, to display for an IT worker on the site.
+ * @author Snøvsen
  */
 public class LoggingReader {
 
