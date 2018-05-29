@@ -6,8 +6,17 @@ import functionLayer.entity.Order;
 import java.text.DecimalFormat;
 import java.util.List;
 
+    /**
+     * Makes long HTML Strings of tables consisting of different lists.
+     * @author Snøvsen
+     */
 public class RenderTables {
 
+    /**
+     * Makes a table String of all requests in the database.
+     * @param openRequests not null
+     * @return String of HTML.
+     */
     public static String getOpenRequestsTable(List<Order> openRequests) {
         if (openRequests == null || openRequests.isEmpty()) {
             return "---Ingen forespørgsler i øjeblikket---";
@@ -46,6 +55,11 @@ public class RenderTables {
         return sb.toString();
     }
 
+    /**
+     * Makes a table String of all orders in the database.
+     * @param orders not null
+     * @return a String of HTML
+     */
     public static String getOrdersTable(List<Order> orders) {
         if (orders == null || orders.isEmpty()) {
             return "---Ingen ordrer i systemet---";
@@ -93,6 +107,11 @@ public class RenderTables {
         return sb.toString();
     }
 
+    /**
+     * Makes a table of products for a given order.
+     * @param bom not null. Calcualted list from the calculation class.
+     * @return a String of HTML.
+     */
     public static String getListOfProducts(List<LineItem> bom) {
         if (bom == null || bom.isEmpty()) {
             return "---Ingenting på styklisten---";
@@ -135,6 +154,11 @@ public class RenderTables {
         return sb.toString();
     }
 
+    /**
+     * Makes a table String of all calculations ever made.
+     * @param custCalcs all calcualtions from the database. Not null.
+     * @return a String of HTML.
+     */
     public static String getAllCalculations(List<CustomerCalculation> custCalcs) {
         if (custCalcs == null || custCalcs.isEmpty()) {
             return "---Ingen beregninger registreret---";
@@ -160,6 +184,11 @@ public class RenderTables {
         return sb.toString();
     }
 
+    /**
+     * Makes a table String of all requests the given customer has in the database.
+     * @param requests not null.
+     * @return a String og HTML.
+     */
     public static String getCurrentCustomerRequests(List<Order> requests) {
         if (requests == null || requests.isEmpty()) {
             return "---Ingen forespørgsler i øjeblikket---";
@@ -188,6 +217,11 @@ public class RenderTables {
         return sb.toString();
     }
 
+    /**
+     * Makes a table String of all orders the given customer has in the database.
+     * @param orders not null.
+     * @return a String of HTML.
+     */
     public static String getCurrentCustomerOrders(List<Order> orders) {
         if (orders == null || orders.isEmpty()) {
             return "---Ingen ordrer i øjeblikket---";
@@ -233,6 +267,11 @@ public class RenderTables {
         return sb.toString();
     }
 
+    /**
+     * Makes a table String of the given list.
+     * @param finalBom a list of the final Bill of Material from the database. Not null.
+     * @return a String of HTML.
+     */
     public static String getFinalBom(List<LineItem> finalBom) {
         if (finalBom == null || finalBom.isEmpty()) {
             return "---Ingenting på styklisten---";

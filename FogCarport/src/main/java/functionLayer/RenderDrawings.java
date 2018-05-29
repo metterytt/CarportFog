@@ -1,7 +1,17 @@
 package functionLayer;
 
+/**
+ * Makes all the drawings with SVG
+ * @author Snøvsen
+ */
 public class RenderDrawings {
 
+    /**
+     * Makes a drawing of a carport seen from above.
+     * The drawing is made of SVG.
+     * @param dm not null
+     * @return a String of HTML
+     */
     public static String drawFromAbove(DrawingMeasures dm) {
         if (dm == null) {
             return "---Ingen tegning---";
@@ -75,6 +85,12 @@ public class RenderDrawings {
 
     }
 
+    /**
+     * Makes a drawing of a carport seen from the side.
+     * Made with SVG.
+     * @param dm not null
+     * @return a String of HTML
+     */
     public static String drawFromSide(DrawingMeasures dm) {
         if (dm == null) {
             return "---Ingen tegning---";
@@ -188,6 +204,12 @@ public class RenderDrawings {
         return sb.toString();
     }
 
+    /**
+     * Makes a drawing of the carport seen from the front.
+     * Made with SVG.
+     * @param dm not null.
+     * @return a String of HTML.
+     */
     public static String drawFromFront(DrawingMeasures dm) {
         if (dm == null || dm.getAngle() == 0) {
             return "---Ingen tegning---";

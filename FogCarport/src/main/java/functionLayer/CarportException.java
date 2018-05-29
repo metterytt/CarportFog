@@ -1,5 +1,9 @@
 package functionLayer;
 
+/**
+ * Used to throw exceptions for the users, when something goes wrong on the site.
+ * @author Snøvsen
+ */
 public class CarportException extends Exception {
 
     private String page;

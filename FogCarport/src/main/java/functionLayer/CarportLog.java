@@ -7,6 +7,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 
+/**
+ * Used to log whenever an exception is thrown and when a customer logs in / fails to.
+ * @author Snøvsen
+ */
 public class CarportLog {
 
     public Logger logger;

@@ -3,6 +3,10 @@ package functionLayer;
 import functionLayer.entity.LineItem;
 import java.util.ArrayList;
 
+/**
+ * Bill of material is used in the calculationclasses, to hold the information of the order and the list itself.
+ * @author Snøvsen
+ */
 public class BOM {
 
     private ArrayList<LineItem> listOfProducts = new ArrayList<>();
