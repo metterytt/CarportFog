@@ -7,6 +7,7 @@ import functionLayer.entity.LineItem;
 
 /**
  * This calculator is used to calculate the whats needed for a shed.
+ *
  * @author Snøvsen.
  */
 public class ShedCalculator implements CarportCalculator {
@@ -23,8 +24,10 @@ public class ShedCalculator implements CarportCalculator {
 
     /**
      * Creates a BOM by calling the different methods in the class.
+     *
      * @return a BOM (Bill of Material). Not null.
-     * @throws CarportException if something goes wrong trying to fetch products from the database.
+     * @throws CarportException if something goes wrong trying to fetch products
+     * from the database.
      */
     private BOM calculateBOM() throws CarportException {
         bom = new BOM();
@@ -81,6 +84,7 @@ public class ShedCalculator implements CarportCalculator {
 
     /**
      * Calculates the reglar in meter.
+     *
      * @return double type.
      */
     private double calcReglar() {
@@ -89,6 +93,7 @@ public class ShedCalculator implements CarportCalculator {
 
     /**
      * Calculates the cladding in meter.
+     *
      * @return double type.
      */
     private double calcCladding() { // due to overlap every board takes up space of 7,5 cm
@@ -97,6 +102,7 @@ public class ShedCalculator implements CarportCalculator {
 
     /**
      * Calculates the quantity of screws for the shed.
+     *
      * @return int type.
      */
     private int calcShedScrews() { // 3 screws pr. board, half of boards
@@ -106,6 +112,7 @@ public class ShedCalculator implements CarportCalculator {
 
     /**
      * Calculates the quantity of small screws for the shed.
+     *
      * @return int type.
      */
     private int calcSmallShedScrews() { // 6 screws pr. board, half of boards

@@ -8,6 +8,7 @@ import java.util.List;
 
 /**
  * This calculator is used to calculate a carport with a pitched roof.
+ *
  * @author Snøvsen
  */
 public class PitchedRoofCalculator implements CarportCalculator {
@@ -30,8 +31,10 @@ public class PitchedRoofCalculator implements CarportCalculator {
 
     /**
      * Creates a BOM by calling the different methods in the class.
+     *
      * @return a BOM (Bill of Material). Not null.
-     * @throws CarportException if something goes wrong trying to fetch products from the database.
+     * @throws CarportException if something goes wrong trying to fetch products
+     * from the database.
      */
     private BOM calculateBOM() throws CarportException {
         bom = new BOM();
@@ -144,24 +147,25 @@ public class PitchedRoofCalculator implements CarportCalculator {
     }
 
     /**
-     * Calculates faciaboards in meter.
-     * faciaboards = (width/2) / cos of the angle.
-     * The method is package private due to testing.
+     * Calculates faciaboards in meter. faciaboards = (width/2) / cos of the
+     * angle. The method is package private due to testing.
+     *
      * @return double type.
      */
-     double calcFasciaBoards() { // c = b/cos V, and we need 4 boards
+    double calcFasciaBoards() { // c = b/cos V, and we need 4 boards
         double calcAngle = Math.toRadians(angle);
         double fasciaBoards = 4 * ((width / 2) / Math.cos(calcAngle));
         fasciaBoards = fasciaBoards + 2 * length;
         return fasciaBoards / 100;
     }
 
-     /**
-      * Calculates rafterset and plates in meter.
-      * The method is package private due to testing.
-      * @return double type.
-      */
-     double calcRafterSetAndPlates() {
+    /**
+     * Calculates rafterset and plates in meter. The method is package private
+     * due to testing.
+     *
+     * @return double type.
+     */
+    double calcRafterSetAndPlates() {
         // first we calculate how many rafters
         int numberOfRafters = (length / 60);
         if (length % 60 == 0) {
@@ -182,11 +186,12 @@ public class PitchedRoofCalculator implements CarportCalculator {
 
     }
 
-     /**
-      * Calculates waterboards and gablecladding in meter.
-      * The method is package private due to testing.
-      * @return double type.
-      */
+    /**
+     * Calculates waterboards and gablecladding in meter. The method is package
+     * private due to testing.
+     *
+     * @return double type.
+     */
     double calcWaterBoardsAndGablesCladding() {
         double calcAngle = Math.toRadians(angle);
         double waterBoards = 4 * ((width / 2) / Math.cos(calcAngle));
@@ -197,6 +202,7 @@ public class PitchedRoofCalculator implements CarportCalculator {
 
     /**
      * Calculates the molding in meter.
+     *
      * @return double type.
      */
     private double calcMolding() {
@@ -205,6 +211,7 @@ public class PitchedRoofCalculator implements CarportCalculator {
 
     /**
      * Calculates the rooflaths.
+     *
      * @return double type.
      */
     private double calcRoofLaths() {
@@ -220,8 +227,9 @@ public class PitchedRoofCalculator implements CarportCalculator {
     }
 
     /**
-     * Calculates the quantity of posts.
-     * The method is package private due to testing.
+     * Calculates the quantity of posts. The method is package private due to
+     * testing.
+     *
      * @return int type.
      */
     int calcPosts() {
@@ -233,8 +241,8 @@ public class PitchedRoofCalculator implements CarportCalculator {
     }
 
     /**
-     * Calculates the quantity of roof tiles.
-     * 9 tiles/m2. +10 for buffer.
+     * Calculates the quantity of roof tiles. 9 tiles/m2. +10 for buffer.
+     *
      * @return int type.
      */
     private int calcRoofTiles() {
@@ -245,8 +253,8 @@ public class PitchedRoofCalculator implements CarportCalculator {
     }
 
     /**
-     * Calculates the quantity of rooftop tiles.
-     * 30 is how long a tile is.
+     * Calculates the quantity of rooftop tiles. 30 is how long a tile is.
+     *
      * @return int type.
      */
     private int calcRoofTopTiles() {
@@ -255,6 +263,7 @@ public class PitchedRoofCalculator implements CarportCalculator {
 
     /**
      * Calculates the toplathholder.
+     *
      * @return int type.
      */
     private int calcTopLathHolder() { // same as number of rafters
@@ -263,6 +272,7 @@ public class PitchedRoofCalculator implements CarportCalculator {
 
     /**
      * Calculates the rooftop tilebrackets.
+     *
      * @return int type.
      */
     private int calcRoofTopTileBrackets() {
@@ -271,6 +281,7 @@ public class PitchedRoofCalculator implements CarportCalculator {
 
     /**
      * Calculates the binders.
+     *
      * @return int type.
      */
     private int calcBinders() { // half of the tiles + 30 for the ones on the side
@@ -280,6 +291,7 @@ public class PitchedRoofCalculator implements CarportCalculator {
 
     /**
      * Calculates the universal brackets.
+     *
      * @return int type.
      */
     private int calcUniBrackets() {
@@ -288,6 +300,7 @@ public class PitchedRoofCalculator implements CarportCalculator {
 
     /**
      * Calculates the quantity of faciascrews.
+     *
      * @return int type.
      */
     private int calcFasciaScrews() {
@@ -313,6 +326,7 @@ public class PitchedRoofCalculator implements CarportCalculator {
 
     /**
      * Calculates the quantity of bracketscrews.
+     *
      * @return int type.
      */
     private int calcBracketScrews() { // 9 pr. universalbracket + 20 pr. toplathholder ... 50 for buffer
@@ -322,6 +336,7 @@ public class PitchedRoofCalculator implements CarportCalculator {
 
     /**
      * Calculates the quantity of rooflathscrews.
+     *
      * @return int type.
      */
     private int calcRoofLathScrews() {
@@ -337,6 +352,7 @@ public class PitchedRoofCalculator implements CarportCalculator {
 
     /**
      * Calculates the quantity of bolts.
+     *
      * @return int type.
      */
     private int calcBolts() { // 2 pr. post
@@ -345,6 +361,7 @@ public class PitchedRoofCalculator implements CarportCalculator {
 
     /**
      * Calculates the quantity of squarebrackets.
+     *
      * @return int type.
      */
     private int calcSquareBrackets() { // 2 pr. post

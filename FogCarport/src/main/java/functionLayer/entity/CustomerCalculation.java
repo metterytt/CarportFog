@@ -1,7 +1,9 @@
 package functionLayer.entity;
 
 /**
- * This entity is used to handle all calculations that has been made on the site, to then be inserted into the database.
+ * This entity is used to handle all calculations that has been made on the
+ * site, to then be inserted into the database.
+ *
  * @author Snøvsen
  */
 public class CustomerCalculation {

@@ -6,8 +6,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Updates the totalprice of a request in the database.
- * Take input in from viewbom.jsp
+ * Updates the totalprice of a request in the database. Take input in from
+ * viewbom.jsp
+ *
  * @author Snøvsen
  */
 public class EditTotalPrice extends Command {
