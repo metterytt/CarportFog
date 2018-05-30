@@ -46,7 +46,7 @@ public class PitchedRoofCalculatorTest {
         double actual = PRC.getBom().getListOfProducts().get(2).getQuantity();
         assertEquals(expected, actual, 0.0);
 
-        PRC = new PitchedRoofCalculator(480, 330, 20, 210, 270);
+        PRC = new PitchedRoofCalculator(480, 330, 30, 210, 270);
         expected = 4;
         actual = PRC.getBom().getListOfProducts().get(2).getQuantity();
         assertEquals(expected, actual, 0.0);
