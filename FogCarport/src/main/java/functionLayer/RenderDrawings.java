@@ -2,13 +2,14 @@ package functionLayer;
 
 /**
  * Makes all the drawings with SVG
+ *
  * @author Snøvsen
  */
 public class RenderDrawings {
 
     /**
-     * Makes a drawing of a carport seen from above.
-     * The drawing is made of SVG.
+     * Makes a drawing of a carport seen from above. The drawing is made of SVG.
+     *
      * @param dm not null
      * @return a String of HTML
      */
@@ -86,8 +87,8 @@ public class RenderDrawings {
     }
 
     /**
-     * Makes a drawing of a carport seen from the side.
-     * Made with SVG.
+     * Makes a drawing of a carport seen from the side. Made with SVG.
+     *
      * @param dm not null
      * @return a String of HTML
      */
@@ -205,8 +206,8 @@ public class RenderDrawings {
     }
 
     /**
-     * Makes a drawing of the carport seen from the front.
-     * Made with SVG.
+     * Makes a drawing of the carport seen from the front. Made with SVG.
+     *
      * @param dm not null.
      * @return a String of HTML.
      */

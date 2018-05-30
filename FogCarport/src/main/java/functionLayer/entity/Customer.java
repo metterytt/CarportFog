@@ -2,6 +2,7 @@ package functionLayer.entity;
 
 /**
  * This entity is used to handle all Customerinformation.
+ *
  * @author Snøvsen
  */
 public class Customer {

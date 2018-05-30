@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * After reviewing the request, the Bill of Material is inserted into the database.
+ * After reviewing the request, the Bill of Material is inserted into the
+ * database.
+ *
  * @author Snøvsen
  */
 public class SetOrdered extends Command {

@@ -20,7 +20,7 @@
                         <input type="hidden" name="showEmpLogin">
                         <input type="submit" class="btn btn-primary" value="Login som Medarbejder"/><br>
                     </form>
-                    
+
                     <%} else { %>
                     <%-- Login button for customers --%>
                     <form action="FrontController" method="post">
@@ -28,13 +28,13 @@
                         <input type="hidden" name="showCustomerLogin">
                         <input type="submit" class="btn btn-primary" value="Login Som kunde"/><br>
                     </form>
-                    
+
                     <%}%>
                     <hr class="my-4">
-                    
+
                     <% if (request.getAttribute("empLogin") != null) {%>
                     <h1 class="display-4">Login som Medarbejder</h1>
-                    
+
                     <%-- Login form for employees --%>
                     <form action="FrontController" method="post">
                         <input type="hidden" name="command" value="login">
@@ -53,10 +53,10 @@
                         </div>
                         <input type="submit" class="btn btn-primary" value="Login"/><br>
                     </form>
-                        
+
                     <%} else { %>
                     <h1 class="display-4">Login som Kunde</h1>
-                    
+
                     <%-- Login form for customers --%>
                     <form action="FrontController" method="post">
                         <input type="hidden" name="command" value="login">
@@ -75,13 +75,13 @@
                         </div>
                         <input type="submit" class="btn btn-primary" value="Login"/>
                     </form>
-                        
+
                     <br>
                     <form action="FrontController" method="post">
                         <input type="hidden" name="command" value="registercustomer">
                         <input type="submit" class="btn btn-primary" value="Opret profil"/>
                     </form>
-                    
+
                     <%}%>
                 </div>
             </div>

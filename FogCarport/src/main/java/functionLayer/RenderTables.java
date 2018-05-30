@@ -6,14 +6,16 @@ import functionLayer.entity.Order;
 import java.text.DecimalFormat;
 import java.util.List;
 
-    /**
-     * Makes long HTML Strings of tables consisting of different lists.
-     * @author Snøvsen
-     */
+/**
+ * Makes long HTML Strings of tables consisting of different lists.
+ *
+ * @author Snøvsen
+ */
 public class RenderTables {
 
     /**
      * Makes a table String of all requests in the database.
+     *
      * @param openRequests not null
      * @return String of HTML.
      */
@@ -57,6 +59,7 @@ public class RenderTables {
 
     /**
      * Makes a table String of all orders in the database.
+     *
      * @param orders not null
      * @return a String of HTML
      */
@@ -109,6 +112,7 @@ public class RenderTables {
 
     /**
      * Makes a table of products for a given order.
+     *
      * @param bom not null. Calcualted list from the calculation class.
      * @return a String of HTML.
      */
@@ -156,6 +160,7 @@ public class RenderTables {
 
     /**
      * Makes a table String of all calculations ever made.
+     *
      * @param custCalcs all calcualtions from the database. Not null.
      * @return a String of HTML.
      */
@@ -185,7 +190,9 @@ public class RenderTables {
     }
 
     /**
-     * Makes a table String of all requests the given customer has in the database.
+     * Makes a table String of all requests the given customer has in the
+     * database.
+     *
      * @param requests not null.
      * @return a String og HTML.
      */
@@ -218,7 +225,9 @@ public class RenderTables {
     }
 
     /**
-     * Makes a table String of all orders the given customer has in the database.
+     * Makes a table String of all orders the given customer has in the
+     * database.
+     *
      * @param orders not null.
      * @return a String of HTML.
      */
@@ -269,7 +278,9 @@ public class RenderTables {
 
     /**
      * Makes a table String of the given list.
-     * @param finalBom a list of the final Bill of Material from the database. Not null.
+     *
+     * @param finalBom a list of the final Bill of Material from the database.
+     * Not null.
      * @return a String of HTML.
      */
     public static String getFinalBom(List<LineItem> finalBom) {

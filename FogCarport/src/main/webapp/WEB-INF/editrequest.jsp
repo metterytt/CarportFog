@@ -12,7 +12,7 @@
         <%@ include file="/WEB-INF/Include/Navbar.jspf" %>
         <%
             BOM carportBOM = (BOM) session.getAttribute("carportbom");
-            int orderID = carportBOM.getOrderID(); 
+            int orderID = carportBOM.getOrderID();
             int carlength = carportBOM.getLength();
             int carwidth = carportBOM.getWidth();
             int angle = carportBOM.getAngle();

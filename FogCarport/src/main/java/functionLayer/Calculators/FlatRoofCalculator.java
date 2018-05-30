@@ -25,6 +25,7 @@ import java.util.List;
 
 /**
  * This calculator is used to calculate a carport with a flat roof.
+ *
  * @author Snøvsen
  */
 public class FlatRoofCalculator implements CarportCalculator {
@@ -46,8 +47,10 @@ public class FlatRoofCalculator implements CarportCalculator {
 
     /**
      * Creates a BOM by calling the different methods in the class.
+     *
      * @return a BOM (Bill of Material). Not null.
-     * @throws CarportException if something goes wrong trying to fetch products from the database.
+     * @throws CarportException if something goes wrong trying to fetch products
+     * from the database.
      */
     private BOM calculateBOM() throws CarportException {
         bom = new BOM();
@@ -138,6 +141,7 @@ public class FlatRoofCalculator implements CarportCalculator {
 
     /**
      * From the length the quantity of posts is determined.
+     *
      * @return either int 4 or 6.
      */
     private int calcPosts() {
@@ -150,6 +154,7 @@ public class FlatRoofCalculator implements CarportCalculator {
 
     /**
      * Calculates the subfasciaboards in meters.
+     *
      * @return double type.
      */
     private double calcSubFasciaBoards() {
@@ -158,6 +163,7 @@ public class FlatRoofCalculator implements CarportCalculator {
 
     /**
      * Calculates the fasciaboards in meters.
+     *
      * @return double type.
      */
     private double calcFasciaBoards() {
@@ -165,8 +171,9 @@ public class FlatRoofCalculator implements CarportCalculator {
     }
 
     /**
-     * Calculates the plates and rafters in meters.
-     * The number 60 represents the maximum gap of the rafters when the carport is built.
+     * Calculates the plates and rafters in meters. The number 60 represents the
+     * maximum gap of the rafters when the carport is built.
+     *
      * @return double type.
      */
     private double calcPlatesAndRafters() {
@@ -183,6 +190,7 @@ public class FlatRoofCalculator implements CarportCalculator {
 
     /**
      * Calculates the waterboards in meters.
+     *
      * @return double type.
      */
     private double calcWaterBoards() {
@@ -191,6 +199,7 @@ public class FlatRoofCalculator implements CarportCalculator {
 
     /**
      * Calculates the roof measures in m2 by dividing with 10000.
+     *
      * @return double type.
      */
     private double calcRoof() {
@@ -198,8 +207,9 @@ public class FlatRoofCalculator implements CarportCalculator {
     }
 
     /**
-     * Calculates how many screws are needed for this carport.
-     * 12 screws divided by m2 and then 50 extra as buffer.
+     * Calculates how many screws are needed for this carport. 12 screws divided
+     * by m2 and then 50 extra as buffer.
+     *
      * @return int type.
      */
     private int calcRoofScrews() {
@@ -207,9 +217,10 @@ public class FlatRoofCalculator implements CarportCalculator {
     }
 
     /**
-     * Calculates the metaltape in meters and rounds up.
-     * Math operates with a double, so there will be a roundup with int 1, as the final result should be an int.
-     * Example: double value 1.6 should result in int 2.
+     * Calculates the metaltape in meters and rounds up. Math operates with a
+     * double, so there will be a roundup with int 1, as the final result should
+     * be an int. Example: double value 1.6 should result in int 2.
+     *
      * @return int type
      */
     private int calcMetalTape() {
@@ -218,6 +229,7 @@ public class FlatRoofCalculator implements CarportCalculator {
 
     /**
      * Calculates the quantity of universal brackets.
+     *
      * @return int type.
      */
     private int calcUniBrackets() {
@@ -231,9 +243,11 @@ public class FlatRoofCalculator implements CarportCalculator {
     }
 
     /**
-     * Calculates quantity of faciascrews.
-     * Subfaciaboards need 2 screws pr. 60 cm perimeter and faciaboards need 4 pr. 60 cm. perimeter minus width.
-     * (due to missing faciaboard and waterboard at the back) .. 50 extra for buffer.
+     * Calculates quantity of faciascrews. Subfaciaboards need 2 screws pr. 60
+     * cm perimeter and faciaboards need 4 pr. 60 cm. perimeter minus width.
+     * (due to missing faciaboard and waterboard at the back) .. 50 extra for
+     * buffer.
+     *
      * @return int type
      */
     private int calcFasciaScrews() {
@@ -241,8 +255,9 @@ public class FlatRoofCalculator implements CarportCalculator {
     }
 
     /**
-     * Calculates quantity of bracketscrews.
-     * 9 pr. universalbracket plus (2 * length/60 for metaltape) ... 50 extra for buffer.
+     * Calculates quantity of bracketscrews. 9 pr. universalbracket plus (2 *
+     * length/60 for metaltape) ... 50 extra for buffer.
+     *
      * @return int type.
      */
     private int calcBracketScrews() {

@@ -11,9 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * Updates a request in the database.
- * Either sends user to editequest.jsp or updates request 
- * and then send user to ordermanagement.jsp through the AllRequest.jsp.
+ * Updates a request in the database. Either sends user to editequest.jsp or
+ * updates request and then send user to ordermanagement.jsp through the
+ * AllRequest.jsp.
+ *
  * @author Snøvsen
  */
 public class EditRequest extends Command {

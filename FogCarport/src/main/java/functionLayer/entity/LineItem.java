@@ -2,6 +2,7 @@ package functionLayer.entity;
 
 /**
  * This entity is used to handle all products / lineitems.
+ *
  * @author Snøvsen
  */
 public class LineItem {

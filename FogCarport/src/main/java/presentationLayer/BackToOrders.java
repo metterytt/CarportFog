@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  * Removes the session attibutes used when viewing a request in viewbom.jsp.
+ *
  * @author Snøvsen
  */
 public class BackToOrders extends Command {

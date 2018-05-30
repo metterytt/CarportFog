@@ -7,8 +7,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Inserts a new customer into the database.
- * Either sends the user to registercustomer.jsp or inserts the user, and then goes to customer.jsp.
+ * Inserts a new customer into the database. Either sends the user to
+ * registercustomer.jsp or inserts the user, and then goes to customer.jsp.
+ *
  * @author Snøvsen
  */
 public class RegisterCustomer extends Command {
@@ -20,16 +21,13 @@ public class RegisterCustomer extends Command {
             String psw1 = request.getParameter("password1");
             String psw2 = request.getParameter("password2");
             String mobilenumber = request.getParameter("mobilenumber");
-            if(mobilenumber.length() != 8){
+            if (mobilenumber.length() != 8) {
                 request.setAttribute("error", "Et telefon nummer skal være 8 langt. fx 22464462");
-                 return "registercustomer";
-            }
-            
-            else if (!psw1.equals(psw2)) {
+                return "registercustomer";
+            } else if (!psw1.equals(psw2)) {
                 request.setAttribute("error", "De indtastede kodeord er ikke ens");
-                 return "registercustomer";
-            }
-            else {
+                return "registercustomer";
+            } else {
                 String firstname = request.getParameter("firstname");
                 String lastname = request.getParameter("lastname");
                 String username = request.getParameter("username");
