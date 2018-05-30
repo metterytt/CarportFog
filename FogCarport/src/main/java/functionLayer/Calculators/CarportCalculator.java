@@ -1,6 +1,6 @@
 package functionLayer.Calculators;
 
-import functionLayer.BOM;
+import functionLayer.entity.BOM;
 
 /**
  * Interface used in the calculator classes.

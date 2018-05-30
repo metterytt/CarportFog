@@ -1,6 +1,6 @@
 package presentationLayer;
 
-import functionLayer.BOM;
+import functionLayer.entity.BOM;
 import functionLayer.Calculators.CarportCalculator;
 import functionLayer.Calculators.FlatRoofCalculator;
 import functionLayer.Calculators.PitchedRoofCalculator;

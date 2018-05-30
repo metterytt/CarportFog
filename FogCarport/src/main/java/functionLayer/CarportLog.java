@@ -13,8 +13,8 @@ import java.util.logging.SimpleFormatter;
  */
 public class CarportLog {
 
-    public Logger logger;
-    FileHandler fh;
+    private Logger logger;
+    private FileHandler fh;
 
     public CarportLog(String message, String filename) {
         try {

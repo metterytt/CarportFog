@@ -1,6 +1,6 @@
 package presentationLayer;
 
-import functionLayer.BOM;
+import functionLayer.entity.BOM;
 import functionLayer.CarportException;
 import functionLayer.entity.LineItem;
 import javax.servlet.http.HttpServletRequest;

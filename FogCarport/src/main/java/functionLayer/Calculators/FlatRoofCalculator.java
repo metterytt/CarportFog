@@ -17,7 +17,7 @@ firkantskiver = squarebrackets
  */
 package functionLayer.Calculators;
 
-import functionLayer.BOM;
+import functionLayer.entity.BOM;
 import functionLayer.CarportException;
 import functionLayer.StorageFacade;
 import functionLayer.entity.LineItem;

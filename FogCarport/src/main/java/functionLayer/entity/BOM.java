@@ -1,4 +1,4 @@
-package functionLayer;
+package functionLayer.entity;
 
 import functionLayer.entity.LineItem;
 import java.util.ArrayList;
