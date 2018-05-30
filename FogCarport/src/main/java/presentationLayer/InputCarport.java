@@ -8,9 +8,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * All input from the index carport calculation is processed here.
- * If the shed is too big, a message is given to the user.
- * Otherwise the input is used to make drawings of the carport in drawings.jsp.
+ * All input from the index carport calculation is processed here. If the shed
+ * is too big, a message is given to the user. Otherwise the input is used to
+ * make drawings of the carport in drawings.jsp.
+ *
  * @author Snøvsen
  */
 public class InputCarport extends Command {

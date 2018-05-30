@@ -7,10 +7,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Directs the user to the desired jsp-page.
- * Through a hidden field, a page from the list is set.
- * If the parameter matches one of the strings in the list, it is returned for the user.
- * If a user is logging out, the attribute is removed from the session.
+ * Directs the user to the desired jsp-page. Through a hidden field, a page from
+ * the list is set. If the parameter matches one of the strings in the list, it
+ * is returned for the user. If a user is logging out, the attribute is removed
+ * from the session.
+ *
  * @author Snøvsen
  */
 public class Navbar extends Command {
@@ -32,8 +33,7 @@ public class Navbar extends Command {
             if (request.getSession().getAttribute("employee") != null) {
                 request.getSession().removeAttribute("employee");
                 return "index";
-            }
-            else {
+            } else {
                 request.getSession().removeAttribute("customer");
                 return "index";
             }
@@ -47,8 +47,7 @@ public class Navbar extends Command {
         }
         if (page != null) {
             return page;
-        }
-        else {
+        } else {
             throw new CarportException("Something went wrong, try reloading", "index");
         }
     }

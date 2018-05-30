@@ -12,8 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Inserts the request into the database.
- * Also manages which site to be shown, if the user want to login/register or if they want to make a new calculation.
+ * Inserts the request into the database. Also manages which site to be shown,
+ * if the user want to login/register or if they want to make a new calculation.
+ *
  * @author Snøvsen
  */
 public class SendRequest extends Command {
@@ -43,8 +44,7 @@ public class SendRequest extends Command {
         CarportCalculator carportCalculator;
         if (angle == 0) {
             carportCalculator = new FlatRoofCalculator(length, width, shedLength, shedWidth);
-        }
-        else {
+        } else {
             carportCalculator = new PitchedRoofCalculator(length, width, angle, shedLength, shedWidth);
         }
         BOM carportBom = carportCalculator.getBom();

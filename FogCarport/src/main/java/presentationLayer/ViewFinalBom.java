@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * Retrieves the final bill of material, which is now in the database.
+ *
  * @author Snøvsen
  */
 public class ViewFinalBom extends Command {

@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * Used if a Command/servlet cannot be found in the Command class.
+ *
  * @author Snøvsen
  */
 public class UnknownCommand extends Command {
