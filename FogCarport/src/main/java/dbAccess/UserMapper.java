@@ -58,6 +58,8 @@ public class UserMapper {
     public static void registerEmp(String username, String password, String role) throws CarportException {
         try {
             Connection con = Connector.connection();
+            
+            
             String sql = "insert into employees values (null, ?, ?, ?)";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, username);
@@ -65,7 +67,7 @@ public class UserMapper {
             ps.setString(3, role);
             ps.executeUpdate();
         } catch (SQLException | ClassNotFoundException ex) {
-            throw new CarportException("Noget gik galt, prøv igen!", "registeremployee");
+            throw new CarportException("Brugeren eksistere i forvejen eller fejl med connection til DB", "registeremployee");
         }
     }
 
@@ -201,7 +203,7 @@ public class UserMapper {
             int id = gk.getInt(1);
             customer.setID(id);
         } catch (SQLException | ClassNotFoundException ex) {
-            throw new CarportException("Noget gik galt, prøv igen!", "registercustomer");
+            throw new CarportException("Ikke muligt at oprette brugeren, prøv evt. andet brugernavn, eller kontakt kundeservice!", "registercustomer");
         }
     }
 
