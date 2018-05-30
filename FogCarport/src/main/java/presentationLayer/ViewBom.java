@@ -12,6 +12,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+/**
+ * Retrieves the request from the database and calculates a bill of material.
+ * @author Snøvsen
+ */
 public class ViewBom extends Command {
 
     @Override

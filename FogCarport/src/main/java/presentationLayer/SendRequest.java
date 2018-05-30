@@ -11,6 +11,11 @@ import functionLayer.entity.Customer;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * Inserts the request into the database.
+ * Also manages which site to be shown, if the user want to login/register or if they want to make a new calculation.
+ * @author Snøvsen
+ */
 public class SendRequest extends Command {
 
     @Override
