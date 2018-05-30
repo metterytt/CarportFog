@@ -7,6 +7,13 @@ import functionLayer.entity.Employee;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * Gives the possibillity to login as employee or customer.
+ * If logged in as either, the information will get fetched from the database if exists.
+ * If a drawing/calculation has been bade before logging in, the user is directed back to finish the request.
+ * If something goes wrong an exception is thrown.
+ * @author Snøvsen
+ */
 public class Login extends Command {
 
     @Override

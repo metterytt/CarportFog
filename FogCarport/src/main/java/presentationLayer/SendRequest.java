@@ -38,7 +38,8 @@ public class SendRequest extends Command {
         CarportCalculator carportCalculator;
         if (angle == 0) {
             carportCalculator = new FlatRoofCalculator(length, width, shedLength, shedWidth);
-        } else {
+        }
+        else {
             carportCalculator = new PitchedRoofCalculator(length, width, angle, shedLength, shedWidth);
         }
         BOM carportBom = carportCalculator.getBom();

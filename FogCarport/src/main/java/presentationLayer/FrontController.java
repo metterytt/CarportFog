@@ -9,6 +9,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * Before going to a new jsp-page, everything goes here to execute a new servlet.
+ * First a servlet is found in Command, and then executed.
+ * Depending on the returned page, the user is forwarded or an exception is thrown for the user on a given page.
+ * Each time an exception is thrown, it will get logged for an IT-employee to view.
+ * @author Snøvsen
+ */
 @WebServlet(name = "FrontController", urlPatterns = {"/FrontController"})
 public class FrontController extends HttpServlet {
 

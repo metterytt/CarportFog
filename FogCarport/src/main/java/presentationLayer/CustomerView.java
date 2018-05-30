@@ -8,6 +8,10 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * Retrieves all orders/requests, that the customer currently logged in has in the database.
+ * @author Snøvsen
+ */
 public class CustomerView extends Command {
 
     @Override
@@ -20,5 +24,4 @@ public class CustomerView extends Command {
 
         return "customerview";
     }
-
 }

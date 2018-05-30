@@ -5,6 +5,11 @@ import functionLayer.StorageFacade;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * Inserts a new employee to the database.
+ * Either sends the user to registeremployee.jsp or inserts the employee.
+ * @author Snøvsen
+ */
 public class RegisterEmployee extends Command {
 
     @Override

@@ -5,10 +5,18 @@ import java.util.HashMap;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * Used to guide the FrontController to the correct servlet.
+ * @author Snøvsen
+ */
 abstract class Command {
 
     private static HashMap<String, Command> commands;
 
+    /**
+     * initialization of all commands.
+     * commands consists of a hashmap with a key String, that comes from a hidden field, in the different html forms. 
+     */
     private static void initCommands() {
         commands = new HashMap<>();
         commands.put("login", new Login());
@@ -32,6 +40,13 @@ abstract class Command {
         commands.put("logreader", new LogReader());
     }
 
+    /**
+     * This method is used in the FrontController.
+     * Retrieves the correct servlet, depending on the commandName, if the servlet exists.
+     * Otherwise it throws an exeption in the UnknownCommand servlet.
+     * @param request comes from the FrontController.
+     * @return the Command/servlet matching the commandName.
+     */
     static Command from(HttpServletRequest request) {
         String commandName = request.getParameter("command");
         if (commands == null) {
@@ -40,6 +55,14 @@ abstract class Command {
         return commands.getOrDefault(commandName, new UnknownCommand());
     }
 
+    /**
+     * Method filled out in each servlet, and called in the FrontController.
+     * The method determines what will happen on the next jsp-page, and what to fetch from the database.
+     * @param request Comes from the FrontController.
+     * @param response Comes from the FrontController.
+     * @return a String to which jsp page the FronController should forward to.
+     * @throws CarportException if something goes wrong when executing the different statements in the servlet.
+     */
     abstract String execute(HttpServletRequest request, HttpServletResponse response) throws CarportException;
 
 }

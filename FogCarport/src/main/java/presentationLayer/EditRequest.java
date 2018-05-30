@@ -10,6 +10,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+/**
+ * Updates a request in the database.
+ * Either sends user to editequest.jsp or updates request 
+ * and then send user to ordermanagement.jsp through the AllRequest.jsp.
+ * @author Snøvsen
+ */
 public class EditRequest extends Command {
 
     @Override
@@ -19,14 +25,12 @@ public class EditRequest extends Command {
         }
         if (request.getParameter("editfinished") != null) {
 
-            int shedLength = 0;
-            int shedWidth = 0;
             int orderID = Integer.parseInt(request.getParameter("orderID"));
             int length = Integer.parseInt(request.getParameter("length"));
             int width = Integer.parseInt(request.getParameter("width"));
             int angle = Integer.parseInt(request.getParameter("angle"));
-            shedLength = Integer.parseInt(request.getParameter("shedlength"));
-            shedWidth = Integer.parseInt(request.getParameter("shedwidth"));
+            int shedLength = Integer.parseInt(request.getParameter("shedlength"));
+            int shedWidth = Integer.parseInt(request.getParameter("shedwidth"));
             CarportCalculator carportCalculator;
             BOM carportBom;
 
