@@ -28,16 +28,16 @@
                             <input class="form-control" type="hidden" name="command" value="registeremployee">
                             <input class="form-control" type="hidden" name="registeremp">
                             <label for="username">Email:</label>
-                            <input class="form-control" type="email" name="username" placeholder="Email">
+                            <input class="form-control" type="email" name="username" placeholder="Email" required>
                             <br>
                             <label for="password1">Password:</label>
-                            <input class="form-control" type="password" name="password1" placeholder="Password">
+                            <input class="form-control" type="password" name="password1" placeholder="Password" required>
                             <br>
                             <label for="password2">Password:</label>
-                            <input class="form-control" type="password" name="password2" placeholder="Password">
+                            <input class="form-control" type="password" name="password2" placeholder="Password" required>
                             <br>
                             <input type="radio" name="empRole" value="IT">IT
-                            <input type="radio" name="empRole" value="salesman">Sælger
+                            <input type="radio" name="empRole" value="salesman" checked="checked">Sælger
                             <br><br>
                             <input class="btn btn-primary" type="submit" value="Opret profil">
                         </form>

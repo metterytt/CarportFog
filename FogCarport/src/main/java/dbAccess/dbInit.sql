@@ -1,5 +1,3 @@
-
-
 -- MySQL Workbench Forward Engineering
 
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
@@ -50,7 +48,8 @@ CREATE TABLE IF NOT EXISTS `carport`.`customers` (
   `firstname` VARCHAR(45) NOT NULL,
   `lastname` VARCHAR(45) NOT NULL,
   `phonenumber` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`customerID`))
+  PRIMARY KEY (`customerID`),
+  UNIQUE INDEX `username_UNIQUE` (`username` ASC))
 ENGINE = InnoDB
 AUTO_INCREMENT = 1
 DEFAULT CHARACTER SET = latin1;
@@ -66,7 +65,8 @@ CREATE TABLE IF NOT EXISTS `carport`.`employees` (
   `username` VARCHAR(45) NOT NULL,
   `password` VARCHAR(45) NOT NULL,
   `role` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`empID`))
+  PRIMARY KEY (`empID`),
+  UNIQUE INDEX `username_UNIQUE` (`username` ASC))
 ENGINE = InnoDB
 AUTO_INCREMENT = 1
 DEFAULT CHARACTER SET = latin1;
@@ -94,12 +94,12 @@ CREATE TABLE IF NOT EXISTS `carport`.`orders` (
   CONSTRAINT `customerID`
     FOREIGN KEY (`customerID`)
     REFERENCES `carport`.`customers` (`customerID`)
-    ON DELETE CASCADE
+    ON DELETE NO ACTION
     ON UPDATE CASCADE,
   CONSTRAINT `empID`
     FOREIGN KEY (`empID`)
     REFERENCES `carport`.`employees` (`empID`)
-    ON DELETE CASCADE
+    ON DELETE NO ACTION
     ON UPDATE CASCADE)
 ENGINE = InnoDB
 AUTO_INCREMENT = 1
@@ -144,7 +144,7 @@ CREATE TABLE IF NOT EXISTS `carport`.`lineitems` (
   CONSTRAINT `fk_lineitems_products1`
     FOREIGN KEY (`productID`)
     REFERENCES `carport`.`products` (`productID`)
-    ON DELETE CASCADE
+    ON DELETE NO ACTION
     ON UPDATE CASCADE)
 ENGINE = InnoDB
 AUTO_INCREMENT = 1
@@ -154,6 +154,7 @@ DEFAULT CHARACTER SET = latin1;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
 
 INSERT INTO `carport`.`products` (`name`, `uom`, `price`) VALUES ('Bræt 25x200 trykimp.', 'm', '5495');
 INSERT INTO `carport`.`products` (`name`, `uom`, `price`) VALUES ('Bræt 25x125 trykimp.', 'm', '3195');
