@@ -71,7 +71,7 @@
                                     <%-- Button to hide or show fields for shedmeasurements --%>
                                     <input type="button" class="btn btn-primary" onclick="myFunction()" value="Vis/gem skur"/>
                                     <br>
-                                    
+
                                     <div id="myDIV" style="display:none;">
                                         <br>
                                         <%-- Button to show information about measures for shed --%>

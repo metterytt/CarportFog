@@ -11,6 +11,7 @@ import java.sql.SQLException;
 
 /**
  * Used to connect to the database.
+ *
  * @author Snøvsen
  */
 public class Connector {
@@ -24,7 +25,7 @@ public class Connector {
     private static final String PASSWORD = "FOG99carport";
     private static Connection singleton;
 
-    public static void setConnection(Connection con) { 
+    public static void setConnection(Connection con) {
         singleton = con;
     }
 
@@ -35,5 +36,5 @@ public class Connector {
         }
         return singleton;
     }
-    
+
 }
