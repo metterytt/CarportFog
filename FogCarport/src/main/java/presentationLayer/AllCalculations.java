@@ -7,6 +7,10 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * Shows all gets all calculations from the database, so it can be displayed on allcalculations.jsp
+ * @author Snøvsen
+ */
 public class AllCalculations extends Command {
 
     @Override

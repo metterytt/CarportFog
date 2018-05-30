@@ -68,9 +68,10 @@
         </script>
 
         <div class="col-md-6">
+            <br>
             <form action="FrontController" method="post">
-                <input type="hidden" name="command" value="backtoemp">
-                <br/>
+                <input type="hidden" name="command" value="navbar">
+                <input type="hidden" name="employee" value="employee">
                 <input type="submit" class="btn btn-primary" value="Tilbage til medarbejderside">
             </form>
         </div>

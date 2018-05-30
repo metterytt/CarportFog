@@ -61,9 +61,10 @@
                     </script>
                 </div>
                 <div class="col-md-12">
+                    <br>
                     <form action="FrontController" method="post">
-                        <input type="hidden" name="command" value="backtocust">
-                        <br/>
+                        <input type="hidden" name="command" value="navbar">
+                        <input type="hidden" name="customer" value="customer">
                         <input type="submit" class="btn btn-primary" value="Tilbage til kundeside">
                     </form>
                 </div>

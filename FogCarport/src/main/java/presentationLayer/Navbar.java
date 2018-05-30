@@ -14,6 +14,8 @@ public class Navbar extends Command {
         this.pages = new ArrayList();
         this.pages.add("login");
         this.pages.add("profile");
+        this.pages.add("employee");
+        this.pages.add("customer");
     }
 
     @Override
