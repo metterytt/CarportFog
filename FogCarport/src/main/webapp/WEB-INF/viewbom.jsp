@@ -1,3 +1,4 @@
+<%@page import="functionLayer.entity.BOM"%>
 <%@page import="functionLayer.entity.Employee"%>
 <%@page import="functionLayer.StorageFacade"%>
 <%@page import="functionLayer.entity.Customer"%>
@@ -5,7 +6,6 @@
 <%@page import="functionLayer.RenderTables"%>
 <%@page import="functionLayer.entity.LineItem"%>
 <%@page import="java.util.List"%>
-<%@page import="functionLayer.BOM"%>
 <%@page import="java.text.DecimalFormat"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <% DecimalFormat formatter = new DecimalFormat("###,##0.00");%>

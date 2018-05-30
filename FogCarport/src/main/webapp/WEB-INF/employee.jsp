@@ -1,6 +1,5 @@
 <%@page import="java.util.List"%>
 <%@page import="functionLayer.entity.Employee"%>
-<%@page import="functionLayer.BOM"%>
 <%@page import="functionLayer.entity.CustomerCalculation"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>

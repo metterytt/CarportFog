@@ -1,4 +1,4 @@
-<%@page import="functionLayer.BOM"%>
+<%@page import="functionLayer.entity.BOM"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

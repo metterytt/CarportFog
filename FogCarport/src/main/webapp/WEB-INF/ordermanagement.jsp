@@ -1,5 +1,5 @@
 <%@page import="functionLayer.entity.LineItem"%>
-<%@page import="functionLayer.BOM"%>
+<%@page import="functionLayer.entity.BOM"%>
 <%@page import="java.text.DecimalFormat"%>
 <%@page import="functionLayer.RenderTables"%>
 <%@page import="functionLayer.entity.Order"%>
