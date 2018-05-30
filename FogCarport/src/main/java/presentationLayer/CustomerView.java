@@ -9,7 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Retrieves all orders/requests, that the customer currently logged in has in the database.
+ * Retrieves all orders/requests, that the customer currently logged in has in
+ * the database.
+ *
  * @author Snøvsen
  */
 public class CustomerView extends Command {

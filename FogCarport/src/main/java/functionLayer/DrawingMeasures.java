@@ -2,6 +2,7 @@ package functionLayer;
 
 /**
  * Used to draw images of the carport in RenderDrawings.java
+ *
  * @author Snøvsen
  */
 public class DrawingMeasures {
@@ -26,7 +27,9 @@ public class DrawingMeasures {
         rafterQty = calcRafterQty();
         rafterGap = calcRafterGap();
         posts = calcPosts();
-        if (angle != 0) gableHeight = calcGableHeight(angle);
+        if (angle != 0) {
+            gableHeight = calcGableHeight(angle);
+        }
     }
 
     public double getRafterGap() {
@@ -108,7 +111,7 @@ public class DrawingMeasures {
     public void setGableHeight(double gableHeight) {
         this.gableHeight = gableHeight;
     }
-    
+
     private double calcRafterGap() {
         return (length - 15) / (rafterQty - 1);
     }
@@ -124,7 +127,7 @@ public class DrawingMeasures {
     }
 
     private int calcPosts() {
-        
+
         if (length <= 480) {
             return 4;
         } else {

@@ -2,10 +2,11 @@ package functionLayer.entity;
 
 /**
  * This entity is used to handle all orderinformation.
+ *
  * @author Snøvsen
  */
 public class Order {
-    
+
     private int orderID;
     private int customer;
     private int length;
@@ -109,5 +110,5 @@ public class Order {
     public void setPlaced(int placed) {
         this.placed = placed;
     }
-    
+
 }

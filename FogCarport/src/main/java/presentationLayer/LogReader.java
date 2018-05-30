@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * All logs are fetched and put into a list to be shown on logging.jsp.
+ *
  * @author Snøvsen
  */
 public class LogReader extends Command {

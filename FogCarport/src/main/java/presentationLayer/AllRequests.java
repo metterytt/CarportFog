@@ -8,7 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Gets all orders/requests from the database to be displayed on ordermanagement.jsp.
+ * Gets all orders/requests from the database to be displayed on
+ * ordermanagement.jsp.
+ *
  * @author Snøvsen
  */
 public class AllRequests extends Command {

@@ -8,6 +8,7 @@ import java.util.Scanner;
 
 /**
  * Used to read the logginfiles, to display for an IT worker on the site.
+ *
  * @author Snøvsen
  */
 public class LoggingReader {

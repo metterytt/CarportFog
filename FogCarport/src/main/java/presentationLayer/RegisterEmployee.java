@@ -6,8 +6,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Inserts a new employee to the database.
- * Either sends the user to registeremployee.jsp or inserts the employee.
+ * Inserts a new employee to the database. Either sends the user to
+ * registeremployee.jsp or inserts the employee.
+ *
  * @author Snøvsen
  */
 public class RegisterEmployee extends Command {
@@ -21,7 +22,7 @@ public class RegisterEmployee extends Command {
             String psw1 = request.getParameter("password1");
             String psw2 = request.getParameter("password2");
             String role = request.getParameter("empRole");
-            
+
             if (!psw1.equals(psw2)) {
                 request.setAttribute("error", "Passwords skal være ens!");
             } else if (role == null) {

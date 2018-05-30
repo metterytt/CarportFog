@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * Updates the order to "paid" in the database.
+ *
  * @author Snøvsen
  */
 public class PayForOrder extends Command {

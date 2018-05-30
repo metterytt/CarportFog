@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * Updates the quantity of the given product.
- * Input comes from viewbom..
+ * Updates the quantity of the given product. Input comes from viewbom..
+ *
  * @author Snøvsen
  */
 public class UpdateQuantityBom extends Command {

@@ -57,8 +57,7 @@ public class OrderMapperTest {
                 stmt.execute("insert into lineitems select * from lineitemsTest");
 
             }
-        }
-        catch (SQLException | ClassNotFoundException ex) {
+        } catch (SQLException | ClassNotFoundException ex) {
             testConnection = null;
             System.out.println("Could not open connection to database: " + ex.getMessage());
         }
@@ -87,8 +86,7 @@ public class OrderMapperTest {
         try {
             testConnection.close();
             LineItem test = OrderMapper.getProduct(1);
-        }
-        catch (CarportException | SQLException ex) {
+        } catch (CarportException | SQLException ex) {
             testConnection = null;
             throw new CarportException(ex.getMessage(), "page");
         }
@@ -113,8 +111,7 @@ public class OrderMapperTest {
         try {
             testConnection.close();
             OrderMapper.addCustCalc(1, 1, 1, 1, 1);
-        }
-        catch (CarportException | SQLException ex) {
+        } catch (CarportException | SQLException ex) {
             testConnection = null;
             throw new CarportException(ex.getMessage(), "page");
         }
@@ -126,8 +123,7 @@ public class OrderMapperTest {
         try {
             testConnection.close();
             List<CustomerCalculation> list1 = OrderMapper.getCustCalcs();
-        }
-        catch (CarportException | SQLException ex) {
+        } catch (CarportException | SQLException ex) {
             testConnection = null;
             throw new CarportException(ex.getMessage(), "page");
         }
@@ -151,8 +147,7 @@ public class OrderMapperTest {
         try {
             testConnection.close();
             OrderMapper.addRequest(1, 1, 1, 1, 1, 1, 1);
-        }
-        catch (CarportException | SQLException ex) {
+        } catch (CarportException | SQLException ex) {
             testConnection = null;
             throw new CarportException(ex.getMessage(), "page");
         }
@@ -164,8 +159,7 @@ public class OrderMapperTest {
         try {
             testConnection.close();
             List<Order> list2 = OrderMapper.getOpenRequests();
-        }
-        catch (CarportException | SQLException ex) {
+        } catch (CarportException | SQLException ex) {
             testConnection = null;
             throw new CarportException(ex.getMessage(), "page");
         }
@@ -187,8 +181,7 @@ public class OrderMapperTest {
         try {
             testConnection.close();
             List<Order> list2 = OrderMapper.getOrders();
-        }
-        catch (CarportException | SQLException ex) {
+        } catch (CarportException | SQLException ex) {
             testConnection = null;
             throw new CarportException(ex.getMessage(), "page");
         }
@@ -212,8 +205,7 @@ public class OrderMapperTest {
         try {
             testConnection.close();
             OrderMapper.editRequest(2, 1, 1, 1, 1, 1, 1);
-        }
-        catch (CarportException | SQLException ex) {
+        } catch (CarportException | SQLException ex) {
             testConnection = null;
             throw new CarportException(ex.getMessage(), "page");
         }
@@ -235,8 +227,7 @@ public class OrderMapperTest {
         try {
             testConnection.close();
             List<Order> list2 = OrderMapper.getCustomerOrders(1);
-        }
-        catch (CarportException | SQLException ex) {
+        } catch (CarportException | SQLException ex) {
             testConnection = null;
             throw new CarportException(ex.getMessage(), "page");
         }
@@ -277,8 +268,7 @@ public class OrderMapperTest {
             List<LineItem> l = new ArrayList();
 
             OrderMapper.addBomToOrder(l, orderID, empID);
-        }
-        catch (CarportException | SQLException ex) {
+        } catch (CarportException | SQLException ex) {
             testConnection = null;
             throw new CarportException(ex.getMessage(), "page");
         }
@@ -290,8 +280,7 @@ public class OrderMapperTest {
         try {
             testConnection.close();
             List<LineItem> finalbom = OrderMapper.getFinalBom(1);
-        }
-        catch (CarportException | SQLException ex) {
+        } catch (CarportException | SQLException ex) {
             testConnection = null;
             throw new CarportException(ex.getMessage(), "page");
         }
@@ -316,8 +305,7 @@ public class OrderMapperTest {
         try {
             testConnection.close();
             OrderMapper.updateTotalPrice(200, 3);
-        }
-        catch (CarportException | SQLException ex) {
+        } catch (CarportException | SQLException ex) {
             testConnection = null;
             throw new CarportException(ex.getMessage(), "page");
         }
@@ -329,8 +317,7 @@ public class OrderMapperTest {
         try {
             testConnection.close();
             Order o = OrderMapper.getOrder(2);
-        }
-        catch (CarportException | SQLException ex) {
+        } catch (CarportException | SQLException ex) {
             testConnection = null;
             throw new CarportException(ex.getMessage(), "page");
         }
@@ -360,8 +347,7 @@ public class OrderMapperTest {
         try {
             testConnection.close();
             OrderMapper.PayForOrder(3);
-        }
-        catch (CarportException | SQLException ex) {
+        } catch (CarportException | SQLException ex) {
             testConnection = null;
             throw new CarportException(ex.getMessage(), "page");
         }
