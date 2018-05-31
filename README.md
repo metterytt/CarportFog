@@ -16,4 +16,5 @@ Pernille Lørup      -       cph-pl160@cphbusiness.dk        -       pernillelor
   
   
 
-Log ind som medarbejder ved at bruge brugernavnen: test@test.dk med koden: test
+Log ind som medarbejder ved at bruge brugernavnet: test@test.dk med koden: test
+  - Dette står dog allerede som en value på siden. 
