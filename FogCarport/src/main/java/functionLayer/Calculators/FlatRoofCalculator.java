@@ -32,7 +32,7 @@ public class FlatRoofCalculator implements CarportCalculator {
 
     private final int length;
     private final int width;
-    private final int angle = 0;
+//    private final int angle = 0;
     private int shedLength;
     private int shedWidth;
     private BOM bom = new BOM();
