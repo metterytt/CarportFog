@@ -16,8 +16,6 @@ import java.sql.SQLException;
  */
 public class Connector {
 
-//    private static final String URL = "jdbc:mysql://159.89.99.43:3306/carport?autoReconnect=true";
-//    private static final String URL = "jdbc:mysql://159.89.99.43:3306/carport";
     private static final String HOST = "159.89.99.43";
     private static final String DBNAME = "carport";
     private static final String URL = String.format("jdbc:mysql://%s:3306/%s", HOST, DBNAME);
