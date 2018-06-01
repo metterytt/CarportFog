@@ -189,3 +189,4 @@ INSERT INTO `carport`.`products` (`name`, `uom`, `price`) VALUES ('T-hængsel 39
 INSERT INTO `carport`.`products` (`name`, `uom`, `price`) VALUES ('Vinkelbeslag 35', 'stk.', '595');
 
 INSERT INTO `carport`.`employees` (`username`, `password`, `role`) VALUES ('test@test.dk', 'test', 'IT');
+INSERT INTO `carport`.`customers` (`username`, `password`, `firstname`, `lastname`, `phonenumber`) VALUES ('lars@lars.dk', '123', 'lars', 'larsPetersen', '12345678');
