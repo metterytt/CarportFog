@@ -37,7 +37,6 @@ public class PitchedRoofCalculator implements CarportCalculator {
      * from the database.
      */
     private BOM calculateBOM() throws CarportException {
-        bom = new BOM();
         bom.setLength(length);
         bom.setWidth(width);
         bom.setAngle(angle);

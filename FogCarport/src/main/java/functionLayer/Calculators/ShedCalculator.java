@@ -30,7 +30,6 @@ public class ShedCalculator implements CarportCalculator {
      * from the database.
      */
     private BOM calculateBOM() throws CarportException {
-        bom = new BOM();
         bom.setShedLength(shedLength);
         bom.setShedWidth(shedWidth);
 
