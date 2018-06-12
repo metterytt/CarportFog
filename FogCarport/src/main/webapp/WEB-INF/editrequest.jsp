@@ -21,7 +21,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-6">
-                    <h1 class="display-4"> Edit request for OrderID : <%= orderID%> </h1>
+                    <h1 class="display-4"> Ændre forespørgsel med ID : <%= orderID%> </h1>
 
                     <form  action="FrontController" method="post">
                         <input type="hidden" name="command" value="editrequest">
@@ -68,7 +68,7 @@
                                 ++i;
                             } else if (angleForSalesman != angle) {%>
 
-                            <option value="<%=angleForSalesman%>"> <%=angleForSalesman%>°</option>
+                            <option> <%=angleForSalesman%> </option>
                             <%
                                     }
                                     angleForSalesman += 10;
@@ -108,7 +108,7 @@
                                 }%>
                         </select>
 
-                        <input type="submit" class="btn btn-primary" value="Edit Order!"/><br><br>
+                        <input type="submit" class="btn btn-primary" value="Opdatér forespørgsel"/><br><br>
                     </form>
                 </div>
             </div>

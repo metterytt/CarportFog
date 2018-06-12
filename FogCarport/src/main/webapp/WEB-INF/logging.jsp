@@ -19,7 +19,7 @@
                 <div class="col-md-6">
 
                     <div class="tab">
-                        <button class="btn btn-primary" class="tablinks" onclick="openTable(event, 'ExceptionLogs')" id="defaultOpen">Vis logs for fejlede logins</button>
+                        <button class="btn btn-primary" class="tablinks" onclick="openTable(event, 'ExceptionLogs')" id="defaultOpen">Vis logs for exceptions</button>
                         <button class="btn btn-primary" class="tablinks" onclick="openTable(event, 'CustomerLoginLogs')">Vis logs for kundelogins</button>
                     </div>
 

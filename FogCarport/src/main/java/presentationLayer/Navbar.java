@@ -30,13 +30,14 @@ public class Navbar extends Command {
     String execute(HttpServletRequest request, HttpServletResponse response) throws CarportException {
 
         if (request.getParameter("logout") != null) {
-            if (request.getSession().getAttribute("employee") != null) {
-                request.getSession().removeAttribute("employee");
-                return "index";
-            } else {
-                request.getSession().removeAttribute("customer");
-                return "index";
-            }
+//            if (request.getSession().getAttribute("employee") != null) {
+            request.getSession().removeAttribute("employee");
+            request.getSession().removeAttribute("customer");
+            return "index";
+//            } else {
+//                request.getSession().removeAttribute("customer");
+//                return "index";
+//            }
         }
 
         String page = null;
