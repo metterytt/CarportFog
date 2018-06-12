@@ -1,6 +1,5 @@
 <%@page import="functionLayer.entity.BOM"%>
 <%@page import="functionLayer.entity.Employee"%>
-<%@page import="functionLayer.StorageFacade"%>
 <%@page import="functionLayer.entity.Customer"%>
 <%@page import="functionLayer.entity.Order"%>
 <%@page import="functionLayer.RenderTables"%>
@@ -23,6 +22,7 @@
         <%@ include file="/WEB-INF/Include/Navbar.jspf" %>
         <div class="container-fluid">
             <div class="row">
+                <a href="viewbom.jsp"></a>
                 <div class="col-md-12">
 
                     <%

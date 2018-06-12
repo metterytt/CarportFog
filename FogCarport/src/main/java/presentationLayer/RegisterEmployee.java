@@ -1,7 +1,7 @@
 package presentationLayer;
 
 import functionLayer.CarportException;
-import functionLayer.StorageFacade;
+import dbAccess.StorageFacade;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
