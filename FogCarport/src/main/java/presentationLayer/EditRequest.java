@@ -53,6 +53,7 @@ public class EditRequest extends Command {
         session.removeAttribute("carportbom");
         session.removeAttribute("customer");
         session.removeAttribute("totalprice");
+        // returns to ordermanagement.jsp via AllRequests.java, in order to fetch the updated lists
         return new AllRequests().execute(request, response);
     }
 }

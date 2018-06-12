@@ -133,7 +133,6 @@ public class UserMapperTest {
 
     @Test
     public void testRegisterEmp() throws CarportException {
-//        Employee emp = new Employee("kirsten@kirsten.dk", "kirsten", "jensen", 3);
         UserMapper.registerEmp("kirsten@kirsten.dk", "kirsten", "IT");
         assertEquals(UserMapper.getAllEmployees().size(), 3);
     }

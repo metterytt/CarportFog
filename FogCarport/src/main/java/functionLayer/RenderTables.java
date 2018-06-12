@@ -143,8 +143,9 @@ public class RenderTables {
             sb.append("<form class=\"form-inline\" action=\"FrontController\" method=\"post\">");
             sb.append("<input type=\"hidden\" name=\"command\" value=\"updateQuantityBom\">");
             sb.append("<div class=\"form-group\">");
-            sb.append("<input class=\"form-control col-md-6\" type=\"number\" step=\"any\" name=\"editNumber\" value=\"").append(quantity).append("\">");
+            sb.append("<input class=\"form-control col-md-6\" type=\"number\" step=\"any\" name=\"editNumber\" value=\"").append(quantity).append("\" required>");
             sb.append("<input type=\"hidden\" name=\"productID\" value=\"").append(li.getProductID()).append("\">");
+            sb.append("<input type=\"hidden\" name=\"useincontext\" value=\"").append(li.getUseInContext()).append("\">");
             sb.append("&nbsp <input type=\"submit\" class=\"btn btn-primary\" value=\"Opdater Antal\">");
             sb.append("</div>");
             sb.append("</form>");

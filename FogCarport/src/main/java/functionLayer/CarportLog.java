@@ -31,7 +31,11 @@ public class CarportLog {
             logger.addHandler(fh);
             SimpleFormatter formatter = new SimpleFormatter();
             fh.setFormatter(formatter);
-            logger.log(Level.SEVERE, message);
+            if (filename.equals("LoginCustomer")) {
+                logger.log(Level.INFO, message);
+            } else {
+                logger.log(Level.SEVERE, message);
+            }
             fh.close();
 
         } catch (SecurityException | IOException e) {

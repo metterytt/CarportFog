@@ -336,10 +336,7 @@ public class OrderMapperTest {
         Order compareOrder = OrderMapper.getOrder(3);
         int orderplacedCompare = compareOrder.isPlaced();
 
-//    assertEquals(orderplaced == orderplacedCompare);
         assertFalse(orderplaced == orderplacedCompare);
-//    assertTrue();
-
     }
 
     @Test(expected = CarportException.class)

@@ -83,7 +83,7 @@
                                 <input type="hidden" name="command" value="edittotalprice">
                                 <input type="hidden" name="orderID" value="<%=carportBOM.getOrderID()%>">
                                 <label for="password1">Rediger totalpris nedenfor:</label>
-                                <input class="form-control col-md-2" type="number" name="totalprice" value="<%= totalPrice%>">
+                                <input class="form-control col-md-2" type="number" name="totalprice" value="<%= totalPrice%>" required>
                                 <br>
                                 <input class="btn btn-primary" type="submit" value="Opdater pris">
                             </form>
